@@ -5,7 +5,7 @@ import { navItems } from '@/lib/constants';
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-default">
+    <footer className="relative z-10 border-t border-border-default bg-bg-primary/80 backdrop-blur-xl">
       <div className="container-wide py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>

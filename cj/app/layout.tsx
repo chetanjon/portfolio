@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import PlasmaBackground from '@/components/ui/PlasmaBackground';
 import './globals.css';
 
 const inter = Inter({
@@ -16,23 +17,23 @@ export const metadata: Metadata = {
     template: '%s | CJ',
   },
   description:
-    'Product Manager with expertise in B2B marketplaces, data-driven product development, and scaling products from 0 to 1.',
-  keywords: ['Product Manager', 'PM', 'B2B', 'Marketplace', 'Arizona State University'],
-  authors: [{ name: 'CJ' }],
-  creator: 'CJ',
+    'Product Manager focused on B2B marketplace growth, seller experience, and data-driven product development. CSPO certified, MS in Management of Technology at ASU.',
+  keywords: ['Product Manager', 'PM', 'B2B', 'Marketplace', 'Arizona State University', 'CSPO'],
+  authors: [{ name: 'Chetan Jonnalagadda' }],
+  creator: 'Chetan Jonnalagadda',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://chetanj.com',
     title: 'CJ | Product Manager',
     description:
-      'Product Manager with expertise in B2B marketplaces, data-driven product development, and scaling products from 0 to 1.',
+      'Product Manager focused on B2B marketplace growth, seller experience, and data-driven product development.',
     siteName: 'CJ Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'CJ | Product Manager',
-    description: 'Product Manager with expertise in B2B marketplaces.',
+    description: 'Product Manager focused on B2B marketplace growth and seller experience.',
   },
   robots: {
     index: true,
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'CJ',
+  name: 'Chetan Jonnalagadda',
   jobTitle: 'Product Manager',
   alumniOf: [
     {
@@ -51,7 +52,7 @@ const jsonLd = {
       name: 'Arizona State University',
     },
   ],
-  knowsAbout: ['Product Management', 'B2B Marketplaces', 'User Research'],
+  knowsAbout: ['Product Management', 'B2B Marketplaces', 'User Research', 'Data Analysis'],
   url: 'https://chetanj.com',
 };
 
@@ -67,8 +68,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <PlasmaBackground />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="relative z-10 min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

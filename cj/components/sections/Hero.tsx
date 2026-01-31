@@ -4,9 +4,6 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, Linkedin, Mail } from 'lucide-react';
 import BlurText from '@/components/ui/BlurText';
-import dynamic from 'next/dynamic';
-
-const Aurora = dynamic(() => import('@/components/ui/Aurora'), { ssr: false });
 
 const metrics = [
   { value: '30-35%', label: 'Activation Lift' },
@@ -25,20 +22,10 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Aurora background */}
-      <div className="absolute inset-0 opacity-40">
-        <Aurora
-          colorStops={['#E07A5F', '#81B29A', '#E07A5F']}
-          amplitude={1.2}
-          speed={0.4}
-          blend={0.6}
-        />
-      </div>
+      {/* Subtle gradient overlay to improve text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/60 via-bg-primary/30 to-bg-primary/80 z-[1]" />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-transparent to-bg-primary" />
-
-      <motion.div style={{ y, opacity }} className="relative z-10 container-wide py-32">
+      <motion.div style={{ y, opacity }} className="relative z-[2] container-wide py-32">
         <div className="max-w-4xl">
           {/* Eyebrow */}
           <motion.div
@@ -148,7 +135,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2]"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
