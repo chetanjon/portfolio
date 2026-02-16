@@ -25,6 +25,7 @@ export const workExperiences: WorkExperience[] = [
       { value: '15L+', label: 'Monthly GMV (INR)', context: 'revenue milestone' },
     ],
     skills: ['Product Strategy', 'User Research', 'SQL', 'Mixpanel', 'Agile/Scrum', 'B2B Marketplaces', 'Roadmap Planning'],
+    thumbnail: '/work/ikt-india.svg',
     featured: true,
     caseStudy: {
       overview:
@@ -114,6 +115,7 @@ export const workExperiences: WorkExperience[] = [
       { value: '3', label: 'Drop-off Points Found', context: 'informed PRD redesign' },
     ],
     skills: ['User Research', 'PRD Writing', 'Journey Mapping', 'Stakeholder Management'],
+    thumbnail: '/work/ikt-india-intern.svg',
     featured: false,
   },
   {
@@ -137,6 +139,7 @@ export const workExperiences: WorkExperience[] = [
       { value: '85%', label: 'Dealer Adoption', context: 'new SKUs in 90 days' },
     ],
     skills: ['Data Analysis', 'Go-to-Market', 'Demand Forecasting', 'Operations'],
+    thumbnail: '/work/gangothri.svg',
     featured: false,
   },
 ];

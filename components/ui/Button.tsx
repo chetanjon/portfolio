@@ -14,19 +14,19 @@ interface ButtonProps {
 
 const variants = {
   primary:
-    'bg-accent-primary text-white shadow-button hover:opacity-90 active:scale-[0.98]',
+    'bg-text-primary text-bg-primary hover:opacity-80 active:scale-[0.98]',
   secondary:
-    'bg-bg-secondary text-text-primary border border-border-default hover:border-border-hover active:scale-[0.98]',
+    'bg-transparent text-text-primary border border-text-primary hover:bg-text-primary hover:text-bg-primary active:scale-[0.98]',
   ghost:
-    'bg-transparent text-text-primary hover:bg-surface-hover active:scale-[0.98]',
+    'bg-transparent text-text-primary hover:opacity-60 active:scale-[0.98]',
   outline:
-    'border border-accent-primary text-accent-primary hover:bg-accent-primary/5 active:scale-[0.98]',
+    'border border-border-default text-text-primary hover:border-text-primary active:scale-[0.98]',
 };
 
 const sizes = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-4 py-2 text-base',
-  lg: 'px-6 py-3 text-lg',
+  sm: 'px-4 py-1.5 text-xs',
+  md: 'px-6 py-2.5 text-sm',
+  lg: 'px-8 py-3 text-base',
 };
 
 export function Button({
@@ -40,7 +40,7 @@ export function Button({
   type = 'button',
 }: ButtonProps) {
   const classes = cn(
-    'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 cursor-pointer',
+    'inline-flex items-center justify-center font-medium rounded-full tracking-wider uppercase transition-all duration-200 cursor-pointer',
     variants[variant],
     sizes[size],
     disabled && 'opacity-50 cursor-not-allowed',

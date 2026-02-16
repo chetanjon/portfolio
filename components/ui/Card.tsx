@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 interface CardProps {
-  variant?: 'default' | 'elevated' | 'bordered' | 'interactive';
+  variant?: 'default' | 'elevated' | 'bordered' | 'interactive' | 'minimal';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   href?: string;
@@ -10,11 +10,13 @@ interface CardProps {
 }
 
 const variantStyles = {
-  default: 'bg-bg-secondary rounded-xl',
-  elevated: 'bg-bg-secondary rounded-xl shadow-md',
-  bordered: 'bg-bg-secondary rounded-xl border border-border-default',
+  default: 'bg-bg-secondary rounded-lg',
+  elevated: 'bg-bg-secondary rounded-lg shadow-md',
+  bordered: 'bg-bg-secondary rounded-lg border border-border-default',
   interactive:
-    'bg-bg-secondary rounded-xl shadow-sm border border-border-default hover:shadow-lg hover:-translate-y-1 transition-all duration-300',
+    'bg-bg-secondary rounded-lg border border-border-default hover:border-border-hover hover:-translate-y-1 transition-all duration-300',
+  minimal:
+    'bg-transparent border border-border-default rounded-lg hover:border-border-hover transition-colors',
 };
 
 const paddingStyles = {

@@ -1,13 +1,28 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Playfair_Display, Syne } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import PlasmaBackground from '@/components/ui/PlasmaBackground';
+import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { DebugWrapper } from '@/components/ui/DebugWrapper';
+import { CustomCursor } from '@/components/ui/CustomCursor';
 import './globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  style: ['normal', 'italic'],
+});
+
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata: Metadata = {
@@ -64,12 +79,12 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   other: {
-    'msapplication-TileColor': '#0A0A0A',
+    'msapplication-TileColor': '#C9D2C5',
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0A0A0A',
+  themeColor: '#C9D2C5',
   width: 'device-width',
   initialScale: 1,
 };
@@ -118,16 +133,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${playfair.variable} ${syne.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <PlasmaBackground />
-        <Header />
-        <main className="relative z-10 min-h-screen">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <CustomCursor />
+          <NoiseOverlay />
+          <DebugWrapper />
+          <Header />
+          <main className="relative z-10 min-h-screen">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

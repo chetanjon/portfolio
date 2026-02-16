@@ -2,7 +2,7 @@ export const personalInfo = {
   name: 'CJ',
   fullName: 'Chetan Jonnalagadda',
   title: 'Product Manager',
-  tagline: 'B2B marketplace growth, seller experience, and data-driven product development.',
+  tagline: 'I scale B2B marketplaces by closing the gap between what data shows and what users actually experience.',
   location: 'Tempe, Arizona',
   phone: '(602) 807-9130',
   email: 'jonnalagadda8800@gmail.com',
@@ -30,5 +30,5 @@ export const personalInfo = {
   visaStatus: 'Requires H1B Sponsorship',
   openTo: ['Full-time', 'Remote', 'Hybrid', 'Relocation'],
   summary:
-    'Product Manager focused on B2B marketplace growth and seller experience — onboarding funnels, catalog tooling, and retention. 1.5+ years shipping features with lean teams, improving activation 30-35% and retention 20%. CSPO certified, MS in Management of Technology at ASU.',
+    'I scaled a B2B handloom marketplace from 20 to 45+ vendors in 9 months — growing GMV 2x to INR 15L+, improving seller activation 30–35%, and building the analytics infrastructure to sustain it. My edge: I\'ve run SQL queries on retention cohorts and sat face-to-face with artisans who\'d never used a smartphone. Data tells you the what. Users tell you the why. I close that gap. CSPO certified. M.S. Management of Technology at ASU, GPA 3.6.',
 };

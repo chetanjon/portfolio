@@ -43,12 +43,12 @@ export const projects: Project[] = [
     description:
       'Identified ride cancellations and surge pricing as core pain points. Sized addressable market at 145K car-free Phoenix commuters across 3 segments.',
     longDescription:
-      'Identified ride cancellations and surge pricing as core pain points through 10 user interviews; sized addressable market at 145K car-free Phoenix commuters across 3 segments. Led 4-person team to develop GTM strategy, pricing model ($2 base + $0.50/mile), and 5-year financial projections with $202M NPV; pitched to faculty panel.',
+      'Identified ride cancellations and surge pricing as core pain points through 10 user interviews; sized addressable market at 145K car-free Phoenix commuters across 3 segments. Led 4-person team to develop GTM strategy, pricing model ($2 base + $0.50/mile), and 5-year financial projections with $20M NPV; pitched to faculty panel.',
     highlights: [
       'Conducted 10 user interviews identifying ride cancellations and surge pricing as core pain points',
       'Sized addressable market at 145K car-free Phoenix commuters across 3 segments',
       'Led 4-person team to develop GTM strategy and pricing model ($2 base + $0.50/mile)',
-      'Built 5-year financial projections with $202M NPV',
+      'Built 5-year financial projections with $20M NPV',
     ],
     skills: ['Market Sizing', 'GTM Strategy', 'Financial Modeling', 'User Research', 'Team Leadership'],
     type: 'academic',
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     status: 'completed',
     metrics: [
       { value: '145K', label: 'TAM (Commuters)' },
-      { value: '$202M', label: 'Projected NPV' },
+      { value: '$20M', label: 'Projected NPV' },
       { value: '10', label: 'User Interviews' },
       { value: '3', label: 'Market Segments' },
     ],
@@ -64,7 +64,7 @@ export const projects: Project[] = [
       { step: 'User Research', description: 'Interviewed 10 users on ride-hailing pain points', icon: 'users' },
       { step: 'Market Sizing', description: 'Sized TAM at 145K car-free Phoenix commuters', icon: 'bar-chart-3' },
       { step: 'Strategy', description: 'Developed GTM strategy and $2 + $0.50/mile pricing model', icon: 'target' },
-      { step: 'Financial Model', description: 'Built 5-year projections with $202M NPV', icon: 'layers' },
+      { step: 'Financial Model', description: 'Built 5-year projections with $20M NPV', icon: 'layers' },
     ],
     color: 'from-blue-500/20 to-cyan-500/20',
     icon: 'rocket',

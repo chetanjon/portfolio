@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#C2CBC0"/>
+
+  <!-- Weaving grid - vertical threads -->
+  <line x1="80" y1="0" x2="80" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="140" y1="0" x2="140" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="200" y1="0" x2="200" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="260" y1="0" x2="260" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="320" y1="0" x2="320" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="380" y1="0" x2="380" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="440" y1="0" x2="440" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="500" y1="0" x2="500" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="560" y1="0" x2="560" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="620" y1="0" x2="620" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="680" y1="0" x2="680" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="740" y1="0" x2="740" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+
+  <!-- Weaving grid - horizontal threads -->
+  <line x1="0" y1="56" x2="800" y2="56" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="112" x2="800" y2="112" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="168" x2="800" y2="168" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="224" x2="800" y2="224" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="336" x2="800" y2="336" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="392" x2="800" y2="392" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+
+  <!-- Diagonal weave accent lines -->
+  <line x1="0" y1="0" x2="450" y2="450" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.06"/>
+  <line x1="100" y1="0" x2="550" y2="450" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.06"/>
+  <line x1="200" y1="0" x2="650" y2="450" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.06"/>
+  <line x1="300" y1="0" x2="750" y2="450" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.06"/>
+  <line x1="400" y1="0" x2="800" y2="400" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.06"/>
+
+  <!-- Highlighted interlace nodes (active vendor dots) -->
+  <circle cx="200" cy="168" r="4" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="320" cy="112" r="4" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="440" cy="224" r="4" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="560" cy="168" r="4" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="680" cy="280" r="4" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="140" cy="280" r="3" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="380" cy="336" r="3" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="500" cy="112" r="3" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="260" cy="392" r="3" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="620" cy="56" r="3" fill="#1A1A1A" fill-opacity="0.25"/>
+
+  <!-- Connection lines between nodes (marketplace graph) -->
+  <line x1="200" y1="168" x2="320" y2="112" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="320" y1="112" x2="440" y2="224" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="440" y1="224" x2="560" y2="168" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="560" y1="168" x2="680" y2="280" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="200" y1="168" x2="140" y2="280" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.2"/>
+  <line x1="440" y1="224" x2="380" y2="336" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.2"/>
+
+  <!-- Metric badge: 2.3x -->
+  <rect x="52" y="24" width="80" height="32" rx="16" fill="#1A1A1A" fill-opacity="0.85"/>
+  <text x="92" y="44" font-family="'Georgia', serif" font-size="13" font-weight="700" fill="#C2CBC0" text-anchor="middle">2.3x</text>
+
+  <!-- Company name -->
+  <text x="400" y="390" font-family="'Arial', 'Helvetica', sans-serif" font-size="44" font-weight="800" fill="#1A1A1A" fill-opacity="0.12" text-anchor="middle" letter-spacing="8">IKT INDIA</text>
+
+  <!-- Role label -->
+  <rect x="600" y="24" width="168" height="28" rx="0" fill="#1A1A1A" fill-opacity="0.08"/>
+  <text x="684" y="42" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" font-weight="600" fill="#1A1A1A" fill-opacity="0.6" text-anchor="middle" letter-spacing="2.5">PRODUCT MANAGER</text>
+
+  <!-- Bottom left: date -->
+  <text x="52" y="430" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" letter-spacing="2">2023 — 2024</text>
+
+  <!-- Bottom right: domain -->
+  <text x="748" y="430" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" text-anchor="end" letter-spacing="2">B2B MARKETPLACE</text>
+
+  <!-- Growth arrow cluster -->
+  <polyline points="680,300 720,260 740,220 760,180" stroke="#1A1A1A" stroke-width="2" stroke-opacity="0.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="760" cy="180" r="5" fill="#1A1A1A" fill-opacity="0.3"/>
+</svg>

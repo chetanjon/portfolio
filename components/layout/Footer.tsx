@@ -1,81 +1,82 @@
 import Link from 'next/link';
-import { Github, Linkedin, Mail } from 'lucide-react';
 import { personalInfo } from '@/data/personal';
 import { navItems } from '@/lib/constants';
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-border-default bg-bg-primary/80 backdrop-blur-xl">
-      <div className="container-wide py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <Link href="/" className="text-xl font-bold text-text-primary">
-              CJ
+    <footer className="relative z-10 border-t border-border-default py-16 md:py-24">
+      <div className="container-wide">
+        {/* Navigation links */}
+        <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-12">
+          {navItems.slice(0, 4).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-[10px] uppercase tracking-widest text-text-muted hover:text-text-primary transition-colors"
+            >
+              {item.label}
             </Link>
-            <p className="mt-3 text-sm text-text-muted max-w-xs">
-              Product Manager building data-driven products that create measurable impact.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
-              Navigation
-            </h4>
-            <ul className="space-y-2">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-text-tertiary hover:text-text-primary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
-              Connect
-            </h4>
-            <div className="flex gap-4">
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-muted hover:text-text-primary transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-muted hover:text-text-primary transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="text-text-muted hover:text-text-primary transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
-            <p className="mt-4 text-xs text-text-muted">
-              Open to opportunities &middot; {personalInfo.visaStatus}
-            </p>
-          </div>
+          ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border-default text-center">
-          <p className="text-xs text-text-muted">
-            &copy; {new Date().getFullYear()} {personalInfo.fullName}. All rights reserved.
-          </p>
+        {/* Social links */}
+        <div className="flex justify-center gap-6 mb-8">
+          <a
+            href={personalInfo.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] uppercase font-medium tracking-wide border-b border-transparent hover:border-current transition-colors"
+          >
+            LinkedIn
+          </a>
+          <a
+            href={personalInfo.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] uppercase font-medium tracking-wide border-b border-transparent hover:border-current transition-colors"
+          >
+            GitHub
+          </a>
+          <a
+            href={`mailto:${personalInfo.email}`}
+            className="text-[10px] uppercase font-medium tracking-wide border-b border-transparent hover:border-current transition-colors"
+          >
+            Email
+          </a>
+        </div>
+
+        {/* Email highlight */}
+        <div className="text-center mb-16">
+          <a
+            href={`mailto:${personalInfo.email}`}
+            className="text-xs font-bold tracking-wider uppercase border-b-2 border-current pb-0.5 hover:opacity-70 transition-opacity"
+          >
+            {personalInfo.email.toUpperCase()}
+          </a>
+        </div>
+
+        {/* Large typography */}
+        <h2 className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-center uppercase leading-none tracking-tighter opacity-90 mb-12">
+          Product
+          <span className="font-serif italic font-normal lowercase"> Manager</span>
+        </h2>
+
+        {/* Bottom row */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-wide text-text-muted border-t border-border-default pt-6 gap-4">
+          <div className="flex gap-2">
+            <span>&copy; {new Date().getFullYear()} {personalInfo.fullName}</span>
+            <span>&middot;</span>
+            <span>All Rights Reserved</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span>{personalInfo.visaStatus}</span>
+          </div>
+          <Link
+            href="#top"
+            className="px-3 py-1 border border-current rounded-full hover:bg-text-primary hover:text-bg-primary transition-colors"
+          >
+            Scroll to Top
+          </Link>
         </div>
       </div>
     </footer>

@@ -4,22 +4,19 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, FileText } from 'lucide-react';
+import { X, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navItems } from '@/lib/constants';
 import ResumeModal from '@/components/ui/ResumeModal';
+import { DarkModeToggle } from '@/components/ui/DarkModeToggle';
+import { LogoMark } from '@/components/ui/LogoMark';
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -30,6 +27,27 @@ export function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 60) {
+        setVisible(true);
+      } else if (currentScrollY < lastScrollY - 5) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY + 5) {
+        setVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  const headerVisible = visible || isMobileMenuOpen;
+
   const handleResumeClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     setIsResumeOpen(true);
@@ -37,34 +55,30 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 px-4 pointer-events-none">
-        {/* Dynamic Island */}
-        <motion.nav
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className={cn(
-            'pointer-events-auto relative flex items-center gap-1 px-2 py-2 rounded-full transition-all duration-500',
-            isScrolled
-              ? 'bg-bg-secondary/80 backdrop-blur-xl border border-border-default shadow-lg'
-              : 'bg-bg-secondary/50 backdrop-blur-md border border-white/[0.04]'
-          )}
-        >
+      <motion.header
+        animate={{ y: headerVisible ? 0 : '-100%' }}
+        transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="fixed top-0 left-0 right-0 z-50 mix-blend-difference"
+      >
+        <div className="container-wide py-6 flex justify-between items-center">
           {/* Logo */}
           <Link
             href="/"
-            className="px-4 py-1.5 text-sm font-bold text-text-primary hover:text-accent-primary transition-colors"
+            className="flex items-center gap-2.5 text-white group"
+            aria-label="Chetan J — Home"
           >
-            CJ
+            <LogoMark
+              size={40}
+              className="text-white transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-white/70 group-hover:text-white transition-colors">
+              Chetan J
+            </span>
           </Link>
 
-          {/* Divider */}
-          <div className="hidden md:block w-px h-4 bg-border-default" />
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-0.5">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
+          {/* Desktop Navigation - Hidden links, only visible in menu */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.slice(0, 4).map((item) => {
               const isResume = item.href === '/resume';
 
               if (isResume) {
@@ -72,15 +86,9 @@ export function Header() {
                   <button
                     key={item.href}
                     onClick={handleResumeClick}
-                    className={cn(
-                      'relative px-3.5 py-1.5 text-sm font-medium rounded-full transition-all duration-200 cursor-pointer',
-                      'text-text-secondary hover:text-text-primary'
-                    )}
+                    className="text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-opacity cursor-pointer"
                   >
-                    <span className="relative z-10 flex items-center gap-1.5">
-                      <FileText className="w-3.5 h-3.5" />
-                      {item.label}
-                    </span>
+                    {item.label}
                   </button>
                 );
               }
@@ -90,92 +98,114 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'relative px-3.5 py-1.5 text-sm font-medium rounded-full transition-all duration-200',
-                    isActive
-                      ? 'text-text-primary'
-                      : 'text-text-secondary hover:text-text-primary'
+                    'text-[10px] uppercase tracking-widest transition-opacity',
+                    pathname === item.href || pathname.startsWith(item.href + '/')
+                      ? 'text-white'
+                      : 'text-white/60 hover:text-white'
                   )}
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-active"
-                      className="absolute inset-0 bg-white/[0.06] rounded-full"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{item.label}</span>
+                  {item.label}
                 </Link>
               );
             })}
+          </nav>
+
+          {/* Right side controls */}
+          <div className="flex items-center gap-3">
+            {/* Dark mode toggle - outside mix-blend for proper visibility */}
+            <div className="mix-blend-normal">
+              <DarkModeToggle />
+            </div>
+
+            {/* Menu button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="px-4 py-2 rounded-full border border-white/50 text-[10px] font-medium tracking-wider text-white uppercase hover:bg-white hover:text-black transition-colors cursor-pointer"
+            >
+              Menu
+            </button>
           </div>
+        </div>
+      </motion.header>
 
-          {/* Mobile toggle */}
-          <button
-            className="md:hidden p-2 rounded-full hover:bg-white/[0.06] transition-colors cursor-pointer"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-4 w-4 text-text-primary" />
-            ) : (
-              <Menu className="h-4 w-4 text-text-primary" />
-            )}
-          </button>
-        </motion.nav>
-      </header>
-
-      {/* Mobile fullscreen menu */}
+      {/* Fullscreen menu overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-bg-primary/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-[60] bg-bg-primary flex flex-col"
           >
-            <nav className="flex flex-col items-center gap-6">
-              {navItems.map((item, i) => {
-                const isResume = item.href === '/resume';
-                return (
-                  <motion.div
-                    key={item.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ delay: i * 0.06, duration: 0.3 }}
-                  >
-                    {isResume ? (
-                      <button
-                        onClick={(e) => {
-                          setIsMobileMenuOpen(false);
-                          handleResumeClick(e);
-                        }}
-                        className={cn(
-                          'text-3xl font-medium transition-colors cursor-pointer',
-                          'text-text-secondary hover:text-text-primary'
-                        )}
-                      >
-                        {item.label}
-                      </button>
-                    ) : (
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={cn(
-                          'text-3xl font-medium transition-colors',
-                          pathname === item.href
-                            ? 'text-accent-primary'
-                            : 'text-text-secondary hover:text-text-primary'
-                        )}
-                      >
-                        {item.label}
-                      </Link>
-                    )}
-                  </motion.div>
-                );
-              })}
-            </nav>
+            {/* Close button */}
+            <div className="container-wide py-6 flex justify-end">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-3 rounded-full border border-border-default hover:bg-text-primary hover:text-bg-primary transition-colors cursor-pointer"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Menu content */}
+            <div className="flex-1 flex flex-col justify-center items-center">
+              <nav className="flex flex-col items-center gap-4">
+                {navItems.map((item, i) => {
+                  const isResume = item.href === '/resume';
+                  const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
+
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ delay: i * 0.08, duration: 0.4 }}
+                    >
+                      {isResume ? (
+                        <button
+                          onClick={(e) => {
+                            setIsMobileMenuOpen(false);
+                            handleResumeClick(e);
+                          }}
+                          className="text-4xl md:text-6xl font-display font-bold uppercase tracking-tight text-text-secondary hover:text-text-primary transition-colors cursor-pointer flex items-center gap-3"
+                        >
+                          <FileText className="w-6 h-6 md:w-8 md:h-8" />
+                          {item.label}
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={cn(
+                            'text-4xl md:text-6xl font-display font-bold uppercase tracking-tight transition-colors',
+                            isActive
+                              ? 'text-text-primary'
+                              : 'text-text-secondary hover:text-text-primary'
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </nav>
+
+              {/* Footer info in menu */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="mt-16 text-center"
+              >
+                <p className="small-caps text-text-muted">
+                  B2B Marketplaces / CSPO / ASU
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,17 +1,19 @@
 import { Hero } from '@/components/sections/Hero';
-import { FeaturedWork } from '@/components/sections/FeaturedWork';
-import { MetricsShowcase } from '@/components/sections/MetricsShowcase';
-import { ContactCTA } from '@/components/sections/ContactCTA';
-import { QuickAbout } from './QuickAbout';
+import { Fundamentals } from '@/components/sections/Fundamentals';
+import { Awards } from '@/components/sections/Awards';
+import { Works } from '@/components/sections/Works';
+import { Expertise } from '@/components/sections/Expertise';
+import { Contact } from '@/components/sections/Contact';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <FeaturedWork />
-      <MetricsShowcase />
-      <QuickAbout />
-      <ContactCTA />
+      <Fundamentals />
+      <Awards />
+      <Works />
+      <Expertise />
+      <Contact />
     </>
   );
 }

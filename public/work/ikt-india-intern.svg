@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <!-- Background -->
+  <rect width="800" height="450" fill="#C2CBC0"/>
+
+  <!-- Concentric discovery circles (user research metaphor) -->
+  <circle cx="400" cy="225" r="40"  stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.18" stroke-dasharray="4 4"/>
+  <circle cx="400" cy="225" r="85"  stroke="#1A1A1A" stroke-width="1"   stroke-opacity="0.14" stroke-dasharray="6 6"/>
+  <circle cx="400" cy="225" r="135" stroke="#1A1A1A" stroke-width="1"   stroke-opacity="0.10" stroke-dasharray="8 8"/>
+  <circle cx="400" cy="225" r="185" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.08"/>
+  <circle cx="400" cy="225" r="235" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.06"/>
+  <circle cx="400" cy="225" r="290" stroke="#1A1A1A" stroke-width="0.5"  stroke-opacity="0.05"/>
+
+  <!-- Journey path (intern to PM) -->
+  <path d="M 80 380 C 160 320, 240 160, 400 225" stroke="#1A1A1A" stroke-width="2" stroke-opacity="0.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Journey milestone dots -->
+  <circle cx="80"  cy="380" r="5" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="180" cy="310" r="4" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="280" cy="210" r="4" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="400" cy="225" r="8" fill="#1A1A1A" fill-opacity="0.35"/>
+
+  <!-- User interview nodes scattered around -->
+  <circle cx="180" cy="140" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="240" cy="320" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="340" cy="90"  r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="520" cy="130" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="590" cy="310" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="660" cy="200" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="460" cy="360" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="140" cy="220" r="3"   fill="#1A1A1A" fill-opacity="0.2"/>
+  <circle cx="560" cy="380" r="3"   fill="#1A1A1A" fill-opacity="0.2"/>
+  <circle cx="700" cy="320" r="3"   fill="#1A1A1A" fill-opacity="0.2"/>
+
+  <!-- Interview connection lines (faint) -->
+  <line x1="400" y1="225" x2="180" y2="140" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.12"/>
+  <line x1="400" y1="225" x2="240" y2="320" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.12"/>
+  <line x1="400" y1="225" x2="520" y2="130" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.12"/>
+  <line x1="400" y1="225" x2="590" y2="310" stroke="#1A1A1A" stroke-width="0.75" stroke-opacity="0.12"/>
+
+  <!-- Drop-off funnel visualization (right side) -->
+  <rect x="640" y="60"  width="120" height="16" rx="2" fill="#1A1A1A" fill-opacity="0.22"/>
+  <rect x="650" y="84"  width="100" height="14" rx="2" fill="#1A1A1A" fill-opacity="0.18"/>
+  <rect x="664" y="106" width="78"  height="12" rx="2" fill="#1A1A1A" fill-opacity="0.14"/>
+  <rect x="677" y="126" width="56"  height="10" rx="2" fill="#1A1A1A" fill-opacity="0.10"/>
+  <text x="700" y="150" font-family="'Arial', 'Helvetica', sans-serif" font-size="8" fill="#1A1A1A" fill-opacity="0.4" text-anchor="middle" letter-spacing="1.5">FUNNEL</text>
+
+  <!-- Metric badge: 15+ -->
+  <rect x="52" y="24" width="80" height="32" rx="16" fill="#1A1A1A" fill-opacity="0.85"/>
+  <text x="92" y="44" font-family="'Georgia', serif" font-size="13" font-weight="700" fill="#C2CBC0" text-anchor="middle">15+</text>
+
+  <!-- Company name -->
+  <text x="400" y="400" font-family="'Arial', 'Helvetica', sans-serif" font-size="44" font-weight="800" fill="#1A1A1A" fill-opacity="0.12" text-anchor="middle" letter-spacing="8">IKT INDIA</text>
+
+  <!-- Role label -->
+  <rect x="560" y="24" width="200" height="28" rx="0" fill="#1A1A1A" fill-opacity="0.08"/>
+  <text x="660" y="42" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" font-weight="600" fill="#1A1A1A" fill-opacity="0.6" text-anchor="middle" letter-spacing="2">PM INTERN</text>
+
+  <!-- Bottom labels -->
+  <text x="52" y="430" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" letter-spacing="2">2023</text>
+  <text x="748" y="430" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" text-anchor="end" letter-spacing="2">USER RESEARCH</text>
+
+  <!-- "15+" label near the metric dot -->
+  <text x="92" y="68" font-family="'Arial', 'Helvetica', sans-serif" font-size="7" fill="#1A1A1A" fill-opacity="0.4" text-anchor="middle" letter-spacing="1">INTERVIEWS</text>
+</svg>

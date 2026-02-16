@@ -1,188 +1,257 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Timeline } from '@/components/sections/Timeline';
-import { ContactCTA } from '@/components/sections/ContactCTA';
-import SpotlightCard from '@/components/ui/SpotlightCard';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { SectionMarker } from '@/components/ui/SectionMarker';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const values = [
   {
-    quote: 'Ship early, learn fast',
+    number: '01',
+    quote: 'Empathy scales better than features',
     description:
-      "Perfect is the enemy of good. I'd rather get a 70% solution in users' hands than a 100% solution that never ships.",
+      "I've interviewed artisans who'd never touched a smartphone. Watching them struggle with a 3-day onboarding flow changed what 'simple UX' meant forever. Deep user understanding is the only sustainable product advantage.",
   },
   {
-    quote: 'Data tells stories',
+    number: '02',
+    quote: 'Data informs — context decides',
     description:
-      'Numbers without context are just numbers. I focus on the narrative metrics tell us about our users.',
+      'I built the seller analytics dashboard before adding new features — not because analytics is always urgent, but because flying blind is worse than moving slow. Numbers tell you what happened. Users tell you why.',
   },
   {
-    quote: 'Users first, always',
+    number: '03',
+    quote: 'Ship the 70%, kill the 90%',
     description:
-      'The best product decisions come from deeply understanding the people who use your product. Everything starts with empathy.',
+      'The best insight I had at IKT India came from a half-finished feature. I would rather get a functional MVP in front of real users than perfect a spec no one has validated. Done beats perfect every time.',
   },
   {
-    quote: 'Simplicity is sophistication',
+    number: '04',
+    quote: 'Every no earns a better yes',
     description:
-      'The hardest part of product management is deciding what not to build. Constraint breeds creativity.',
+      "With a 3-engineer team and a growing vendor base, I learned to say no relentlessly. Scope discipline is how small teams punch above their weight. The features we didn't build were as important as the ones we did.",
   },
+];
+
+const timeline = [
+  { year: '2023', title: 'B.E. Electrical & Electronics Engineering', place: 'JNTU Hyderabad' },
+  { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India — B2B Handloom Marketplace' },
+  { year: '2024', title: 'MS Management of Technology', place: 'Arizona State University' },
+  { year: '2025', title: 'CSPO Certified', place: 'Scrum Alliance' },
+  { year: '2026', title: 'MS Graduation (Expected)', place: 'Arizona State University — GPA 3.6' },
 ];
 
 export function AboutContent() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const heroInView = useInView(heroRef, { once: true, amount: 0.2 });
-  const valuesRef = useRef<HTMLDivElement>(null);
-  const valuesInView = useInView(valuesRef, { once: true, amount: 0.2 });
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
 
   return (
     <>
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container-wide">
-          <motion.div
-            ref={heroRef}
-            initial={{ opacity: 0, y: 20 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-accent-primary" />
-              <span className="text-sm font-medium tracking-widest text-accent-primary uppercase">About</span>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-              About Me
-            </h1>
-            <p className="text-lg text-text-secondary leading-relaxed">
-              From electrical engineering to product management — I&apos;ve always been drawn
-              to solving complex problems at the intersection of technology and business.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+        <motion.div
+          style={{ y: heroY }}
+          className="absolute inset-0 bg-bg-secondary pointer-events-none"
+        />
+        <div className="container-wide relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <SectionMarker number="01" label="About" className="mb-8" />
+              <div className="relative group max-w-md">
+                <div className="relative overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                  <Image
+                    src="/potrait.jpg"
+                    alt="Chetan Jonnalagadda"
+                    fill
+                    className="object-cover object-top img-grayscale transition-transform duration-700 group-hover:scale-105"
+                    priority
+                  />
+                  <div className="absolute inset-0 border border-border-default pointer-events-none" />
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="absolute -bottom-4 -right-4 bg-text-primary text-bg-primary text-[9px] uppercase tracking-widest px-3 py-2"
+                >
+                  Tempe, AZ
+                </motion.div>
+              </div>
+            </motion.div>
 
-      <section className="section-padding pt-0">
-        <div className="container-wide">
-          <div className="max-w-3xl space-y-6 text-text-secondary leading-relaxed">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+            {/* Right: Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              My path to product management started in electrical engineering at JNTU Hyderabad.
-              While studying circuits and systems, I discovered that my real passion was
-              understanding how technology could solve real-world problems — not just the
-              technical challenge, but the human one.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              That curiosity led me to product operations at Gangothri Nutrients, where I analyzed
-              regional sales data across 3,700+ dealers and supported go-to-market launches that
-              achieved 85% dealer adoption. I earned my CSPO certification and dove deeper into
-              Agile methodologies.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              At IKT INDIA, everything came together. Starting as a PM Intern, I conducted 15+
-              seller interviews and mapped the end-to-end journey, identifying 3 critical drop-off
-              points. After converting to Product Manager in 6 months, I scaled the B2B handloom
-              marketplace from 20 to 45+ vendors, improved activation by 30-35%, and built seller
-              analytics dashboards that improved 60-day retention by 20%.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              Now at Arizona State University pursuing my MS in Management of Technology (GPA: 3.6),
-              I&apos;m combining academic rigor with hands-on experience — working on projects
-              from behavioral compatibility platforms to global innovation analytics using Python
-              and statistical methods.
-            </motion.p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-[0.95]">
+                About
+                <br />
+                <span className="font-serif italic font-normal lowercase">me</span>
+              </h1>
+
+              <p className="text-text-secondary leading-relaxed mb-6">
+                My path from electrical engineering to product management wasn&apos;t a pivot — it was
+                an evolution. Engineering trained me to think in systems: identify inputs, model behaviors,
+                debug failures. Product management just means applying those same mental models to human
+                systems instead of electrical ones.
+              </p>
+
+              <p className="text-text-secondary leading-relaxed mb-6">
+                My first real proof of concept came at IKT India, where I took a B2B handloom marketplace
+                from 20 vendors to 45+ in nine months. What made it work wasn&apos;t a clever feature — it
+                was spending weeks talking to artisans who&apos;d never used a smartphone, watching them
+                struggle with 3-day onboarding flows, and rebuilding the funnel from scratch. Activation
+                improved 30–35%, setup time dropped from 3 days to 6 hours, monthly GMV reached INR 15L+.
+              </p>
+
+              <p className="text-text-secondary leading-relaxed mb-8">
+                Currently pursuing my M.S. in Management of Technology at Arizona State University
+                (GPA 3.6, May 2026), where I&apos;m applying the same rigor to behavioral UX research,
+                financial modeling, and data analytics at scale. CSPO certified.
+              </p>
+
+              <div className="flex gap-4">
+                <Link
+                  href="/work"
+                  className="px-6 py-3 rounded-full border border-text-primary hover:bg-text-primary hover:text-bg-primary transition-colors text-sm uppercase tracking-wider"
+                >
+                  View Work
+                </Link>
+                <Link
+                  href="/contact"
+                  className="px-6 py-3 rounded-full bg-text-primary text-bg-primary hover:opacity-80 transition-opacity text-sm uppercase tracking-wider"
+                >
+                  Contact
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <section ref={valuesRef} className="section-padding border-t border-border-default">
+      {/* Values Section */}
+      <section className="py-24 bg-bg-secondary">
         <div className="container-wide">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={valuesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-10"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-text-primary">
-              What I Believe In
+            <SectionMarker number="02" label="Philosophy" className="mb-8" />
+
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-16">
+              What I
+              <span className="font-serif italic font-normal lowercase"> believe in</span>
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((v, i) => (
               <motion.div
                 key={v.quote}
-                initial={{ opacity: 0, y: 20 }}
-                animate={valuesInView ? { opacity: 1, y: 0 } : {}}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="p-6 border border-border-default rounded-lg hover:border-border-hover transition-colors"
               >
-                <SpotlightCard className="p-6 h-full">
-                  <p className="text-lg font-semibold text-accent-primary mb-2">
-                    &ldquo;{v.quote}&rdquo;
-                  </p>
-                  <p className="text-sm text-text-secondary leading-relaxed">{v.description}</p>
-                </SpotlightCard>
+                <span className="text-4xl font-display font-bold text-text-muted/30 mb-4 block">
+                  {v.number}
+                </span>
+                <p className="text-lg font-display font-semibold mb-2">
+                  &ldquo;{v.quote}&rdquo;
+                </p>
+                <p className="text-sm text-text-secondary leading-relaxed">{v.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border-default">
+      {/* Timeline Section */}
+      <section className="py-24">
         <div className="container-wide">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl md:text-3xl font-bold text-text-primary mb-10"
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            My Path
-          </motion.h2>
-          <Timeline />
+            <SectionMarker number="03" label="Journey" className="mb-8" />
+
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-16">
+              My
+              <span className="font-serif italic font-normal lowercase"> path</span>
+            </h2>
+          </motion.div>
+
+          <div className="max-w-2xl border-t border-border-default">
+            {timeline.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="flex gap-8 py-6 border-b border-border-default"
+              >
+                <span className="text-text-muted small-caps w-16 shrink-0">{item.year}</span>
+                <div>
+                  <h3 className="font-display font-semibold">{item.title}</h3>
+                  <p className="text-sm text-text-muted">{item.place}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section-padding border-t border-border-default">
+      {/* Beyond Work Section */}
+      <section className="py-24 bg-bg-secondary">
         <div className="container-wide">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.7 }}
             className="max-w-2xl"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-4">
-              Beyond Work
+            <SectionMarker number="04" label="Personal" className="mb-8" />
+
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
+              Beyond
+              <span className="font-serif italic font-normal lowercase"> work</span>
             </h2>
+
+            <p className="text-text-secondary leading-relaxed mb-6">
+              When I&apos;m not rebuilding funnels or writing PRDs, I&apos;m watching cricket
+              (die-hard India fan), exploring every new restaurant that opens in Tempe, or reading
+              about behavioral economics and how people actually make decisions — which turns out
+              to be very useful for a PM. I&apos;m also mildly obsessed with how startups in
+              emerging markets solve problems that Silicon Valley tools weren&apos;t designed for.
+              There&apos;s a whole product design language invented out of necessity — and it&apos;s
+              where I feel most at home.
+            </p>
+
             <p className="text-text-secondary leading-relaxed">
-              When I&apos;m not thinking about product metrics, you&apos;ll find me exploring
-              the food scene in Tempe, reading about behavioral economics, or debating the merits
-              of different prioritization frameworks with fellow PMs. I believe the best product
-              thinkers are curious about everything — because great ideas come from unexpected places.
+              My engineering background keeps me grounded in &ldquo;is this actually buildable?&rdquo;
+              while my business education keeps me asking &ldquo;but does this move the needle?&rdquo;
+              The best product decisions sit at that intersection — technically pragmatic and
+              commercially ambitious at the same time.
             </p>
           </motion.div>
         </div>
       </section>
-
-      <ContactCTA />
     </>
   );
 }

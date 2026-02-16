@@ -1,14 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Badge } from '@/components/ui/Badge';
-import { MetricCard } from '@/components/shared/MetricCard';
-import { TechStack } from '@/components/shared/TechStack';
+import { useRef } from 'react';
+import { SectionMarker } from '@/components/ui/SectionMarker';
 import type { WorkExperience } from '@/types';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { formatDate, calculateDuration } from '@/lib/utils';
+import { calculateDuration } from '@/lib/utils';
 
 interface CaseStudyContentProps {
   work: WorkExperience;
@@ -17,6 +15,11 @@ interface CaseStudyContentProps {
 }
 
 export function CaseStudyContent({ work, prev, next }: CaseStudyContentProps) {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
   const meta = [
     { label: 'Role', value: work.role },
     { label: 'Duration', value: calculateDuration(work.startDate, work.endDate) },
@@ -26,236 +29,270 @@ export function CaseStudyContent({ work, prev, next }: CaseStudyContentProps) {
 
   return (
     <>
-      <section className="pt-32 pb-8 md:pt-40">
-        <div className="container-wide">
+      {/* Hero */}
+      <section ref={heroRef} className="relative min-h-[60vh] flex items-end pt-32 pb-16 overflow-hidden">
+        <motion.div
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="absolute inset-0 bg-bg-secondary pointer-events-none"
+        />
+        <div className="absolute inset-0 grid grid-cols-4 opacity-10 pointer-events-none">
+          {[0, 1, 2, 3].map(i => <div key={i} className="border-r border-text-primary h-full" />)}
+        </div>
+
+        <div className="container-wide relative z-10">
           <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-              <Link
-                href="/work"
-                className="inline-flex items-center text-sm text-text-tertiary hover:text-text-primary transition-colors mb-8"
-              >
-                <ArrowLeft className="h-4 w-4 mr-1" />
-                Back to Work
-              </Link>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-              className="text-4xl md:text-5xl font-bold text-text-primary mb-2"
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-text-muted hover:text-text-primary transition-colors mb-12"
             >
-              {work.company}
-            </motion.h1>
-            <motion.p
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-              className="text-lg text-text-secondary mb-8"
-            >
-              {work.description}
-            </motion.p>
-
-            <motion.div
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
-            >
-              {meta.map((m) => (
-                <div key={m.label} className="p-4 rounded-xl bg-bg-secondary border border-border-default">
-                  <p className="text-xs text-text-muted uppercase tracking-wider">{m.label}</p>
-                  <p className="text-sm font-semibold text-text-primary mt-1 capitalize">{m.value}</p>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-              className="w-full h-48 md:h-64 rounded-xl bg-gradient-to-br from-accent-secondary to-accent-primary/80 flex items-center justify-center mb-8"
-            >
-              <span className="text-4xl font-bold text-white/20">{work.company}</span>
-            </motion.div>
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Back to Work
+            </Link>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <SectionMarker label="Case Study" className="mb-6" />
+            <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.9] mb-6">
+              {work.company}
+            </h1>
+            <p className="text-text-secondary text-lg max-w-2xl mb-12">{work.description}</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border-default pt-8"
+          >
+            {meta.map((m) => (
+              <div key={m.label}>
+                <p className="small-caps text-text-muted mb-1">{m.label}</p>
+                <p className="text-sm font-medium capitalize">{m.value}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Key Metrics */}
+      <section className="py-16 border-t border-border-default">
+        <div className="container-wide">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {work.metrics.map((m, i) => (
+              <motion.div
+                key={m.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <span className="text-3xl md:text-4xl font-display font-bold block mb-1">{m.value}</span>
+                <p className="small-caps text-text-muted">{m.label}</p>
+                {m.context && <p className="text-[10px] text-text-tertiary mt-0.5">{m.context}</p>}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {work.caseStudy && (
         <>
-          <section className="section-padding pt-0">
+          {/* Overview */}
+          <section className="py-16 border-t border-border-default">
             <div className="container-narrow">
               <motion.div
-                variants={staggerContainer}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true, amount: 0.2 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.7 }}
               >
-                <motion.h2
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl font-bold text-text-primary mb-4"
-                >
-                  Overview
-                </motion.h2>
-                <motion.p
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-text-secondary leading-relaxed mb-12"
-                >
-                  {work.caseStudy.overview}
-                </motion.p>
-
-                <motion.h2
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl font-bold text-text-primary mb-4"
-                >
-                  The Challenge
-                </motion.h2>
-                <motion.p
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-text-secondary leading-relaxed mb-4"
-                >
-                  {work.caseStudy.challenge}
-                </motion.p>
-                <motion.ul
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="space-y-2 mb-12"
-                >
-                  {work.caseStudy.challengePoints.map((point) => (
-                    <li key={point} className="text-sm text-text-secondary flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent-primary mt-2 shrink-0" />
-                      {point}
-                    </li>
-                  ))}
-                </motion.ul>
-
-                <motion.h2
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl font-bold text-text-primary mb-6"
-                >
-                  My Approach
-                </motion.h2>
-                <div className="space-y-6 mb-12">
-                  {work.caseStudy.approach.map((phase, i) => (
-                    <motion.div
-                      key={phase.phase}
-                      variants={fadeInUp}
-                      transition={{ duration: 0.5 }}
-                      className="p-6 rounded-xl border border-border-default bg-bg-secondary"
-                    >
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="w-8 h-8 rounded-full bg-accent-primary/10 text-accent-primary text-sm font-semibold flex items-center justify-center">
-                          {i + 1}
-                        </span>
-                        <h3 className="text-base font-semibold text-text-primary">{phase.phase}</h3>
-                      </div>
-                      <p className="text-sm text-text-secondary leading-relaxed ml-11">
-                        {phase.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <motion.h2
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl font-bold text-text-primary mb-6"
-                >
-                  Key Decisions
-                </motion.h2>
-                <div className="space-y-4 mb-12">
-                  {work.caseStudy.decisions.map((d) => (
-                    <motion.div
-                      key={d.decision}
-                      variants={fadeInUp}
-                      transition={{ duration: 0.5 }}
-                      className="p-6 rounded-xl border border-border-default bg-bg-secondary"
-                    >
-                      <h4 className="text-base font-semibold text-text-primary mb-2">{d.decision}</h4>
-                      <p className="text-sm text-text-tertiary mb-1">
-                        <span className="font-medium text-text-secondary">Context:</span> {d.context}
-                      </p>
-                      <p className="text-sm text-accent-tertiary">
-                        <span className="font-medium">Outcome:</span> {d.outcome}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
+                <p className="small-caps text-text-muted mb-4">Overview</p>
+                <p className="text-lg text-text-secondary leading-relaxed">{work.caseStudy.overview}</p>
               </motion.div>
             </div>
           </section>
 
-          <section className="section-padding border-t border-border-default">
+          {/* Challenge */}
+          <section className="py-16 border-t border-border-default bg-bg-secondary">
+            <div className="container-wide">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div className="lg:col-span-4">
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight mb-4">
+                      The<br />
+                      <span className="font-serif italic font-normal normal-case text-2xl md:text-3xl">Challenge</span>
+                    </h2>
+                    <p className="text-text-secondary text-sm leading-relaxed">{work.caseStudy.challenge}</p>
+                  </motion.div>
+                </div>
+                <div className="lg:col-span-7 lg:col-start-6">
+                  <div className="space-y-3">
+                    {work.caseStudy.challengePoints.map((point, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ duration: 0.5, delay: i * 0.07 }}
+                        className="flex items-start gap-4 border-b border-border-default pb-3"
+                      >
+                        <span className="text-[10px] font-display font-bold text-text-muted shrink-0 mt-0.5">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <p className="text-sm text-text-secondary">{point}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Approach */}
+          <section className="py-16 border-t border-border-default">
             <div className="container-wide">
               <motion.div
-                variants={staggerContainer}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true, amount: 0.2 }}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
               >
-                <motion.h2
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl font-bold text-text-primary mb-8 text-center"
-                >
-                  Results & Impact
-                </motion.h2>
-                <motion.div
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8"
-                >
-                  {work.metrics.map((m) => (
-                    <MetricCard key={m.label} {...m} />
-                  ))}
-                </motion.div>
-                <motion.p
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-text-secondary leading-relaxed text-center max-w-2xl mx-auto"
-                >
+                <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight mb-12">
+                  My Approach
+                </h2>
+              </motion.div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {work.caseStudy.approach.map((phase, i) => (
+                  <motion.div
+                    key={phase.phase}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: i * 0.1 }}
+                    className="border border-border-default p-8 rounded-lg"
+                  >
+                    <span className="text-xs font-display font-bold text-text-muted block mb-3">
+                      Phase {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="font-display font-bold text-lg uppercase tracking-tight mb-3">{phase.phase}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">{phase.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Key Decisions */}
+          <section className="py-16 border-t border-border-default bg-bg-secondary">
+            <div className="container-wide">
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight mb-12">
+                  Key Decisions
+                </h2>
+              </motion.div>
+              <div className="space-y-0 border-t border-border-default">
+                {work.caseStudy.decisions.map((d, i) => (
+                  <motion.div
+                    key={d.decision}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: i * 0.08 }}
+                    className="border-b border-border-default py-8 grid grid-cols-1 md:grid-cols-12 gap-6"
+                  >
+                    <div className="md:col-span-5">
+                      <span className="text-[10px] font-display font-bold text-text-muted block mb-2">
+                        Decision {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <h4 className="font-medium text-base">{d.decision}</h4>
+                    </div>
+                    <div className="md:col-span-3">
+                      <p className="small-caps text-text-muted mb-1">Context</p>
+                      <p className="text-sm text-text-secondary">{d.context}</p>
+                    </div>
+                    <div className="md:col-span-4">
+                      <p className="small-caps text-text-muted mb-1">Outcome</p>
+                      <p className="text-sm text-text-secondary">{d.outcome}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Results */}
+          <section className="py-16 border-t border-border-default">
+            <div className="container-wide text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.7 }}
+              >
+                <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight mb-8">
+                  Results &amp;
+                  <span className="font-serif italic font-normal normal-case"> Impact</span>
+                </h2>
+                <p className="text-text-secondary leading-relaxed max-w-2xl mx-auto text-lg">
                   {work.caseStudy.results}
-                </motion.p>
+                </p>
               </motion.div>
             </div>
           </section>
 
-          <section className="section-padding">
+          {/* Learnings */}
+          <section className="py-16 border-t border-border-default bg-bg-secondary">
             <div className="container-narrow">
               <motion.div
-                variants={staggerContainer}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true, amount: 0.2 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.7 }}
               >
-                <motion.h2
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="text-2xl font-bold text-text-primary mb-4"
-                >
+                <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight mb-10">
                   Learnings
-                </motion.h2>
-                <motion.div variants={fadeInUp} transition={{ duration: 0.5 }} className="space-y-4 mb-8">
+                </h2>
+                <div className="space-y-8">
                   <div>
-                    <h4 className="text-sm font-semibold text-text-primary mb-1">What did this teach me?</h4>
-                    <p className="text-sm text-text-secondary leading-relaxed">{work.caseStudy.learnings}</p>
+                    <p className="small-caps text-text-muted mb-2">What did this teach me?</p>
+                    <p className="text-text-secondary leading-relaxed">{work.caseStudy.learnings}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold text-text-primary mb-1">What would I do differently?</h4>
-                    <p className="text-sm text-text-secondary leading-relaxed">{work.caseStudy.whatWouldChange}</p>
+                    <p className="small-caps text-text-muted mb-2">What would I do differently?</p>
+                    <p className="text-text-secondary leading-relaxed">{work.caseStudy.whatWouldChange}</p>
                   </div>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <h4 className="text-sm font-semibold text-text-primary mb-3">Skills Used</h4>
-                  <TechStack skills={work.skills} />
-                </motion.div>
+                </div>
+                <div className="mt-10 pt-8 border-t border-border-default">
+                  <p className="small-caps text-text-muted mb-4">Skills Used</p>
+                  <div className="flex flex-wrap gap-2">
+                    {work.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1.5 rounded-full border border-border-default text-xs hover:bg-text-primary hover:text-bg-primary transition-colors"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             </div>
           </section>
@@ -263,57 +300,60 @@ export function CaseStudyContent({ work, prev, next }: CaseStudyContentProps) {
       )}
 
       {!work.caseStudy && (
-        <section className="section-padding">
+        <section className="py-16 border-t border-border-default">
           <div className="container-narrow">
             <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.2 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.7 }}
             >
-              <motion.h2
-                variants={fadeInUp}
-                transition={{ duration: 0.5 }}
-                className="text-2xl font-bold text-text-primary mb-4"
-              >
-                Highlights
-              </motion.h2>
-              <motion.ul variants={fadeInUp} transition={{ duration: 0.5 }} className="space-y-2 mb-8">
-                {work.highlights.map((h) => (
-                  <li key={h} className="text-text-secondary flex items-start gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent-primary mt-2 shrink-0" />
-                    {h}
-                  </li>
+              <h2 className="font-display font-bold text-3xl uppercase tracking-tight mb-8">Highlights</h2>
+              <div className="space-y-0 border-t border-border-default">
+                {work.highlights.map((h, i) => (
+                  <motion.div
+                    key={h}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.5, delay: i * 0.07 }}
+                    className="border-b border-border-default py-4 flex items-start gap-4"
+                  >
+                    <span className="text-[10px] font-display font-bold text-text-muted shrink-0 mt-0.5">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <p className="text-sm text-text-secondary">{h}</p>
+                  </motion.div>
                 ))}
-              </motion.ul>
-
-              <motion.div
-                variants={fadeInUp}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-2 gap-6 mb-8"
-              >
-                {work.metrics.map((m) => (
-                  <MetricCard key={m.label} {...m} size="sm" />
-                ))}
-              </motion.div>
-
-              <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                <TechStack skills={work.skills} />
-              </motion.div>
+              </div>
+              <div className="mt-10 pt-8 border-t border-border-default">
+                <p className="small-caps text-text-muted mb-4">Skills</p>
+                <div className="flex flex-wrap gap-2">
+                  {work.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 rounded-full border border-border-default text-xs hover:bg-text-primary hover:text-bg-primary transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
       )}
 
+      {/* Prev / Next nav */}
       <section className="border-t border-border-default">
         <div className="container-wide py-8">
           <div className="flex justify-between items-center">
             {prev ? (
               <Link
                 href={`/work/${prev.slug}`}
-                className="text-sm text-text-tertiary hover:text-text-primary transition-colors flex items-center gap-1"
+                className="text-xs uppercase tracking-widest text-text-muted hover:text-text-primary transition-colors flex items-center gap-2"
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="h-3.5 w-3.5" />
                 {prev.company}
               </Link>
             ) : (
@@ -322,10 +362,10 @@ export function CaseStudyContent({ work, prev, next }: CaseStudyContentProps) {
             {next ? (
               <Link
                 href={`/work/${next.slug}`}
-                className="text-sm text-text-tertiary hover:text-text-primary transition-colors flex items-center gap-1"
+                className="text-xs uppercase tracking-widest text-text-muted hover:text-text-primary transition-colors flex items-center gap-2"
               >
                 {next.company}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             ) : (
               <div />
