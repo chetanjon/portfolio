@@ -560,19 +560,7 @@ export function Hero() {
       ref={ref}
       className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-20 overflow-hidden bg-neutral-950"
     >
-      {/* Shooting Stars Background - positioned absolutely behind everything */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <ShootingStars
-          minSpeed={2}
-          maxSpeed={4}
-          minDelay={3000}
-          maxDelay={6000}
-          starColor="#ffffff"
-          trailColor="#e0e0e0"
-        />
-      </div>
-      
-      {/* Content wrapper with relative positioning to stack above background */}
+      {/* Content wrapper with relative positioning */}
       <div className="relative z-10 w-full h-full flex flex-col justify-center items-center">
         {/* Reactive orb */}
         <div
