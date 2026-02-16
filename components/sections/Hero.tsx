@@ -11,6 +11,7 @@ import {
 import { SectionMarker } from '@/components/ui/SectionMarker';
 import { personalInfo } from '@/data/personal';
 import { ArrowUpRight, Award, TrendingUp, Users, Clock, Target } from 'lucide-react';
+import { ShootingStars } from '../ui/shootingStars';
 
 // ─── Signature paths (abbreviated for display) ────────────────────────────────
 const signaturePaths = [
@@ -557,210 +558,209 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-20 overflow-hidden"
+      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-20 overflow-hidden bg-neutral-950"
     >
-      {/* Reactive orb */}
-      <div
-        ref={orbRef}
-        className="absolute pointer-events-none rounded-full -translate-x-1/2 -translate-y-1/2 hidden md:block"
-        style={{
-          width: '700px',
-          height: '700px',
-          left: '50%',
-          top: '50%',
-          background: 'radial-gradient(circle at center, rgba(26,26,26,0.06) 0%, transparent 55%)',
-        }}
-      />
-
-      {/* ═══════════════════ DESKTOP LAYOUT ═══════════════════ */}
-      {/* Left column cards */}
-      <div className="hidden lg:flex flex-col gap-6 absolute left-[3%] xl:left-[5%] top-1/2 -translate-y-1/2">
-        <GMVGrowthCard delay={200} />
-        <VendorsCard delay={400} />
-        <CSPOBadgeCard delay={600} />
+      {/* Shooting Stars Background - positioned absolutely behind everything */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <ShootingStars
+          minSpeed={2}
+          maxSpeed={4}
+          minDelay={3000}
+          maxDelay={6000}
+          starColor="#ffffff"
+          trailColor="#e0e0e0"
+        />
       </div>
+      
+      {/* Content wrapper with relative positioning to stack above background */}
+      <div className="relative z-10 w-full h-full flex flex-col justify-center items-center">
+        {/* Reactive orb */}
+        <div
+          ref={orbRef}
+          className="absolute pointer-events-none rounded-full -translate-x-1/2 -translate-y-1/2 hidden md:block"
+          style={{
+            width: '700px',
+            height: '700px',
+            left: '50%',
+            top: '50%',
+            background: 'radial-gradient(circle at center, rgba(26,26,26,0.06) 0%, transparent 55%)',
+          }}
+        />
 
-      {/* Right column cards */}
-      <div className="hidden lg:flex flex-col gap-6 absolute right-[3%] xl:right-[5%] top-1/2 -translate-y-1/2">
-        <ActivationCard delay={300} />
-        <SetupTimeCard delay={500} />
-        <ExpertiseCard delay={700} />
-      </div>
-
-      {/* ═══════════════════ MAIN CENTER CONTENT ═══════════════════ */}
-      <motion.div
-        style={{ y, opacity, scale }}
-        className="max-w-lg text-center z-10 space-y-6"
-      >
+        {/* ═══════════════════ MAIN CENTER CONTENT ═══════════════════ */}
         <motion.div
-          initial={{ opacity: 0, y: -15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          style={{ y, opacity, scale }}
+          className="max-w-lg text-center z-10 space-y-6"
         >
-          <SectionMarker label="Engineer turned Product Builder" align="center" />
+          <motion.div
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <SectionMarker label="Engineer turned Product Builder" align="center" />
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-sans text-sm md:text-xl leading-relaxed max-w-md mx-auto"
+          >
+            Engineering taught me{' '}
+            <span className="font-serif italic">to debug systems.</span>{' '}
+            Product management taught me to debug businesses.
+            <br />
+            The tools are different — the mindset isn&apos;t.
+          </motion.p>
+
+          {/* Signature */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="pt-4 flex justify-center"
+          >
+            <svg
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              viewBox="50 43 236 135"
+              className="w-[160px] md:w-[180px] h-auto opacity-70"
+            >
+              {signaturePaths.map((path, i) => (
+                <motion.path
+                  key={i}
+                  d={path.d}
+                  strokeWidth={path.sw}
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{
+                    pathLength: { delay: 0.5 + i * 0.07, duration: 0.02 },
+                    opacity: { delay: 0.5 + i * 0.07, duration: 0.01 },
+                  }}
+                />
+              ))}
+            </svg>
+          </motion.div>
+
+          {/* Name */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="pt-2"
+          >
+            <h1 className="text-lg md:text-xl font-display font-semibold tracking-wide uppercase">
+              {personalInfo.fullName}
+            </h1>
+            <p className="small-caps text-text-muted mt-2">
+              {personalInfo.title} / {personalInfo.location.split(',')[0]}
+            </p>
+          </motion.div>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
+        {/* ═══════════════════ MOBILE/TABLET CARDS ═══════════════════ */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-sans text-sm md:text-base leading-relaxed max-w-md mx-auto"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="lg:hidden mt-10 w-full max-w-md px-4"
         >
-          Engineering taught me{' '}
-          <span className="font-serif italic">to debug systems.</span>{' '}
-          Product management taught me to debug businesses.
-          <br />
-          The tools are different — the mindset isn&apos;t.
-        </motion.p>
+          {/* Grid of mini cards for mobile */}
+          <div className="grid grid-cols-2 gap-3">
+            {/* GMV */}
+            <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-2xl font-display font-bold">2.3</span>
+                  <span className="text-lg font-bold text-text-secondary">x</span>
+                </div>
+                <TrendingUp className="w-5 h-5 text-green-500" />
+              </div>
+              <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">GMV Growth</p>
+            </div>
 
-        {/* Signature */}
+            {/* Vendors */}
+            <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-2xl font-display font-bold">45</span>
+                  <span className="text-lg font-bold text-text-secondary">+</span>
+                </div>
+                <Users className="w-5 h-5 text-blue-500" />
+              </div>
+              <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">Vendors</p>
+            </div>
+
+            {/* Activation */}
+            <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-2xl font-display font-bold">35</span>
+                  <span className="text-lg font-bold text-text-secondary">%</span>
+                </div>
+                <ArrowUpRight className="w-5 h-5 text-emerald-500" />
+              </div>
+              <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">Activation ↑</p>
+            </div>
+
+            {/* Setup */}
+            <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-2xl font-display font-bold">6</span>
+                  <span className="text-lg font-bold text-text-secondary">h</span>
+                </div>
+                <Clock className="w-5 h-5 text-orange-500" />
+              </div>
+              <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">Setup Time</p>
+            </div>
+          </div>
+
+          {/* Bottom tags row */}
+          <div className="flex justify-center gap-2 mt-4">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-bg-primary border border-border-default rounded-full">
+              <Award className="w-3.5 h-3.5 text-amber-500" />
+              <span className="text-[10px] font-medium">CSPO</span>
+            </div>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-bg-primary border border-border-default rounded-full">
+              <Target className="w-3.5 h-3.5 text-violet-500" />
+              <span className="text-[10px] font-medium">B2B Expert</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ═══════════════════ BOTTOM MARKERS ═══════════════════ */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ delay: 1 }}
+          className="absolute bottom-8 left-6 md:left-10 text-[10px] uppercase tracking-widest"
+        >
+          [ {new Date().getFullYear()} ]
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ delay: 1.1 }}
+          className="absolute bottom-8 right-6 md:right-10 text-[10px] uppercase tracking-widest"
+        >
+          CSPO / GPA 3.6
+        </motion.div>
+        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="pt-4 flex justify-center"
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <svg
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            viewBox="50 43 236 135"
-            className="w-[160px] md:w-[180px] h-auto opacity-70"
-          >
-            {signaturePaths.map((path, i) => (
-              <motion.path
-                key={i}
-                d={path.d}
-                strokeWidth={path.sw}
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{
-                  pathLength: { delay: 0.5 + i * 0.07, duration: 0.02 },
-                  opacity: { delay: 0.5 + i * 0.07, duration: 0.01 },
-                }}
-              />
-            ))}
-          </svg>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-[1px] h-10 bg-text-primary opacity-25"
+          />
         </motion.div>
-
-        {/* Name */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="pt-2"
-        >
-          <h1 className="text-lg md:text-xl font-display font-semibold tracking-wide uppercase">
-            {personalInfo.fullName}
-          </h1>
-          <p className="small-caps text-text-muted mt-2">
-            {personalInfo.title} / {personalInfo.location.split(',')[0]}
-          </p>
-        </motion.div>
-      </motion.div>
-
-      {/* ═══════════════════ MOBILE/TABLET CARDS ═══════════════════ */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="lg:hidden mt-10 w-full max-w-md px-4"
-      >
-        {/* Grid of mini cards for mobile */}
-        <div className="grid grid-cols-2 gap-3">
-          {/* GMV */}
-          <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-2xl font-display font-bold">2.3</span>
-                <span className="text-lg font-bold text-text-secondary">x</span>
-              </div>
-              <TrendingUp className="w-5 h-5 text-green-500" />
-            </div>
-            <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">GMV Growth</p>
-          </div>
-
-          {/* Vendors */}
-          <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-2xl font-display font-bold">45</span>
-                <span className="text-lg font-bold text-text-secondary">+</span>
-              </div>
-              <Users className="w-5 h-5 text-blue-500" />
-            </div>
-            <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">Vendors</p>
-          </div>
-
-          {/* Activation */}
-          <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-2xl font-display font-bold">35</span>
-                <span className="text-lg font-bold text-text-secondary">%</span>
-              </div>
-              <ArrowUpRight className="w-5 h-5 text-emerald-500" />
-            </div>
-            <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">Activation ↑</p>
-          </div>
-
-          {/* Setup */}
-          <div className="bg-bg-primary/90 border border-border-default rounded-xl p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-2xl font-display font-bold">6</span>
-                <span className="text-lg font-bold text-text-secondary">h</span>
-              </div>
-              <Clock className="w-5 h-5 text-orange-500" />
-            </div>
-            <p className="text-[10px] text-text-muted mt-1 uppercase tracking-wider">Setup Time</p>
-          </div>
-        </div>
-
-        {/* Bottom tags row */}
-        <div className="flex justify-center gap-2 mt-4">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-bg-primary border border-border-default rounded-full">
-            <Award className="w-3.5 h-3.5 text-amber-500" />
-            <span className="text-[10px] font-medium">CSPO</span>
-          </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-bg-primary border border-border-default rounded-full">
-            <Target className="w-3.5 h-3.5 text-violet-500" />
-            <span className="text-[10px] font-medium">B2B Expert</span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* ═══════════════════ BOTTOM MARKERS ═══════════════════ */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-6 md:left-10 text-[10px] uppercase tracking-widest"
-      >
-        [ {new Date().getFullYear()} ]
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ delay: 1.1 }}
-        className="absolute bottom-8 right-6 md:right-10 text-[10px] uppercase tracking-widest"
-      >
-        CSPO / GPA 3.6
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-[1px] h-10 bg-text-primary opacity-25"
-        />
-      </motion.div>
+      </div>
     </section>
   );
 }
