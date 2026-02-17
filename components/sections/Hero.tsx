@@ -11,7 +11,6 @@ import {
 import { SectionMarker } from '@/components/ui/SectionMarker';
 import { personalInfo } from '@/data/personal';
 import { ArrowUpRight, Award, TrendingUp, Users, Clock, Target } from 'lucide-react';
-import { ShootingStars } from '../ui/shootingStars';
 
 // ─── Signature paths (abbreviated for display) ────────────────────────────────
 const signaturePaths = [
@@ -558,7 +557,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-20 overflow-hidden bg-neutral-950"
+      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-20 overflow-hidden bg-bg-primary dark:bg-neutral-950"
     >
       {/* Content wrapper with relative positioning */}
       <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center">
