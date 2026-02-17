@@ -557,20 +557,19 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-20 overflow-hidden bg-bg-primary dark:bg-neutral-950"
+      className="relative w-full min-h-screen flex flex-col justify-center items-center px-4 pt-24 pb-20 overflow-hidden bg-bg-primary"
     >
       {/* Content wrapper with relative positioning */}
       <div className="relative z-10 w-full flex-1 flex flex-col justify-center items-center">
-        {/* Reactive orb */}
+        {/* Reactive orb - theme aware */}
         <div
           ref={orbRef}
-          className="absolute pointer-events-none rounded-full -translate-x-1/2 -translate-y-1/2 hidden md:block"
+          className="absolute pointer-events-none rounded-full -translate-x-1/2 -translate-y-1/2 hidden md:block orb-gradient"
           style={{
             width: '700px',
             height: '700px',
             left: '50%',
             top: '50%',
-            background: 'radial-gradient(circle at center, rgba(26,26,26,0.06) 0%, transparent 55%)',
           }}
         />
 
