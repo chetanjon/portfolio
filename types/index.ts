@@ -77,6 +77,7 @@ export interface Project {
   process?: ProjectProcess[];
   color: string;
   icon: string;
+  thumbnail?: string;
 }
 
 export interface TimelineItem {

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <!-- Background - warm sage -->
+  <rect width="800" height="450" fill="#D4C9C5"/>
+
+  <!-- Grid pattern -->
+  <line x1="80" y1="0" x2="80" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="160" y1="0" x2="160" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="240" y1="0" x2="240" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="320" y1="0" x2="320" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="400" y1="0" x2="400" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="480" y1="0" x2="480" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="560" y1="0" x2="560" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="640" y1="0" x2="640" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+  <line x1="720" y1="0" x2="720" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+
+  <!-- Abstract connection pattern - two profiles facing each other -->
+  <!-- Left profile -->
+  <circle cx="260" cy="200" r="60" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-opacity="0.2"/>
+  <circle cx="260" cy="200" r="45" fill="#1A1A1A" fill-opacity="0.08"/>
+
+  <!-- Right profile -->
+  <circle cx="540" cy="200" r="60" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-opacity="0.2"/>
+  <circle cx="540" cy="200" r="45" fill="#1A1A1A" fill-opacity="0.08"/>
+
+  <!-- Connection lines between profiles -->
+  <line x1="320" y1="180" x2="480" y2="180" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.15" stroke-dasharray="8 4"/>
+  <line x1="320" y1="200" x2="480" y2="200" stroke="#1A1A1A" stroke-width="2" stroke-opacity="0.25"/>
+  <line x1="320" y1="220" x2="480" y2="220" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.15" stroke-dasharray="8 4"/>
+
+  <!-- Heart in center -->
+  <path d="M400 200 C400 180, 420 160, 440 180 C460 160, 480 180, 480 200 C480 230, 440 260, 400 290 C360 260, 320 230, 320 200 C320 180, 340 160, 360 180 C380 160, 400 180, 400 200" fill="#1A1A1A" fill-opacity="0.2" transform="translate(0, -30) scale(0.6) translate(270, 100)"/>
+
+  <!-- Compatibility nodes -->
+  <circle cx="260" cy="140" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="220" cy="180" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="220" cy="220" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="260" cy="260" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+
+  <circle cx="540" cy="140" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="580" cy="180" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="580" cy="220" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="540" cy="260" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+
+  <!-- Matching lines -->
+  <line x1="260" y1="140" x2="540" y2="140" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.12"/>
+  <line x1="260" y1="260" x2="540" y2="260" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.12"/>
+
+  <!-- Key metric badge -->
+  <rect x="52" y="24" width="72" height="32" rx="16" fill="#1A1A1A" fill-opacity="0.85"/>
+  <text x="88" y="44" font-family="'Georgia', serif" font-size="12" font-weight="700" fill="#D4C9C5" text-anchor="middle">78%</text>
+
+  <!-- Title -->
+  <text x="400" y="390" font-family="'Arial', sans-serif" font-size="28" font-weight="800" fill="#1A1A1A" fill-opacity="0.1" text-anchor="middle" letter-spacing="4">COMPATIBILITY</text>
+
+  <!-- Label -->
+  <rect x="620" y="24" width="128" height="28" rx="0" fill="#1A1A1A" fill-opacity="0.08"/>
+  <text x="684" y="42" font-family="'Arial', sans-serif" font-size="9" font-weight="600" fill="#1A1A1A" fill-opacity="0.6" text-anchor="middle" letter-spacing="2">ASU PROJECT</text>
+
+  <!-- Date -->
+  <text x="52" y="430" font-family="'Arial', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" letter-spacing="2">SPRING 2025</text>
+
+  <!-- Domain -->
+  <text x="748" y="430" font-family="'Arial', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" text-anchor="end" letter-spacing="2">USER RESEARCH</text>
+</svg>

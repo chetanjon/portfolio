@@ -78,7 +78,7 @@ export function Header() {
 
           {/* Desktop Navigation - Hidden links, only visible in menu */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.slice(0, 4).map((item) => {
+            {navItems.slice(0, 5).map((item) => {
               const isResume = item.href === '/resume';
 
               if (isResume) {

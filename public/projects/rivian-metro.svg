@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <!-- Background - urban sage -->
+  <rect width="800" height="450" fill="#C9D2C5"/>
+
+  <!-- City grid pattern - streets -->
+  <line x1="100" y1="0" x2="100" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="200" y1="0" x2="200" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="300" y1="0" x2="300" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="400" y1="0" x2="400" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="500" y1="0" x2="500" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="600" y1="0" x2="600" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="700" y1="0" x2="700" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+
+  <line x1="0" y1="90" x2="800" y2="90" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="0" y1="180" x2="800" y2="180" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="0" y1="270" x2="800" y2="270" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="0" y1="360" x2="800" y2="360" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+
+  <!-- Abstract vehicle silhouette - minimalist -->
+  <rect x="280" y="200" width="240" height="80" rx="40" fill="#1A1A1A" fill-opacity="0.15"/>
+  <rect x="310" y="180" width="180" height="50" rx="25" fill="#1A1A1A" fill-opacity="0.12"/>
+
+  <!-- Wheels -->
+  <circle cx="340" cy="280" r="25" fill="#1A1A1A" fill-opacity="0.2"/>
+  <circle cx="460" cy="280" r="25" fill="#1A1A1A" fill-opacity="0.2"/>
+  <circle cx="340" cy="280" r="12" fill="#C9D2C5"/>
+  <circle cx="460" cy="280" r="12" fill="#C9D2C5"/>
+
+  <!-- Charging indicator -->
+  <line x1="550" y1="220" x2="590" y2="220" stroke="#1A1A1A" stroke-width="3" stroke-opacity="0.25" stroke-linecap="round"/>
+  <line x1="590" y1="220" x2="590" y2="200" stroke="#1A1A1A" stroke-width="3" stroke-opacity="0.25" stroke-linecap="round"/>
+  <circle cx="590" cy="200" r="8" fill="#1A1A1A" fill-opacity="0.3"/>
+
+  <!-- Urban skyline silhouette -->
+  <rect x="60" y="320" width="40" height="100" fill="#1A1A1A" fill-opacity="0.06"/>
+  <rect x="110" y="350" width="35" height="70" fill="#1A1A1A" fill-opacity="0.06"/>
+  <rect x="155" y="380" width="30" height="40" fill="#1A1A1A" fill-opacity="0.06"/>
+  <rect x="620" y="340" width="45" height="80" fill="#1A1A1A" fill-opacity="0.06"/>
+  <rect x="680" y="360" width="35" height="60" fill="#1A1A1A" fill-opacity="0.06"/>
+  <rect x="730" y="380" width="40" height="40" fill="#1A1A1A" fill-opacity="0.06"/>
+
+  <!-- Key metric badge -->
+  <rect x="52" y="24" width="72" height="32" rx="16" fill="#1A1A1A" fill-opacity="0.85"/>
+  <text x="88" y="44" font-family="'Georgia', serif" font-size="12" font-weight="700" fill="#C9D2C5" text-anchor="middle">70%</text>
+
+  <!-- Title -->
+  <text x="400" y="400" font-family="'Arial', sans-serif" font-size="40" font-weight="800" fill="#1A1A1A" fill-opacity="0.1" text-anchor="middle" letter-spacing="6">METRO M1</text>
+
+  <!-- Label -->
+  <rect x="620" y="24" width="128" height="28" rx="0" fill="#1A1A1A" fill-opacity="0.08"/>
+  <text x="684" y="42" font-family="'Arial', sans-serif" font-size="9" font-weight="600" fill="#1A1A1A" fill-opacity="0.6" text-anchor="middle" letter-spacing="2">PRD PROJECT</text>
+
+  <!-- Date -->
+  <text x="52" y="430" font-family="'Arial', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" letter-spacing="2">DEC 2025</text>
+
+  <!-- Domain -->
+  <text x="748" y="430" font-family="'Arial', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" text-anchor="end" letter-spacing="2">URBAN EV</text>
+</svg>

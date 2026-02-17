@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, X, ChevronDown, ExternalLink } from 'lucide-react';
 import { SectionMarker } from '@/components/ui/SectionMarker';
-import { ImagePlaceholder } from '@/components/ui/ImagePlaceholder';
 import { projects } from '@/data/projects';
 import type { Project } from '@/types';
 import { cn } from '@/lib/utils';
@@ -27,12 +27,20 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.15 }}
       transition={{ delay: index * 0.08, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-      layout
-      className={cn(
-        'group border border-border-default rounded-lg overflow-hidden transition-all duration-300',
-        isExpanded && 'col-span-1 md:col-span-2'
-      )}
+      className="group border border-border-default rounded-lg overflow-hidden"
     >
+      {/* Thumbnail */}
+      {project.thumbnail && (
+        <div className="relative h-44 overflow-hidden">
+          <Image
+            src={project.thumbnail}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      )}
+
       {/* Header */}
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">

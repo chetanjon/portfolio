@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <!-- Background - cool blue-green -->
+  <rect width="800" height="450" fill="#C5CED4"/>
+
+  <!-- Grid pattern - city map -->
+  <line x1="100" y1="0" x2="100" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="200" y1="0" x2="200" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="300" y1="0" x2="300" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="400" y1="0" x2="400" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="500" y1="0" x2="500" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="600" y1="0" x2="600" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="700" y1="0" x2="700" y2="450" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+
+  <line x1="0" y1="75" x2="800" y2="75" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="0" y1="150" x2="800" y2="150" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="0" y1="225" x2="800" y2="225" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <line x1="0" y1="375" x2="800" y2="375" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+
+  <!-- Route path - curved journey line -->
+  <path d="M100 350 Q200 350, 250 280 Q300 200, 400 200 Q500 200, 550 150 Q600 100, 700 100" stroke="#1A1A1A" stroke-width="3" stroke-opacity="0.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Location markers along route -->
+  <circle cx="100" cy="350" r="10" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="100" cy="350" r="5" fill="#C5CED4"/>
+
+  <circle cx="250" cy="280" r="8" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="400" cy="200" r="8" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="550" cy="150" r="8" fill="#1A1A1A" fill-opacity="0.25"/>
+
+  <circle cx="700" cy="100" r="12" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="700" cy="100" r="6" fill="#C5CED4"/>
+
+  <!-- Abstract scooter icon at current location -->
+  <ellipse cx="400" cy="220" rx="20" ry="8" fill="#1A1A1A" fill-opacity="0.2"/>
+  <circle cx="388" cy="228" r="8" fill="#1A1A1A" fill-opacity="0.25"/>
+  <circle cx="412" cy="228" r="8" fill="#1A1A1A" fill-opacity="0.25"/>
+  <line x1="400" y1="200" x2="400" y2="220" stroke="#1A1A1A" stroke-width="2" stroke-opacity="0.3"/>
+  <circle cx="400" cy="196" r="6" fill="#1A1A1A" fill-opacity="0.25"/>
+
+  <!-- Market size visualization - abstract circles -->
+  <circle cx="180" cy="180" r="50" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.1"/>
+  <circle cx="180" cy="180" r="35" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <circle cx="180" cy="180" r="20" fill="#1A1A1A" fill-opacity="0.06"/>
+
+  <circle cx="620" cy="280" r="40" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.1"/>
+  <circle cx="620" cy="280" r="25" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.08"/>
+  <circle cx="620" cy="280" r="12" fill="#1A1A1A" fill-opacity="0.06"/>
+
+  <!-- Key metric badge -->
+  <rect x="52" y="24" width="80" height="32" rx="16" fill="#1A1A1A" fill-opacity="0.85"/>
+  <text x="92" y="44" font-family="'Georgia', serif" font-size="11" font-weight="700" fill="#C5CED4" text-anchor="middle">145K</text>
+
+  <!-- Title -->
+  <text x="400" y="400" font-family="'Arial', sans-serif" font-size="44" font-weight="800" fill="#1A1A1A" fill-opacity="0.1" text-anchor="middle" letter-spacing="6">MICROMOVE</text>
+
+  <!-- Label -->
+  <rect x="620" y="24" width="128" height="28" rx="0" fill="#1A1A1A" fill-opacity="0.08"/>
+  <text x="684" y="42" font-family="'Arial', sans-serif" font-size="9" font-weight="600" fill="#1A1A1A" fill-opacity="0.6" text-anchor="middle" letter-spacing="2">ASU PROJECT</text>
+
+  <!-- Date -->
+  <text x="52" y="430" font-family="'Arial', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" letter-spacing="2">FALL 2024</text>
+
+  <!-- Domain -->
+  <text x="748" y="430" font-family="'Arial', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" text-anchor="end" letter-spacing="2">MARKET SIZING</text>
+</svg>

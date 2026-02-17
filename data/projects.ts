@@ -3,6 +3,43 @@ import type { Project } from '@/types';
 export const projects: Project[] = [
   {
     id: '1',
+    slug: 'rivian-metro-m1',
+    title: 'Rivian Metro M1 PRD',
+    subtitle: 'PM Portfolio Project — Dec 2025',
+    description:
+      'A speculative product concept for Rivian\'s urban-focused EV, addressing the gap where 70% of adventure vehicle owners never go off-road. Complete PRD with market research, personas, RICE scoring, and user stories.',
+    longDescription:
+      'Developed through structured research and analysis, this PRD identifies a $180B market opportunity: 70% of truck/SUV owners go off-road once a year or less, yet pay premium for capabilities they never use. The Metro M1 is purpose-built for urban drivers who identify with adventure but live in cities—stripping away the "adventure tax" and reinvesting in what urban drivers actually need.',
+    highlights: [
+      'Analyzed 250,000-person Strategic Vision survey data on vehicle usage patterns',
+      'Created 3 detailed user personas (Tesla Defector, Urban Professional, Empty Nester)',
+      'Applied RICE scoring to prioritize features for P0/P1/P2 launch phases',
+      'Wrote user stories with testable acceptance criteria for core features',
+      'Defined target metrics: $39,999 MSRP, 75K annual units, NPS >65',
+    ],
+    skills: ['Market Research', 'User Personas', 'RICE Prioritization', 'PRD Writing', 'User Stories', 'Competitive Analysis'],
+    type: 'personal',
+    year: '2025',
+    status: 'completed',
+    link: '/RIVIAN_METRO_M1.pdf',
+    metrics: [
+      { value: '70%', label: 'Never Go Off-Road' },
+      { value: '$40K', label: 'Target MSRP' },
+      { value: '75K', label: 'Annual Units Target' },
+      { value: '3', label: 'User Personas' },
+    ],
+    process: [
+      { step: 'Market Research', description: 'Analyzed Strategic Vision 250K-person survey; identified usage vs. marketing gap', icon: 'search' },
+      { step: 'Competitive Analysis', description: 'Mapped Rivian lineup whitespace; benchmarked against Tesla, Hyundai', icon: 'bar-chart-3' },
+      { step: 'User Personas', description: 'Created 3 personas from demographic data and forum research', icon: 'users' },
+      { step: 'Feature Prioritization', description: 'Applied RICE scoring; defined P0/P1/P2 features with acceptance criteria', icon: 'check-circle' },
+    ],
+    color: 'from-green-500/20 to-emerald-500/20',
+    icon: 'car',
+    thumbnail: '/projects/rivian-metro.svg',
+  },
+  {
+    id: '2',
     slug: 'behavioral-compatibility',
     title: 'Behavioral Compatibility Dating Platform',
     subtitle: 'ASU — Spring 2025',
@@ -34,9 +71,10 @@ export const projects: Project[] = [
     ],
     color: 'from-rose-500/20 to-pink-500/20',
     icon: 'heart',
+    thumbnail: '/projects/behavioral-compatibility.svg',
   },
   {
-    id: '2',
+    id: '3',
     slug: 'micromove',
     title: 'MicroMove',
     subtitle: 'ASU — Fall 2024',
@@ -68,9 +106,10 @@ export const projects: Project[] = [
     ],
     color: 'from-blue-500/20 to-cyan-500/20',
     icon: 'rocket',
+    thumbnail: '/projects/micromove.svg',
   },
   {
-    id: '3',
+    id: '4',
     slug: 'global-innovation-analytics',
     title: 'Global Innovation Analytics',
     subtitle: 'ASU — Fall 2025',
@@ -100,39 +139,7 @@ export const projects: Project[] = [
     ],
     color: 'from-emerald-500/20 to-teal-500/20',
     icon: 'bar-chart-3',
-  },
-  {
-    id: '4',
-    slug: 'vendor-onboarding-toolkit',
-    title: 'Vendor Onboarding Optimization Toolkit',
-    subtitle: 'Open Framework for Marketplace PMs',
-    description:
-      'A reusable framework and checklist for marketplace PMs to audit and optimize their vendor onboarding funnels, distilled from IKT INDIA learnings.',
-    longDescription:
-      'After improving activation by 30-35% at IKT INDIA, I distilled the learnings into a reusable toolkit for marketplace product managers. The framework includes a step-by-step onboarding audit template, common friction point patterns, an A/B testing playbook specific to onboarding flows, and benchmark data from marketplace case studies.',
-    highlights: [
-      'Created a 5-phase onboarding audit framework',
-      'Documented 12 common marketplace friction patterns',
-      'Built A/B testing playbook for onboarding experiments',
-      'Compiled benchmark data from 8 marketplace case studies',
-    ],
-    skills: ['Frameworks', 'Marketplace Strategy', 'A/B Testing', 'Notion', 'Knowledge Management'],
-    type: 'open-source',
-    year: '2024',
-    status: 'in-progress',
-    metrics: [
-      { value: '5', label: 'Audit Phases' },
-      { value: '12', label: 'Friction Patterns' },
-      { value: '8', label: 'Case Studies' },
-    ],
-    process: [
-      { step: 'Experience Mining', description: 'Extracted learnings from IKT INDIA onboarding improvements', icon: 'database' },
-      { step: 'Pattern Analysis', description: 'Researched 8 marketplace case studies for common patterns', icon: 'search' },
-      { step: 'Framework Design', description: 'Created 5-phase audit methodology with decision trees', icon: 'git-branch' },
-      { step: 'Template Build', description: 'Packaging into Notion template with embedded guides', icon: 'layout' },
-    ],
-    color: 'from-amber-500/20 to-orange-500/20',
-    icon: 'rocket',
+    thumbnail: '/projects/global-innovation-analytics.svg',
   },
 ];
 

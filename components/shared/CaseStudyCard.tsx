@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import type { WorkExperience } from '@/types';
 import { cn } from '@/lib/utils';
@@ -20,13 +21,24 @@ export function CaseStudyCard({ work, featured = false, className }: CaseStudyCa
     >
       <div
         className={cn(
-          'bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 flex items-center justify-center',
+          'relative overflow-hidden',
           featured ? 'h-48 md:h-56' : 'h-40'
         )}
       >
-        <span className="text-white text-3xl font-bold opacity-20">
-          {work.company.charAt(0)}
-        </span>
+        {work.thumbnail ? (
+          <Image
+            src={work.thumbnail}
+            alt={`${work.company} - ${work.role}`}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 flex items-center justify-center">
+            <span className="text-white text-3xl font-bold opacity-20">
+              {work.company.charAt(0)}
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="p-6">
