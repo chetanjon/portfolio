@@ -1,8 +1,17 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { personalInfo } from '@/data/personal';
 import { navItems } from '@/lib/constants';
 
 export function Footer() {
+  const pathname = usePathname();
+  const isCaseStudySubPage =
+    pathname.startsWith('/casestudies/') && pathname !== '/casestudies';
+
+  if (isCaseStudySubPage) return null;
+
   return (
     <footer className="relative z-10 border-t border-border-default py-16 md:py-24">
       <div className="container-wide">

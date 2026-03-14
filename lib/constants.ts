@@ -3,6 +3,7 @@ import type { NavItem } from '@/types';
 export const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
+  { href: '/casestudies', label: 'Case Studies' },
   { href: '/projects', label: 'Projects' },
   { href: '/about', label: 'About' },
   { href: '/resume', label: 'Resume' },

@@ -47,6 +47,8 @@ export function Header() {
   }, [lastScrollY]);
 
   const headerVisible = visible || isMobileMenuOpen;
+  const isCaseStudySubPage =
+    pathname.startsWith('/casestudies/') && pathname !== '/casestudies';
 
   const handleResumeClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -58,7 +60,12 @@ export function Header() {
       <motion.header
         animate={{ y: headerVisible ? 0 : '-100%' }}
         transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="fixed top-0 left-0 right-0 z-50 mix-blend-difference"
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+          isCaseStudySubPage
+            ? 'bg-black/80 backdrop-blur-md border-b border-white/10'
+            : 'mix-blend-difference'
+        )}
       >
         <div className="container-wide py-6 flex justify-between items-center">
           {/* Logo */}
@@ -76,9 +83,9 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Desktop Navigation - Hidden links, only visible in menu */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navItems.slice(0, 5).map((item) => {
+            {navItems.slice(0, 6).map((item) => {
               const isResume = item.href === '/resume';
 
               if (isResume) {
@@ -86,7 +93,7 @@ export function Header() {
                   <button
                     key={item.href}
                     onClick={handleResumeClick}
-                    className="text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-opacity cursor-pointer"
+                    className="text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-colors cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -98,7 +105,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'text-[10px] uppercase tracking-widest transition-opacity',
+                    'text-[10px] uppercase tracking-widest transition-colors',
                     pathname === item.href || pathname.startsWith(item.href + '/')
                       ? 'text-white'
                       : 'text-white/60 hover:text-white'
@@ -112,8 +119,8 @@ export function Header() {
 
           {/* Right side controls */}
           <div className="flex items-center gap-3">
-            {/* Dark mode toggle - outside mix-blend for proper visibility */}
-            <div className="mix-blend-normal">
+            {/* Dark mode toggle */}
+            <div className={isCaseStudySubPage ? '' : 'mix-blend-normal'}>
               <DarkModeToggle />
             </div>
 
