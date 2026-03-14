@@ -67,24 +67,24 @@ export function Header() {
             : 'mix-blend-difference'
         )}
       >
-        <div className="container-wide py-6 flex justify-between items-center">
+        <div className="container-wide py-9 flex justify-between items-center">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 text-white group"
+            className="flex items-center gap-3 text-white group"
             aria-label="Chetan J — Home"
           >
             <LogoMark
-              size={40}
+              size={60}
               className="text-white transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="text-[10px] font-medium tracking-[0.2em] uppercase text-white/70 group-hover:text-white transition-colors">
+            <span className="text-[15px] font-medium tracking-[0.3em] uppercase text-white/70 group-hover:text-white transition-colors">
               Chetan J
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-12 text-[15px]">
             {navItems.slice(0, 6).map((item) => {
               const isResume = item.href === '/resume';
 
@@ -93,7 +93,7 @@ export function Header() {
                   <button
                     key={item.href}
                     onClick={handleResumeClick}
-                    className="text-[10px] uppercase tracking-widest text-white/60 hover:text-white transition-colors cursor-pointer"
+                    className="text-[15px] uppercase tracking-widest text-white/60 hover:text-white transition-colors cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -105,7 +105,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'text-[10px] uppercase tracking-widest transition-colors',
+                    'text-[15px] uppercase tracking-widest transition-colors',
                     pathname === item.href || pathname.startsWith(item.href + '/')
                       ? 'text-white'
                       : 'text-white/60 hover:text-white'
@@ -127,7 +127,7 @@ export function Header() {
             {/* Menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="px-4 py-2 rounded-full border border-white/50 text-[10px] font-medium tracking-wider text-white uppercase hover:bg-white hover:text-black transition-colors cursor-pointer"
+              className="px-6 py-3 rounded-full border border-white/50 text-[15px] font-medium tracking-wider text-white uppercase hover:bg-white hover:text-black transition-colors cursor-pointer"
             >
               Menu
             </button>
