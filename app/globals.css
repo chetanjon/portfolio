@@ -352,34 +352,6 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: 0.5rem;
 }
 
-/* ─── Custom Cursor ─────────────────────────────────────────────────────────── */
-/* Hide default cursor on desktop when custom cursor is active */
-@media (hover: hover) and (pointer: fine) {
-  html,
-  body,
-  a,
-  button,
-  [role="button"],
-  input,
-  textarea,
-  select,
-  label {
-    cursor: none !important;
-  }
-
-  /* Restore cursor for inputs */
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="search"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="number"],
-  textarea {
-    cursor: text !important;
-  }
-}
-
 /* ─── 3D Card Utilities ─────────────────────────────────────────────────────── */
 .preserve-3d {
   transform-style: preserve-3d;

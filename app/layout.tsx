@@ -5,7 +5,6 @@ import { Footer } from '@/components/layout/Footer';
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { DebugWrapper } from '@/components/ui/DebugWrapper';
-import { CustomCursor } from '@/components/ui/CustomCursor';
 import './globals.css';
 
 const inter = Inter({
@@ -140,7 +139,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ThemeProvider>
-          <CustomCursor />
           <NoiseOverlay />
           <DebugWrapper />
           <Header />
