@@ -16,6 +16,7 @@ export function Header() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -39,6 +40,8 @@ export function Header() {
         setVisible(false);
       }
 
+      setScrolled(currentScrollY > 60);
+
       setLastScrollY(currentScrollY);
     };
 
@@ -61,9 +64,11 @@ export function Header() {
         animate={{ y: headerVisible ? 0 : '-100%' }}
         transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+          'fixed top-0 left-0 right-0 z-[1000] transition-all duration-500',
           isCaseStudySubPage
-            ? 'bg-black/80 backdrop-blur-md border-b border-white/10'
+            ? scrolled
+              ? 'bg-black/85 backdrop-blur-md border-b border-white/10'
+              : 'bg-transparent'
             : 'mix-blend-difference'
         )}
       >
@@ -143,7 +148,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[60] bg-bg-primary flex flex-col"
+            className="fixed inset-0 z-[1001] bg-bg-primary flex flex-col"
           >
             {/* Close button */}
             <div className="container-wide py-6 flex justify-end">
