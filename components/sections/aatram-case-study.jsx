@@ -6,11 +6,28 @@ const SERIF = "'Instrument Serif','Georgia',serif";
 const SANS = "'Outfit','DM Sans',system-ui,sans-serif";
 const MONO = "'JetBrains Mono','SF Mono',monospace";
 
-const bg = "#08080C";
-const cream = "#E8E4D9";
-const dim = "rgba(232,228,217,0.4)";
-const dim2 = "rgba(232,228,217,0.18)";
-const lav = "#BFB8F3";
+const bg = "var(--cs-bg)";
+const surface = "var(--cs-surface)";
+const cream = "var(--cs-cream)";
+const dim = "var(--cs-dim)";
+const dim2 = "var(--cs-dim2)";
+const gold = "var(--cs-gold)";
+const lav = "var(--cs-lav)";
+const sage = "var(--cs-sage)";
+const rose = "var(--cs-rose)";
+const slate = "var(--cs-slate)";
+
+// Lav alpha variants
+const lavA03 = "var(--cs-lav-03)";
+const lavA04 = "var(--cs-lav-04)";
+const lavA05 = "var(--cs-lav-05)";
+const lavA06 = "var(--cs-lav-06)";
+const lavA10 = "var(--cs-lav-10)";
+const lavA15 = "var(--cs-lav-15)";
+const lavA20 = "var(--cs-lav-20)";
+const lavA30 = "var(--cs-lav-30)";
+const lavA40 = "var(--cs-lav-40)";
+const lavA60 = "var(--cs-lav-60)";
 
 const useVis = (t = 0.12) => {
   const r = useRef(null); const [v, s] = useState(false);
@@ -51,8 +68,8 @@ const Gauge = () => {
         <span style={{fontFamily:MONO,fontSize:10,color:anim>49&&anim<=74?cream:dim2,transition:"color 0.4s"}}>Rolling</span>
       </div>
       <svg viewBox="0 0 200 130" width="300" style={{display:"block",margin:"0 auto"}}>
-        <path d={mkArc(startA,endA)} fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="4" strokeLinecap="round"/>
-        {ticks.map((t,i)=><line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke="rgba(255,255,255,0.08)" strokeWidth="0.6"/>)}
+        <path d={mkArc(startA,endA)} fill="none" stroke="var(--cs-w05)" strokeWidth="4" strokeLinecap="round"/>
+        {ticks.map((t,i)=><line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke="var(--cs-w08)" strokeWidth="0.6"/>)}
         {anim>0.5&&<path d={mkArc(startA,scoreA)} fill="none" stroke={lav} strokeWidth="4" strokeLinecap="round" style={{filter:`drop-shadow(0 0 6px ${lav})`,transition:"stroke 0.4s"}}/>}
         <circle cx={dot.x} cy={dot.y} r="3" fill={lav} style={{filter:`drop-shadow(0 0 5px ${lav})`}}/>
         <text x={cx} y={cy-2} textAnchor="middle" fontFamily="'Instrument Serif',serif" fontSize="38" fontWeight="400" fill={cream}>{Math.round(anim)}</text>
@@ -80,29 +97,29 @@ const NudgeDemo = () => {
   return (
     <div>
       <div style={{display:"flex",justifyContent:"space-between",marginBottom:48,position:"relative"}}>
-        <div style={{position:"absolute",top:18,left:"5%",right:"5%",height:1,background:"rgba(255,255,255,0.04)"}}/>
+        <div style={{position:"absolute",top:18,left:"5%",right:"5%",height:1,background:"var(--cs-w04)"}}/>
         {t.map((x,i)=>(
           <div key={i} onClick={()=>setA(i)} style={{cursor:"pointer",textAlign:"center",zIndex:1,flex:1}}>
-            <div style={{width:36,height:36,borderRadius:"50%",background:a>=i?`${x.c}15`:bg,border:`1.5px solid ${a>=i?x.c:"rgba(255,255,255,0.06)"}`,margin:"0 auto 10px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,transition:"all 0.4s",boxShadow:a===i?`0 0 20px ${x.c}30`:"none"}}>
+            <div style={{width:36,height:36,borderRadius:"50%",background:a>=i?lavA15:bg,border:`1.5px solid ${a>=i?x.c:"var(--cs-w06)"}`,margin:"0 auto 10px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,transition:"all 0.4s",boxShadow:a===i?`0 0 20px ${lavA30}`:"none"}}>
               {a>=i?x.emoji:<span style={{fontFamily:MONO,fontSize:11,color:dim2}}>{i+1}</span>}
             </div>
             <div style={{fontFamily:MONO,fontSize:9,color:a>=i?x.c:dim2,transition:"color 0.4s"}}>{x.time}</div>
           </div>
         ))}
       </div>
-      <div style={{maxWidth:480,margin:"0 auto",background:"rgba(255,255,255,0.02)",borderRadius:20,overflow:"hidden",border:`1px solid ${n.c}15`,transition:"border-color 0.4s"}}>
-        <div style={{display:"flex",alignItems:"center",gap:8,padding:"14px 20px",borderBottom:"1px solid rgba(255,255,255,0.03)"}}>
-          <div style={{width:18,height:18,borderRadius:5,background:`${n.c}20`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9}}>{"\uD83D\uDD14"}</div>
+      <div style={{maxWidth:480,margin:"0 auto",background:"var(--cs-w02)",borderRadius:20,overflow:"hidden",border:`1px solid ${lavA15}`,transition:"border-color 0.4s"}}>
+        <div style={{display:"flex",alignItems:"center",gap:8,padding:"14px 20px",borderBottom:"1px solid var(--cs-w03)"}}>
+          <div style={{width:18,height:18,borderRadius:5,background:lavA20,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9}}>{"\uD83D\uDD14"}</div>
           <span style={{fontFamily:SANS,fontSize:11,fontWeight:600,color:dim,flex:1,letterSpacing:"0.04em"}}>AATRAM</span>
           <span style={{fontFamily:MONO,fontSize:9,color:dim2}}>{n.time}</span>
         </div>
         <div style={{padding:"20px 24px 24px"}}>
           <div style={{fontFamily:SANS,fontSize:13,fontWeight:600,color:cream,marginBottom:10,letterSpacing:"0.02em"}}>{n.label}</div>
-          <div style={{fontFamily:SERIF,fontSize:22,fontStyle:"italic",color:"rgba(232,228,217,0.7)",lineHeight:1.45}}>{"\u201C"}{n.copy}{"\u201D"}</div>
+          <div style={{fontFamily:SERIF,fontSize:22,fontStyle:"italic",color:"var(--cs-cream70)",lineHeight:1.45}}>{"\u201C"}{n.copy}{"\u201D"}</div>
         </div>
         <div style={{display:"flex",gap:8,padding:"0 20px 16px"}}>
-          <span style={{fontFamily:MONO,fontSize:9,color:n.c,background:`${n.c}10`,padding:"4px 12px",borderRadius:20}}>{n.mech}</span>
-          <span style={{fontFamily:MONO,fontSize:9,color:dim,background:"rgba(255,255,255,0.03)",padding:"4px 12px",borderRadius:20}}>{n.tone}</span>
+          <span style={{fontFamily:MONO,fontSize:9,color:n.c,background:lavA10,padding:"4px 12px",borderRadius:20}}>{n.mech}</span>
+          <span style={{fontFamily:MONO,fontSize:9,color:dim,background:"var(--cs-w03)",padding:"4px 12px",borderRadius:20}}>{n.tone}</span>
         </div>
       </div>
       <div style={{fontFamily:MONO,fontSize:10,color:dim2,marginTop:16,textAlign:"center"}}>
@@ -125,7 +142,7 @@ const EmotionDemo = () => {
     <div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:40}}>
         {Object.entries(d).map(([k,v])=>(
-          <div key={k} onClick={()=>setEmo(k)} style={{padding:"22px 14px",borderRadius:16,background:emo===k?"rgba(255,255,255,0.04)":"transparent",border:`1px solid ${emo===k?lav+"30":"rgba(255,255,255,0.04)"}`,cursor:"pointer",textAlign:"center",transition:"all 0.35s"}}>
+          <div key={k} onClick={()=>setEmo(k)} style={{padding:"22px 14px",borderRadius:16,background:emo===k?"var(--cs-w04)":"transparent",border:`1px solid ${emo===k?lavA30:"var(--cs-w04)"}`,cursor:"pointer",textAlign:"center",transition:"all 0.35s"}}>
             <div style={{fontSize:28,marginBottom:6}}>{v.emoji}</div>
             <div style={{fontFamily:SANS,fontSize:13,fontWeight:600,color:emo===k?cream:dim}}>{v.label}</div>
           </div>
@@ -138,7 +155,7 @@ const EmotionDemo = () => {
           {label:"Nudge style",value:e.nudge},
           {label:"App intensity",value:e.intensity},
         ].map((row,i)=>(
-          <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",padding:"14px 0",borderBottom:i<3?`1px solid rgba(255,255,255,0.04)`:"none",gap:20}}>
+          <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",padding:"14px 0",borderBottom:i<3?`1px solid var(--cs-w04)`:"none",gap:20}}>
             <span style={{fontFamily:MONO,fontSize:10,color:dim2,letterSpacing:"0.06em",flexShrink:0,minWidth:100}}>{row.label}</span>
             <span style={{fontFamily:SANS,fontSize:14,color:cream,textAlign:"right"}}>{row.value}</span>
           </div>
@@ -152,16 +169,92 @@ export default function AatramCaseStudy() {
   const progress = useScroll();
 
   return (
-    <div style={{background:bg,color:cream,minHeight:"100vh",fontFamily:SANS,WebkitFontSmoothing:"antialiased",overflowX:"hidden"}}>
+    <div data-cs-theme style={{background:bg,color:cream,minHeight:"100vh",fontFamily:SANS,WebkitFontSmoothing:"antialiased",overflowX:"hidden"}}>
+      <style>{`
+        :root, [data-cs-theme] {
+          --cs-bg: #08080C;
+          --cs-surface: #0E0E14;
+          --cs-cream: #E8E4D9;
+          --cs-dim: rgba(232,228,217,0.4);
+          --cs-dim2: rgba(232,228,217,0.18);
+          --cs-gold: #C4A882;
+          --cs-lav: #BFB8F3;
+          --cs-sage: #8BA88E;
+          --cs-rose: #D4878F;
+          --cs-slate: #9298A8;
+          --cs-cream70: rgba(232,228,217,0.7);
+          --cs-cream65: rgba(232,228,217,0.65);
+          --cs-cream60: rgba(232,228,217,0.6);
+          --cs-cream55: rgba(232,228,217,0.55);
+          --cs-cream50: rgba(232,228,217,0.5);
+          --cs-w02: rgba(255,255,255,0.02);
+          --cs-w03: rgba(255,255,255,0.03);
+          --cs-w04: rgba(255,255,255,0.04);
+          --cs-w05: rgba(255,255,255,0.05);
+          --cs-w06: rgba(255,255,255,0.06);
+          --cs-w08: rgba(255,255,255,0.08);
+          --cs-w10: rgba(255,255,255,0.1);
+          --cs-w20: rgba(255,255,255,0.2);
+          --cs-shadow: rgba(0,0,0,0.4);
+          --cs-lav-03: #BFB8F308;
+          --cs-lav-04: #BFB8F30A;
+          --cs-lav-05: #BFB8F30D;
+          --cs-lav-06: #BFB8F30F;
+          --cs-lav-10: #BFB8F31A;
+          --cs-lav-15: #BFB8F326;
+          --cs-lav-20: #BFB8F333;
+          --cs-lav-30: #BFB8F34D;
+          --cs-lav-40: #BFB8F366;
+          --cs-lav-60: #BFB8F399;
+        }
+        @media (prefers-color-scheme: light) {
+          :root, [data-cs-theme] {
+            --cs-bg: #FAFAF8;
+            --cs-surface: #F0F0EC;
+            --cs-cream: #1A1A2E;
+            --cs-dim: rgba(26,26,46,0.55);
+            --cs-dim2: rgba(26,26,46,0.3);
+            --cs-gold: #8B6F47;
+            --cs-lav: #6C5CE7;
+            --cs-sage: #4A7A4E;
+            --cs-rose: #B85560;
+            --cs-slate: #5A6178;
+            --cs-cream70: rgba(26,26,46,0.6);
+            --cs-cream65: rgba(26,26,46,0.55);
+            --cs-cream60: rgba(26,26,46,0.5);
+            --cs-cream55: rgba(26,26,46,0.45);
+            --cs-cream50: rgba(26,26,46,0.4);
+            --cs-w02: rgba(0,0,0,0.02);
+            --cs-w03: rgba(0,0,0,0.04);
+            --cs-w04: rgba(0,0,0,0.06);
+            --cs-w05: rgba(0,0,0,0.06);
+            --cs-w06: rgba(0,0,0,0.08);
+            --cs-w08: rgba(0,0,0,0.08);
+            --cs-w10: rgba(0,0,0,0.12);
+            --cs-w20: rgba(0,0,0,0.2);
+            --cs-shadow: rgba(0,0,0,0.12);
+            --cs-lav-03: #6C5CE708;
+            --cs-lav-04: #6C5CE70A;
+            --cs-lav-05: #6C5CE70D;
+            --cs-lav-06: #6C5CE70F;
+            --cs-lav-10: #6C5CE71A;
+            --cs-lav-15: #6C5CE726;
+            --cs-lav-20: #6C5CE733;
+            --cs-lav-30: #6C5CE74D;
+            --cs-lav-40: #6C5CE766;
+            --cs-lav-60: #6C5CE799;
+          }
+        }
+      `}</style>
       <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 
       <div style={{position:"fixed",top:0,left:0,width:"100%",height:1.5,zIndex:999}}>
-        <div style={{height:"100%",width:`${progress*100}%`,background:`linear-gradient(90deg,${lav}40,${lav})`,opacity:0.6,transition:"width 60ms linear"}}/>
+        <div style={{height:"100%",width:`${progress*100}%`,background:`linear-gradient(90deg,${lavA40},${lav})`,opacity:0.6,transition:"width 60ms linear"}}/>
       </div>
 
       {/* HERO */}
       <section style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",padding:"100px 32px",position:"relative",textAlign:"center"}}>
-        <div style={{position:"absolute",top:"30%",left:"50%",transform:"translate(-50%,-50%)",width:700,height:700,borderRadius:"50%",background:`radial-gradient(circle,${lav}06,transparent 70%)`,filter:"blur(100px)"}}/>
+        <div style={{position:"absolute",top:"30%",left:"50%",transform:"translate(-50%,-50%)",width:700,height:700,borderRadius:"50%",background:`radial-gradient(circle,${lavA06},transparent 70%)`,filter:"blur(100px)"}}/>
         <div style={{maxWidth:800,position:"relative"}}>
           <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.25em",color:dim2,marginBottom:40}}>A 0-TO-1 PRODUCT CASE STUDY</div></Fade>
           <Fade delay={0.1}>
@@ -218,7 +311,7 @@ export default function AatramCaseStudy() {
 
       {/* THESIS */}
       <section style={{padding:"clamp(100px,16vw,220px) 32px",textAlign:"center",position:"relative"}}>
-        <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:600,height:600,borderRadius:"50%",background:`radial-gradient(circle,${lav}05,transparent 70%)`,filter:"blur(100px)"}}/>
+        <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:600,height:600,borderRadius:"50%",background:`radial-gradient(circle,${lavA05},transparent 70%)`,filter:"blur(100px)"}}/>
         <div style={{maxWidth:700,margin:"0 auto",position:"relative"}}>
           <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>02 THE THESIS</div></Fade>
           <Fade delay={0.08}><h2 style={{fontFamily:SERIF,fontSize:"clamp(40px,6vw,72px)",fontWeight:400,lineHeight:1.08,margin:"0 0 40px"}}>{"Procrastination isn't a "}<em style={{fontStyle:"italic",color:lav}}>discipline</em> problem.</h2></Fade>
@@ -242,7 +335,7 @@ export default function AatramCaseStudy() {
             {n:"Momentum Meter",d:"Streaks reset to zero. Momentum doesn't. It fills as you work, decays gently overnight, and never punishes a bad day.",cite:"Amabile & Kramer, the Progress Principle"},
           ].map((f,i)=>(
             <Fade key={i} delay={0.06*i}>
-              <div style={{padding:"36px 0",borderBottom:`1px solid rgba(255,255,255,0.04)`}}>
+              <div style={{padding:"36px 0",borderBottom:`1px solid var(--cs-w04)`}}>
                 <div style={{fontFamily:SERIF,fontSize:24,color:cream,marginBottom:10}}>{f.n}</div>
                 <p style={{fontSize:15,lineHeight:1.85,color:dim,margin:"0 0 10px"}}>{f.d}</p>
                 <div style={{fontFamily:MONO,fontSize:9,color:lav,letterSpacing:"0.03em"}}>{"\u23F3"} {f.cite}</div>
@@ -283,7 +376,7 @@ export default function AatramCaseStudy() {
           {app:"Aatram",what:"Emotion-first. AI nudges. Momentum. Recovery.",aware:"Yes"},
         ].map((r,i)=>(
           <Fade key={i} delay={0.06*i}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"18px 0",borderBottom:`1px solid rgba(255,255,255,0.04)`}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"18px 0",borderBottom:`1px solid var(--cs-w04)`}}>
               <div><span style={{fontFamily:SANS,fontSize:15,fontWeight:r.app==="Aatram"?600:400,color:r.app==="Aatram"?lav:cream}}>{r.app}</span><span style={{fontFamily:SANS,fontSize:13,color:dim,marginLeft:16}}>{r.what}</span></div>
               <span style={{fontFamily:MONO,fontSize:9,color:r.aware==="Yes"?lav:dim2,letterSpacing:"0.06em"}}>{r.aware==="Yes"?"EMOTION \u2713":"EMOTION \u2717"}</span>
             </div>
@@ -304,7 +397,7 @@ export default function AatramCaseStudy() {
           {m:"Failure recovery usage",t:">60%",type:"Differentiation"},
         ].map((r,i)=>(
           <Fade key={i} delay={0.04*i}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"16px 0",borderBottom:`1px solid rgba(255,255,255,0.04)`}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"16px 0",borderBottom:`1px solid var(--cs-w04)`}}>
               <span style={{fontFamily:SANS,fontSize:14,color:cream}}>{r.m}</span>
               <div style={{display:"flex",alignItems:"center",gap:16}}>
                 <span style={{fontFamily:MONO,fontSize:13,fontWeight:600,color:cream}}>{r.t}</span>
@@ -317,7 +410,7 @@ export default function AatramCaseStudy() {
 
       {/* FOOTER */}
       <section style={{padding:"clamp(100px,16vw,200px) 32px",textAlign:"center",position:"relative"}}>
-        <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:500,height:500,borderRadius:"50%",background:`radial-gradient(circle,${lav}04,transparent 70%)`,filter:"blur(100px)"}}/>
+        <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:500,height:500,borderRadius:"50%",background:`radial-gradient(circle,${lavA04},transparent 70%)`,filter:"blur(100px)"}}/>
         <Fade>
           <div style={{maxWidth:600,margin:"0 auto",position:"relative"}}>
             <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,6vw,72px)",fontWeight:400,lineHeight:1.08,margin:"0 0 20px"}}>Stop planning.</h2>

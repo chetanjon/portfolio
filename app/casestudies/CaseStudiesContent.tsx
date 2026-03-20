@@ -5,47 +5,18 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 
-const caseStudies = [
-  {
-    slug: 'notion-teardown',
-    company: 'Notion',
-    title: "The $600M Onboarding Paradox",
-    description:
-      "Notion has 100M+ users and ~$600M ARR, but loses most in the first three weeks. After 9,000+ reviews and 10 user interviews, 5 RICE-scored improvements to fix the activation gap that AI agents — not templates — can finally solve.",
-    tags: ['Onboarding', 'AI Agents', 'RICE', 'Activation'],
-    metric: { value: '~$600M', label: 'ARR (Est. 2025)' },
-    accentColor: '#2383E2',
-    bgColor: '#EBF4FD',
-    year: '2026',
-    type: 'Product Teardown' as const,
-  },
-  {
-    slug: 'aatram',
-    company: 'Aatram',
-    title: "You Know What to Do. Starting Is the Problem.",
-    description:
-      "Three roommates built an app that treats procrastination as what it actually is: an emotion problem, not a discipline problem. A 0-to-1 case study from brainstorm to App Store submission.",
-    tags: ['0-to-1', 'Behavioral Science', 'iOS', 'AI Nudges'],
-    metric: { value: '120+', label: 'Waitlist Signups' },
-    accentColor: '#BFB8F3',
-    bgColor: '#F0EEFF',
-    year: '2026',
-    type: 'Case Study' as const,
-  },
-  {
-    slug: 'spotify',
-    company: 'Spotify',
-    title: "How Spotify Turned Listening Into Loyalty",
-    description:
-      "A teardown of the two features that turned a music player into a growth machine: Discover Weekly and Wrapped. The AI architecture, virality mechanics, and the 2024-2025 algorithm shift.",
-    tags: ['Growth Teardown', 'AI/ML', 'Virality', 'Retention'],
-    metric: { value: '751M', label: 'Monthly Active Users' },
-    accentColor: '#1DB954',
-    bgColor: '#E8F5ED',
-    year: '2026',
-    type: 'Growth Teardown' as const,
-  },
-];
+const caseStudies: Array<{
+  slug: string;
+  company: string;
+  title: string;
+  description: string;
+  tags: string[];
+  metric: { value: string; label: string };
+  accentColor: string;
+  bgColor: string;
+  year: string;
+  type?: string;
+}> = [];
 
 export function CaseStudiesContent() {
   const heroRef = useRef<HTMLDivElement>(null);
