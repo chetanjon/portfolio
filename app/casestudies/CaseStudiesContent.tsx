@@ -7,88 +7,43 @@ import { SectionMarker } from '@/components/ui/SectionMarker';
 
 const caseStudies = [
   {
-    slug: 'duolingo',
-    company: 'Duolingo',
-    title: 'Breaking the B1 Wall',
+    slug: 'notion-teardown',
+    company: 'Notion',
+    title: "The $600M Onboarding Paradox",
     description:
-      '52 million daily users, $1B in revenue, and a learning ceiling nobody\'s fixing. A product strategy using the CIRCLES framework and a full PRD to solve Duolingo\'s intermediate plateau problem.',
-    tags: ['CIRCLES Framework', 'PRD', 'EdTech', 'Freemium'],
-    metric: { value: '52.7M', label: 'Daily Active Users' },
-    accentColor: '#D4790E',
-    bgColor: '#FFF8ED',
+      "Notion has 100M+ users and ~$600M ARR, but loses most in the first three weeks. After 9,000+ reviews and 10 user interviews, 5 RICE-scored improvements to fix the activation gap that AI agents — not templates — can finally solve.",
+    tags: ['Onboarding', 'AI Agents', 'RICE', 'Activation'],
+    metric: { value: '~$600M', label: 'ARR (Est. 2025)' },
+    accentColor: '#2383E2',
+    bgColor: '#EBF4FD',
     year: '2026',
+    type: 'Product Teardown' as const,
   },
   {
-    slug: 'liquid-glass',
-    company: 'Apple iOS 26',
-    title: 'When Glass Cracked',
+    slug: 'aatram',
+    company: 'Aatram',
+    title: "You Know What to Do. Starting Is the Problem.",
     description:
-      'How Apple\'s most ambitious redesign since iOS 7 broke accessibility for millions — a WCAG 2.2 audit, heuristic evaluation, RICE prioritization, and a better path forward called Adaptive Glass.',
-    tags: ['UX Research', 'Accessibility', 'WCAG 2.2', 'RICE'],
-    metric: { value: '1.5:1', label: 'Contrast vs 4.5:1 minimum' },
-    accentColor: '#0071e3',
-    bgColor: '#EBF3FF',
+      "Three roommates built an app that treats procrastination as what it actually is: an emotion problem, not a discipline problem. A 0-to-1 case study from brainstorm to App Store submission.",
+    tags: ['0-to-1', 'Behavioral Science', 'iOS', 'AI Nudges'],
+    metric: { value: '120+', label: 'Waitlist Signups' },
+    accentColor: '#BFB8F3',
+    bgColor: '#F0EEFF',
     year: '2026',
+    type: 'Case Study' as const,
   },
   {
-    slug: 'rivian',
-    company: 'Rivian',
-    title: 'Rivian\'s Broken Handshake',
+    slug: 'spotify',
+    company: 'Spotify',
+    title: "How Spotify Turned Listening Into Loyalty",
     description:
-      'Redesigning the fleet management experience for commercial operators — a full product case study covering discovery, competitive analysis, solution design, and go-to-market strategy.',
-    tags: ['B2B', 'Fleet Management', 'EV', 'Product Strategy'],
-    metric: { value: '2.3x', label: 'GMV Growth' },
-    accentColor: '#2D5A3D',
-    bgColor: '#E8F0EA',
-    year: '2025',
-  },
-  {
-    slug: 'figma',
-    company: 'Figma',
-    title: 'Rebuilding Trust After UI3',
-    description:
-      'How a forced redesign migration and AI data-sharing controversy tested trust with Figma\'s power users — a PM framework for earning it back through progressive migration and transparent AI consent.',
-    tags: ['Trust Recovery', 'UX Research', 'AI Ethics', 'RICE'],
-    metric: { value: '$1.06B', label: 'FY2025 Revenue' },
-    accentColor: '#5B3DC8',
-    bgColor: '#EEEBF8',
-    year: '2025',
-  },
-  {
-    slug: 'perplexity',
-    company: 'Perplexity AI',
-    title: 'The $20 Billion Subscription Gamble',
-    description:
-      'Perplexity built the fastest-growing AI subscription business — then silently gutted Pro, swapped premium models for cheaper ones, and pushed users toward a 10× more expensive tier.',
-    tags: ['Pricing Strategy', 'Trust', 'AI Product', 'AARRR'],
-    metric: { value: '$20B', label: 'Valuation' },
-    accentColor: '#6C5CE7',
-    bgColor: '#f0eeff',
+      "A teardown of the two features that turned a music player into a growth machine: Discover Weekly and Wrapped. The AI architecture, virality mechanics, and the 2024-2025 algorithm shift.",
+    tags: ['Growth Teardown', 'AI/ML', 'Virality', 'Retention'],
+    metric: { value: '751M', label: 'Monthly Active Users' },
+    accentColor: '#1DB954',
+    bgColor: '#E8F5ED',
     year: '2026',
-  },
-  {
-    slug: 'sonos',
-    company: 'Sonos',
-    title: 'When the Music Stopped',
-    description:
-      'How Sonos shipped a major app rewrite that removed core features, broke accessibility for blind users, and cost the CEO his job — a PM post-mortem and migration framework.',
-    tags: ['Platform Migration', 'Accessibility', 'RICE', 'Post-Mortem'],
-    metric: { value: '~$500M', label: 'Market Cap Lost' },
-    accentColor: '#E8590C',
-    bgColor: '#FFF3ED',
-    year: '2024',
-  },
-  {
-    slug: 'tiktok-shop',
-    company: 'TikTok Shop',
-    title: 'Redesigning Trust in Social Commerce',
-    description:
-      'Redesigning trust, discovery and purchase confidence in the world\'s fastest-growing social commerce platform — from $4.4B to $64B GMV and a 1.3/5 Trustpilot score.',
-    tags: ['Social Commerce', 'CIRCLES', 'Trust Design', 'Growth'],
-    metric: { value: '~$64B', label: '2025 GMV' },
-    accentColor: '#C4956A',
-    bgColor: '#F8F4EF',
-    year: '2025',
+    type: 'Growth Teardown' as const,
   },
 ];
 
@@ -161,6 +116,17 @@ export function CaseStudiesContent() {
                           <span className="text-[10px] uppercase tracking-widest text-text-muted">
                             {study.year}
                           </span>
+                          {'type' in study && study.type && (
+                            <>
+                              <span className="text-[10px] text-text-muted opacity-40">/</span>
+                              <span
+                                className="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full border font-medium"
+                                style={{ color: study.accentColor, borderColor: study.accentColor, opacity: 0.85 }}
+                              >
+                                {study.type}
+                              </span>
+                            </>
+                          )}
                         </div>
 
                         <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] mb-4 group-hover:text-text-secondary transition-colors">
@@ -186,7 +152,7 @@ export function CaseStudiesContent() {
                           className="text-sm font-medium tracking-wide transition-colors"
                           style={{ color: study.accentColor }}
                         >
-                          Read Case Study →
+                          {'type' in study && study.type ? `Read ${study.type} →` : 'Read Case Study →'}
                         </span>
                       </div>
 
