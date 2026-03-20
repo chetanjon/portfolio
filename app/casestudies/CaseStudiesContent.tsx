@@ -18,6 +18,19 @@ const caseStudies: Array<{
   type?: string;
 }> = [
   {
+    slug: 'cursor',
+    company: 'Cursor (Anysphere)',
+    title: 'The $29B Fork',
+    description:
+      'How four MIT students forked VS Code, grew with almost no traditional marketing, and built what may be the fastest-growing SaaS product ever — while every model provider simultaneously funds them and competes with them.',
+    tags: ['Product Teardown', 'SaaS', 'AI Coding', 'Competitive Analysis', 'Unit Economics'],
+    metric: { value: '$2B', label: 'Annualized Revenue' },
+    accentColor: '#0E7C6B',
+    bgColor: '#E6F5F1',
+    year: '2026',
+    type: 'Teardown',
+  },
+  {
     slug: 'duolingo',
     company: 'Duolingo',
     title: 'Breaking the B1 Wall',
