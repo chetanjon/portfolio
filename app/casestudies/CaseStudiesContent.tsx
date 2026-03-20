@@ -128,6 +128,19 @@ const caseStudies: Array<{
     bgColor: '#FAF3ED',
     year: '2026',
   },
+  {
+    slug: 'spotify',
+    company: 'Spotify',
+    title: 'Listening Into Loyalty',
+    description:
+      'How Spotify turned a music player into a growth machine. A teardown of Discover Weekly and Wrapped — the two features that drive retention and acquisition through algorithmic personalization and viral data storytelling.',
+    tags: ['Product Teardown', 'Growth Loops', 'Recommendation Systems', 'Viral Mechanics', 'Retention'],
+    metric: { value: '751M', label: 'Monthly Active Users' },
+    accentColor: '#1DB954',
+    bgColor: '#E8F8EE',
+    year: '2026',
+    type: 'Teardown',
+  },
 ];
 
 export function CaseStudiesContent() {
