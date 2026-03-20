@@ -55,18 +55,6 @@ const caseStudies = [
     year: '2025',
   },
   {
-    slug: 'notion',
-    company: 'Notion',
-    title: 'The $11 Billion Weak Link',
-    description:
-      'Notion\'s mobile app is the bottleneck holding back an $11B platform — a CIRCLES case study to fix the #1 blocker for enterprise mobile users.',
-    tags: ['Mobile UX', 'B2B SaaS', 'CIRCLES', 'Retention'],
-    metric: { value: '$11B', label: 'Valuation' },
-    accentColor: '#d94f3f',
-    bgColor: '#fef2f0',
-    year: '2026',
-  },
-  {
     slug: 'perplexity',
     company: 'Perplexity AI',
     title: 'The $20 Billion Subscription Gamble',
@@ -101,19 +89,6 @@ const caseStudies = [
     accentColor: '#C4956A',
     bgColor: '#F8F4EF',
     year: '2025',
-  },
-  {
-    slug: 'notion-teardown',
-    company: 'Notion',
-    title: "The $600M Onboarding Paradox",
-    description:
-      "Notion has 100M+ users and ~$600M ARR, but loses most in the first three weeks. After 9,000+ reviews and 10 user interviews, 5 RICE-scored improvements to fix the activation gap that AI agents — not templates — can finally solve.",
-    tags: ['Onboarding', 'AI Agents', 'RICE', 'Activation'],
-    metric: { value: '~$600M', label: 'ARR (Est. 2025)' },
-    accentColor: '#2383E2',
-    bgColor: '#EBF4FD',
-    year: '2026',
-    type: 'Product Teardown',
   },
 ];
 
@@ -186,17 +161,6 @@ export function CaseStudiesContent() {
                           <span className="text-[10px] uppercase tracking-widest text-text-muted">
                             {study.year}
                           </span>
-                          {'type' in study && study.type && (
-                            <>
-                              <span className="text-[10px] text-text-muted opacity-40">/</span>
-                              <span
-                                className="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full border font-medium"
-                                style={{ color: study.accentColor, borderColor: study.accentColor, opacity: 0.85 }}
-                              >
-                                {study.type}
-                              </span>
-                            </>
-                          )}
                         </div>
 
                         <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] mb-4 group-hover:text-text-secondary transition-colors">
@@ -222,7 +186,7 @@ export function CaseStudiesContent() {
                           className="text-sm font-medium tracking-wide transition-colors"
                           style={{ color: study.accentColor }}
                         >
-                          {'type' in study && study.type ? `Read ${study.type} →` : 'Read Case Study →'}
+                          Read Case Study →
                         </span>
                       </div>
 
