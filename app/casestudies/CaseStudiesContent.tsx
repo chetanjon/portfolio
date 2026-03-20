@@ -141,6 +141,18 @@ const caseStudies: Array<{
     year: '2026',
     type: 'Teardown',
   },
+  {
+    slug: 'aatram',
+    company: 'Aatram',
+    title: 'Start Starting',
+    description:
+      'Three roommates built an app that treats procrastination as an emotion problem, not a discipline problem. A 0-to-1 case study from brainstorm to App Store — user research, behavioral science, beta iteration, and metrics-first product thinking.',
+    tags: ['0-to-1', 'Behavioral Science', 'User Research', 'Beta Testing', 'iOS'],
+    metric: { value: '120+', label: 'Waitlist Signups' },
+    accentColor: '#5B4EB8',
+    bgColor: '#EEEBF8',
+    year: '2026',
+  },
 ];
 
 export function CaseStudiesContent() {
