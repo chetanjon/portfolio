@@ -67,7 +67,7 @@ const caseStudies: Array<{
     year: '2026',
   },
   {
-    slug: 'notion-teardown',
+    slug: 'notion',
     company: 'Notion',
     title: 'Notion\'s $600M Paradox',
     description:

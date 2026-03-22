@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import NotionCaseStudy from '@/components/sections/notion_case_study';
+import NotionTeardown from '@/components/sections/NotionTeardown-2';
 
 export const metadata: Metadata = {
-  title: "The $11 Billion Weak Link — Notion Case Study",
+  title: "Notion's $600M Paradox — Product Teardown",
   description:
-    "Notion's mobile app is the bottleneck holding back an $11B platform — a CIRCLES case study to fix the #1 blocker for enterprise mobile users.",
+    "Notion has 100M+ users and ~$600M ARR, but loses most in the first 3 weeks. 5 RICE-scored improvements to fix the activation gap that templates never fixed — led by AI-guided onboarding.",
 };
 
 export default function NotionPage() {
-  return <NotionCaseStudy />;
+  return <NotionTeardown />;
 }
