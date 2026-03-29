@@ -191,7 +191,7 @@ export default function AatramCaseStudy() {
 
   return (
     <ThemeContext.Provider value={theme}>
-    <div className="aatram-cs" style={{background:bg,color:cream,minHeight:"100vh",fontFamily:SANS,WebkitFontSmoothing:"antialiased",overflowX:"hidden",isolation:"isolate",position:"relative",zIndex:1}}>
+    <div className="aatram-cs" style={{background:bg,color:cream,minHeight:"100vh",fontFamily:SANS,WebkitFontSmoothing:"antialiased",position:"relative",zIndex:1}}>
       <style dangerouslySetInnerHTML={{__html:`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
         .aatram-cs.aatram-cs.aatram-cs,
@@ -213,6 +213,9 @@ export default function AatramCaseStudy() {
           color: #1A1A18 !important;
           font-family: 'Outfit', 'Helvetica Neue', sans-serif !important;
           -webkit-font-smoothing: antialiased !important;
+          overflow-x: hidden !important;
+          -webkit-overflow-scrolling: touch;
+          touch-action: pan-y pinch-zoom;
         }
         .aatram-cs.aatram-cs.aatram-cs h1,
         .aatram-cs.aatram-cs.aatram-cs h2,
@@ -235,7 +238,7 @@ export default function AatramCaseStudy() {
       `}}/>
 
       {/* Progress */}
-      <div style={{position:"fixed",top:0,left:0,width:"100%",height:1.5,zIndex:999}}>
+      <div style={{position:"fixed",top:0,left:0,width:"100%",height:1.5,zIndex:999,pointerEvents:"none"}}>
         <div ref={progressRef} style={{height:"100%",width:"0%",background:`linear-gradient(90deg,${lav}40,${lav})`,opacity:0.6,transition:"width 60ms linear"}}/>
       </div>
 
