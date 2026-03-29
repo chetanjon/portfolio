@@ -204,6 +204,7 @@ export function CaseStudiesContent() {
                 <Link href={`/casestudies/${study.slug}`} className="block group">
                   <motion.div
                     whileHover={{ y: -4 }}
+                    whileTap={{ y: -2 }}
                     transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                     className="border border-border-default rounded-sm overflow-hidden"
                   >
