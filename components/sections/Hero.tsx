@@ -61,14 +61,24 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.45 }}
           className="flex flex-col sm:flex-row gap-4 mb-14"
         >
-          <div className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted">
+          <a
+            href="https://apps.apple.com/us/app/aatram/id6760587556"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             Aatram — Live on the App Store
-          </div>
-          <div className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted">
+          </a>
+          <a
+            href="https://www.frictionlens.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
             FrictionLens — Live at frictionlens.net
-          </div>
+          </a>
         </motion.div>
 
         {/* Proof strip */}
