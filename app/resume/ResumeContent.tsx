@@ -136,7 +136,7 @@ export function ResumeContent() {
                 {personalInfo.education.current.school}
               </p>
               <div className="flex flex-wrap gap-2 text-xs text-text-muted">
-                <span>Expected {personalInfo.education.current.graduation}</span>
+                <span>{personalInfo.education.current.graduation}</span>
               </div>
             </motion.div>
 

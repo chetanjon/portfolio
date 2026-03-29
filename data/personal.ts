@@ -13,7 +13,7 @@ export const personalInfo = {
       degree: 'M.S. in Management of Technology',
       school: 'Arizona State University',
       location: 'Tempe, AZ',
-      graduation: 'May 2026',
+      graduation: 'Aug 2024 – May 2026',
     },
     past: {
       degree: 'B.Tech in Electrical & Electronics Engineering',

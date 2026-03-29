@@ -34,11 +34,12 @@ const values = [
 ];
 
 const timeline = [
-  { year: '2023', title: 'B.E. Electrical & Electronics Engineering', place: 'JNTU Hyderabad' },
+  { year: '2019–2023', title: 'B.Tech in Electrical & Electronics Engineering', place: 'JNTU Hyderabad' },
   { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India — B2B Handloom Marketplace' },
-  { year: '2024', title: 'MS Management of Technology', place: 'Arizona State University' },
+  { year: '2024', title: 'M.S. in Management of Technology', place: 'Arizona State University' },
   { year: '2025', title: 'CSPO Certified', place: 'Scrum Alliance' },
-  { year: '2026', title: 'MS Graduation (Expected)', place: 'Arizona State University — GPA 3.6' },
+  { year: '2026', title: 'Co-Founder & CEO', place: 'Aatram — iOS App' },
+  { year: '2026', title: 'M.S. Graduation (Expected)', place: 'Arizona State University' },
 ];
 
 export function AboutContent() {
