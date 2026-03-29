@@ -82,13 +82,39 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </div>
             </div>
 
-            {/* PDF Embed */}
-            <div className="flex-1 bg-bg-tertiary">
+            {/* PDF Embed - desktop */}
+            <div className="flex-1 bg-bg-tertiary hidden md:block">
               <iframe
                 src="/Chetan_Jonnalagadda_PM_Resume.pdf"
                 className="w-full h-full"
                 title="Resume"
               />
+            </div>
+
+            {/* Mobile fallback */}
+            <div className="flex-1 bg-bg-tertiary flex flex-col items-center justify-center gap-6 p-8 md:hidden">
+              <p className="text-text-secondary text-center text-sm">
+                PDF preview isn&apos;t supported on mobile browsers.
+              </p>
+              <div className="flex flex-col gap-3 w-full max-w-xs">
+                <a
+                  href="/Chetan_Jonnalagadda_PM_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 bg-text-primary text-bg-primary rounded-full text-sm font-medium uppercase tracking-wider"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Open PDF
+                </a>
+                <a
+                  href="/Chetan_Jonnalagadda_PM_Resume.pdf"
+                  download
+                  className="flex items-center justify-center gap-2 w-full py-3 border border-border-default rounded-full text-sm font-medium uppercase tracking-wider text-text-primary"
+                >
+                  <Download className="w-4 h-4" />
+                  Download PDF
+                </a>
+              </div>
             </div>
           </motion.div>
         </motion.div>
