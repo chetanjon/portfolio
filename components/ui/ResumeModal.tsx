@@ -83,11 +83,12 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
 
             {/* PDF Embed - desktop */}
-            <div className="flex-1 bg-bg-tertiary hidden md:block">
+            <div className="flex-1 hidden md:block" style={{ background: '#ffffff' }}>
               <iframe
-                src="/Chetan_Jonnalagadda_PM_Resume.pdf"
-                className="w-full h-full"
+                src="/Chetan_Jonnalagadda_PM_Resume.pdf#view=FitH"
+                className="w-full h-full border-0"
                 title="Resume"
+                style={{ colorScheme: 'light' }}
               />
             </div>
 
