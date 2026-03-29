@@ -7,10 +7,17 @@ import { cn } from '@/lib/utils';
 
 const timelineData: TimelineItem[] = [
   {
+    year: '2026',
+    title: 'Co-Founder & CEO',
+    subtitle: 'Aatram (iOS App — Live on App Store)',
+    description: '0-to-1 emotion-first anti-procrastination app. Grew to 50–60 active users with 35–40% retention organically.',
+    type: 'work',
+  },
+  {
     year: '2024',
     title: 'M.S. in Management of Technology',
     subtitle: 'Arizona State University, Tempe, AZ',
-    description: 'Pursuing graduate studies in technology management. GPA: 3.6.',
+    description: 'Pursuing graduate studies in technology management.',
     type: 'education',
   },
   {
@@ -24,26 +31,19 @@ const timelineData: TimelineItem[] = [
     year: '2023',
     title: 'Product Manager',
     subtitle: 'IKT INDIA',
-    description: 'Scaled B2B handloom marketplace from 20 → 45+ vendors. Improved activation by 30-35% and retention by 20%.',
+    description: 'Scaled B2B handloom marketplace from 20 → 45+ vendors. Doubled GMV, improved activation by 30-35% and retention by 20%.',
     type: 'work',
   },
   {
     year: '2023',
     title: 'Product Management Intern',
     subtitle: 'IKT INDIA',
-    description: 'Conducted 15+ seller interviews, identified 3 critical drop-off points. Converted to full-time PM.',
+    description: 'Conducted 15+ seller interviews, identified 3 drop-off points. Authored PRDs; promoted to Product Manager.',
     type: 'work',
   },
   {
-    year: '2023',
-    title: 'Product Operations Intern',
-    subtitle: 'Gangothri Nutrients & Fertilizers',
-    description: 'Analyzed 3,700+ dealer sales data; reduced stockouts by 25%. Supported GTM for 2 new SKUs.',
-    type: 'work',
-  },
-  {
-    year: '2023',
-    title: 'B.E. Electrical & Electronics Engineering',
+    year: '2019',
+    title: 'B.Tech in Electrical & Electronics Engineering',
     subtitle: 'JNTU Hyderabad, India',
     description: 'Completed undergraduate studies in electrical and electronics engineering.',
     type: 'education',

@@ -2,6 +2,35 @@ import type { WorkExperience } from '@/types';
 
 export const workExperiences: WorkExperience[] = [
   {
+    id: '0',
+    slug: 'aatram',
+    company: 'Aatram',
+    role: 'Co-Founder & CEO',
+    type: 'full-time',
+    startDate: '2026-02',
+    endDate: 'Present',
+    location: 'Tempe, AZ',
+    description:
+      '0-to-1 emotion-first anti-procrastination iOS app (SwiftUI, SwiftData). Directing 2 engineers from concept through live launch.',
+    highlights: [
+      'Identified whitespace in the $12B+ productivity market where zero top-10 apps treat procrastination as an emotion regulation problem; defined vision grounded in CBT and Temporal Motivation Theory',
+      'Ran 10+ user interviews and 15+ beta tests to define 3 procrastination personas that shaped onboarding, feature disclosure, and nudge personality selection',
+      'Scoped 15+ features down to 5 for a 2-engineer team; shipped emotion check-ins, AI nudge escalation, count-up focus sessions, failure recovery, and a logarithmic Momentum Meter',
+      'Launched on App Store and grew to 50–60 active users with 35–40% retention organically with $0 ad spend; running continuous feedback loops to triage bugs and prioritize v1.1 improvements',
+      'Chose on-device AI over cloud APIs — zero accounts, zero data collection, 3-tier fallback ensuring 100% of users get personalized nudges',
+      'Benchmarked 12+ competitors; defined campus-first GTM and freemium pricing strategy',
+    ],
+    metrics: [
+      { value: '50-60', label: 'Active Users', context: 'organic, $0 ad spend' },
+      { value: '35-40%', label: 'Retention', context: 'organically grown' },
+      { value: '15→5', label: 'Features Scoped', context: 'for 2-engineer team' },
+      { value: '12+', label: 'Competitors Benchmarked', context: 'GTM strategy' },
+    ],
+    skills: ['Product Strategy', '0-to-1', 'User Research', 'iOS', 'SwiftUI', 'Behavioral Science', 'GTM'],
+    thumbnail: '/work/aatram.svg',
+    featured: true,
+  },
+  {
     id: '1',
     slug: 'ikt-india',
     company: 'IKT INDIA',
@@ -11,18 +40,18 @@ export const workExperiences: WorkExperience[] = [
     endDate: '2024-08',
     location: 'Hyderabad, India',
     description:
-      'Scaled B2B handloom marketplace from 20 to 45+ vendors (2.3x in 9 months), reaching INR 15L+ monthly GMV. Owned product roadmap across seller onboarding, catalog management, and order fulfillment.',
+      'Seed-stage B2B handloom marketplace. Led seller-side product with a 3-engineer team.',
     highlights: [
-      'Scaled B2B handloom marketplace from 20 → 45+ vendors (2.3x in 9 months), reaching INR 15L+ monthly GMV',
-      'Shipped seller verification flow and bulk catalog upload with 3-engineer team; improved activation (KYC → first listing) by 30-35%',
-      'Built seller acquisition playbook and prioritized backlog using impact/effort scoring; launched in 2 new markets contributing 20% of new vendor signups',
-      'Defined KPIs and built seller analytics dashboard (SQL/Mixpanel); identified at-risk sellers and improved 60-day retention by 20%',
+      'Scaled vendor base from 20 to 45+ (2.3x) and doubled monthly GMV through seller growth strategy, localized outreach in 2 new cities, and onboarding flow iteration',
+      'Shipped seller verification and bulk catalog upload; reduced onboarding from 3 days to 6 hours and improved seller activation by 30–35%',
+      'Built seller health dashboard (SQL + Mixpanel); launched automated retention workflows improving 60-day active-seller retention by 20%',
+      'Led pricing strategy across 500+ SKUs; improved gross margin from 25% to 40% via price floors, category mix optimization, and supplier renegotiation',
     ],
     metrics: [
       { value: '2.3x', label: 'Vendor Growth', context: '20 → 45+ in 9 months' },
-      { value: '30-35%', label: 'Activation Improvement', context: 'KYC to first listing' },
-      { value: '20%', label: 'Retention Uplift', context: '60-day repeat orders' },
-      { value: '15L+', label: 'Monthly GMV (INR)', context: 'revenue milestone' },
+      { value: '30-35%', label: 'Activation Improvement', context: 'onboarding to first listing' },
+      { value: '20%', label: 'Retention Uplift', context: '60-day active-seller retention' },
+      { value: '25→40%', label: 'Gross Margin', context: 'pricing strategy across 500+ SKUs' },
     ],
     skills: ['Product Strategy', 'User Research', 'SQL', 'Mixpanel', 'Agile/Scrum', 'B2B Marketplaces', 'Roadmap Planning'],
     thumbnail: '/work/ikt-india.svg',
@@ -77,15 +106,15 @@ export const workExperiences: WorkExperience[] = [
             '60-day retention improved by 20% (relative lift in repeat orders). Could proactively intervene with disengaged sellers.',
         },
         {
-          decision: 'Launched in 2 new markets using acquisition playbook',
+          decision: 'Led pricing strategy across 500+ SKUs',
           context:
-            'Needed to prove the marketplace model could scale beyond initial geography. Used impact/effort scoring to pick markets.',
+            'Gross margins were thin at 25%, threatening unit economics. Needed a systematic pricing approach across the catalog.',
           outcome:
-            'New markets contributed 20% of vendor signups. Validated the playbook for future expansion.',
+            'Improved gross margin from 25% to 40% via price floors, category mix optimization, and supplier renegotiation.',
         },
       ],
       results:
-        'Over 9 months, scaled the marketplace from 20 to 45+ vendors (2.3x growth), reaching INR 15L+ monthly GMV. Activation improved 30-35%, 60-day retention improved 20%, and successfully launched in 2 new markets.',
+        'Over 9 months, scaled the marketplace from 20 to 45+ vendors (2.3x growth), doubling monthly GMV. Activation improved 30-35%, 60-day retention improved 20%, and gross margin grew from 25% to 40% through pricing strategy.',
       learnings:
         'The biggest lesson was the power of talking to sellers directly. Field context changed my understanding of what "simple" means for different user segments. Data-informed decisions beat gut feelings, but you need qualitative context to interpret the numbers correctly.',
       whatWouldChange:
@@ -102,44 +131,16 @@ export const workExperiences: WorkExperience[] = [
     endDate: '2023-10',
     location: 'Hyderabad, India',
     description:
-      'Conducted 15+ seller interviews and mapped end-to-end journey; identified 3 critical drop-off points that informed PRD for redesigned onboarding flow. Converted to full-time PM after 6 months.',
+      'Conducted 15+ seller interviews, mapped end-to-end journey, and identified 3 drop-off points; authored PRDs and user stories for seller verification; promoted to Product Manager.',
     highlights: [
-      'Conducted 15+ seller interviews and mapped end-to-end journey',
-      'Identified 3 critical drop-off points that informed PRD for redesigned onboarding flow',
-      'Reduced seller setup time from 3 days to 6 hours with engineering',
-      'Converted to full-time PM after 6 months',
+      'Conducted 15+ seller interviews, mapped end-to-end journey, and identified 3 drop-off points; authored PRDs and user stories for seller verification; promoted to Product Manager',
     ],
     metrics: [
       { value: '15+', label: 'Seller Interviews', context: 'end-to-end journey mapping' },
-      { value: '3→6hrs', label: 'Setup Time Reduction', context: 'from 3 days' },
       { value: '3', label: 'Drop-off Points Found', context: 'informed PRD redesign' },
     ],
     skills: ['User Research', 'PRD Writing', 'Journey Mapping', 'Stakeholder Management'],
     thumbnail: '/work/ikt-india-intern.svg',
-    featured: false,
-  },
-  {
-    id: '3',
-    slug: 'gangothri-nutrients',
-    company: 'Gangothri Nutrients & Fertilizers',
-    role: 'Product Operations Intern',
-    type: 'internship',
-    startDate: '2023-01',
-    endDate: '2023-04',
-    location: 'Hyderabad, India',
-    description:
-      'Analyzed regional sales data across 3,700+ dealers to forecast demand. Supported go-to-market launch for 2 new fertilizer SKUs.',
-    highlights: [
-      'Analyzed regional sales data across 3,700+ dealers to forecast demand; reduced peak-season stockouts by 25%',
-      'Supported go-to-market launch for 2 new fertilizer SKUs; contributed to 85% dealer adoption within first 90 days',
-    ],
-    metrics: [
-      { value: '25%', label: 'Stockout Reduction', context: 'peak-season demand' },
-      { value: '3,700+', label: 'Dealers Analyzed', context: 'regional sales data' },
-      { value: '85%', label: 'Dealer Adoption', context: 'new SKUs in 90 days' },
-    ],
-    skills: ['Data Analysis', 'Go-to-Market', 'Demand Forecasting', 'Operations'],
-    thumbnail: '/work/gangothri.svg',
     featured: false,
   },
 ];

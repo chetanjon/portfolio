@@ -34,7 +34,7 @@ export function ResumeContent() {
                   <span className="font-serif italic font-normal lowercase"> picture</span>
                 </h1>
                 <p className="text-lg text-text-secondary max-w-xl">
-                  1.5+ years shipping B2B marketplace features, 3 academic projects with quantified impact,
+                  Co-Founder &amp; CEO shipping a live iOS app, 1.5+ years in B2B marketplace product,
                   CSPO certified. Here&apos;s everything in one place.
                 </p>
               </div>
@@ -137,12 +137,6 @@ export function ResumeContent() {
               </p>
               <div className="flex flex-wrap gap-2 text-xs text-text-muted">
                 <span>Expected {personalInfo.education.current.graduation}</span>
-                {personalInfo.education.current.gpa && (
-                  <>
-                    <span>•</span>
-                    <span>GPA: {personalInfo.education.current.gpa}</span>
-                  </>
-                )}
               </div>
             </motion.div>
 
@@ -172,16 +166,16 @@ export function ResumeContent() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: 'Product Management',
-                skills: ['Roadmapping', 'PRDs', 'Sprint Planning', 'Stakeholder Management', 'User Stories', 'Backlog Prioritization'],
+                title: 'Product',
+                skills: ['Product Strategy', 'Roadmapping', 'PRDs & User Stories', 'MVP Scoping', 'RICE Prioritization', 'Go-to-Market', 'User Research', 'Competitive Analysis', 'Funnel Optimization', 'A/B Testing'],
               },
               {
-                title: 'Research & Analytics',
-                skills: ['User Research', 'A/B Testing', 'SQL', 'Mixpanel', 'Data Analysis', 'Customer Interviews'],
+                title: 'Tools',
+                skills: ['Figma', 'Jira', 'Confluence', 'Mixpanel', 'Amplitude', 'Google Analytics', 'Notion', 'SQL', 'Python', 'PostHog'],
               },
               {
-                title: 'Tools & Methods',
-                skills: ['Figma', 'Jira', 'Notion', 'Miro', 'Agile/Scrum', 'Design Thinking'],
+                title: 'Methods',
+                skills: ['Agile/Scrum', 'Sprint Planning', 'OKRs', 'Experimentation Design', 'Retention Analysis', 'Cohort Segmentation'],
               },
             ].map((category, i) => (
               <motion.div
