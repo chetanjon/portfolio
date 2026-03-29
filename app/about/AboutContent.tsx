@@ -106,16 +106,23 @@ export function AboutContent() {
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-6">
-                My first real proof of concept came at IKT India, where I took a B2B handloom marketplace
+                Right now I&apos;m Co-Founder &amp; CEO of Aatram, a 0-to-1 emotion-first anti-procrastination
+                iOS app live on the App Store. We grew to 50–60 active users with 35–40% retention organically
+                on $0 ad spend — scoping 15+ features down to 5 for a 2-engineer team and shipping with
+                on-device AI so users get personalized nudges with zero accounts and zero data collection.
+              </p>
+
+              <p className="text-text-secondary leading-relaxed mb-6">
+                Before Aatram, I cut my teeth at IKT India, where I took a B2B handloom marketplace
                 from 20 vendors to 45+ in nine months. What made it work wasn&apos;t a clever feature — it
                 was spending weeks talking to artisans who&apos;d never used a smartphone, watching them
                 struggle with 3-day onboarding flows, and rebuilding the funnel from scratch. Activation
-                improved 30–35%, setup time dropped from 3 days to 6 hours, monthly GMV reached INR 15L+.
+                improved 30–35%, setup time dropped from 3 days to 6 hours, and gross margin went from 25% to 40%.
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-8">
-                Currently pursuing my M.S. in Management of Technology at Arizona State University
-                (GPA 3.6, May 2026), where I&apos;m applying the same rigor to behavioral UX research,
+                Currently finishing my M.S. in Management of Technology at Arizona State University
+                (May 2026), where I&apos;m applying the same rigor to behavioral UX research,
                 financial modeling, and data analytics at scale. CSPO certified.
               </p>
 
