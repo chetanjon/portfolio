@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <!-- Background - soft indigo -->
+  <rect width="800" height="450" fill="#C5C0D0"/>
+
+  <!-- Subtle grid -->
+  <line x1="80" y1="0" x2="80" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="160" y1="0" x2="160" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="240" y1="0" x2="240" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="320" y1="0" x2="320" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="400" y1="0" x2="400" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="480" y1="0" x2="480" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="560" y1="0" x2="560" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="640" y1="0" x2="640" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="720" y1="0" x2="720" y2="450" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+
+  <line x1="0" y1="56" x2="800" y2="56" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="0" y1="112" x2="800" y2="112" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="0" y1="168" x2="800" y2="168" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="0" y1="224" x2="800" y2="224" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="0" y1="336" x2="800" y2="336" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+  <line x1="0" y1="392" x2="800" y2="392" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.08"/>
+
+  <!-- Momentum Meter - logarithmic curve rising -->
+  <path d="M120,340 C180,335 220,320 280,290 C340,260 380,230 420,200 C460,170 500,150 540,140 C580,130 620,125 680,122" stroke="#1A1A1A" stroke-width="2.5" stroke-opacity="0.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Data points along the curve -->
+  <circle cx="180" cy="333" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="280" cy="290" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="380" cy="225" r="3.5" fill="#1A1A1A" fill-opacity="0.3"/>
+  <circle cx="480" cy="160" r="4" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="560" cy="138" r="4" fill="#1A1A1A" fill-opacity="0.35"/>
+  <circle cx="680" cy="122" r="5" fill="#1A1A1A" fill-opacity="0.4"/>
+
+  <!-- Emotion check-in circles (abstract mood states) -->
+  <circle cx="200" cy="170" r="22" fill="#1A1A1A" fill-opacity="0.06" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <circle cx="320" cy="130" r="18" fill="#1A1A1A" fill-opacity="0.08" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.12"/>
+  <circle cx="420" cy="110" r="15" fill="#1A1A1A" fill-opacity="0.10" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.15"/>
+
+  <!-- Connection lines between emotion states -->
+  <line x1="222" y1="162" x2="302" y2="135" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.12" stroke-dasharray="4 3"/>
+  <line x1="338" y1="125" x2="405" y2="114" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.12" stroke-dasharray="4 3"/>
+
+  <!-- AI nudge escalation tiers -->
+  <rect x="580" y="200" width="90" height="24" rx="12" fill="#1A1A1A" fill-opacity="0.06" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.1"/>
+  <rect x="595" y="235" width="90" height="24" rx="12" fill="#1A1A1A" fill-opacity="0.09" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.12"/>
+  <rect x="610" y="270" width="90" height="24" rx="12" fill="#1A1A1A" fill-opacity="0.12" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.15"/>
+
+  <!-- Tier labels -->
+  <text x="625" y="216" font-family="'Arial', sans-serif" font-size="7" fill="#1A1A1A" fill-opacity="0.35" text-anchor="middle" letter-spacing="1.5">GENTLE</text>
+  <text x="640" y="251" font-family="'Arial', sans-serif" font-size="7" fill="#1A1A1A" fill-opacity="0.4" text-anchor="middle" letter-spacing="1.5">DIRECT</text>
+  <text x="655" y="286" font-family="'Arial', sans-serif" font-size="7" fill="#1A1A1A" fill-opacity="0.45" text-anchor="middle" letter-spacing="1.5">URGENT</text>
+
+  <!-- Phone silhouette hint -->
+  <rect x="100" y="90" width="50" height="90" rx="8" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-opacity="0.1"/>
+  <rect x="110" y="100" width="30" height="55" rx="2" fill="#1A1A1A" fill-opacity="0.04"/>
+  <circle cx="125" cy="168" r="3" fill="#1A1A1A" fill-opacity="0.08"/>
+
+  <!-- Metric badge: 50-60 -->
+  <rect x="52" y="24" width="88" height="32" rx="16" fill="#1A1A1A" fill-opacity="0.85"/>
+  <text x="96" y="44" font-family="'Georgia', serif" font-size="12" font-weight="700" fill="#C5C0D0" text-anchor="middle">50–60</text>
+
+  <!-- Company name -->
+  <text x="400" y="395" font-family="'Arial', 'Helvetica', sans-serif" font-size="44" font-weight="800" fill="#1A1A1A" fill-opacity="0.1" text-anchor="middle" letter-spacing="8">AATRAM</text>
+
+  <!-- Role label -->
+  <rect x="580" y="24" width="188" height="28" rx="0" fill="#1A1A1A" fill-opacity="0.08"/>
+  <text x="674" y="42" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" font-weight="600" fill="#1A1A1A" fill-opacity="0.6" text-anchor="middle" letter-spacing="2.5">CO-FOUNDER &amp; CEO</text>
+
+  <!-- Bottom left: date -->
+  <text x="52" y="430" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" letter-spacing="2">FEB 2026 — PRESENT</text>
+
+  <!-- Bottom right: domain -->
+  <text x="748" y="430" font-family="'Arial', 'Helvetica', sans-serif" font-size="9" fill="#1A1A1A" fill-opacity="0.35" text-anchor="end" letter-spacing="2">iOS APP</text>
+
+  <!-- Retention arrow -->
+  <polyline points="680,140 710,130 730,120 750,105" stroke="#1A1A1A" stroke-width="2" stroke-opacity="0.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="750" cy="105" r="5" fill="#1A1A1A" fill-opacity="0.3"/>
+</svg>
