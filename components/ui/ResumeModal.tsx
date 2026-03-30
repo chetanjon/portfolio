@@ -82,40 +82,14 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </div>
             </div>
 
-            {/* PDF Embed - desktop */}
-            <div className="flex-1 hidden md:block" style={{ background: '#ffffff' }}>
-              <iframe
-                src="/Chetan_Jonnalagadda_PM_Resume.pdf#view=FitH"
-                className="w-full h-full border-0"
-                title="Resume"
+            {/* PDF Embed */}
+            <div className="flex-1 relative" style={{ background: '#ffffff' }}>
+              <embed
+                src="/Chetan_Jonnalagadda_PM_Resume.pdf"
+                type="application/pdf"
+                className="absolute inset-0 w-full h-full"
                 style={{ colorScheme: 'light' }}
               />
-            </div>
-
-            {/* Mobile fallback */}
-            <div className="flex-1 bg-bg-tertiary flex flex-col items-center justify-center gap-6 p-8 md:hidden">
-              <p className="text-text-secondary text-center text-sm">
-                PDF preview isn&apos;t supported on mobile browsers.
-              </p>
-              <div className="flex flex-col gap-3 w-full max-w-xs">
-                <a
-                  href="/Chetan_Jonnalagadda_PM_Resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full py-3 bg-text-primary text-bg-primary rounded-full text-sm font-medium uppercase tracking-wider"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Open PDF
-                </a>
-                <a
-                  href="/Chetan_Jonnalagadda_PM_Resume.pdf"
-                  download
-                  className="flex items-center justify-center gap-2 w-full py-3 border border-border-default rounded-full text-sm font-medium uppercase tracking-wider text-text-primary"
-                >
-                  <Download className="w-4 h-4" />
-                  Download PDF
-                </a>
-              </div>
             </div>
           </motion.div>
         </motion.div>
