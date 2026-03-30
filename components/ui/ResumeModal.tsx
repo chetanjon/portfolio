@@ -84,12 +84,36 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
             {/* PDF Embed */}
             <div className="flex-1 relative" style={{ background: '#ffffff' }}>
-              <embed
+              {/* Desktop: native embed works fine */}
+              <iframe
                 src="/Chetan_Jonnalagadda_PM_Resume.pdf"
-                type="application/pdf"
-                className="absolute inset-0 w-full h-full"
-                style={{ colorScheme: 'light' }}
+                className="absolute inset-0 w-full h-full hidden md:block"
+                style={{ colorScheme: 'light', border: 'none' }}
+                title="Resume PDF"
               />
+              {/* Mobile: show download/open prompt since mobile browsers can't embed PDFs */}
+              <div className="flex md:hidden flex-col items-center justify-center h-full gap-6 px-6 text-center">
+                <p className="text-text-secondary text-sm">
+                  PDF preview isn&apos;t supported on mobile browsers.
+                </p>
+                <a
+                  href="/Chetan_Jonnalagadda_PM_Resume.pdf"
+                  download
+                  className="inline-flex items-center gap-2 px-6 py-3 text-base font-semibold text-white bg-accent-primary hover:bg-accent-primary/90 rounded-xl transition-colors"
+                >
+                  <Download className="w-5 h-5" />
+                  Download Resume
+                </a>
+                <a
+                  href="/Chetan_Jonnalagadda_PM_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-accent-primary border border-accent-primary/30 hover:bg-accent-primary/10 rounded-xl transition-colors"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                  Open in Browser
+                </a>
+              </div>
             </div>
           </motion.div>
         </motion.div>
