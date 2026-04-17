@@ -14,8 +14,6 @@ import { LogoMark } from '@/components/ui/LogoMark';
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [prevPathname, setPrevPathname] = useState('');
   const pathname = usePathname();
@@ -34,26 +32,13 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY < 60) {
-        setVisible(true);
-      } else if (currentScrollY < lastScrollY - 5) {
-        setVisible(true);
-      } else if (currentScrollY > lastScrollY + 5) {
-        setVisible(false);
-      }
-
-      setScrolled(currentScrollY > 60);
-
-      setLastScrollY(currentScrollY);
+      setScrolled(window.scrollY > 60);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-
-  const headerVisible = visible || isMobileMenuOpen;
+  }, []);
   // Any /casestudies page (index + sub-pages): avoid mix-blend-difference.
   // Also treat /projects, /work, /about, /resume, /contact as "content pages"
   // so their hero titles don't collide with the header via difference blending.
@@ -65,6 +50,15 @@ export function Header() {
     pathname.startsWith('/resume') ||
     pathname.startsWith('/contact');
 
+  // On content pages use theme-aware colors (work in light + dark).
+  // On the homepage, the header uses mix-blend-difference and thus requires pure white.
+  const textStrong = isContentPage ? 'text-text-primary' : 'text-white';
+  const textMuted = isContentPage ? 'text-text-muted hover:text-text-primary' : 'text-white/60 hover:text-white';
+  const textSubtle = isContentPage ? 'text-text-secondary group-hover:text-text-primary' : 'text-white/70 group-hover:text-white';
+  const pillBorder = isContentPage
+    ? 'border-border-default text-text-primary hover:bg-text-primary hover:text-bg-primary'
+    : 'border-white/50 text-white hover:bg-white hover:text-black';
+
   const handleResumeClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     setIsResumeOpen(true);
@@ -73,13 +67,11 @@ export function Header() {
   return (
     <>
       <motion.header
-        animate={{ y: headerVisible ? 0 : '-100%' }}
-        transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={cn(
           'fixed top-0 left-0 right-0 z-[1000] transition-all duration-500',
           isContentPage
             ? scrolled
-              ? 'bg-black/85 backdrop-blur-md border-b border-white/10'
+              ? 'bg-bg-primary/85 backdrop-blur-md border-b border-border-default'
               : 'bg-transparent'
             : 'mix-blend-difference'
         )}
@@ -88,14 +80,14 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-3 text-white group"
+            className={cn('flex items-center gap-3 group', textStrong)}
             aria-label="Chetan J — Home"
           >
             <LogoMark
               size={60}
-              className="text-white transition-transform duration-300 group-hover:scale-110"
+              className={cn(textStrong, 'transition-transform duration-300 group-hover:scale-110')}
             />
-            <span className="text-[15px] font-medium tracking-[0.3em] uppercase text-white/70 group-hover:text-white transition-colors">
+            <span className={cn('text-[15px] font-medium tracking-[0.3em] uppercase transition-colors', textSubtle)}>
               Chetan J
             </span>
           </Link>
@@ -110,22 +102,21 @@ export function Header() {
                   <button
                     key={item.href}
                     onClick={handleResumeClick}
-                    className="text-[15px] uppercase tracking-widest text-white/60 hover:text-white transition-colors cursor-pointer"
+                    className={cn('text-[15px] uppercase tracking-widest transition-colors cursor-pointer', textMuted)}
                   >
                     {item.label}
                   </button>
                 );
               }
 
+              const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={cn(
                     'text-[15px] uppercase tracking-widest transition-colors',
-                    pathname === item.href || pathname.startsWith(item.href + '/')
-                      ? 'text-white'
-                      : 'text-white/60 hover:text-white'
+                    isActive ? textStrong : textMuted
                   )}
                 >
                   {item.label}
@@ -144,7 +135,10 @@ export function Header() {
             {/* Menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="px-6 py-3 rounded-full border border-white/50 text-[15px] font-medium tracking-wider text-white uppercase hover:bg-white hover:text-black transition-colors cursor-pointer"
+              className={cn(
+                'px-6 py-3 rounded-full border text-[15px] font-medium tracking-wider uppercase transition-colors cursor-pointer',
+                pillBorder
+              )}
             >
               Menu
             </button>
