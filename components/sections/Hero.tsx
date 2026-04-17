@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
+import { CountUp } from '@/components/ui/CountUp';
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -89,13 +90,20 @@ export function Hero() {
           className="flex flex-wrap justify-center gap-10 md:gap-14"
         >
           {[
-            { num: '2', label: 'Products shipped' },
-            { num: '2.3x', label: 'Vendor growth' },
-            { num: '2x', label: 'GMV doubled' },
-            { num: '35–40%', label: 'Retention, $0 spend' },
+            { value: 2, suffix: '', label: 'Products live' },
+            { value: 2.3, decimals: 1, suffix: 'x', label: 'Vendor growth' },
+            { value: 2, suffix: 'x', label: 'GMV doubled' },
+            { value: 40, prefix: '35–', suffix: '%', label: 'D7 retention, $0 spend' },
           ].map((item) => (
             <div key={item.label} className="flex flex-col items-center gap-1">
-              <span className="font-serif text-2xl md:text-3xl">{item.num}</span>
+              <span className="font-serif text-2xl md:text-3xl tabular-nums">
+                <CountUp
+                  to={item.value}
+                  decimals={item.decimals ?? 0}
+                  prefix={item.prefix ?? ''}
+                  suffix={item.suffix ?? ''}
+                />
+              </span>
               <span className="text-[9px] md:text-[10px] tracking-widest uppercase text-text-muted">
                 {item.label}
               </span>

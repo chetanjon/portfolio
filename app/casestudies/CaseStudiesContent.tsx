@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 
 const caseStudies: Array<{
@@ -146,19 +146,41 @@ const caseStudies: Array<{
     company: 'Aatram',
     title: 'Start Starting',
     description:
-      'Three roommates built an app that treats procrastination as an emotion problem, not a discipline problem. A 0-to-1 case study from brainstorm to App Store — user research, behavioral science, beta iteration, and metrics-first product thinking.',
-    tags: ['0-to-1', 'Behavioral Science', 'User Research', 'Beta Testing', 'iOS'],
-    metric: { value: '120+', label: 'Waitlist Signups' },
+      'Built a 0-to-1 iOS app that treats procrastination as an emotion problem, not a discipline problem. Live on the App Store at 35–40% D7 retention — 2x the category average — on $0 ad spend. User research, a full pivot that killed 7 features, and a re-engagement system that doubled notification tap rate.',
+    tags: ['0-to-1', 'Behavioral Science', 'User Research', 'iOS', 'Live'],
+    metric: { value: '35–40%', label: 'D7 Retention · 2x category' },
     accentColor: '#5B4EB8',
     bgColor: '#EEEBF8',
     year: '2026',
+    type: 'Shipped',
   },
 ];
+
+type Filter = 'All' | 'Shipped' | 'Teardown' | 'Case Study';
+
+const FILTERS: Filter[] = ['All', 'Shipped', 'Teardown', 'Case Study'];
 
 export function CaseStudiesContent() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const [filter, setFilter] = useState<Filter>('All');
+
+  const filteredStudies = useMemo(() => {
+    if (filter === 'All') return caseStudies;
+    if (filter === 'Case Study') return caseStudies.filter((s) => !s.type);
+    return caseStudies.filter((s) => s.type === filter);
+  }, [filter]);
+
+  const counts = useMemo(
+    () => ({
+      All: caseStudies.length,
+      Shipped: caseStudies.filter((s) => s.type === 'Shipped').length,
+      Teardown: caseStudies.filter((s) => s.type === 'Teardown').length,
+      'Case Study': caseStudies.filter((s) => !s.type).length,
+    }),
+    []
+  );
 
   return (
     <>
@@ -189,17 +211,47 @@ export function CaseStudiesContent() {
         </div>
       </section>
 
-      {/* Case Study Cards */}
-      <section className="py-16">
+      {/* Filter chips */}
+      <section className="pt-4 pb-2">
         <div className="container-wide">
-          <div className="flex flex-col gap-8">
-            {caseStudies.map((study, i) => (
+          <div className="flex flex-wrap items-center gap-2 md:gap-3">
+            {FILTERS.map((f) => {
+              const active = filter === f;
+              return (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f)}
+                  aria-pressed={active}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-widest border transition-colors cursor-pointer ${
+                    active
+                      ? 'bg-text-primary text-bg-primary border-text-primary'
+                      : 'border-border-default text-text-muted hover:text-text-primary hover:border-border-hover'
+                  }`}
+                >
+                  <span>{f}</span>
+                  <span className={`text-[10px] ${active ? 'opacity-70' : 'opacity-60'}`}>
+                    {counts[f]}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Study Cards */}
+      <section className="py-12">
+        <div className="container-wide">
+          <motion.div layout className="flex flex-col gap-8">
+            <AnimatePresence mode="popLayout">
+            {filteredStudies.map((study, i) => (
               <motion.div
                 key={study.slug}
+                layout
                 initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.1 }}
-                transition={{ duration: 0.65, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <Link href={`/casestudies/${study.slug}`} className="block group">
                   <motion.div
@@ -286,7 +338,14 @@ export function CaseStudiesContent() {
                 </Link>
               </motion.div>
             ))}
-          </div>
+            </AnimatePresence>
+          </motion.div>
+
+          {filteredStudies.length === 0 && (
+            <p className="text-center text-text-muted text-sm py-12">
+              No studies match this filter yet.
+            </p>
+          )}
         </div>
       </section>
 

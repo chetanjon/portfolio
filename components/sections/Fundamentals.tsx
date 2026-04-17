@@ -108,8 +108,8 @@ export function Fundamentals() {
               </p>
 
               {/* Numbered steps */}
-              <div className="flex flex-col md:flex-row gap-8 text-[10px] uppercase tracking-widest text-text-muted border-t border-border-default pt-6 mb-8">
-                {steps.slice(0, 3).map((step, i) => (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-[10px] uppercase tracking-widest text-text-muted border-t border-border-default pt-6 mb-8">
+                {steps.map((step, i) => (
                   <motion.div
                     key={step.number}
                     initial={{ opacity: 0, y: 15 }}
@@ -118,7 +118,10 @@ export function Fundamentals() {
                     transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                   >
                     <span className="block text-text-primary mb-1 font-display font-bold">{step.number}</span>
-                    <span>{step.title}</span>
+                    <span className="block text-text-primary text-[11px] mb-1">{step.title}</span>
+                    <span className="block text-text-muted normal-case tracking-normal text-[11px] leading-relaxed">
+                      {step.description}
+                    </span>
                   </motion.div>
                 ))}
               </div>
