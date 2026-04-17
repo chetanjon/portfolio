@@ -37,7 +37,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[1200] flex items-center justify-center p-4"
           onClick={onClose}
         >
           {/* Backdrop */}
@@ -76,7 +76,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <button
                   onClick={onClose}
                   aria-label="Close resume"
-                  className="p-2 text-text-muted hover:text-text-primary hover:bg-surface-hover rounded-lg transition-colors cursor-pointer"
+                  className="p-2 text-text-primary hover:bg-surface-hover rounded-lg transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
