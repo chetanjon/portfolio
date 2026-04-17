@@ -16,6 +16,7 @@ const caseStudies: Array<{
   bgColor: string;
   year: string;
   type?: string;
+  readMin: number;
 }> = [
   {
     slug: 'cursor',
@@ -29,6 +30,7 @@ const caseStudies: Array<{
     bgColor: '#E6F5F1',
     year: '2026',
     type: 'Teardown',
+    readMin: 9,
   },
   {
     slug: 'duolingo',
@@ -41,6 +43,7 @@ const caseStudies: Array<{
     accentColor: '#D4790E',
     bgColor: '#FFF8ED',
     year: '2026',
+    readMin: 10,
   },
   {
     slug: 'figma',
@@ -53,6 +56,7 @@ const caseStudies: Array<{
     accentColor: '#5B3DC8',
     bgColor: '#EEEBF8',
     year: '2026',
+    readMin: 8,
   },
   {
     slug: 'liquid-glass',
@@ -65,6 +69,7 @@ const caseStudies: Array<{
     accentColor: '#0071e3',
     bgColor: '#f5f5f7',
     year: '2026',
+    readMin: 10,
   },
   {
     slug: 'notion',
@@ -78,6 +83,7 @@ const caseStudies: Array<{
     bgColor: '#EBF4FD',
     year: '2026',
     type: 'Teardown',
+    readMin: 12,
   },
   {
     slug: 'rivian',
@@ -90,6 +96,7 @@ const caseStudies: Array<{
     accentColor: '#2D5A3D',
     bgColor: '#E8F0EA',
     year: '2026',
+    readMin: 7,
   },
   {
     slug: 'perplexity',
@@ -103,6 +110,7 @@ const caseStudies: Array<{
     bgColor: '#f0eeff',
     year: '2026',
     type: 'Teardown',
+    readMin: 7,
   },
   {
     slug: 'sonos',
@@ -115,6 +123,7 @@ const caseStudies: Array<{
     accentColor: '#E8590C',
     bgColor: '#FFF3ED',
     year: '2026',
+    readMin: 8,
   },
   {
     slug: 'tiktok-shop',
@@ -127,6 +136,7 @@ const caseStudies: Array<{
     accentColor: '#8B4513',
     bgColor: '#FAF3ED',
     year: '2026',
+    readMin: 8,
   },
   {
     slug: 'spotify',
@@ -140,6 +150,7 @@ const caseStudies: Array<{
     bgColor: '#E8F8EE',
     year: '2026',
     type: 'Teardown',
+    readMin: 7,
   },
   {
     slug: 'aatram',
@@ -153,6 +164,7 @@ const caseStudies: Array<{
     bgColor: '#EEEBF8',
     year: '2026',
     type: 'Shipped',
+    readMin: 6,
   },
 ];
 
@@ -269,13 +281,17 @@ export function CaseStudiesContent() {
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0">
                       {/* Left: content */}
                       <div className="p-8 md:p-10">
-                        <div className="flex items-center gap-3 mb-5">
+                        <div className="flex items-center flex-wrap gap-3 mb-5">
                           <span className="text-[10px] uppercase tracking-widest text-text-muted">
                             {study.company}
                           </span>
                           <span className="text-[10px] text-text-muted opacity-40">/</span>
                           <span className="text-[10px] uppercase tracking-widest text-text-muted">
                             {study.year}
+                          </span>
+                          <span className="text-[10px] text-text-muted opacity-40">/</span>
+                          <span className="text-[10px] uppercase tracking-widest text-text-muted">
+                            {study.readMin} min read
                           </span>
                           {'type' in study && study.type && (
                             <>
