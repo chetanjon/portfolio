@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Chetan Jonnalagadda - Product Manager';
+export const alt = 'Chetan Jonnalagadda — Product Manager who ships AI products 0→live';
 export const size = {
   width: 1200,
   height: 630,
@@ -18,69 +18,148 @@ export default function OGImage() {
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           backgroundColor: '#0A0A0A',
-          padding: '80px',
+          padding: '64px 72px',
           fontFamily: 'system-ui, sans-serif',
+          position: 'relative',
         }}
       >
+        {/* Top bar — identity */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            marginBottom: '40px',
+            justifyContent: 'space-between',
+            width: '100%',
           }}
         >
           <div
             style={{
-              width: 80,
-              height: 80,
-              borderRadius: 20,
-              backgroundColor: '#1A1A1A',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              color: '#E07A5F',
-              fontSize: 36,
-              fontWeight: 700,
-              marginRight: 24,
+              gap: 20,
             }}
           >
-            CJ
+            <div
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: 14,
+                backgroundColor: '#E07A5F',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#0A0A0A',
+                fontSize: 26,
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              CJ
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div
+                style={{
+                  color: '#F0F0F0',
+                  fontSize: 22,
+                  fontWeight: 600,
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                Chetan Jonnalagadda
+              </div>
+              <div style={{ color: '#888', fontSize: 16, marginTop: 2, letterSpacing: '0.24em', textTransform: 'uppercase' }}>
+                Product Manager
+              </div>
+            </div>
           </div>
-          <div style={{ color: '#666', fontSize: 28 }}>chetanjonnalagadda.com</div>
+
+          {/* Live badge */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              padding: '8px 16px',
+              borderRadius: 999,
+              border: '1px solid rgba(255,255,255,0.12)',
+            }}
+          >
+            <div
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                backgroundColor: '#4ADE80',
+              }}
+            />
+            <div style={{ color: '#9CA3AF', fontSize: 14, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+              2 products live
+            </div>
+          </div>
         </div>
+
+        {/* Center — the claim */}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div
+            style={{
+              color: '#E07A5F',
+              fontSize: 16,
+              letterSpacing: '0.28em',
+              textTransform: 'uppercase',
+              marginBottom: 20,
+            }}
+          >
+            Zero → Live
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              fontSize: 68,
+              fontWeight: 700,
+              color: '#F5F5F5',
+              lineHeight: 1.1,
+              letterSpacing: '-0.025em',
+              maxWidth: 1000,
+            }}
+          >
+            <span>Shipped a live AI iOS app at&nbsp;</span>
+            <span style={{ color: '#E07A5F' }}>35–40% D7 retention.&nbsp;</span>
+            <span>Scaled a B2B marketplace&nbsp;</span>
+            <span style={{ color: '#E07A5F' }}>2.3x.</span>
+          </div>
+        </div>
+
+        {/* Bottom — metrics + url */}
         <div
           style={{
-            fontSize: 64,
-            fontWeight: 700,
-            color: '#F0F0F0',
-            lineHeight: 1.2,
-            marginBottom: '24px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            width: '100%',
           }}
         >
-          Chetan Jonnalagadda
-        </div>
-        <div
-          style={{
-            fontSize: 32,
-            color: '#E07A5F',
-            marginBottom: '32px',
-          }}
-        >
-          Product Manager
-        </div>
-        <div
-          style={{
-            fontSize: 24,
-            color: '#888',
-            lineHeight: 1.5,
-            maxWidth: '800px',
-          }}
-        >
-          B2B marketplace growth, seller experience, and data-driven product development.
-          CSPO certified. MS in Management of Technology at ASU.
+          <div style={{ display: 'flex', gap: 48 }}>
+            {[
+              { v: '2x', l: 'Category avg' },
+              { v: '2.3x', l: 'Vendor growth' },
+              { v: '25→40%', l: 'Gross margin' },
+            ].map((m) => (
+              <div key={m.l} style={{ display: 'flex', flexDirection: 'column' }}>
+                <div style={{ color: '#F5F5F5', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>
+                  {m.v}
+                </div>
+                <div style={{ color: '#6B7280', fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase', marginTop: 4 }}>
+                  {m.l}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ color: '#6B7280', fontSize: 18, letterSpacing: '0.06em' }}>
+            chetanjonnalagadda.com
+          </div>
         </div>
       </div>
     ),

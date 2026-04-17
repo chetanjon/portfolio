@@ -36,9 +36,9 @@ export function WorkContent() {
             </h1>
 
             <p className="text-lg text-text-secondary max-w-xl">
-              I joined IKT India as a PM intern and earned a full-time offer in 6 months by
-              doing the one thing that matters: talking to users and shipping what they actually need.
-              From 20 vendors to 45+, from 3-day onboarding to 6 hours — here&apos;s how.
+              Currently Co-Founder &amp; PM at Aatram (live iOS app, 35–40% D7 retention, 2x category
+              average). Previously scaled a B2B marketplace from 20 to 45+ vendors and doubled GMV
+              in 9 months. Here&apos;s the full path — from ops intern to shipping 0-to-1.
             </p>
           </motion.div>
         </div>
@@ -146,10 +146,10 @@ export function WorkContent() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex flex-wrap justify-center gap-8 md:gap-16 text-[10px] uppercase tracking-widest font-medium mb-12"
           >
-            <span>/ Seller Onboarding</span>
-            <span>/ Funnel Optimization</span>
-            <span>/ Retention Analytics</span>
+            <span>/ 0-to-1 Product</span>
+            <span>/ AI / On-Device ML</span>
             <span>/ B2B Marketplace Growth</span>
+            <span>/ Retention Analytics</span>
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">

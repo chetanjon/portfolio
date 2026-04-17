@@ -136,14 +136,14 @@ export function Works() {
           className="mt-24 border-t border-border-default pt-12"
         >
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-[10px] uppercase tracking-widest font-medium">
-            <span className="hover:text-text-secondary cursor-default">/ Seller Onboarding</span>
-            <span className="hover:text-text-secondary cursor-default">/ Funnel Optimization</span>
-            <span className="hover:text-text-secondary cursor-default">/ Retention Analytics</span>
+            <span className="hover:text-text-secondary cursor-default">/ 0-to-1 Product</span>
+            <span className="hover:text-text-secondary cursor-default">/ AI / On-Device ML</span>
             <span className="hover:text-text-secondary cursor-default">/ B2B Marketplace Growth</span>
+            <span className="hover:text-text-secondary cursor-default">/ Retention Analytics</span>
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
-            {['Roadmapping', 'PRDs', 'Impact/Effort Scoring', 'Cohort Analysis', 'SQL + Mixpanel'].map((tag) => (
+            {['User Research', 'PRDs', 'RICE Prioritization', 'Cohort Analysis', 'SQL + Mixpanel', 'A/B Testing'].map((tag) => (
               <motion.span
                 key={tag}
                 initial={{ opacity: 0, scale: 0.9 }}
