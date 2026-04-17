@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from "react";
-
 const c = {
   bg: "#F5F1EB",
   bgWarm: "#EDE8E0",
@@ -36,12 +34,8 @@ const fonts = {
 };
 
 export default function SonosCaseStudy() {
-  const [hoveredMetric, setHoveredMetric] = useState(null);
-
   return (
     <div style={{ background: c.bg, color: c.text, minHeight: "100vh", fontFamily: fonts.sans, lineHeight: 1.7 }}>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-
       {/* ─── HERO ─── */}
       <div style={{ position: "relative", width: "100%", height: 340, overflow: "hidden", background: `linear-gradient(135deg, ${c.charcoal} 0%, #44403C 40%, #78716C 80%, #A8A29E 100%)` }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(245,241,235,0.5) 75%, #F5F1EB 100%)" }}/>
@@ -111,7 +105,7 @@ export default function SonosCaseStudy() {
               { q: "The new app was not accessible at all, despite assurances from the company prior to the update that the app would have basic accessibility features.", s: "Representative composite, based on reports from blind Sonos users" },
             ].map((quote, i) => (
               <div key={i} style={{ borderLeft: `2px solid ${c.accent}`, paddingLeft: 24, margin: "28px 0" }}>
-                <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>"{quote.q}"</p>
+                <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>&quot;{quote.q}&quot;</p>
                 <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 10, letterSpacing: 1 }}>— {quote.s}</p>
               </div>
             ))}
@@ -152,7 +146,7 @@ export default function SonosCaseStudy() {
             </div>
             <div>
               <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, margin: "0 0 24px", fontWeight: 300 }}>
-                Sonos was a beloved premium audio brand with over 16 million active households, according to its investor materials. The app rewrite wasn't a design failure in isolation. From a process perspective, this case suggests it was the result of tying an immovable hardware timeline to a flexible software rewrite, likely compressing QA for a highly complex release, and sidelining internal warnings from people closest to the product.
+                Sonos was a beloved premium audio brand with over 16 million active households, according to its investor materials. The app rewrite wasn&apos;t a design failure in isolation. From a process perspective, this case suggests it was the result of tying an immovable hardware timeline to a flexible software rewrite, likely compressing QA for a highly complex release, and sidelining internal warnings from people closest to the product.
               </p>
             </div>
           </div>
@@ -402,7 +396,7 @@ export default function SonosCaseStudy() {
             The Sonos disaster was not a design failure. Reporting suggests the design team tried to warn leadership. From a process perspective, this case points to a core mistake: tying an immovable hardware deadline to a flexible software project, likely compressing QA at the worst possible moment, and removing the rollback path that would have been the safety net for everything else.
           </p>
           <p style={{ fontFamily: fonts.serif, fontSize: 20, fontWeight: 400, color: c.accentLight, marginTop: 32, lineHeight: 1.6 }}>
-            The magic of Sonos was making complex technology invisible.<br/>You just wanted to play music, and it worked.<br/>The PM's job is to protect that simplicity, even during modernization.
+            The magic of Sonos was making complex technology invisible.<br/>You just wanted to play music, and it worked.<br/>The PM&apos;s job is to protect that simplicity, even during modernization.
           </p>
         </div>
       </section>

@@ -17,11 +17,15 @@ export function Header() {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [prevPathname, setPrevPathname] = useState('');
   const pathname = usePathname();
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+  // React 19 idiom: reset state when a prop changes by comparing during render.
+  // Handles browser back/forward and programmatic navigation; explicit Link onClicks still close too.
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+  }
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';

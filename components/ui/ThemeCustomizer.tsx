@@ -128,9 +128,6 @@ export function ThemeCustomizer() {
   const [copied, setCopied] = useState(false);
   const [initialized, setInitialized] = useState(false);
 
-  // Determine current mode based on actual DOM state
-  const isDarkMode = typeof window !== 'undefined' && document.documentElement.classList.contains('dark');
-
   // Load saved colors on mount
   useEffect(() => {
     if (!mounted || initialized) return;
@@ -139,6 +136,9 @@ export function ThemeCustomizer() {
     if (saved) {
       try {
         const parsed: ColorPreset = JSON.parse(saved);
+        // One-shot hydration from localStorage; flagged by react-hooks/set-state-in-effect
+        // but not cascading (guarded by `initialized`).
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setCurrentPreset(parsed);
         setCustomColor(parsed.light.secondary);
         setIsCustom(parsed.name === 'Custom');
@@ -365,6 +365,8 @@ export function ThemeCustomizer() {
                           }`}
                           style={{ backgroundColor: previewColor }}
                           title={preset.name}
+                          aria-label={`Select ${preset.name} color preset`}
+                          aria-pressed={isSelected}
                         >
                           {isSelected && (
                             <div className="absolute inset-0 flex items-center justify-center">

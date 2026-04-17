@@ -84,7 +84,10 @@ export default function Aurora({
 }: AuroraProps) {
   const ctnRef = useRef<HTMLDivElement>(null);
   const speedRef = useRef(speed);
-  speedRef.current = speed;
+
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
 
   useEffect(() => {
     const ctn = ctnRef.current;

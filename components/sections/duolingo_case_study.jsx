@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from "react";
-
 export default function DuolingoCaseStudy() {
   return (
     <>
@@ -274,10 +272,10 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 <rect x="570" y="46" width="32" height="174" rx="3" fill="#1A6B5A" opacity=".9"/>{/* Q3'25 50.5 */}
 <rect x="615" y="38" width="32" height="182" rx="3" fill="#D4790E"/>{/* Q4'25 52.7 */}
 {/* Labels */}
-<text x="91" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4'22</text>
-<text x="271" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4'23</text>
-<text x="451" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4'24</text>
-<text x="631" y="238" fill="#D4790E" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle" fontWeight="700">Q4'25</text>
+<text x="91" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4&apos;22</text>
+<text x="271" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4&apos;23</text>
+<text x="451" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4&apos;24</text>
+<text x="631" y="238" fill="#D4790E" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle" fontWeight="700">Q4&apos;25</text>
 {/* Growth rate annotations */}
 <text x="271" y="120" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="9" textAnchor="middle">+65% YoY</text>
 <text x="451" y="73" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="9" textAnchor="middle">+51% YoY</text>

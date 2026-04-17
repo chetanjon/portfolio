@@ -2,7 +2,7 @@ export const personalInfo = {
   name: 'CJ',
   fullName: 'Chetan Jonnalagadda',
   title: 'Product Manager',
-  tagline: 'I scale B2B marketplaces by closing the gap between what data shows and what users actually experience.',
+  tagline: 'I ship AI products 0→live and scale B2B marketplaces — with metrics that hold up to scrutiny.',
   location: 'Tempe, Arizona',
   phone: '(602) 807-9130',
   email: 'jonnalagadda8800@gmail.com',
@@ -29,5 +29,5 @@ export const personalInfo = {
   visaStatus: 'Requires H1B Sponsorship',
   openTo: ['Full-time', 'Remote', 'Hybrid', 'Relocation'],
   summary:
-    'Co-Founder & CEO of Aatram, a 0-to-1 emotion-first anti-procrastination iOS app live on the App Store. Previously scaled a B2B handloom marketplace from 20 to 45+ vendors in 9 months — doubling GMV, improving seller activation 30–35%, and building analytics infrastructure to sustain it. CSPO certified. M.S. Management of Technology at ASU.',
+    'Product manager who shipped a live AI-powered iOS app hitting 35–40% D7 retention (2x category average) and scaled a seed-stage B2B marketplace 2.3x. Engineering background with hands-on SQL, Python, and analytics. CSPO certified. M.S. Management of Technology at ASU (May 2026).',
 };

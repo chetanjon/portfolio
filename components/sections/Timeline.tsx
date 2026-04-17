@@ -8,9 +8,16 @@ import { cn } from '@/lib/utils';
 const timelineData: TimelineItem[] = [
   {
     year: '2026',
-    title: 'Co-Founder & CEO',
+    title: 'Co-Founder & Product Manager',
     subtitle: 'Aatram (iOS App — Live on App Store)',
-    description: '0-to-1 emotion-first anti-procrastination app. Grew to 50–60 active users with 35–40% retention organically.',
+    description: 'Shipped 0-to-1 with 2 engineers; hit 35–40% D7 retention (2x category avg) on $0 ad spend. Led the pivot that killed 7 features and rebuilt around emotion-rated tasks.',
+    type: 'work',
+  },
+  {
+    year: '2026',
+    title: 'FrictionLens (Live Side Project)',
+    subtitle: 'frictionlens.net',
+    description: 'AI review analyzer 0→1. 22 organic users, <$0.01 per analysis via tiered classification, $0/mo infrastructure.',
     type: 'work',
   },
   {
@@ -31,7 +38,7 @@ const timelineData: TimelineItem[] = [
     year: '2023',
     title: 'Product Manager',
     subtitle: 'IKT INDIA',
-    description: 'Scaled B2B handloom marketplace from 20 → 45+ vendors. Doubled GMV, improved activation by 30-35% and retention by 20%.',
+    description: 'Scaled B2B handloom marketplace from 20 → 45+ vendors. Doubled GMV, 48-hr first-listing rate 30% → 60%, gross margin 25% → 40%.',
     type: 'work',
   },
   {
@@ -39,6 +46,13 @@ const timelineData: TimelineItem[] = [
     title: 'Product Management Intern',
     subtitle: 'IKT INDIA',
     description: 'Conducted 15+ seller interviews, identified 3 drop-off points. Authored PRDs; promoted to Product Manager.',
+    type: 'work',
+  },
+  {
+    year: '2023',
+    title: 'Product Operations Intern',
+    subtitle: 'Gangothri Nutrients',
+    description: 'Planned GTM rollout across a 3,700+ dealer network; built demand forecasting models to reduce off-peak overstocking.',
     type: 'work',
   },
   {

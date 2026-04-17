@@ -50,7 +50,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative z-10 w-full max-w-4xl h-[85vh] bg-bg-secondary rounded-2xl border border-border-default overflow-hidden flex flex-col"
+            className="relative z-10 w-full max-w-4xl h-[85vh] max-h-[85vh] bg-bg-secondary rounded-2xl border border-border-default overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-border-default bg-bg-tertiary/50">
@@ -75,6 +75,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 </a>
                 <button
                   onClick={onClose}
+                  aria-label="Close resume"
                   className="p-2 text-text-muted hover:text-text-primary hover:bg-surface-hover rounded-lg transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5" />

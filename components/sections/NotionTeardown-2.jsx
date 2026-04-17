@@ -422,7 +422,7 @@ export default function NotionTeardown() {
 <header className="hero">
 <div className="container">
 <div className="hero-label reveal">Strategic Product Teardown</div>
-<h1 className="reveal reveal-delay-1">Notion's $600M Paradox: How AI Agents Could Solve the Onboarding Problem That Templates Never Fixed</h1>
+<h1 className="reveal reveal-delay-1">Notion&apos;s $600M Paradox: How AI Agents Could Solve the Onboarding Problem That Templates Never Fixed</h1>
 <p className="hero-meta reveal reveal-delay-2">By <strong>Chetan Jonnalagadda</strong> · March 2026</p>
 </div>
 </header>
@@ -433,7 +433,7 @@ export default function NotionTeardown() {
 <span className="section-num reveal">Overview</span>
 <h2 className="reveal">TL;DR</h2>
 <div className="tldr reveal">
-<p><strong>Notion has 100M+ users, ~$600M ARR (as of late 2025 estimates), and the most ambitious AI agent platform in productivity software.</strong> But its biggest lever for the next $400M isn't another feature launch. It's fixing the activation gap that loses users in their first three weeks.</p>
+<p><strong>Notion has 100M+ users, ~$600M ARR (as of late 2025 estimates), and the most ambitious AI agent platform in productivity software.</strong> But its biggest lever for the next $400M isn&apos;t another feature launch. It&apos;s fixing the activation gap that loses users in their first three weeks.</p>
 <p>After interviewing <strong>10 Notion users</strong> across 5 segments and analyzing <strong>9,000+ reviews</strong>, one pattern dominated: the same flexibility that makes Notion powerful makes it overwhelming. Templates only paper over the problem.</p>
 <p>I propose <strong>5 RICE-scored improvements</strong>, led by an AI-guided onboarding redesign and an AI pricing ramp, that I estimate could improve 90-day activation by 15–25% and unlock an estimated <strong>$40–60M in incremental ARR</strong> (modeled assumptions below).</p>
 </div>
@@ -467,7 +467,7 @@ export default function NotionTeardown() {
 <tr><td>Fortune 500 adoption</td><td>Widely used across many Fortune 500 companies</td></tr>
 <tr><td>International users</td><td><strong>~80%</strong> outside the US (major markets include South Korea, Japan, and Brazil)</td></tr>
 <tr><td>Revenue mix</td><td>Majority from team plans; over half of customers use paid AI features</td></tr>
-<tr><td>IPO timeline</td><td>Many analysts and investors expect a possible IPO window in <strong>2026–2027</strong>, though Notion hasn't committed publicly</td></tr>
+<tr><td>IPO timeline</td><td>Many analysts and investors expect a possible IPO window in <strong>2026–2027</strong>, though Notion hasn&apos;t committed publicly</td></tr>
 </tbody>
 </table>
 </div>
@@ -481,7 +481,7 @@ export default function NotionTeardown() {
 <tr><td>Docs + Databases</td><td>Core product</td><td>2018</td><td>Mature; leading market share in collaborative workspaces (per 6sense)</td></tr>
 <tr><td>AI / Agents</td><td>Internal + OpenAI</td><td>2023 / 2025</td><td>Custom Agents launched Feb 2026</td></tr>
 <tr><td>Calendar</td><td>Cron acquisition</td><td>Jan 2024</td><td>Free; beautiful, limited enterprise</td></tr>
-<tr><td>Sites</td><td>Internal</td><td>Jun 2024</td><td>Basic; can't compete with Webflow</td></tr>
+<tr><td>Sites</td><td>Internal</td><td>Jun 2024</td><td>Basic; can&apos;t compete with Webflow</td></tr>
 <tr><td>Forms</td><td>Internal</td><td>Oct 2024</td><td>Functional; no conditional logic</td></tr>
 <tr><td>Mail</td><td>Skiff acquisition</td><td>Apr 2025</td><td>Gmail-only; weak workspace integration</td></tr>
 </tbody>
@@ -489,7 +489,7 @@ export default function NotionTeardown() {
 </div>
 
 <h3 className="reveal">The strategic thesis</h3>
-<p className="reveal">Notion's strategy is a <strong>platform flywheel</strong>: each new product (Calendar, Mail, Sites) adds user context → richer context makes AI Agents more valuable → better AI drives stickiness → stickiness funds more expansion. CEO Ivan Zhao has stated his vision clearly: Notion should be "the connective tissue of how a company operates." The bet is that breadth, combined with AI, will compound into a moat no point solution can match.</p>
+<p className="reveal">Notion&apos;s strategy is a <strong>platform flywheel</strong>: each new product (Calendar, Mail, Sites) adds user context → richer context makes AI Agents more valuable → better AI drives stickiness → stickiness funds more expansion. CEO Ivan Zhao has stated his vision clearly: Notion should be &quot;the connective tissue of how a company operates.&quot; The bet is that breadth, combined with AI, will compound into a moat no point solution can match.</p>
 </div>
 </section>
 
@@ -519,7 +519,7 @@ export default function NotionTeardown() {
 <p className="reveal"><strong>Additional sources:</strong> G2 (9,014 reviews), Trustpilot (2.5/5 stars), Capterra, Reddit r/Notion (210K+ members), Hacker News.</p>
 
 <div className="tldr reveal">
-<p><strong>Key finding:</strong> 8 of 10 users discovered Notion's core value through YouTube tutorials or friends, not through anything inside the product itself. This single data point anchors my primary recommendation.</p>
+<p><strong>Key finding:</strong> 8 of 10 users discovered Notion&apos;s core value through YouTube tutorials or friends, not through anything inside the product itself. This single data point anchors my primary recommendation.</p>
 </div>
 </div>
 </section>
@@ -537,7 +537,7 @@ export default function NotionTeardown() {
 <div><div className="persona-name">The Builder (Solo Power User)</div>
 <div className="persona-represents">Represents: Sai Teja, Kruthik, Avishka</div></div>
 </div>
-<div className="persona-jtbd">"I need one place to organize my entire life: notes, tasks, projects, goals, all in a way that makes sense to me."</div>
+<div className="persona-jtbd">&quot;I need one place to organize my entire life: notes, tasks, projects, goals, all in a way that makes sense to me.&quot;</div>
 <div className="quote"><p>It looked beautiful, but I had no idea where to start or which templates to trust. I bounced between YouTube tutorials and template galleries, constantly feeling like I was doing Notion wrong.</p><div className="quote-author">— Sai Teja</div></div>
 <div className="quote"><p>Databases plus relations could basically model anything: content pipelines, OKRs, even a lightweight CRM. That flexibility is still why I use it.</p><div className="quote-author">— Kruthik</div></div>
 <p><strong>Frustrations:</strong> Performance on large databases, steep learning curve, AI locked behind $20/mo, slow mobile app (6–7 seconds).</p>
@@ -550,10 +550,10 @@ export default function NotionTeardown() {
 <div><div className="persona-name">The Champion (Team Lead)</div>
 <div className="persona-represents">Represents: Varshini, Vishwajith</div></div>
 </div>
-<div className="persona-jtbd">"I need to replace 5 tools with one that my whole team will actually adopt."</div>
+<div className="persona-jtbd">&quot;I need to replace 5 tools with one that my whole team will actually adopt.&quot;</div>
 <div className="quote"><p>The first week was a honeymoon phase. Everyone on my team was thrilled to have docs, tasks, and wikis in one place. It felt modern and collaborative.</p><div className="quote-author">— Vishwajith</div></div>
 <div className="quote"><p>They upgraded us in a way that resulted in a large unexpected charge with almost no warning. Trying to get a refund was painful.</p><div className="quote-author">— Varshini</div></div>
-<p><strong>Frustrations:</strong> The "evangelist burden," billing surprises, limited offline, email-only support.</p>
+<p><strong>Frustrations:</strong> The &quot;evangelist burden,&quot; billing surprises, limited offline, email-only support.</p>
 </div>
 
 {/* Persona 3: Dabbler */}
@@ -563,9 +563,9 @@ export default function NotionTeardown() {
 <div><div className="persona-name">The Dabbler (Student / Casual User)</div>
 <div className="persona-represents">Represents: Ujjwal Reddy</div></div>
 </div>
-<div className="persona-jtbd">"I need a simple, clean tool for notes and tasks that doesn't require a PhD to use."</div>
-<div className="quote"><p>I spent more time decorating pages than actually studying. After about a month, I accepted I was spending more time building a system than using it. That's when I went back to Google Docs and Apple Notes.</p><div className="quote-author">— Ujjwal Reddy</div></div>
-<p><strong>Current usage:</strong> "This week I opened Notion once to grab an old syllabus and then closed it again."</p>
+<div className="persona-jtbd">&quot;I need a simple, clean tool for notes and tasks that doesn&apos;t require a PhD to use.&quot;</div>
+<div className="quote"><p>I spent more time decorating pages than actually studying. After about a month, I accepted I was spending more time building a system than using it. That&apos;s when I went back to Google Docs and Apple Notes.</p><div className="quote-author">— Ujjwal Reddy</div></div>
+<p><strong>Current usage:</strong> &quot;This week I opened Notion once to grab an old syllabus and then closed it again.&quot;</p>
 <p><strong>Frustrations:</strong> Steep learning curve, AI trial too limited, no student-friendly pricing.</p>
 </div>
 
@@ -576,9 +576,9 @@ export default function NotionTeardown() {
 <div><div className="persona-name">The Skeptic (PM / Professional)</div>
 <div className="persona-represents">Represents: Abhishek, Heber, Sharath, Jayanth</div></div>
 </div>
-<div className="persona-jtbd">"I need a workspace that genuinely replaces multiple tools, not one that just adds to the pile."</div>
-<div className="quote"><p>Notion wants to be my entire operating system but doesn't fully replace specialized tools. I still need Jira, Figma, and others, so Notion becomes yet another tool rather than the only one.</p><div className="quote-author">— Abhishek</div></div>
-<div className="quote"><p>Even after connecting Calendar and Mail, Notion AI still can't answer basic questions like "What meetings do I have tomorrow?" The tools coexist more than they collaborate.</p><div className="quote-author">— Sharath</div></div>
+<div className="persona-jtbd">&quot;I need a workspace that genuinely replaces multiple tools, not one that just adds to the pile.&quot;</div>
+<div className="quote"><p>Notion wants to be my entire operating system but doesn&apos;t fully replace specialized tools. I still need Jira, Figma, and others, so Notion becomes yet another tool rather than the only one.</p><div className="quote-author">— Abhishek</div></div>
+<div className="quote"><p>Even after connecting Calendar and Mail, Notion AI still can&apos;t answer basic questions like &quot;What meetings do I have tomorrow?&quot; The tools coexist more than they collaborate.</p><div className="quote-author">— Sharath</div></div>
 <div className="quote"><p>We actually left Notion a month ago. I only log in to export old PDFs.</p><div className="quote-author">— Jayanth</div></div>
 <p><strong>Frustrations:</strong> Calendar/Mail feel disconnected, pricing bait-and-switch, AI governance concerns.</p>
 </div>
@@ -626,12 +626,12 @@ export default function NotionTeardown() {
 <h3 className="reveal">The pricing trust deficit</h3>
 
 <div className="reveal">
-<div className="quote"><p>That pricing feels like it's meant for companies, not individuals who just want better AI inside their notes.</p><div className="quote-author">— Sai Teja (Plus plan)</div></div>
-<div className="quote"><p>I'm not upgrading to Business just for unlimited AI when I can pay the same $20/month directly to a standalone AI product.</p><div className="quote-author">— Heber (Plus plan)</div></div>
-<div className="quote"><p>It went from "nice upgrade" to "expensive requirement" very quickly.</p><div className="quote-author">— Jayanth (churned)</div></div>
+<div className="quote"><p>That pricing feels like it&apos;s meant for companies, not individuals who just want better AI inside their notes.</p><div className="quote-author">— Sai Teja (Plus plan)</div></div>
+<div className="quote"><p>I&apos;m not upgrading to Business just for unlimited AI when I can pay the same $20/month directly to a standalone AI product.</p><div className="quote-author">— Heber (Plus plan)</div></div>
+<div className="quote"><p>It went from &quot;nice upgrade&quot; to &quot;expensive requirement&quot; very quickly.</p><div className="quote-author">— Jayanth (churned)</div></div>
 </div>
 
-<p className="reveal"><strong>7 of 10 interviewees</strong> expressed frustration with AI pricing. This is a brand risk that financial metrics alone don't capture, and it compounds with every price-sensitive user who tells their network.</p>
+<p className="reveal"><strong>7 of 10 interviewees</strong> expressed frustration with AI pricing. This is a brand risk that financial metrics alone don&apos;t capture, and it compounds with every price-sensitive user who tells their network.</p>
 </div>
 </section>
 
@@ -718,7 +718,7 @@ export default function NotionTeardown() {
 <div style={{textAlign:"center",fontSize:"13px",color:"var(--text3)",margin:"4px 0"}}>or</div>
 <div style={{padding:"11px 16px",border:"1.5px solid var(--border)",borderRadius:"8px",fontSize:"14px",color:"var(--text3)"}}>Enter your email...</div>
 </div>
-<div style={{fontSize:"12px",color:"var(--text3)",marginTop:"16px"}}>By continuing, you agree to Notion's Terms</div>
+<div style={{fontSize:"12px",color:"var(--text3)",marginTop:"16px"}}>By continuing, you agree to Notion&apos;s Terms</div>
 </div>
 </div>
 </div>
@@ -728,7 +728,7 @@ export default function NotionTeardown() {
 <div className="wireframe-body" style={{padding:"28px"}}>
 <div style={{textAlign:"center"}}>
 <div style={{fontFamily:"var(--serif)",fontSize:"20px",marginBottom:"6px"}}>How will you use Notion?</div>
-<div style={{fontSize:"14px",color:"var(--text3)",marginBottom:"20px"}}>We'll streamline your setup experience.</div>
+<div style={{fontSize:"14px",color:"var(--text3)",marginBottom:"20px"}}>We&apos;ll streamline your setup experience.</div>
 <div style={{display:"flex",flexDirection:"column",gap:"10px",maxWidth:"280px",margin:"0 auto",textAlign:"left"}}>
 <div style={{padding:"14px 16px",border:"1.5px solid var(--border)",borderRadius:"10px",fontSize:"14px",cursor:"pointer"}}>
 <div style={{fontWeight:"600",marginBottom:"2px"}}>🧑‍💻 For myself</div>
@@ -755,7 +755,7 @@ export default function NotionTeardown() {
 <div className="wireframe-body" style={{padding:"28px"}}>
 <div style={{textAlign:"center"}}>
 <div style={{fontFamily:"var(--serif)",fontSize:"20px",marginBottom:"6px"}}>What would you like to do?</div>
-<div style={{fontSize:"14px",color:"var(--text3)",marginBottom:"20px"}}>Select all that apply. We'll set things up for you.</div>
+<div style={{fontSize:"14px",color:"var(--text3)",marginBottom:"20px"}}>Select all that apply. We&apos;ll set things up for you.</div>
 <div style={{display:"flex",flexWrap:"wrap",gap:"8px",justifyContent:"center",maxWidth:"300px",margin:"0 auto"}}>
 <span style={{padding:"8px 14px",border:"1.5px solid var(--accent)",borderRadius:"20px",fontSize:"13px",fontWeight:"500",background:"var(--accent-light)",color:"var(--accent)"}}>📋 Project management</span>
 <span style={{padding:"8px 14px",border:"1.5px solid var(--border)",borderRadius:"20px",fontSize:"13px",fontWeight:"500",color:"var(--text2)"}}>📝 Docs & notes</span>
@@ -774,7 +774,7 @@ export default function NotionTeardown() {
 <div className="wireframe-body" style={{padding:"28px"}}>
 <div style={{textAlign:"center"}}>
 <div style={{fontFamily:"var(--serif)",fontSize:"20px",marginBottom:"6px"}}>Choose your plan</div>
-<div style={{fontSize:"14px",color:"var(--text3)",marginBottom:"20px"}}>Start free. Upgrade when you're ready.</div>
+<div style={{fontSize:"14px",color:"var(--text3)",marginBottom:"20px"}}>Start free. Upgrade when you&apos;re ready.</div>
 <div style={{display:"flex",flexDirection:"column",gap:"10px",maxWidth:"280px",margin:"0 auto",textAlign:"left"}}>
 <div style={{padding:"14px 16px",border:"1.5px solid var(--border)",borderRadius:"10px",fontSize:"14px"}}>
 <div style={{fontWeight:"600"}}>Free <span style={{color:"var(--text3)",fontWeight:"400",fontSize:"13px"}}>$0</span></div>
@@ -847,14 +847,14 @@ export default function NotionTeardown() {
 <span>Try Notion AI</span>
 </div>
 </div>
-<div className="ob-annotation" style={{marginTop:"16px"}}>No mention of databases — the core "aha"</div>
+<div className="ob-annotation" style={{marginTop:"16px"}}>No mention of databases — the core &quot;aha&quot;</div>
 </div>
 </div>
 </div>
 
-<p className="reveal" style={{marginTop:"8px",fontSize:"15px"}}><strong>The critical gap:</strong> This flow teaches users <em>what Notion has</em> (templates, features, plans) but never shows them <em>what makes Notion special</em> — the moment a page connects to a database and becomes something more than a doc. The checklist doesn't even mention databases.</p>
+<p className="reveal" style={{marginTop:"8px",fontSize:"15px"}}><strong>The critical gap:</strong> This flow teaches users <em>what Notion has</em> (templates, features, plans) but never shows them <em>what makes Notion special</em> — the moment a page connects to a database and becomes something more than a doc. The checklist doesn&apos;t even mention databases.</p>
 
-<h3 className="reveal">What's broken: The Lego problem</h3>
+<h3 className="reveal">What&apos;s broken: The Lego problem</h3>
 <p className="reveal">My interviews revealed three failing paths, each losing users in a different way:</p>
 
 <h4 className="reveal">Path A: Random pieces (blank page)</h4>
@@ -863,13 +863,13 @@ export default function NotionTeardown() {
 <h4 className="reveal">Path B: Homework (template exploration)</h4>
 <div className="quote reveal"><p>I bounced between YouTube tutorials and template galleries, constantly feeling like I was doing Notion wrong.</p><div className="quote-author">— Sai Teja (stuck for 2 weeks)</div></div>
 
-<h4 className="reveal">Path C: Pre-built set (someone else's system)</h4>
+<h4 className="reveal">Path C: Pre-built set (someone else&apos;s system)</h4>
 <div className="quote reveal"><p>Once it became a boring-but-reliable table, Notion started to help instead of hinder.</p><div className="quote-author">— Heber (took 1 month to simplify)</div></div>
 
 <p className="reveal"><strong>None of these paths efficiently guide users to the aha moment:</strong> building a connected page + database. The onboarding teaches what Notion has, not what makes Notion special.</p>
 
 <h3 className="reveal">My proposed redesign: AI-guided interactive building</h3>
-<p className="reveal">Replace templates with a <strong>5-minute guided build</strong> where AI generates a workspace from the user's actual project, then walks them through customizing it. The goal: get every new user to the aha moment on Day 1, not Week 3. Full wireframe below in Section 11.</p>
+<p className="reveal">Replace templates with a <strong>5-minute guided build</strong> where AI generates a workspace from the user&apos;s actual project, then walks them through customizing it. The goal: get every new user to the aha moment on Day 1, not Week 3. Full wireframe below in Section 11.</p>
 </div>
 </section>
 
@@ -880,22 +880,22 @@ export default function NotionTeardown() {
 <h2 className="reveal">UX Analysis: AI Agents, Calendar & Mail</h2>
 
 <h3 className="reveal">AI Agents: Powerful but gated and opaque</h3>
-<p className="reveal">In September 2025, Notion launched AI Agents (the "Personal Agent") capable of autonomous multi-step sessions. By early 2026, Custom Agents arrived: trigger-based and running 24/7. Early adoption appeared strong, with Notion highlighting rapid uptake in its announcements.</p>
+<p className="reveal">In September 2025, Notion launched AI Agents (the &quot;Personal Agent&quot;) capable of autonomous multi-step sessions. By early 2026, Custom Agents arrived: trigger-based and running 24/7. Early adoption appeared strong, with Notion highlighting rapid uptake in its announcements.</p>
 
 <div className="reveal">
-<div className="quote"><p>Agents feel confusing and a bit overkill for an individual user, so I haven't invested time to set them up.</p><div className="quote-author">— Sai Teja</div></div>
-<div className="quote"><p>I tried Notion AI to ask about my schedule and inbox, but it responded that it couldn't access that information, which was confusing after I'd just connected those integrations.</p><div className="quote-author">— Sharath</div></div>
-<div className="quote"><p>Agents are still more of a novelty; I don't trust them enough to automate important workflows.</p><div className="quote-author">— Avishka</div></div>
+<div className="quote"><p>Agents feel confusing and a bit overkill for an individual user, so I haven&apos;t invested time to set them up.</p><div className="quote-author">— Sai Teja</div></div>
+<div className="quote"><p>I tried Notion AI to ask about my schedule and inbox, but it responded that it couldn&apos;t access that information, which was confusing after I&apos;d just connected those integrations.</p><div className="quote-author">— Sharath</div></div>
+<div className="quote"><p>Agents are still more of a novelty; I don&apos;t trust them enough to automate important workflows.</p><div className="quote-author">— Avishka</div></div>
 </div>
 
 <h3 className="reveal">Calendar: Beautiful acquisition lever, frustrating daily driver</h3>
 <p className="reveal">Free on all plans. Beautifully designed (inherited from the Cron acquisition). The database deadline overlay is the killer feature. But polish gaps keep users from committing:</p>
-<div className="quote reveal"><p>I keep drifting back to my old tools because Notion's versions feel half a step behind in UX and reliability.</p><div className="quote-author">— Avishka</div></div>
+<div className="quote reveal"><p>I keep drifting back to my old tools because Notion&apos;s versions feel half a step behind in UX and reliability.</p><div className="quote-author">— Avishka</div></div>
 <p className="reveal"><strong>The missing month view on mobile</strong> forces every user to keep a second calendar installed.</p>
 
 <h3 className="reveal">Mail: Promising concept, premature launch</h3>
 <p className="reveal">Gmail-only. Custom Views with AI auto-labeling (~60–70% accuracy) are innovative. But the product shipped before the integration layer was ready:</p>
-<div className="quote reveal"><p>Notion's AI can't really see my events and emails in a meaningful way yet, which defeats the point.</p><div className="quote-author">— Heber</div></div>
+<div className="quote reveal"><p>Notion&apos;s AI can&apos;t really see my events and emails in a meaningful way yet, which defeats the point.</p><div className="quote-author">— Heber</div></div>
 <p className="reveal"><strong>0 of 10 interviewees</strong> had fully replaced Gmail with Notion Mail.</p>
 </div>
 </section>
@@ -910,10 +910,10 @@ export default function NotionTeardown() {
 <table>
 <thead><tr><th>From</th><th>Lesson</th><th>User Evidence</th></tr></thead>
 <tbody>
-<tr><td><strong>Obsidian</strong></td><td>Local-first earns trust. Offline must feel real.</td><td>Vishwajith: <em>"On flights, Notion becomes unreliable or read-only in weird ways."</em></td></tr>
-<tr><td><strong>Confluence</strong></td><td>Price the floor, not the ceiling. A 3–4x premium needs justification.</td><td>Abhishek: <em>"I worry about the per-seat cost scaling."</em></td></tr>
-<tr><td><strong>Microsoft Loop</strong></td><td>"Good enough + already included" beats "better but separate"</td><td>400M+ M365 users get Loop free</td></tr>
-<tr><td><strong>Coda</strong></td><td>Deep automation wins power users; be connective tissue, not replacement</td><td>Abhishek: <em>"I'd improve deep integrations so Notion becomes the connective tissue."</em></td></tr>
+<tr><td><strong>Obsidian</strong></td><td>Local-first earns trust. Offline must feel real.</td><td>Vishwajith: <em>&quot;On flights, Notion becomes unreliable or read-only in weird ways.&quot;</em></td></tr>
+<tr><td><strong>Confluence</strong></td><td>Price the floor, not the ceiling. A 3–4x premium needs justification.</td><td>Abhishek: <em>&quot;I worry about the per-seat cost scaling.&quot;</em></td></tr>
+<tr><td><strong>Microsoft Loop</strong></td><td>&quot;Good enough + already included&quot; beats &quot;better but separate&quot;</td><td>400M+ M365 users get Loop free</td></tr>
+<tr><td><strong>Coda</strong></td><td>Deep automation wins power users; be connective tissue, not replacement</td><td>Abhishek: <em>&quot;I&apos;d improve deep integrations so Notion becomes the connective tissue.&quot;</em></td></tr>
 </tbody>
 </table>
 </div>
@@ -931,7 +931,7 @@ export default function NotionTeardown() {
 <thead><tr><th>Rank</th><th>Recommendation</th><th>Reach</th><th>Impact</th><th>Confidence</th><th>Effort</th><th>RICE</th></tr></thead>
 <tbody>
 <tr><td><span className="rice-rank">1</span></td><td><strong>AI trial ramp</strong> (graduated, not cliff)</td><td>10M/Q</td><td>2</td><td>70%</td><td>2 mo</td><td className="rice-score">7,000</td></tr>
-<tr><td><span className="rice-rank">2</span></td><td><strong>AI-guided onboarding</strong> ("Build With Me")</td><td>8M/Q</td><td>2</td><td>80%</td><td>4 mo</td><td className="rice-score">3,200</td></tr>
+<tr><td><span className="rice-rank">2</span></td><td><strong>AI-guided onboarding</strong> (&quot;Build With Me&quot;)</td><td>8M/Q</td><td>2</td><td>80%</td><td>4 mo</td><td className="rice-score">3,200</td></tr>
 <tr><td><span className="rice-rank">3</span></td><td><strong>AI Workspace Doctor</strong> (proactive health checks)</td><td>3M/Q</td><td>2</td><td>80%</td><td>3 mo</td><td className="rice-score">1,600</td></tr>
 <tr><td><span className="rice-rank">4</span></td><td><strong>Progressive skill tree</strong> (feature unlocking)</td><td>6M/Q</td><td>2</td><td>70%</td><td>6 mo</td><td className="rice-score">1,400</td></tr>
 <tr><td><span className="rice-rank">5</span></td><td><strong>Mail ↔ Database</strong> integration</td><td>1M/Q</td><td>3</td><td>60%</td><td>6 mo</td><td className="rice-score">300</td></tr>
@@ -942,10 +942,10 @@ export default function NotionTeardown() {
 <div className="assumptions reveal">
 <strong>How I estimated Reach</strong><br />
 Notion reports 100M+ registered users with ~20M monthly visits. I assume ~40M quarterly active users (QAUs) based on typical freemium engagement ratios (monthly active ≈ 60–70% of quarterly active).<br />
-<strong>#1 AI trial ramp (10M/Q):</strong> Notion states over half of paying customers use AI, suggesting high AI trial intent across the user base. I estimate ~25% of QAUs trigger the AI limit in a given quarter — some try it once, some hit the wall repeatedly. That's ~10M quarterly.<br />
+<strong>#1 AI trial ramp (10M/Q):</strong> Notion states over half of paying customers use AI, suggesting high AI trial intent across the user base. I estimate ~25% of QAUs trigger the AI limit in a given quarter — some try it once, some hit the wall repeatedly. That&apos;s ~10M quarterly.<br />
 <strong>#2 Onboarding (8M/Q):</strong> Notion grew from ~30M users (2022) to 100M+ (2024), adding ~70M in roughly 2 years, or ~8–9M per quarter in that growth phase. I use 8M/Q as a conservative current-state estimate.<br />
 <strong>#3 Workspace Doctor (3M/Q):</strong> Scoped to active team workspaces. ~4M paying users × ~75% on team plans = ~3M quarterly.<br />
-<strong>#4 Skill tree (6M/Q):</strong> All active users past onboarding who haven't used advanced features. ~40M QAUs × ~15% who are past basics but haven't used databases/relations = ~6M.<br />
+<strong>#4 Skill tree (6M/Q):</strong> All active users past onboarding who haven&apos;t used advanced features. ~40M QAUs × ~15% who are past basics but haven&apos;t used databases/relations = ~6M.<br />
 <strong>#5 Mail integration (1M/Q):</strong> Gmail-only, limited to users who have opted into Notion Mail. Conservative estimate based on early adoption of a new product.
 </div>
 
@@ -959,27 +959,27 @@ Notion reports 100M+ registered users with ~20M monthly visits. I assume ~40M qu
 <p className="reveal"><strong>Metrics:</strong> Free/Plus → Business conversion (+3–5 pp), AI usage in first 30 days, upgrade timeline reduction.</p>
 
 <h3 className="reveal">Rec #2: AI-Guided Onboarding (RICE: 3,200)</h3>
-<p className="reveal"><strong>Problem:</strong> 8/10 users learned Notion's value from YouTube, not from the product itself. Ujjwal churned entirely. The product teaches features, not value.</p>
+<p className="reveal"><strong>Problem:</strong> 8/10 users learned Notion&apos;s value from YouTube, not from the product itself. Ujjwal churned entirely. The product teaches features, not value.</p>
 <p className="reveal"><strong>Solution:</strong> A 5-minute guided build where AI asks one question, generates a workspace, and walks users through customizing it.</p>
-<p className="reveal"><strong>Evidence:</strong> Sai Teja's aha moment (<em>"It clicked when I built a very simple tasks database"</em>) is exactly what this flow creates in 5 minutes instead of 2 weeks.</p>
+<p className="reveal"><strong>Evidence:</strong> Sai Teja&apos;s aha moment (<em>&quot;It clicked when I built a very simple tasks database&quot;</em>) is exactly what this flow creates in 5 minutes instead of 2 weeks.</p>
 <p className="reveal"><strong>Metrics:</strong> 30-day retention (+15–20%), time-to-first-database (&lt;10 min), activation rate (+10–15%).</p>
 
 <h3 className="reveal">Rec #3: Workspace Doctor (RICE: 1,600)</h3>
 <p className="reveal"><strong>Problem:</strong> Workspaces degrade over time. Stale pages, duplicate databases, broken links. Users blame Notion for the entropy they created.</p>
 <p className="reveal"><strong>Solution:</strong> Weekly AI health check digest with one-click fixes. Score tracks workspace quality over time.</p>
-<p className="reveal"><strong>Evidence:</strong> Avishka: <em>"They're racing toward all-in-one instead of polishing the core."</em></p>
+<p className="reveal"><strong>Evidence:</strong> Avishka: <em>&quot;They&apos;re racing toward all-in-one instead of polishing the core.&quot;</em></p>
 
 <h3 className="reveal">Rec #4: Skill Tree (RICE: 1,400)</h3>
-<p className="reveal"><strong>Problem:</strong> The gap between "make a page" and "build relational databases with rollups" is enormous, with no guided path bridging it.</p>
+<p className="reveal"><strong>Problem:</strong> The gap between &quot;make a page&quot; and &quot;build relational databases with rollups&quot; is enormous, with no guided path bridging it.</p>
 <p className="reveal"><strong>Solution:</strong> A visual progression system: Pages → Databases → Views → Relations → Automations → Agents. Each level unlocks with real usage, not tutorials.</p>
 
 <h3 className="reveal">Rec #5: Mail ↔ Database Integration (RICE: 300)</h3>
-<p className="reveal"><strong>Problem:</strong> 0/10 users fully replaced Gmail. Sharath: <em>"Tools coexist more than they collaborate."</em></p>
-<p className="reveal"><strong>Solution:</strong> "Save to Notion" on every email, email property type in databases, inline email embeds.</p>
+<p className="reveal"><strong>Problem:</strong> 0/10 users fully replaced Gmail. Sharath: <em>&quot;Tools coexist more than they collaborate.&quot;</em></p>
+<p className="reveal"><strong>Solution:</strong> &quot;Save to Notion&quot; on every email, email property type in databases, inline email embeds.</p>
 
 {/* ARR MODEL */}
 <h3 className="reveal" style={{marginTop:"48px"}}>Back-of-Napkin ARR Model: How I Get to $40–60M</h3>
-<p className="reveal">A hiring manager will ask "where did that number come from?" Here's the math, with every assumption labeled.</p>
+<p className="reveal">A hiring manager will ask &quot;where did that number come from?&quot; Here&apos;s the math, with every assumption labeled.</p>
 
 <div className="model-box reveal">
 <div style={{fontSize:"13px",fontWeight:"700",textTransform:"uppercase",letterSpacing:"1px",color:"var(--text3)",marginBottom:"20px"}}>Lever 1: AI Trial Ramp → Conversion Lift</div>
@@ -1019,8 +1019,8 @@ Notion reports 100M+ registered users with ~20M monthly visits. I assume ~40M qu
 
 <div className="assumptions reveal">
 <strong>Key assumptions & caveats</strong><br />
-These are order-of-magnitude estimates, not forecasts. The two most sensitive variables: (1) the 10% upgrade-eligible filter on Lever 1 — if it's 5%, the number halves; if 15%, it grows proportionally, and (2) the execution discount, which I range from 33–55% to account for cohort overlap, cannibalization of organic upgrades, and the gap between modeled and real-world behavior. A real PM would A/B test the ramp first (fastest to ship, lowest effort) to validate the conversion lift before investing in the onboarding rebuild.<br /><br />
-<em>In an interview, I'd present this as "here's my hypothesis and how I'd test it," not as a prediction.</em>
+These are order-of-magnitude estimates, not forecasts. The two most sensitive variables: (1) the 10% upgrade-eligible filter on Lever 1 — if it&apos;s 5%, the number halves; if 15%, it grows proportionally, and (2) the execution discount, which I range from 33–55% to account for cohort overlap, cannibalization of organic upgrades, and the gap between modeled and real-world behavior. A real PM would A/B test the ramp first (fastest to ship, lowest effort) to validate the conversion lift before investing in the onboarding rebuild.<br /><br />
+<em>In an interview, I&apos;d present this as &quot;here&apos;s my hypothesis and how I&apos;d test it,&quot; not as a prediction.</em>
 </div>
 </div>
 </section>
@@ -1030,7 +1030,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="container wide">
 <span className="section-num reveal">10</span>
 <h2 className="reveal">Risks & Tradeoffs</h2>
-<p className="reveal">Every recommendation has a way it could fail. Acknowledging these upfront makes the case stronger, not weaker — it shows the thinking behind what I'd test first and what I'd watch for.</p>
+<p className="reveal">Every recommendation has a way it could fail. Acknowledging these upfront makes the case stronger, not weaker — it shows the thinking behind what I&apos;d test first and what I&apos;d watch for.</p>
 
 <div className="risk-grid reveal">
 
@@ -1038,7 +1038,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="risk-rec">Rec #1 · AI Trial Ramp</div>
 <div className="risk-level">High Risk</div>
 <h4>Cannibalization of Business upgrades</h4>
-<p>If daily free AI is "good enough," users who would have upgraded at the cliff now never convert. Revenue impact could be negative in the short term.</p>
+<p>If daily free AI is &quot;good enough,&quot; users who would have upgraded at the cliff now never convert. Revenue impact could be negative in the short term.</p>
 <div className="mitigation">Mitigation: A/B test ramp vs. cliff on a 10% cohort for 8 weeks. Track 60-day conversion, not just 30-day. Kill if net revenue per user drops &gt;5%.</div>
 </div>
 
@@ -1046,7 +1046,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="risk-rec">Rec #1 · AI Trial Ramp</div>
 <div className="risk-level">Medium Risk</div>
 <h4>Increased AI compute costs without proportional revenue</h4>
-<p>Giving more free AI usage means more inference cost on Notion's side. If conversion doesn't follow, margins compress.</p>
+<p>Giving more free AI usage means more inference cost on Notion&apos;s side. If conversion doesn&apos;t follow, margins compress.</p>
 <div className="mitigation">Mitigation: Set a per-user cost cap. Use smaller/faster models for free-tier AI. Monitor cost-per-conversion as a guardrail metric.</div>
 </div>
 
@@ -1054,38 +1054,38 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="risk-rec">Rec #2 · AI-Guided Onboarding</div>
 <div className="risk-level">Medium Risk</div>
 <h4>AI-generated workspaces feel generic or wrong</h4>
-<p>If the AI builds a workspace that doesn't match what the user imagined, it could create a worse first impression than a blank page. "This isn't what I meant" is a hard hole to climb out of.</p>
-<div className="mitigation">Mitigation: Offer 2–3 generated options, not one. Always show "Start from scratch" as an escape hatch. Track rage-clicks and immediate deletion rates.</div>
+<p>If the AI builds a workspace that doesn&apos;t match what the user imagined, it could create a worse first impression than a blank page. &quot;This isn&apos;t what I meant&quot; is a hard hole to climb out of.</p>
+<div className="mitigation">Mitigation: Offer 2–3 generated options, not one. Always show &quot;Start from scratch&quot; as an escape hatch. Track rage-clicks and immediate deletion rates.</div>
 </div>
 
 <div className="risk-card low">
 <div className="risk-rec">Rec #2 · AI-Guided Onboarding</div>
 <div className="risk-level">Low Risk</div>
 <h4>Eng effort exceeds 4-month estimate</h4>
-<p>Deep integration with Notion's block editor + AI pipeline could surface unexpected complexity, especially around real-time generation and template linking.</p>
+<p>Deep integration with Notion&apos;s block editor + AI pipeline could surface unexpected complexity, especially around real-time generation and template linking.</p>
 <div className="mitigation">Mitigation: Ship V1 with pre-built AI templates (lower eng lift) before building real-time generation. Validate the concept before over-investing.</div>
 </div>
 
 <div className="risk-card high">
 <div className="risk-rec">Rec #3 · Workspace Doctor</div>
 <div className="risk-level">High Risk</div>
-<h4>"Your workspace is messy" feels judgmental</h4>
-<p>Users who get a low health score may feel blamed rather than helped. This is especially dangerous for Champions who've invested heavily in their workspace and take pride in it.</p>
-<div className="mitigation">Mitigation: Frame scores as "opportunities," not grades. Default to opt-in. Test messaging with 5–10 power users before broad launch. Never show score to anyone except the admin.</div>
+<h4>&quot;Your workspace is messy&quot; feels judgmental</h4>
+<p>Users who get a low health score may feel blamed rather than helped. This is especially dangerous for Champions who&apos;ve invested heavily in their workspace and take pride in it.</p>
+<div className="mitigation">Mitigation: Frame scores as &quot;opportunities,&quot; not grades. Default to opt-in. Test messaging with 5–10 power users before broad launch. Never show score to anyone except the admin.</div>
 </div>
 
 <div className="risk-card med">
 <div className="risk-rec">Rec #4 · Skill Tree</div>
 <div className="risk-level">Medium Risk</div>
 <h4>Gamification feels patronizing to power users</h4>
-<p>Experienced PMs and engineers don't want badges. If the skill tree feels like a tutorial game, it'll reduce perceived product seriousness — especially in enterprise evaluations.</p>
-<div className="mitigation">Mitigation: Make it invisible to users who've already passed each level organically. Frame as "feature discovery," not "achievements." Test with The Dabbler segment first, not Builders.</div>
+<p>Experienced PMs and engineers don&apos;t want badges. If the skill tree feels like a tutorial game, it&apos;ll reduce perceived product seriousness — especially in enterprise evaluations.</p>
+<div className="mitigation">Mitigation: Make it invisible to users who&apos;ve already passed each level organically. Frame as &quot;feature discovery,&quot; not &quot;achievements.&quot; Test with The Dabbler segment first, not Builders.</div>
 </div>
 
 </div>
 
 <div className="tldr reveal">
-<p><strong>What I'd test first:</strong> The AI trial ramp (Rec #1) is the fastest to ship and the riskiest to revenue. I'd run a controlled A/B test with 10% of new free users for 8 weeks before committing. If 60-day conversion holds or improves, green-light the full rollout and start building the onboarding redesign in parallel.</p>
+<p><strong>What I&apos;d test first:</strong> The AI trial ramp (Rec #1) is the fastest to ship and the riskiest to revenue. I&apos;d run a controlled A/B test with 10% of new free users for 8 weeks before committing. If 60-day conversion holds or improves, green-light the full rollout and start building the onboarding redesign in parallel.</p>
 </div>
 </div>
 </section>
@@ -1097,16 +1097,16 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <h2 className="reveal">Wireframe Mockups</h2>
 
 {/* WIREFRAME 1: Onboarding */}
-<h3 className="reveal">Mockup 1: AI-Guided Onboarding, "Build With Me"</h3>
+<h3 className="reveal">Mockup 1: AI-Guided Onboarding, &quot;Build With Me&quot;</h3>
 
 <div className="wireframe reveal">
 <div className="wireframe-header"><div className="wireframe-dot r"></div><div className="wireframe-dot y"></div><div className="wireframe-dot g"></div><div className="wireframe-title">Screen 1: The One Question</div></div>
 <div className="wireframe-body">
 <div className="wf-card">
 <div style={{fontSize:"28px",marginBottom:"4px"}}>✨</div>
-<h3 style={{fontFamily:"var(--serif)",fontSize:"24px",margin:"8px 0"}}>Let's build something together.</h3>
-<p style={{color:"var(--text3)",fontSize:"15px",marginBottom:"16px"}}>What's the most important project you're working on right now?</p>
-<div className="wf-input">e.g., "Planning a product launch"</div>
+<h3 style={{fontFamily:"var(--serif)",fontSize:"24px",margin:"8px 0"}}>Let&apos;s build something together.</h3>
+<p style={{color:"var(--text3)",fontSize:"15px",marginBottom:"16px"}}>What&apos;s the most important project you&apos;re working on right now?</p>
+<div className="wf-input">e.g., &quot;Planning a product launch&quot;</div>
 <button className="wf-btn">Build my workspace →</button>
 <br />
 <button className="wf-btn-outline" style={{marginTop:"12px"}}>Skip and explore templates</button>
@@ -1143,13 +1143,13 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="wf-db-row"><span>Set up analytics</span><span><span className="wf-status todo">To Do</span></span><span>—</span><span>Apr 1</span></div>
 </div>
 <div className="wf-coach">
-<strong>👆 Step 1 of 3:</strong> Try adding a new column! Click the "+" on the table header to add a Priority property.
+<strong>👆 Step 1 of 3:</strong> Try adding a new column! Click the &quot;+&quot; on the table header to add a Priority property.
 <br /><br />
 <button style={{background:"rgba(255,255,255,.2)",border:"1px solid rgba(255,255,255,.4)",color:"#fff",padding:"6px 16px",borderRadius:"6px",fontSize:"13px",cursor:"pointer"}}>Got it →</button>
 </div>
 </div>
 </div>
-<p className="reveal" style={{marginTop:"12px"}}><strong>Design rationale:</strong> Sai Teja's aha moment (building a simple database) happens in 5 minutes instead of 2 weeks. Users learn building blocks through their own project.</p>
+<p className="reveal" style={{marginTop:"12px"}}><strong>Design rationale:</strong> Sai Teja&apos;s aha moment (building a simple database) happens in 5 minutes instead of 2 weeks. Users learn building blocks through their own project.</p>
 
 {/* WIREFRAME 2: AI Ramp */}
 <h3 className="reveal" style={{marginTop:"48px"}}>Mockup 2: AI Trial Ramp, Current vs. Proposed</h3>
@@ -1159,7 +1159,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="compare-label bad">❌ Current: Hard Paywall</div>
 <div style={{textAlign:"center",padding:"24px 0"}}>
 <div style={{fontSize:"32px",marginBottom:"8px"}}>⚠️</div>
-<p style={{fontWeight:"600",color:"var(--text)",marginBottom:"8px"}}>You've used all 20 AI trial responses.</p>
+<p style={{fontWeight:"600",color:"var(--text)",marginBottom:"8px"}}>You&apos;ve used all 20 AI trial responses.</p>
 <p style={{fontSize:"14px",color:"var(--text3)",marginBottom:"16px"}}>Upgrade to Business ($20/mo) for unlimited AI.</p>
 <button className="wf-btn" style={{width:"100%"}}>Upgrade Now</button>
 <p style={{fontSize:"12px",color:"var(--text3)",marginTop:"12px"}}>(No other option. Dead end.)</p>
@@ -1209,7 +1209,7 @@ Month 2+: 2/day
 <div className="wf-health-dot yellow"></div>
 <div>
 <div style={{fontWeight:"600",fontSize:"15px"}}>2 duplicate databases detected</div>
-<div style={{fontSize:"13px",color:"var(--text3)"}}>"Meeting Notes" appears in two teamspaces</div>
+<div style={{fontSize:"13px",color:"var(--text3)"}}>&quot;Meeting Notes&quot; appears in two teamspaces</div>
 <div className="wf-health-actions"><button>Merge</button><button>Ignore</button></div>
 </div>
 </div>
@@ -1218,7 +1218,7 @@ Month 2+: 2/day
 <div className="wf-health-dot green"></div>
 <div>
 <div style={{fontWeight:"600",fontSize:"15px"}}>3 team members joined this week</div>
-<div style={{fontSize:"13px",color:"var(--text3)"}}>They haven't completed onboarding yet</div>
+<div style={{fontSize:"13px",color:"var(--text3)"}}>They haven&apos;t completed onboarding yet</div>
 <div className="wf-health-actions"><button>Send Reminder</button></div>
 </div>
 </div>
@@ -1229,7 +1229,7 @@ Month 2+: 2/day
 </div>
 </div>
 </div>
-<p className="reveal"><strong>Design rationale:</strong> Avishka's critique ("racing toward all-in-one instead of polishing the core") speaks to workspace entropy. A self-maintaining system addresses this directly.</p>
+<p className="reveal"><strong>Design rationale:</strong> Avishka&apos;s critique (&quot;racing toward all-in-one instead of polishing the core&quot;) speaks to workspace entropy. A self-maintaining system addresses this directly.</p>
 
 {/* WIREFRAME 4: Mail */}
 <h3 className="reveal" style={{marginTop:"48px"}}>Mockup 4: Mail → Database Integration</h3>
@@ -1241,7 +1241,7 @@ Month 2+: 2/day
 <div style={{fontSize:"13px",color:"var(--text3)"}}>From: sarah.chen@client.com</div>
 <div style={{fontWeight:"600",fontSize:"16px",marginTop:"4px"}}>Q2 deliverables feedback</div>
 </div>
-<p style={{fontSize:"15px",color:"var(--text2)",marginBottom:"20px"}}>Hi team, here's our feedback on the Q2 deliverables. Overall the direction is strong but we have concerns about...</p>
+<p style={{fontSize:"15px",color:"var(--text2)",marginBottom:"20px"}}>Hi team, here&apos;s our feedback on the Q2 deliverables. Overall the direction is strong but we have concerns about...</p>
 <div style={{display:"flex",gap:"12px",marginBottom:"24px"}}>
 <button className="wf-btn" style={{fontSize:"14px"}}>💾 Save to Notion</button>
 <button className="wf-btn-outline">↩ Reply</button>
@@ -1262,7 +1262,7 @@ Month 2+: 2/day
 </div>
 </div>
 </div>
-<p className="reveal"><strong>Design rationale:</strong> Sharath's complaint ("tools coexist more than they collaborate") is solved by making emails actionable within the database workflow.</p>
+<p className="reveal"><strong>Design rationale:</strong> Sharath&apos;s complaint (&quot;tools coexist more than they collaborate&quot;) is solved by making emails actionable within the database workflow.</p>
 
 </div>
 </section>
@@ -1302,17 +1302,17 @@ Month 2+: 2/day
 <span className="section-num reveal">13</span>
 <h2 className="reveal">Strategic Outlook</h2>
 
-<h3 className="reveal">What Notion's paradox reveals about productivity</h3>
+<h3 className="reveal">What Notion&apos;s paradox reveals about productivity</h3>
 
 <p className="reveal"><strong>1. AI agents will compress the activation timeline.</strong> The Week 3 cliff exists because humans learn slowly. AI-guided onboarding could collapse weeks into minutes, not just for Notion but for every complex SaaS product.</p>
 
-<p className="reveal"><strong>2. "All-in-one" works until it doesn't.</strong> Abhishek: <em>"Notion wants to be my entire operating system but doesn't fully replace specialized tools."</em> Each new product adds maintenance burden. The question isn't whether Notion can build everything. It's whether those products work together better than best-of-breed alternatives.</p>
+<p className="reveal"><strong>2. &quot;All-in-one&quot; works until it doesn&apos;t.</strong> Abhishek: <em>&quot;Notion wants to be my entire operating system but doesn&apos;t fully replace specialized tools.&quot;</em> Each new product adds maintenance burden. The question isn&apos;t whether Notion can build everything. It&apos;s whether those products work together better than best-of-breed alternatives.</p>
 
-<p className="reveal"><strong>3. Pricing is the primary battleground.</strong> Confluence at $5/user with AI included. Loop free with M365. Notion's $20/user Business tier must deliver clearly superior value to justify the premium. The AI Agent capabilities are differentiated today, but the window is narrowing fast.</p>
+<p className="reveal"><strong>3. Pricing is the primary battleground.</strong> Confluence at $5/user with AI included. Loop free with M365. Notion&apos;s $20/user Business tier must deliver clearly superior value to justify the premium. The AI Agent capabilities are differentiated today, but the window is narrowing fast.</p>
 
-<div className="quote reveal" style={{borderLeft:"4px solid var(--accent)",background:"var(--card)"}}><p>I'd pause big new feature launches for a cycle and focus entirely on speed, offline mode, and making existing features feel truly integrated and reliable.</p><div className="quote-author">— Avishka</div></div>
+<div className="quote reveal" style={{borderLeft:"4px solid var(--accent)",background:"var(--card)"}}><p>I&apos;d pause big new feature launches for a cycle and focus entirely on speed, offline mode, and making existing features feel truly integrated and reliable.</p><div className="quote-author">— Avishka</div></div>
 
-<p className="reveal"><strong>My bet:</strong> The winner of the "AI work OS" category won't be the company with the most powerful agents. It will be the one that gets the most users to a state where agents are actually useful to them. That's an activation problem, not a feature problem. And it's the single highest-leverage investment Notion can make right now.</p>
+<p className="reveal"><strong>My bet:</strong> The winner of the &quot;AI work OS&quot; category won&apos;t be the company with the most powerful agents. It will be the one that gets the most users to a state where agents are actually useful to them. That&apos;s an activation problem, not a feature problem. And it&apos;s the single highest-leverage investment Notion can make right now.</p>
 </div>
 </section>
 

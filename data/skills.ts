@@ -29,6 +29,7 @@ export const skillCategories: SkillCategory[] = [
       { name: 'SQL', proficiency: 'intermediate' },
       { name: 'Python', proficiency: 'intermediate' },
       { name: 'PostHog', proficiency: 'intermediate' },
+      { name: 'Supabase', proficiency: 'intermediate' },
     ],
   },
   {

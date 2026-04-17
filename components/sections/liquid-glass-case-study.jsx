@@ -226,24 +226,25 @@ const Quote = ({ text, author, borderColor = C.red }) => (
     position: "relative", padding: "28px 32px 28px 36px", borderRadius: 16,
     background: C.light, borderLeft: `4px solid ${borderColor}`, marginBottom: 20,
   }}>
-    <div style={{ position: "absolute", top: 16, left: 12, fontSize: 48, color: `${borderColor}20`, fontFamily: "Georgia, serif", lineHeight: 1 }}>"</div>
+    <div style={{ position: "absolute", top: 16, left: 12, fontSize: 48, color: `${borderColor}20`, fontFamily: "Georgia, serif", lineHeight: 1 }}>&quot;</div>
     <div style={{ fontSize: 16, fontStyle: "italic", color: C.dark, lineHeight: 1.65, marginBottom: 10 }}>{text}</div>
     <div style={{ fontSize: 13, color: C.mid, fontWeight: 500 }}>— {author}</div>
   </div>
 );
 
+const SECTIONS = ["problem", "users", "research", "apps", "competitive", "solution", "priority", "metrics", "learnings"];
+const LABELS = ["Problem", "Users", "Research", "App Impact", "Competitive", "Solution", "Priority", "Metrics", "Learnings"];
+
 // ─── MAIN ───
 export default function LiquidGlassCaseStudy() {
   const progress = useScrollProgress();
   const [activeSection, setActiveSection] = useState("");
-  const sections = ["problem", "users", "research", "apps", "competitive", "solution", "priority", "metrics", "learnings"];
-  const labels = ["Problem", "Users", "Research", "App Impact", "Competitive", "Solution", "Priority", "Metrics", "Learnings"];
 
   useEffect(() => {
     const h = () => {
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.getBoundingClientRect().top < 200) { setActiveSection(sections[i]); return; }
+      for (let i = SECTIONS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(SECTIONS[i]);
+        if (el && el.getBoundingClientRect().top < 200) { setActiveSection(SECTIONS[i]); return; }
       }
     };
     window.addEventListener("scroll", h, { passive: true });
@@ -276,13 +277,13 @@ export default function LiquidGlassCaseStudy() {
         opacity: progress > 0.03 ? 1 : 0, pointerEvents: progress > 0.03 ? "auto" : "none",
         transition: "opacity 0.3s ease",
       }}>
-        {sections.map((s, i) => (
+        {SECTIONS.map((s, i) => (
           <a key={s} href={`#${s}`} style={{
             fontSize: 11, fontWeight: 600, color: activeSection === s ? C.white : "rgba(255,255,255,0.4)",
             background: activeSection === s ? "rgba(255,255,255,0.12)" : "transparent",
             padding: "6px 12px", borderRadius: 16, textDecoration: "none", whiteSpace: "nowrap",
             transition: "all 0.2s ease", letterSpacing: "0.01em",
-          }}>{labels[i]}</a>
+          }}>{LABELS[i]}</a>
         ))}
       </nav>
 
@@ -315,7 +316,7 @@ export default function LiquidGlassCaseStudy() {
         </Reveal>
         <Reveal delay={0.2}>
           <p style={{ fontSize: "clamp(17px,2.2vw,21px)", color: "rgba(255,255,255,0.5)", maxWidth: 600, lineHeight: 1.55, margin: "0 auto 56px" }}>
-            How Apple's most ambitious redesign since iOS 7 broke accessibility for millions — and what a better path forward looks like.
+            How Apple&apos;s most ambitious redesign since iOS 7 broke accessibility for millions — and what a better path forward looks like.
           </p>
         </Reveal>
         <Reveal delay={0.35}>
@@ -450,7 +451,7 @@ export default function LiquidGlassCaseStudy() {
 
         {/* Heuristic donuts */}
         <Reveal delay={0.4} style={{ marginTop: 48 }}>
-          <div style={{ fontSize: 16, fontWeight: 600, color: C.dark, marginBottom: 20 }}>Nielsen's Heuristics Violated</div>
+          <div style={{ fontSize: 16, fontWeight: 600, color: C.dark, marginBottom: 20 }}>Nielsen&apos;s Heuristics Violated</div>
           <HeuristicDonut name="Aesthetic & Minimalist Design" severity="Critical" violation="Animations, reflections, translucency add visual noise without functional purpose" />
           <HeuristicDonut name="Consistency & Standards" severity="Critical" violation="Search moved top→bottom; back breadcrumbs removed; swipe behaviors changed" />
           <HeuristicDonut name="Recognition Rather Than Recall" severity="High" violation="Interactive vs. decorative elements indistinguishable on busy backgrounds" />
@@ -464,7 +465,7 @@ export default function LiquidGlassCaseStudy() {
         <Reveal><Tag>App-Level Impact</Tag></Reveal>
         <Reveal delay={0.05}><H2>Where Liquid Glass hurts most.</H2></Reveal>
         <Reveal delay={0.1}>
-          <P>NNG and community reports reveal specific failures across Apple's most-used apps. These aren't edge cases.</P>
+          <P>NNG and community reports reveal specific failures across Apple&apos;s most-used apps. These aren&apos;t edge cases.</P>
         </Reveal>
         <Reveal delay={0.15} style={{ marginTop: 32 }}>
           <div style={{ background: C.white, borderRadius: 20, padding: "12px 24px", border: "1px solid rgba(0,0,0,0.05)", overflowX: "auto" }}>
@@ -517,7 +518,7 @@ export default function LiquidGlassCaseStudy() {
       <Sect bg={C.dark} id="solution" style={{ color: C.white }}>
         <Reveal><Tag color={C.teal}>Step 3 — Solution Design</Tag></Reveal>
         <Reveal delay={0.05}><H2 color={C.white}>Adaptive Glass.<br />Beautiful and readable.</H2></Reveal>
-        <Reveal delay={0.1}><P color="rgba(255,255,255,0.5)">The goal isn't to kill Liquid Glass — it's to make it work for everyone. Three architectural changes preserve Apple's visual ambition while restoring accessibility.</P></Reveal>
+        <Reveal delay={0.1}><P color="rgba(255,255,255,0.5)">The goal isn&apos;t to kill Liquid Glass — it&apos;s to make it work for everyone. Three architectural changes preserve Apple&apos;s visual ambition while restoring accessibility.</P></Reveal>
         <div style={{ display: "flex", flexDirection: "column", gap: 24, marginTop: 48 }}>
           <Reveal delay={0.15}>
             <SolutionCard num="01" icon="🎯" title="Dynamic Contrast Floor"
@@ -545,7 +546,7 @@ export default function LiquidGlassCaseStudy() {
         <Reveal><Tag>Step 4 — Prioritization (RICE)</Tag></Reveal>
         <Reveal delay={0.05}><H2>What to build first.</H2></Reveal>
         <Reveal delay={0.1}>
-          <P>Reach estimated from iOS 26's ~1.1B eligible devices (est.). Impact 0–3. Confidence reflects technical precedent. Effort in person-months.</P>
+          <P>Reach estimated from iOS 26&apos;s ~1.1B eligible devices (est.). Impact 0–3. Confidence reflects technical precedent. Effort in person-months.</P>
         </Reveal>
         <Reveal delay={0.15} style={{ marginTop: 32 }}>
           <div style={{ background: C.card, borderRadius: 20, padding: "12px 24px", border: "1px solid rgba(0,0,0,0.05)", overflowX: "auto" }}>
@@ -599,7 +600,7 @@ export default function LiquidGlassCaseStudy() {
         <Reveal delay={0.4} style={{ marginTop: 32 }}>
           <div style={{ background: C.light, borderRadius: 16, padding: "24px 28px" }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: C.dark, marginBottom: 8 }}>Trade-off: Why not remove Liquid Glass?</div>
-            <P style={{ maxWidth: "none", marginBottom: 0 }}>Rolling back would undermine Apple's design credibility and strand thousands of developers rebuilding around it. The better path: adaptive rendering — keeping the visual identity while engineering accessibility in. Apple did this with Dark Mode (iOS 13), which required similar system-wide contrast management.</P>
+            <P style={{ maxWidth: "none", marginBottom: 0 }}>Rolling back would undermine Apple&apos;s design credibility and strand thousands of developers rebuilding around it. The better path: adaptive rendering — keeping the visual identity while engineering accessibility in. Apple did this with Dark Mode (iOS 13), which required similar system-wide contrast management.</P>
           </div>
         </Reveal>
       </Sect>
@@ -607,7 +608,7 @@ export default function LiquidGlassCaseStudy() {
       {/* ═══════════════ METRICS ═══════════════ */}
       <Sect bg={C.light} id="metrics">
         <Reveal><Tag>Step 5 — Impact & Metrics</Tag></Reveal>
-        <Reveal delay={0.05}><H2>How we'd measure success.</H2></Reveal>
+        <Reveal delay={0.05}><H2>How we&apos;d measure success.</H2></Reveal>
         <Reveal delay={0.1}>
           <P>Success means users stop needing accessibility workarounds for basic readability.</P>
         </Reveal>
@@ -638,7 +639,7 @@ export default function LiquidGlassCaseStudy() {
           <div style={{ background: C.white, borderRadius: 20, padding: "28px", border: "1px solid rgba(0,0,0,0.05)" }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: C.dark, marginBottom: 10 }}>Estimated Impact (Fermi)</div>
             <P style={{ maxWidth: "none", marginBottom: 0 }}>
-              If 2% of iOS 26's ~1.1B eligible users (est.) delay upgrading due to Liquid Glass — that's ~22M users on older iOS. At an estimated ~$1.50/user/year in reduced Services revenue (App Store, iCloud), that's ~$33M in annual opportunity cost. Restoring adoption parity recovers this while strengthening Apple's accessibility positioning ahead of EU enforcement.
+              If 2% of iOS 26&apos;s ~1.1B eligible users (est.) delay upgrading due to Liquid Glass — that&apos;s ~22M users on older iOS. At an estimated ~$1.50/user/year in reduced Services revenue (App Store, iCloud), that&apos;s ~$33M in annual opportunity cost. Restoring adoption parity recovers this while strengthening Apple&apos;s accessibility positioning ahead of EU enforcement.
             </P>
           </div>
         </Reveal>
@@ -647,11 +648,11 @@ export default function LiquidGlassCaseStudy() {
       {/* ═══════════════ LEARNINGS ═══════════════ */}
       <Sect bg={C.white} id="learnings">
         <Reveal><Tag>Step 6 — Learnings & Reflection</Tag></Reveal>
-        <Reveal delay={0.05}><H2>What I'd do differently.<br />What I'd test next.</H2></Reveal>
+        <Reveal delay={0.05}><H2>What I&apos;d do differently.<br />What I&apos;d test next.</H2></Reveal>
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 40 }}>
           <Reveal style={{ flex: "1 1 300px" }}>
             <div style={{ background: C.card, borderRadius: 24, padding: "32px 28px", border: "1px solid rgba(0,0,0,0.05)", height: "100%" }}>
-              <div style={{ fontSize: 18, fontWeight: 600, color: C.dark, marginBottom: 16 }}>Constraints I'd acknowledge</div>
+              <div style={{ fontSize: 18, fontWeight: 600, color: C.dark, marginBottom: 16 }}>Constraints I&apos;d acknowledge</div>
               {[
                 { b: "No internal data.", d: "Contrast measurements rely on Infinum and NNG. Apple's telemetry would reveal exact settings adoption and engagement deltas." },
                 { b: "Battery test limits.", d: "The 13% vs. 1% figure is from one creator's test. MacRumors found negligible Clear vs. Tinted differences separately." },
@@ -665,7 +666,7 @@ export default function LiquidGlassCaseStudy() {
           </Reveal>
           <Reveal delay={0.1} style={{ flex: "1 1 300px" }}>
             <div style={{ background: C.card, borderRadius: 24, padding: "32px 28px", border: "1px solid rgba(0,0,0,0.05)", height: "100%" }}>
-              <div style={{ fontSize: 18, fontWeight: 600, color: C.dark, marginBottom: 16 }}>Experiments I'd run next</div>
+              <div style={{ fontSize: 18, fontWeight: 600, color: C.dark, marginBottom: 16 }}>Experiments I&apos;d run next</div>
               {[
                 { b: "A/B test Legibility Mode as default.", d: "Hypothesis: if 'Clear' is opt-out (not opt-in), complaints drop 60%+ with minimal satisfaction impact from Vivid fans." },
                 { b: "Wallpaper-aware preview.", d: "Before setting a wallpaper, show simulated Control Center overlay so users see legibility impact at the decision point." },
@@ -719,7 +720,7 @@ export default function LiquidGlassCaseStudy() {
           <div style={{ maxWidth: 640, margin: "0 auto", position: "relative" }}>
             <h2 style={{ fontSize: "clamp(28px,4.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.12, marginBottom: 24 }}>
               Good design is invisible.<br />
-              <span style={{ color: "rgba(255,255,255,0.35)" }}>Liquid Glass isn't — and that's the problem.</span>
+              <span style={{ color: "rgba(255,255,255,0.35)" }}>Liquid Glass isn&apos;t — and that&apos;s the problem.</span>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.4)", lineHeight: 1.65, marginBottom: 40 }}>
               This case study demonstrates UX research, accessibility analysis (WCAG 2.2), heuristic evaluation, competitive benchmarking, RICE prioritization, and solution design for a product used by over 1 billion people.

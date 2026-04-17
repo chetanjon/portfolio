@@ -141,7 +141,7 @@ export default function TikTokShopCaseStudy() {
         <Wrap>
           <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:12,letterSpacing:".25em",color:"#C4956A",marginBottom:28,fontWeight:600 }}>PM CASE STUDY — SOCIAL COMMERCE</div>
           <h1 style={{ fontFamily:"'Playfair Display',serif",fontSize:56,lineHeight:1.05,color:"#F8F4EF",margin:"0 0 20px",fontWeight:700,maxWidth:560 }}>TikTok Shop</h1>
-          <p style={{ fontFamily:"'Source Serif 4',serif",fontSize:20,lineHeight:1.55,color:"rgba(248,244,239,.5)",margin:"0 0 44px",maxWidth:500,fontStyle:"italic" }}>Redesigning trust, discovery & purchase confidence in the world's fastest-growing social commerce platform.</p>
+          <p style={{ fontFamily:"'Source Serif 4',serif",fontSize:20,lineHeight:1.55,color:"rgba(248,244,239,.5)",margin:"0 0 44px",maxWidth:500,fontStyle:"italic" }}>Redesigning trust, discovery & purchase confidence in the world&apos;s fastest-growing social commerce platform.</p>
           <div style={{ display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:1,borderRadius:12,overflow:"hidden",maxWidth:600 }}>
             {[{v:"~$64B",l:"GMV 2025 (EST.)",c:"#C4956A"},{v:"800K+",l:"US Shops",c:"#5C6B4F"},{v:"15M+",l:"Creators Global",c:"#B8860B"},{v:"1.3/5",l:"Trustpilot",c:"#A0522D"}].map((s,i) => (
               <div key={i} style={{ background:"rgba(248,244,239,.04)",padding:"22px 14px",textAlign:"center",backdropFilter:"blur(8px)" }}>
@@ -162,8 +162,8 @@ export default function TikTokShopCaseStudy() {
       <section id="why" style={{ padding:"70px 0",background:"#fff" }}>
         <Wrap>
           <Head n={0} title="Why TikTok Shop?" sub="Why I chose this product, and what makes this case study different" />
-          <p style={body}>I chose TikTok Shop because it sits at the intersection of three trends I'm deeply interested in: creator-driven commerce, algorithmic discovery, and marketplace trust design. As someone who studies how content platforms evolve into transactional ecosystems, TikTok Shop represents the most aggressive experiment in collapsing the entertainment-to-purchase funnel, and its growing pains are the most instructive product challenges in social commerce today.</p>
-          <p style={body}>What makes this case study different from a surface-level product teardown: every data point is sourced and cross-referenced (with confidence levels noted), I've flagged where commonly cited stats are actually unverifiable, and the proposed solutions are scoped to realistic engineering timelines with explicit trade-offs. I didn't just identify problems. I worked through why the obvious solutions might fail and what constraints a PM would actually face building within TikTok's ecosystem.</p>
+          <p style={body}>I chose TikTok Shop because it sits at the intersection of three trends I&apos;m deeply interested in: creator-driven commerce, algorithmic discovery, and marketplace trust design. As someone who studies how content platforms evolve into transactional ecosystems, TikTok Shop represents the most aggressive experiment in collapsing the entertainment-to-purchase funnel, and its growing pains are the most instructive product challenges in social commerce today.</p>
+          <p style={body}>What makes this case study different from a surface-level product teardown: every data point is sourced and cross-referenced (with confidence levels noted), I&apos;ve flagged where commonly cited stats are actually unverifiable, and the proposed solutions are scoped to realistic engineering timelines with explicit trade-offs. I didn&apos;t just identify problems. I worked through why the obvious solutions might fail and what constraints a PM would actually face building within TikTok&apos;s ecosystem.</p>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12,margin:"28px 0" }}>
             {[{n:"Approach",d:"Product improvement case study using the CIRCLES framework, grounded in verified market data"},{n:"Scope",d:"Trust & discovery UX for impulse buyers, the largest and highest-volume user segment on TikTok Shop"},{n:"Artifacts",d:"CIRCLES analysis, 3 wireframe mockups, full PRD with phased scope, benchmarked success metrics"}].map((x,i) => (
               <div key={i} style={{ background:"#F8F4EF",borderRadius:10,padding:"18px 20px",border:"1px solid rgba(28,20,16,.04)" }}>
@@ -182,7 +182,7 @@ export default function TikTokShopCaseStudy() {
           <p style={body}>TikTok Shop has transformed from a bolt-on feature into one of the fastest-growing commerce platforms in history. Global GMV grew from roughly $0.9B (2021) to an estimated $64B+ in 2025 (per Momentum Works/Tabcut), approximately 70x in four years. In the US, monthly GMV grew from about $15M at launch (September 2023) to over $1.1B by mid-2025. According to Earnest Analytics, TikTok commanded 68% of tracked US social shopping GMV among marketplace platforms, with over 800K US shops and tens of millions of active buyers.</p>
           <GMVChart />
           <p style={body}>Beauty & personal care leads category sales at roughly one-fifth of GMV, followed by womenswear in the low teens. Health products were the fastest-growing category with several-hundred-percent YoY growth. In January 2026, TikTok reportedly finalized a USDS Joint Venture deal (Oracle, Silver Lake, and MGX as managing investors, ByteDance retaining a reported 19.9% minority stake) aimed at resolving the US regulatory overhang under PAFACA.</p>
-          <Insight type="insight">TikTok Shop's core innovation is collapsing the "discover → research → purchase" funnel into a single scroll. Users arrive for entertainment, encounter products organically through creator content, and buy without ever forming explicit purchase intent. 67% of users say TikTok inspires them to shop when they weren't planning to. This inverts the Amazon model and creates new product challenges around trust, quality signals, and post-purchase satisfaction.</Insight>
+          <Insight type="insight">TikTok Shop&apos;s core innovation is collapsing the &quot;discover → research → purchase&quot; funnel into a single scroll. Users arrive for entertainment, encounter products organically through creator content, and buy without ever forming explicit purchase intent. 67% of users say TikTok inspires them to shop when they weren&apos;t planning to. This inverts the Amazon model and creates new product challenges around trust, quality signals, and post-purchase satisfaction.</Insight>
           <div style={{ display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,margin:"28px 0" }}>
             <Stat v="95 min" l="Daily Time on App" note="GLOBAL AVERAGE" accent="#5C6B4F"/>
             <Stat v="81.3%" l="Repeat Purchase Rate" note="EARNEST ANALYTICS" accent="#8B4513"/>
@@ -197,7 +197,7 @@ export default function TikTokShopCaseStudy() {
         <Wrap>
           <Head n={2} title="CIRCLES Framework" sub="Structured product thinking for TikTok Shop's trust & discovery challenge" />
           <CStep letter="C" title="Comprehend the Situation" sub="What problem space are we in?" color="#8B4513" bg="#FAF3ED">
-            TikTok Shop is a native marketplace embedded within TikTok's content feed. Despite an estimated $64B+ GMV and explosive growth, the platform faces a critical trust deficit: its Trustpilot rating hovers around 1.3/5 with overwhelmingly negative reviews. Per TikTok's own H1 2025 Safety Report, tens of millions of product listings were rejected pre-listing and hundreds of thousands of sellers were removed, yet buyer perception hasn't meaningfully improved. The gap between content-driven discovery and purchase confidence is the central product challenge.
+            TikTok Shop is a native marketplace embedded within TikTok&apos;s content feed. Despite an estimated $64B+ GMV and explosive growth, the platform faces a critical trust deficit: its Trustpilot rating hovers around 1.3/5 with overwhelmingly negative reviews. Per TikTok&apos;s own H1 2025 Safety Report, tens of millions of product listings were rejected pre-listing and hundreds of thousands of sellers were removed, yet buyer perception hasn&apos;t meaningfully improved. The gap between content-driven discovery and purchase confidence is the central product challenge.
           </CStep>
           <CStep letter="I" title="Identify the Customer" sub="Who are we solving for?" color="#5C6B4F" bg="#F2F5EF">
             Three primary segments: (1) Impulse Discoverers: Gen Z/millennial users who buy on emotion from FYP videos (58% of TikTok users make purchases). (2) Intentional Shoppers: users who come to the Shop tab with specific needs but struggle with search, filtering, and comparison. (3) Creator-Influenced Buyers: users who trust specific creators and need confidence that affiliate recommendations are genuine.
@@ -210,7 +210,7 @@ export default function TikTokShopCaseStudy() {
           </CStep>
           <CStep letter="L" title="List Solutions" sub="What could we build?" color="#5C6B4F" bg="#F2F5EF">
             <strong>S1: Seller Trust Score.</strong> Composite reliability metric (0–100) surfaced at purchase touchpoints, combining shipping performance, review authenticity, return rate, account age, and video-product match rate.<br/><br/>
-            <strong>S2: Smart Product Card.</strong> Enhanced in-feed overlay showing price, trust score, verified reviews, and "similar from trusted sellers," all without leaving the video.<br/><br/>
+            <strong>S2: Smart Product Card.</strong> Enhanced in-feed overlay showing price, trust score, verified reviews, and &quot;similar from trusted sellers,&quot; all without leaving the video.<br/><br/>
             <strong>S3: Creator Transparency Labels.</strong> Three-tier disclosure (Paid/Affiliate/Organic) with creator track record showing what % of promoted products maintain 4+ stars after 30 days.
           </CStep>
           <CStep letter="E" title="Evaluate Trade-offs" sub="Impact vs. effort analysis" color="#A0522D" bg="#F9F0EE">
@@ -228,7 +228,7 @@ export default function TikTokShopCaseStudy() {
             </div>
           </CStep>
           <CStep letter="S" title="Summarize Recommendation" sub="" color="#1C1410" bg="linear-gradient(135deg,#1C1410,#2A1F18)">
-            <span style={{ color:"rgba(248,244,239,.75)" }}><strong style={{ color:"#C4956A" }}>Build all three as an integrated "Trust Layer," phased over two quarters.</strong> Phase 1 (Q1): Ship Creator Transparency Labels (low effort, regulatory goodwill) + Trust Score v1 as a simple badge. Phase 2 (Q2): Launch Smart Product Cards in-feed, leveraging trust data. Each phase generates data that improves the next.</span>
+            <span style={{ color:"rgba(248,244,239,.75)" }}><strong style={{ color:"#C4956A" }}>Build all three as an integrated &quot;Trust Layer,&quot; phased over two quarters.</strong> Phase 1 (Q1): Ship Creator Transparency Labels (low effort, regulatory goodwill) + Trust Score v1 as a simple badge. Phase 2 (Q2): Launch Smart Product Cards in-feed, leveraging trust data. Each phase generates data that improves the next.</span>
           </CStep>
         </Wrap>
       </section>
@@ -266,7 +266,7 @@ export default function TikTokShopCaseStudy() {
               </div>
             ))}
           </div>
-          <Insight type="risk">The trust deficit is a business model risk. TikTok's 6% commission depends on sustained volume. Per Momentum Works/Tabcut, more than half of US shops recorded zero sales in 2025. The ecosystem concentrates revenue in a thin layer of top sellers. If quality sellers leave due to margin compression and counterfeit competition, the marketplace degrades. Every counterfeit shipped is a churned buyer.</Insight>
+          <Insight type="risk">The trust deficit is a business model risk. TikTok&apos;s 6% commission depends on sustained volume. Per Momentum Works/Tabcut, more than half of US shops recorded zero sales in 2025. The ecosystem concentrates revenue in a thin layer of top sellers. If quality sellers leave due to margin compression and counterfeit competition, the marketplace degrades. Every counterfeit shipped is a churned buyer.</Insight>
         </Wrap>
       </section>
 
@@ -275,15 +275,15 @@ export default function TikTokShopCaseStudy() {
         <Wrap>
           <Head n={5} title="Proposed Solutions" sub="Three-part Trust Layer to transform purchase confidence" />
           <h3 style={h3s}>5.1 — Seller Trust Score</h3>
-          <p style={body}>A composite reliability metric (0–100) computed from five weighted signals: on-time shipping rate (25%), review authenticity score (25%), return/dispute rate (20%), account age & verification (15%), and video-product match rate (15%). Displayed as a color-coded badge at every purchase touchpoint. Builds on TikTok's existing Shop Performance Score but makes it buyer-facing.</p>
+          <p style={body}>A composite reliability metric (0–100) computed from five weighted signals: on-time shipping rate (25%), review authenticity score (25%), return/dispute rate (20%), account age & verification (15%), and video-product match rate (15%). Displayed as a color-coded badge at every purchase touchpoint. Builds on TikTok&apos;s existing Shop Performance Score but makes it buyer-facing.</p>
           <div style={{ background:"#F5F1EC",borderRadius:8,padding:"14px 18px",margin:"0 0 20px",border:"1px solid rgba(28,20,16,.04)" }}>
             <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,letterSpacing:".1em",fontWeight:700,color:"#6B5E52",marginBottom:6 }}>TECHNICAL FEASIBILITY</div>
-            <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>V1 is low complexity. The signals already exist in TikTok's seller analytics backend (Shop Performance Score). The work is surfacing an aggregated score client-side and designing the badge component. Eng estimate: 2–3 sprints. V2 (video-product match AI) is high complexity and requires computer vision to compare product listing images against in-video product appearances. I'd propose a 2-week technical spike before committing to this, and would work with the ML team to evaluate whether existing content moderation models can be adapted.</div>
+            <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>V1 is low complexity. The signals already exist in TikTok&apos;s seller analytics backend (Shop Performance Score). The work is surfacing an aggregated score client-side and designing the badge component. Eng estimate: 2–3 sprints. V2 (video-product match AI) is high complexity and requires computer vision to compare product listing images against in-video product appearances. I&apos;d propose a 2-week technical spike before committing to this, and would work with the ML team to evaluate whether existing content moderation models can be adapted.</div>
           </div>
           <h3 style={h3s}>5.2 — Smart Product Card</h3>
-          <p style={body}>An enhanced overlay triggered by tapping a product tag in any video. Instead of navigating away, users see a contextual card: price with shipping estimate, trust score badge, top 3 verified-purchase review snippets, "similar from trusted sellers" shortcut, and one-tap add-to-cart. Collapses with a swipe, preserving content flow.</p>
+          <p style={body}>An enhanced overlay triggered by tapping a product tag in any video. Instead of navigating away, users see a contextual card: price with shipping estimate, trust score badge, top 3 verified-purchase review snippets, &quot;similar from trusted sellers&quot; shortcut, and one-tap add-to-cart. Collapses with a swipe, preserving content flow.</p>
           <h3 style={h3s}>5.3 — Creator Transparency Labels</h3>
-          <p style={body}>Three-tier disclosure: "Paid Partnership," "Affiliate," or "Organic." Each includes a tap-to-expand showing the creator's track record: percentage of promoted products maintaining 4+ stars after 30 days, average return rate, and total items promoted. Leverages the fact that a majority of US TikTok Shop GMV is creator-driven (Momentum Works/Tabcut report roughly half or more flows through affiliate and influencer content).</p>
+          <p style={body}>Three-tier disclosure: &quot;Paid Partnership,&quot; &quot;Affiliate,&quot; or &quot;Organic.&quot; Each includes a tap-to-expand showing the creator&apos;s track record: percentage of promoted products maintaining 4+ stars after 30 days, average return rate, and total items promoted. Leverages the fact that a majority of US TikTok Shop GMV is creator-driven (Momentum Works/Tabcut report roughly half or more flows through affiliate and influencer content).</p>
           <Insight type="opp">The creator track record creates a positive flywheel: creators who recommend quality build visible credibility → attracts more brand deals → incentivizes selectivity. This turns 851K active affiliate creators into quality gatekeepers without TikTok manually policing every listing. The market incentive does the enforcement work.</Insight>
         </Wrap>
       </section>
@@ -307,7 +307,7 @@ export default function TikTokShopCaseStudy() {
                   <span style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8,fontWeight:600,background:"#FBF8F0",color:"#9A7209",padding:"2px 5px",borderRadius:3 }}>⭐ 4.7 (2.1K)</span>
                   <span style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8,fontWeight:600,background:"#FAF3ED",color:"#8B4513",padding:"2px 5px",borderRadius:3 }}>3-DAY SHIP</span>
                 </div>
-                <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:8.5,lineHeight:1.5,color:"#8A7E73",marginBottom:7,fontStyle:"italic" }}>"Skin cleared up in 2 weeks" (verified)</div>
+                <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:8.5,lineHeight:1.5,color:"#8A7E73",marginBottom:7,fontStyle:"italic" }}>&quot;Skin cleared up in 2 weeks&quot; (verified)</div>
                 <div style={{ display:"flex",gap:5 }}>
                   <div style={{ flex:1,background:"#8B4513",borderRadius:5,padding:"7px 0",textAlign:"center",fontFamily:"'Cormorant Garamond',serif",fontSize:9,fontWeight:700,color:"#fff",letterSpacing:".04em" }}>Add to Cart</div>
                   <div style={{ width:30,background:"#F5F1EC",borderRadius:5,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,color:"#8A7E73" }}>≡</div>
@@ -379,7 +379,7 @@ export default function TikTokShopCaseStudy() {
           <Insight type="takeaway">The north star metric is organic repeat purchase rate: buyers who return within 60 days at full price without a promotional trigger. Earnest Analytics reports an 81.3% repeat purchase rate, but that figure is likely inflated by deep discounts and promotional events. Each Trust Layer feature is designed to move the organic version of that number, because sustainable commerce requires buyers who come back without being bribed.</Insight>
 
           <h3 style={h3s}>How I derived these targets</h3>
-          <p style={body}>These aren't arbitrary numbers. The +15% conversion lift is conservative. Baymard Institute research shows that improving product information visibility lifts e-commerce conversion by 10–25%, and TikTok's current 0.3–0.6% conversion rate is well below the 2–3% e-commerce average, suggesting significant headroom. The −25% return reduction is anchored in the insight that product-expectation mismatch (what you saw in the video vs. what arrived) is the primary return driver on social commerce. Addressing this directly with video-product match scoring should yield outsized results. I'd validate both through a 4-week A/B test at 95% statistical significance, with holdout groups by geographic region, before scaling.</p>
+          <p style={body}>These aren&apos;t arbitrary numbers. The +15% conversion lift is conservative. Baymard Institute research shows that improving product information visibility lifts e-commerce conversion by 10–25%, and TikTok&apos;s current 0.3–0.6% conversion rate is well below the 2–3% e-commerce average, suggesting significant headroom. The −25% return reduction is anchored in the insight that product-expectation mismatch (what you saw in the video vs. what arrived) is the primary return driver on social commerce. Addressing this directly with video-product match scoring should yield outsized results. I&apos;d validate both through a 4-week A/B test at 95% statistical significance, with holdout groups by geographic region, before scaling.</p>
         </Wrap>
       </section>
 
@@ -411,7 +411,7 @@ export default function TikTokShopCaseStudy() {
               </tbody>
             </table>
           </div>
-          <Insight type="insight">TikTok Shop's moat is attention. Users spend 95 min/day and content-commerce fusion at scale. No platform converts a 15-second video into a purchase this efficiently. But that moat is vulnerable to trust erosion: if products consistently don't match video demos, the "see it, want it, buy it" magic breaks. Meta retreated from native checkout. YouTube Shopping is growing but small. The Trust Layer protects the moat.</Insight>
+          <Insight type="insight">TikTok Shop&apos;s moat is attention. Users spend 95 min/day and content-commerce fusion at scale. No platform converts a 15-second video into a purchase this efficiently. But that moat is vulnerable to trust erosion: if products consistently don&apos;t match video demos, the &quot;see it, want it, buy it&quot; magic breaks. Meta retreated from native checkout. YouTube Shopping is growing but small. The Trust Layer protects the moat.</Insight>
         </Wrap>
       </section>
 
@@ -422,13 +422,13 @@ export default function TikTokShopCaseStudy() {
           <div style={{ background:"#1C1410",borderRadius:14,padding:"28px 30px",marginBottom:28 }}>
             <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".12em",fontWeight:700,color:"#C4956A",marginBottom:14 }}>PROBLEM STATEMENT</div>
             <p style={{ fontFamily:"'Source Serif 4',serif",fontSize:15,lineHeight:1.8,color:"rgba(248,244,239,.65)",margin:0 }}>
-              TikTok Shop's growth ($0.9B → ~$64B+ in 4 years, per Momentum Works/Tabcut) has outpaced its trust infrastructure. Per TikTok's own Safety Report, tens of millions of listings were rejected and hundreds of thousands of sellers removed in H1 2025. Trustpilot hovers around 1.3/5. More than half of US shops record zero sales. Average transaction prices declined across most categories in 2024. The platform needs a buyer-facing trust system that translates backend enforcement into visible purchase confidence.
+              TikTok Shop&apos;s growth ($0.9B → ~$64B+ in 4 years, per Momentum Works/Tabcut) has outpaced its trust infrastructure. Per TikTok&apos;s own Safety Report, tens of millions of listings were rejected and hundreds of thousands of sellers removed in H1 2025. Trustpilot hovers around 1.3/5. More than half of US shops record zero sales. Average transaction prices declined across most categories in 2024. The platform needs a buyer-facing trust system that translates backend enforcement into visible purchase confidence.
             </p>
           </div>
           <h3 style={h3s}>User Stories</h3>
           <div style={{ background:"#F5F1EC",borderRadius:12,padding:"20px 24px",margin:"16px 0" }}>
             <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13.5,lineHeight:1.85,color:"#3D3229" }}>
-              <strong>US-1:</strong> As an impulse buyer, I want to see a seller's trust score before purchasing so I can quickly assess reliability.<br/>
+              <strong>US-1:</strong> As an impulse buyer, I want to see a seller&apos;s trust score before purchasing so I can quickly assess reliability.<br/>
               <strong>US-2:</strong> As a video scroller, I want to evaluate products without leaving the video.<br/>
               <strong>US-3:</strong> As a creator-influenced buyer, I want to know if a creator has a financial relationship with the product.<br/>
               <strong>US-4:</strong> As a repeat shopper, I want to follow creators whose picks are consistently good.<br/>
@@ -443,7 +443,7 @@ export default function TikTokShopCaseStudy() {
             </div>
             <div style={{ background:"#FAF3ED",borderRadius:12,padding:20,border:"1px solid rgba(139,69,19,.06)" }}>
               <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8B4513",marginBottom:10 }}>PHASE 2 — Q2</div>
-              <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Smart Product Card (in-feed). Creator track records. "Similar from trusted sellers" engine. Trust Score v2 with AI video-match.</div>
+              <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Smart Product Card (in-feed). Creator track records. &quot;Similar from trusted sellers&quot; engine. Trust Score v2 with AI video-match.</div>
             </div>
           </div>
           <h3 style={h3s}>Metrics & Guardrails</h3>
@@ -477,12 +477,12 @@ export default function TikTokShopCaseStudy() {
       <section id="reflection" style={{ padding:"70px 0" }}>
         <Wrap>
           <Head n={10} title="Reflection" sub="What I'd do differently, and what this case study taught me" />
-          <h3 style={h3s}>What I'd improve with more time</h3>
-          <p style={body}>If I had another two weeks, I'd conduct 10–15 user interviews with actual TikTok Shop buyers who had negative experiences, to ground the pain points in primary research rather than relying on Trustpilot reviews and survey data. I'd also prototype the Smart Product Card in Figma with a tap-through flow to test whether the overlay feels natural or disruptive to the content experience. The biggest risk to that feature is cluttering the feed, and only user testing can validate whether we've struck the right balance.</p>
-          <h3 style={h3s}>Trade-offs I'm not fully satisfied with</h3>
-          <p style={body}>The Trust Score weighting (25% shipping, 25% review authenticity, etc.) is a hypothesis, not a validated model. In practice, I'd want to run a conjoint analysis with buyers to understand which signals actually drive purchase confidence. It's possible that "account age" matters far less than "percentage of 5-star reviews with photos," and the weights should reflect revealed preference, not my assumptions. I also haven't fully addressed the seller side of this equation: making trust scores buyer-visible creates strong incentives, but could also drive gaming behaviors that require ongoing detection.</p>
+          <h3 style={h3s}>What I&apos;d improve with more time</h3>
+          <p style={body}>If I had another two weeks, I&apos;d conduct 10–15 user interviews with actual TikTok Shop buyers who had negative experiences, to ground the pain points in primary research rather than relying on Trustpilot reviews and survey data. I&apos;d also prototype the Smart Product Card in Figma with a tap-through flow to test whether the overlay feels natural or disruptive to the content experience. The biggest risk to that feature is cluttering the feed, and only user testing can validate whether we&apos;ve struck the right balance.</p>
+          <h3 style={h3s}>Trade-offs I&apos;m not fully satisfied with</h3>
+          <p style={body}>The Trust Score weighting (25% shipping, 25% review authenticity, etc.) is a hypothesis, not a validated model. In practice, I&apos;d want to run a conjoint analysis with buyers to understand which signals actually drive purchase confidence. It&apos;s possible that &quot;account age&quot; matters far less than &quot;percentage of 5-star reviews with photos,&quot; and the weights should reflect revealed preference, not my assumptions. I also haven&apos;t fully addressed the seller side of this equation: making trust scores buyer-visible creates strong incentives, but could also drive gaming behaviors that require ongoing detection.</p>
           <h3 style={h3s}>What this taught me about product thinking</h3>
-          <p style={body}>The deepest insight was that TikTok Shop's trust problem isn't primarily a moderation or enforcement problem. They're already blocking tens of millions of listings. It's a perception and information design problem. The platform does enormous work behind the scenes that buyers never see. That gap between backend enforcement and frontend visibility is the actual product opportunity, and it applies to any marketplace at scale. Sometimes the most impactful feature isn't building something new. It's making existing quality signals visible to the people who need them.</p>
+          <p style={body}>The deepest insight was that TikTok Shop&apos;s trust problem isn&apos;t primarily a moderation or enforcement problem. They&apos;re already blocking tens of millions of listings. It&apos;s a perception and information design problem. The platform does enormous work behind the scenes that buyers never see. That gap between backend enforcement and frontend visibility is the actual product opportunity, and it applies to any marketplace at scale. Sometimes the most impactful feature isn&apos;t building something new. It&apos;s making existing quality signals visible to the people who need them.</p>
         </Wrap>
       </section>
 

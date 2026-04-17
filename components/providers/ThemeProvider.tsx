@@ -23,26 +23,28 @@ interface ThemeProviderProps {
   defaultTheme?: Theme;
 }
 
+function getInitialTheme(defaultTheme: Theme): Theme {
+  if (typeof document === 'undefined') return defaultTheme;
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+}
+
 export function ThemeProvider({ children, defaultTheme = 'light' }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<Theme>(defaultTheme);
+  const [theme, setThemeState] = useState<Theme>(() => getInitialTheme(defaultTheme));
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // One-shot hydration flag — React 19's react-hooks/set-state-in-effect warns on this,
+    // but it's the canonical pattern for deferring client-only UI until after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    const stored = localStorage.getItem('theme') as Theme | null;
-    if (stored) {
-      setThemeState(stored);
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setThemeState(prefersDark ? 'dark' : 'light');
-    }
   }, []);
 
   useEffect(() => {
-    if (mounted) {
-      document.documentElement.classList.toggle('dark', theme === 'dark');
+    if (!mounted) return;
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    try {
       localStorage.setItem('theme', theme);
-    }
+    } catch {}
   }, [theme, mounted]);
 
   const toggleTheme = () => {

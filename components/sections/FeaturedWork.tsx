@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import SpotlightCard from '@/components/ui/SpotlightCard';
-import { getFeaturedWork, workExperiences } from '@/data/work';
+import { workExperiences } from '@/data/work';
 
 export function FeaturedWork() {
   const ref = useRef<HTMLDivElement>(null);

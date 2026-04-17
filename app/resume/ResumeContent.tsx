@@ -34,8 +34,8 @@ export function ResumeContent() {
                   <span className="font-serif italic font-normal lowercase"> picture</span>
                 </h1>
                 <p className="text-lg text-text-secondary max-w-xl">
-                  Co-Founder &amp; CEO shipping a live iOS app, 1.5+ years in B2B marketplace product,
-                  CSPO certified. Here&apos;s everything in one place.
+                  Co-Founder &amp; PM shipping a live iOS app (35–40% D7 retention, 2x category average),
+                  1.5+ years scaling B2B marketplaces, CSPO certified. Here&apos;s everything in one place.
                 </p>
               </div>
 

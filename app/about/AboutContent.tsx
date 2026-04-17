@@ -35,10 +35,12 @@ const values = [
 
 const timeline = [
   { year: '2019–2023', title: 'B.Tech in Electrical & Electronics Engineering', place: 'JNTU Hyderabad' },
+  { year: '2023', title: 'Product Ops Intern', place: 'Gangothri Nutrients — 3,700+ dealer GTM' },
   { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India — B2B Handloom Marketplace' },
   { year: '2024', title: 'M.S. in Management of Technology', place: 'Arizona State University' },
   { year: '2025', title: 'CSPO Certified', place: 'Scrum Alliance' },
-  { year: '2026', title: 'Co-Founder & CEO', place: 'Aatram — iOS App' },
+  { year: '2026', title: 'Co-Founder & Product Manager', place: 'Aatram — iOS App' },
+  { year: '2026', title: 'Launched FrictionLens', place: 'frictionlens.net — AI review analyzer' },
   { year: '2026', title: 'M.S. Graduation (Expected)', place: 'Arizona State University' },
 ];
 
@@ -106,10 +108,12 @@ export function AboutContent() {
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-6">
-                Right now I&apos;m Co-Founder &amp; CEO of Aatram, a 0-to-1 emotion-first anti-procrastination
-                iOS app live on the App Store. We grew to 50–60 active users with 35–40% retention organically
-                on $0 ad spend — scoping 15+ features down to 5 for a 2-engineer team and shipping with
-                on-device AI so users get personalized nudges with zero accounts and zero data collection.
+                Right now I&apos;m Co-Founder &amp; Product Manager at Aatram, a 0-to-1 AI-powered iOS app
+                live on the App Store. With a 2-engineer team we&apos;re running at 35–40% D7 retention —
+                about 2x the category average — on $0 ad spend. The turning point was a full product
+                pivot: after benchmarking 12+ competitors I killed 7 features and rebuilt the app around
+                emotion-rated tasks and a predictive engine, because every top-10 productivity app was
+                treating procrastination as a time problem.
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-6">

@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from "react";
-
 const c = {
   bg: "#F5F1EB",
   bgWarm: "#EDE8E0",
@@ -54,12 +52,8 @@ const PhoneMockup = ({ label, labelColor, children }) => (
 );
 
 export default function RivianCaseStudy() {
-  const [hoveredMetric, setHoveredMetric] = useState(null);
-
   return (
     <div style={{ background: c.bg, color: c.text, minHeight: "100vh", fontFamily: fonts.sans, lineHeight: 1.7 }}>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-
       {/* ─── HERO GRADIENT ─── */}
       <div style={{ position: "relative", width: "100%", height: 360, overflow: "hidden", background: "linear-gradient(135deg, #1E3A2B 0%, #2D5A3D 40%, #3A7A52 70%, #4A9264 100%)" }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(245,241,235,0.5) 75%, #F5F1EB 100%)" }}/>
@@ -82,7 +76,7 @@ export default function RivianCaseStudy() {
           <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.textMuted, textTransform: "uppercase" }}>Product Improvement Case Study</span>
         </div>
         <h1 style={{ fontFamily: fonts.serif, fontSize: 72, fontWeight: 300, lineHeight: 1.05, margin: "0 0 24px", color: c.text, letterSpacing: "-1px", maxWidth: 800 }}>
-          Rivian's Broken<br/><em style={{ fontWeight: 400, fontStyle: "italic" }}>Handshake</em>
+          Rivian&apos;s Broken<br/><em style={{ fontWeight: 400, fontStyle: "italic" }}>Handshake</em>
         </h1>
         <p style={{ fontSize: 18, color: c.textSoft, maxWidth: 560, margin: "0 0 40px", fontWeight: 300, lineHeight: 1.8 }}>
           How phone key failure rates as high as 70% threaten a $5.8B joint venture — and a PM framework for rebuilding trust.
@@ -129,7 +123,7 @@ export default function RivianCaseStudy() {
           </div>
           <div>
             <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, margin: "0 0 32px", fontWeight: 300 }}>
-              For a vehicle that costs $71K–$78K+, the most basic interaction — walking up and getting in — fails with alarming regularity. Rivian's Phone-as-a-Key system suffers from documented proximity unlock failures, a confusing lock/unlock toggle, and zero graceful degradation when things go wrong.
+              For a vehicle that costs $71K–$78K+, the most basic interaction — walking up and getting in — fails with alarming regularity. Rivian&apos;s Phone-as-a-Key system suffers from documented proximity unlock failures, a confusing lock/unlock toggle, and zero graceful degradation when things go wrong.
             </p>
 
             {/* Quotes */}
@@ -138,7 +132,7 @@ export default function RivianCaseStudy() {
               { q: "I walk up to my Rivian and stand at the door and wait. And wait. Sometimes 30 seconds. Sometimes 90 seconds.", s: "Representative composite — based on Rivian Owners Forum posts" },
             ].map((quote, i) => (
               <div key={i} style={{ borderLeft: `2px solid ${c.green}`, paddingLeft: 24, margin: "28px 0" }}>
-                <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>"{quote.q}"</p>
+                <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>&quot;{quote.q}&quot;</p>
                 <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 10, letterSpacing: 1 }}>— {quote.s}</p>
               </div>
             ))}
@@ -176,13 +170,15 @@ export default function RivianCaseStudy() {
               <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>Research &<br/>Root Causes</h2>
             </div>
             <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-              Analysis of 200+ forum posts across 3 Rivian communities, 50+ App Store reviews, Reddit r/Rivian threads, and Rivian's official support documentation revealed three distinct user segments and one fundamental architectural divide.
+              Analysis of 200+ forum posts across 3 Rivian communities, 50+ App Store reviews, Reddit r/Rivian threads, and Rivian&apos;s official support documentation revealed three distinct user segments and one fundamental architectural divide.
             </p>
           </div>
 
           {/* Context Photo — Family use case */}
           <div style={{ marginBottom: 48, borderRadius: 12, overflow: "hidden", position: "relative" }}>
             {/* Replace src with your hosted image path */}
+            {/* Inline base64 data URI — next/image can't optimize this, so disable the rule */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={BEACH_IMG} alt="Family with Rivian R1T at the beach" style={{ width: "100%", height: 320, objectFit: "cover", objectPosition: "center", display: "block" }}/>
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "40px 28px 16px", background: "linear-gradient(transparent, rgba(0,0,0,0.5))" }}>
               <p style={{ fontFamily: fonts.mono, fontSize: 10, color: "rgba(255,255,255,0.8)", margin: 0, letterSpacing: 1 }}>
@@ -246,7 +242,7 @@ export default function RivianCaseStudy() {
             <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>The Trust<br/><em style={{ fontStyle: "italic" }}>Layer</em></h2>
           </div>
           <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-            Rather than rebuilding the unlock protocol, I propose a Trust Layer — feedback, state communication, and failure recovery improvements that wrap around the existing system. The core insight: owners don't need perfection. They need transparency, confidence, and instant recovery.
+            Rather than rebuilding the unlock protocol, I propose a Trust Layer — feedback, state communication, and failure recovery improvements that wrap around the existing system. The core insight: owners don&apos;t need perfection. They need transparency, confidence, and instant recovery.
           </p>
         </div>
 
@@ -435,10 +431,10 @@ export default function RivianCaseStudy() {
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "0 48px", textAlign: "center" }}>
           <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.greenLight, textTransform: "uppercase" }}>Reflection</span>
           <p style={{ fontFamily: fonts.serif, fontSize: 26, fontWeight: 300, color: c.white, lineHeight: 1.7, margin: "24px 0 0", fontStyle: "italic" }}>
-            The highest-impact improvements aren't in the unlock protocol — they're in the feedback and recovery layers that wrap around it. An owner who waits 5 seconds with clear visual feedback has a fundamentally different experience than one who stands for 90 seconds with no indication of what's happening.
+            The highest-impact improvements aren&apos;t in the unlock protocol — they&apos;re in the feedback and recovery layers that wrap around it. An owner who waits 5 seconds with clear visual feedback has a fundamentally different experience than one who stands for 90 seconds with no indication of what&apos;s happening.
           </p>
           <p style={{ fontFamily: fonts.serif, fontSize: 20, fontWeight: 400, color: c.greenLight, marginTop: 32, lineHeight: 1.6 }}>
-            The phone key doesn't need to be perfect.<br/>It needs to be transparent, recoverable, and trustworthy.
+            The phone key doesn&apos;t need to be perfect.<br/>It needs to be transparent, recoverable, and trustworthy.
           </p>
         </div>
       </section>

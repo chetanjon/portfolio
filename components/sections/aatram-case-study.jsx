@@ -72,8 +72,8 @@ const MONO = "'IBM Plex Mono',monospace";
 // Colors are now provided via ThemeContext (see darkPalette / lightPalette above)
 
 // ——— HOOKS ———
-const useVis = (t = 0.12) => {
-  const r = useRef(null); const [v, s] = useState(true);
+const useVis = () => {
+  const r = useRef(null); const [v] = useState(true);
   return [r, v];
 };
 const useScroll = () => {
@@ -107,7 +107,7 @@ const Num = ({ end, suffix="", color }) => {
 
 // ——— NUDGE DEMO ———
 const NudgeDemo = () => {
-  const {bg,cream,dim,dim2,lav,w02,w03,w04,w06,quoteColor} = useTheme();
+  const {cream,dim,lav,w03,w04,quoteColor} = useTheme();
   const t = [
     {time:"15 min before",label:"Action Step",copy:"Write the first line of your paper. Just the first line.",tone:"Coach",mech:"Implementation Intention",emoji:"\u{1F4DD}"},
     {time:"20 min after",label:"Stakes Reminder",copy:"You said this is 30% of your grade. 2 hours left.",tone:"Friend",mech:"Momentum Anchoring",emoji:"\u{1F3AF}"},
@@ -125,7 +125,7 @@ const NudgeDemo = () => {
               <span style={{fontFamily:MONO,fontSize:10,color:lav,letterSpacing:"0.04em"}}>{x.time}</span>
               <span style={{fontFamily:SANS,fontSize:14,fontWeight:600,color:cream}}>{x.label}</span>
             </div>
-            <div style={{fontFamily:SERIF,fontSize:19,fontStyle:"italic",color:quoteColor,lineHeight:1.5,marginBottom:12,paddingLeft:32}}>"{x.copy}"</div>
+            <div style={{fontFamily:SERIF,fontSize:19,fontStyle:"italic",color:quoteColor,lineHeight:1.5,marginBottom:12,paddingLeft:32}}>&quot;{x.copy}&quot;</div>
             <div style={{display:"flex",gap:8,paddingLeft:32}}>
               <span style={{fontFamily:MONO,fontSize:9,color:lav,background:`${lav}10`,padding:"3px 10px",borderRadius:12}}>{x.mech}</span>
               <span style={{fontFamily:MONO,fontSize:9,color:dim,background:w03,padding:"3px 10px",borderRadius:12}}>{x.tone}</span>
@@ -142,7 +142,7 @@ const NudgeDemo = () => {
 
 // ——— EMOTION DEMO ———
 const EmotionDemo = () => {
-  const {cream,dim,dim2,lav,w04} = useTheme();
+  const {cream,dim,lav,w04} = useTheme();
   const [emo, setEmo] = useState("steady");
   const d = {
     energized:{emoji:"\u26A1",label:"Energized",tasks:"Full list: 3 tasks visible",session:"45 min",nudge:"Coach: \"Let's aim high. 3 tasks, 45 min each.\"",intensity:"High"},
@@ -185,9 +185,8 @@ const EmotionDemo = () => {
 // ===================================================
 export default function AatramCaseStudy() {
   const progressRef = useScroll();
-  const [isDark, setIsDark] = useState(false);
   const theme = lightPalette;
-  const {bg,surface,cream,dim,dim2,gold,lav,sage,rose,slate,w005,w008,w01,w02,w03,w04,w06,w2,shadow,quoteColor,quoteColor2,quoteColor3,quoteColor4,quoteColor5} = theme;
+  const {bg,cream,dim,dim2,lav,w01,w04,quoteColor2,quoteColor3,quoteColor4,quoteColor5} = theme;
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -313,7 +312,7 @@ export default function AatramCaseStudy() {
             It started the way most good ideas start: complaining. Three roommates, late at night. Chetan had wasted an entire day despite having nothing stopping him. Sai admitted the same. Ujjwal set a 30-minute timer.
           </p>
           <p style={{fontSize:16,lineHeight:1.9,color:dim,marginBottom:40}}>
-            The conversation kept circling back to one feeling: <em style={{fontFamily:SERIF,fontSize:18,color:cream,fontStyle:"italic"}}>"I wish someone would just push me to start."</em> Not plan. Not organize. Just start.
+            The conversation kept circling back to one feeling: <em style={{fontFamily:SERIF,fontSize:18,color:cream,fontStyle:"italic"}}>&quot;I wish someone would just push me to start.&quot;</em> Not plan. Not organize. Just start.
           </p>
         </Fade>
         <Fade delay={0.18}>
@@ -340,18 +339,18 @@ export default function AatramCaseStudy() {
           <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>02 THE THESIS</div></Fade>
           <Fade delay={0.08}>
             <h2 style={{fontFamily:SERIF,fontSize:"clamp(40px,6vw,72px)",fontWeight:400,lineHeight:1.08,margin:"0 0 40px"}}>
-              Procrastination isn't a <em style={{fontStyle:"italic",color:lav}}>discipline</em> problem.
+              Procrastination isn&apos;t a <em style={{fontStyle:"italic",color:lav}}>discipline</em> problem.
             </h2>
           </Fade>
           <Fade delay={0.16}>
             <p style={{fontSize:17,lineHeight:1.85,color:dim,maxWidth:520,margin:"0 auto 48px"}}>
-              Dr. Timothy Pychyl proved it. Piers Steel's meta-analysis of 691 correlations confirmed it. Task aversiveness - an emotional variable - is the strongest predictor of procrastination. Not laziness. Not poor planning. Emotion.
+              Dr. Timothy Pychyl proved it. Piers Steel&apos;s meta-analysis of 691 correlations confirmed it. Task aversiveness - an emotional variable - is the strongest predictor of procrastination. Not laziness. Not poor planning. Emotion.
             </p>
           </Fade>
           <Fade delay={0.24}>
             <div style={{borderLeft:`2px solid ${lav}`,padding:"24px 0 24px 28px",textAlign:"left",maxWidth:520,margin:"0 auto"}}>
               <div style={{fontFamily:SERIF,fontSize:20,fontStyle:"italic",color:quoteColor2,lineHeight:1.55}}>
-                "I've tried Forest, Focusmate, Todoist, and TickTick. They all worked for about two weeks. This is the first app that understood the problem isn't my to-do list - it's what I'm feeling when I look at it."
+                &quot;I&apos;ve tried Forest, Focusmate, Todoist, and TickTick. They all worked for about two weeks. This is the first app that understood the problem isn&apos;t my to-do list - it&apos;s what I&apos;m feeling when I look at it.&quot;
               </div>
               <div style={{fontFamily:MONO,fontSize:10,color:dim2,marginTop:14}}>- Beta tester</div>
             </div>
@@ -429,7 +428,7 @@ export default function AatramCaseStudy() {
           </h2>
         </Fade>
         <Fade delay={0.1}>
-          <p style={{fontSize:15,color:dim,lineHeight:1.85,marginBottom:36}}>Every productivity app uses streaks. They're proven engagement drivers. Duolingo's streak mechanic is responsible for 3.6x higher retention among 7-day users. Killing streaks was a risky, contrarian call. Here's how we decided.</p>
+          <p style={{fontSize:15,color:dim,lineHeight:1.85,marginBottom:36}}>Every productivity app uses streaks. They&apos;re proven engagement drivers. Duolingo&apos;s streak mechanic is responsible for 3.6x higher retention among 7-day users. Killing streaks was a risky, contrarian call. Here&apos;s how we decided.</p>
         </Fade>
 
         <Fade delay={0.14}>
@@ -455,7 +454,7 @@ export default function AatramCaseStudy() {
         <Fade delay={0.35}>
           <div style={{marginTop:28,borderLeft:`2px solid ${lav}`,paddingLeft:20}}>
             <p style={{fontFamily:SERIF,fontSize:17,fontStyle:"italic",color:quoteColor3,lineHeight:1.6,margin:0}}>
-              "The hardest part wasn't building momentum. It was deleting the streak code that was already working. But if we're serious about emotion-first design, we can't keep the one mechanic most responsible for guilt in productivity apps."
+              &quot;The hardest part wasn&apos;t building momentum. It was deleting the streak code that was already working. But if we&apos;re serious about emotion-first design, we can&apos;t keep the one mechanic most responsible for guilt in productivity apps.&quot;
             </p>
           </div>
         </Fade>
@@ -559,7 +558,7 @@ export default function AatramCaseStudy() {
           <Fade key={i} delay={0.06*i}>
             <div style={{padding:"32px 0",borderBottom:`1px solid ${w04}`}}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
-                <div style={{fontFamily:SERIF,fontSize:18,fontStyle:"italic",color:quoteColor4}}>"{x.fb}"</div>
+                <div style={{fontFamily:SERIF,fontSize:18,fontStyle:"italic",color:quoteColor4}}>&quot;{x.fb}&quot;</div>
                 <span style={{fontFamily:MONO,fontSize:9,color:x.sc,letterSpacing:"0.06em",flexShrink:0,marginLeft:16}}>{x.st}</span>
               </div>
               <p style={{fontSize:14,color:dim,lineHeight:1.7,margin:0}}>{x.fix}</p>
@@ -604,7 +603,7 @@ export default function AatramCaseStudy() {
                 <span style={{fontFamily:MONO,fontSize:11,color:e.pct>0?cream:dim2,minWidth:36,textAlign:"right"}}>{e.pct}%</span>
               </div>
             ))}
-            <p style={{fontFamily:SANS,fontSize:13,color:dim,marginTop:16,lineHeight:1.7}}>The surprise: 66% of check-ins were "Energized." Our hypothesis was that most users would check in as Resistant or Overwhelmed. Instead, the app attracted users who already had energy but needed help directing it. This changes our nudge strategy entirely.</p>
+            <p style={{fontFamily:SANS,fontSize:13,color:dim,marginTop:16,lineHeight:1.7}}>The surprise: 66% of check-ins were &quot;Energized.&quot; Our hypothesis was that most users would check in as Resistant or Overwhelmed. Instead, the app attracted users who already had energy but needed help directing it. This changes our nudge strategy entirely.</p>
           </div>
         </Fade>
       </section>
@@ -625,7 +624,7 @@ export default function AatramCaseStudy() {
           ].map((x,i)=>(
             <Fade key={i} delay={0.08+i*0.06}>
               <div style={{textAlign:"left",padding:"32px 0",borderBottom:`1px solid ${w04}`}}>
-                <div style={{fontFamily:SERIF,fontSize:20,color:lav,marginBottom:10,fontStyle:"italic"}}>"{x.wrong}"</div>
+                <div style={{fontFamily:SERIF,fontSize:20,color:lav,marginBottom:10,fontStyle:"italic"}}>&quot;{x.wrong}&quot;</div>
                 <p style={{fontSize:14,lineHeight:1.8,color:dim,margin:0}}>{x.lesson}</p>
               </div>
             </Fade>
@@ -643,7 +642,7 @@ export default function AatramCaseStudy() {
         <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>08 SUCCESS FRAMEWORK</div></Fade>
         <Fade delay={0.06}>
           <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.1,margin:"0 0 48px"}}>
-            What we're <em style={{fontStyle:"italic",color:lav}}>measuring</em>.
+            What we&apos;re <em style={{fontStyle:"italic",color:lav}}>measuring</em>.
           </h2>
         </Fade>
         {[
@@ -668,7 +667,7 @@ export default function AatramCaseStudy() {
 
       {/* === ROADMAP === */}
       <section style={{padding:"80px 32px 120px",maxWidth:640,margin:"0 auto"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>09 WHAT'S NEXT</div></Fade>
+        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>09 WHAT&apos;S NEXT</div></Fade>
         <Fade delay={0.06}>
           <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.1,margin:"0 0 48px"}}>
             From beta to <em style={{fontStyle:"italic",color:lav}}>launch</em>.
@@ -704,7 +703,7 @@ export default function AatramCaseStudy() {
           </Fade>
           <Fade delay={0.1}>
             <p style={{fontSize:15,color:dim,lineHeight:1.85,marginBottom:40}}>
-              Right now, nudges adapt to task urgency and your chosen personality. Next: they'll learn your individual procrastination patterns over time, delivered as exclusive, hyper-personalized interventions.
+              Right now, nudges adapt to task urgency and your chosen personality. Next: they&apos;ll learn your individual procrastination patterns over time, delivered as exclusive, hyper-personalized interventions.
             </p>
           </Fade>
           <div style={{textAlign:"left",maxWidth:480,margin:"0 auto"}}>

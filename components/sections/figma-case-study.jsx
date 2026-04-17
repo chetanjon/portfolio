@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from "react";
-
 const c = {
   bg: "#F5F1EB",
   bgWarm: "#EDE8E0",
@@ -36,12 +34,8 @@ const fonts = {
 };
 
 export default function FigmaCaseStudy() {
-  const [hoveredMetric, setHoveredMetric] = useState(null);
-
   return (
     <div style={{ background: c.bg, color: c.text, minHeight: "100vh", fontFamily: fonts.sans, lineHeight: 1.7 }}>
-      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
-
       {/* ─── HERO GRADIENT ─── */}
       <div style={{ position: "relative", width: "100%", height: 360, overflow: "hidden", background: `linear-gradient(135deg, ${c.indigo} 0%, ${c.accent} 40%, ${c.accentLight} 70%, #A78BFA 100%)` }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(245,241,235,0.5) 75%, #F5F1EB 100%)" }}/>
@@ -67,7 +61,7 @@ export default function FigmaCaseStudy() {
           Rebuilding Trust<br/>After <em style={{ fontStyle: "italic" }}>UI3</em>
         </h1>
         <p style={{ fontSize: 19, color: c.textSoft, lineHeight: 1.8, maxWidth: 640, margin: 0, fontWeight: 300 }}>
-          How a major redesign and AI data-sharing controversy tested trust with Figma's power users, and a PM framework for earning it back through progressive migration and transparent AI.
+          How a major redesign and AI data-sharing controversy tested trust with Figma&apos;s power users, and a PM framework for earning it back through progressive migration and transparent AI.
         </p>
       </header>
 
@@ -115,7 +109,7 @@ export default function FigmaCaseStudy() {
               { q: "UI3 feels like Illustrator for babies. The interface is so horrifyingly oversimplified that it makes Microsoft Paint look like feature-rich professional software.", s: "Representative composite, based on Figma Forum and Reddit posts" },
             ].map((quote, i) => (
               <div key={i} style={{ borderLeft: `2px solid ${c.accent}`, paddingLeft: 24, margin: "28px 0" }}>
-                <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>"{quote.q}"</p>
+                <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>&quot;{quote.q}&quot;</p>
                 <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 10, letterSpacing: 1 }}>— {quote.s}</p>
               </div>
             ))}
@@ -156,7 +150,7 @@ export default function FigmaCaseStudy() {
             </div>
             <div>
               <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, margin: "0 0 24px", fontWeight: 300 }}>
-                Figma's situation created a clear tension: the product continues to grow as a core design platform, but some of its most engaged users voiced strong frustration with how major changes were rolled out. The metrics that matter to investors (revenue, retention, expansion) can diverge from the sentiment that matters to the community using the product every day.
+                Figma&apos;s situation created a clear tension: the product continues to grow as a core design platform, but some of its most engaged users voiced strong frustration with how major changes were rolled out. The metrics that matter to investors (revenue, retention, expansion) can diverge from the sentiment that matters to the community using the product every day.
               </p>
             </div>
           </div>

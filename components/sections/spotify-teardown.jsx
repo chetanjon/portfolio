@@ -25,8 +25,6 @@ export default function SpotifyTeardown() {
 
   return (
     <div style={{ background: bg, color: cream, minHeight: "100vh", fontFamily: SANS, WebkitFontSmoothing: "antialiased", overflowX: "hidden" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-
       <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: 1.5, zIndex: 999 }}>
         <div style={{ height: "100%", width: `${progress * 100}%`, background: grn, opacity: 0.5, transition: "width 60ms linear" }} />
       </div>

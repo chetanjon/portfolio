@@ -231,7 +231,7 @@ export default function CursorTeardown() {
           </div>
           <div>
             <Body style={{ fontSize: 16 }}>
-              Cursor is an AI-native code editor built by Anysphere, founded in 2022 by four MIT classmates. They forked Microsoft's open-source VS Code (the editor used by 74% of developers) and built an AI layer directly into the editing experience.
+              Cursor is an AI-native code editor built by Anysphere, founded in 2022 by four MIT classmates. They forked Microsoft&apos;s open-source VS Code (the editor used by 74% of developers) and built an AI layer directly into the editing experience.
             </Body>
             <Body>
               From launch in March 2023 to an estimated $100M ARR by January 2025, roughly 22 months. Past $500M by June 2025. To over $2 billion in annualized run-rate by early 2026. The team grew from around 60 people in early 2025 to over 300 by late 2025, all with an almost entirely product-led growth motion.
@@ -389,7 +389,7 @@ export default function CursorTeardown() {
         <Wrap>
           <SectionLabel>04 — Moat Analysis</SectionLabel>
           <SectionTitle style={{ marginBottom: 12 }}>Does Cursor Have a Defensible Moat?</SectionTitle>
-          <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>This is the $29 billion question. Cursor's growth is undeniable, but growth is not a moat. Every layer of potential defensibility has a credible counter-argument.</Body>
+          <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>This is the $29 billion question. Cursor&apos;s growth is undeniable, but growth is not a moat. Every layer of potential defensibility has a credible counter-argument.</Body>
 
           <div style={{ background: c.surface, borderRadius: 12, border: `1px solid ${c.border}`, overflow: "hidden" }}>
             <div style={{ display: "grid", gridTemplateColumns: "200px 1fr 1fr", padding: "16px 24px", background: c.surface, borderBottom: `1px solid ${c.border}` }}>

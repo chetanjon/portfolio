@@ -194,7 +194,7 @@ const App = () => {
     <section className="hero sect" data-nav="hero">
       <div className="wrap" style={{ position:"relative",zIndex:1 }}>
         <div className="eyebrow" style={{ color:"rgba(108,92,231,.8)" }}>Product Management Case Study · By Chetan Jonnalagadda · March 2026</div>
-        <h1 className="h1">Perplexity AI's<br/><em>$20 Billion</em> Subscription Gamble</h1>
+        <h1 className="h1">Perplexity AI&apos;s<br/><em>$20 Billion</em> Subscription Gamble</h1>
         <p className="hero-sub">Perplexity built the fastest-growing AI subscription business in the world — then silently gutted its Pro plan, swapped premium models for cheaper ones, and pushed users toward a 10× more expensive tier.</p>
         <div className="hero-grid">
           <div className="hero-stat"><div className="hero-stat-val">$20B</div><div className="hero-stat-lbl">Valuation</div><div className="hero-stat-note">$200M raise · Sep 2025</div></div>
@@ -226,7 +226,7 @@ const App = () => {
         </div>
       </div>
       <div className="wrap" style={{ marginTop:16 }}>
-        <div className="quote quote-purple"><div className="quote-text">The free tier isn't charity — it's a growth engine with a compounding advantage.</div><div className="quote-attr">Sacra — Perplexity revenue analysis, 2025</div></div>
+        <div className="quote quote-purple"><div className="quote-text">The free tier isn&apos;t charity — it&apos;s a growth engine with a compounding advantage.</div><div className="quote-attr">Sacra — Perplexity revenue analysis, 2025</div></div>
       </div>
     </section>
 
@@ -242,7 +242,7 @@ const App = () => {
           <div className="tier"><div><div className="tier-tag" style={{ background:"#fffbea",color:"#B8860B" }}>POWER</div><div className="tier-price">$200<span style={{ font:"400 14px/1 'Sora',sans-serif",color:"#999" }}>/mo</span></div></div><div><div className="tier-name">Max</div><div className="tier-desc">Frontier reasoning models from OpenAI, Anthropic, and Google. Much higher limits across all features, video generation (limited), significantly discounted API usage.</div></div></div>
           <div className="tier"><div><div className="tier-tag" style={{ background:"#eef3fc",color:"#54A0FF" }}>ENTERPRISE</div><div className="tier-price">$40+<span style={{ font:"400 14px/1 'Sora',sans-serif",color:"#999" }}>/seat</span></div></div><div><div className="tier-name">Enterprise Pro / Max</div><div className="tier-desc">SSO, SCIM, SOC 2 Type II, role-based permissions, internal knowledge search. Higher tiers scale into the low hundreds per seat.</div></div></div>
         </div>
-        <div className="insight insight-purple"><div className="insight-lbl" style={{ color:"#6C5CE7" }}>💡 PM Insight</div><div className="insight-body">The 10× jump from Pro to Max is structurally different from ChatGPT's Plus→Pro. OpenAI offers fundamentally different models. Perplexity's Max largely <strong>restores</strong> what Pro used to include — a forced upsell, not a premium upgrade.</div></div>
+        <div className="insight insight-purple"><div className="insight-lbl" style={{ color:"#6C5CE7" }}>💡 PM Insight</div><div className="insight-body">The 10× jump from Pro to Max is structurally different from ChatGPT&apos;s Plus→Pro. OpenAI offers fundamentally different models. Perplexity&apos;s Max largely <strong>restores</strong> what Pro used to include — a forced upsell, not a premium upgrade.</div></div>
         <ValueGapChart/>
       </div>
     </section>
@@ -289,10 +289,10 @@ const App = () => {
             </tbody>
           </table>
         </div>
-        <div className="src" style={{ marginTop:8 }}>XDA Developers (Feb 2026): "Perplexity broke the mold — but that's not enough when the tool started lying about which model it was using."</div>
+        <div className="src" style={{ marginTop:8 }}>XDA Developers (Feb 2026): &quot;Perplexity broke the mold — but that&apos;s not enough when the tool started lying about which model it was using.&quot;</div>
       </div>
       <div className="wrap" style={{ marginTop:16 }}>
-        <div className="insight insight-teal"><div className="insight-lbl" style={{ color:"#00B4D8" }}>🎯 Key Takeaway</div><div className="insight-body">Perplexity currently leads in "high transparency + specialized research." But OpenAI's SearchGPT, Google's Deep Research, and Claude's Research mode are converging. The moat may be narrower than a $20B valuation implies.</div></div>
+        <div className="insight insight-teal"><div className="insight-lbl" style={{ color:"#00B4D8" }}>🎯 Key Takeaway</div><div className="insight-body">Perplexity currently leads in &quot;high transparency + specialized research.&quot; But OpenAI&apos;s SearchGPT, Google&apos;s Deep Research, and Claude&apos;s Research mode are converging. The moat may be narrower than a $20B valuation implies.</div></div>
       </div>
     </section>
 
@@ -301,10 +301,10 @@ const App = () => {
       <div className="wrap">
         <div className="eyebrow" style={{ color:"#FF6B6B" }}>05 · The Trust Crisis</div>
         <h2 className="h2">The Silent Downgrade (Nov 2025 – Feb 2026)</h2>
-        <p className="lead">Not a feature launch — a trust breach at the core of Perplexity's value proposition.</p>
+        <p className="lead">Not a feature launch — a trust breach at the core of Perplexity&apos;s value proposition.</p>
         <div style={{ marginTop:36 }}>
           <div className="pain"><div className="pain-bar" style={{ background:"#FF6B6B" }}/><div><div className="pain-head"><span className="pain-title">Deep Research Quotas Slashed</span><span className="tag tag-coral">Critical</span></div><div className="body">Dropped from hundreds of runs to ~20/month — on the order of a ~95–97% reduction vs earlier marketing promises.</div></div></div>
-          <div className="pain"><div className="pain-bar" style={{ background:"#FF6B6B" }}/><div><div className="pain-head"><span className="pain-title">Silent Model Substitution</span><span className="tag tag-coral">Critical</span></div><div className="body">Queries routed to cheaper models (Haiku, Flash) while interface showed premium ones. CEO called it a "bug" — but many users perceived the downgrading as deliberate cost optimization.</div><div className="src">Remio.ai, XDA Developers, MakeUseOf · Nov 2025–Feb 2026</div></div></div>
+          <div className="pain"><div className="pain-bar" style={{ background:"#FF6B6B" }}/><div><div className="pain-head"><span className="pain-title">Silent Model Substitution</span><span className="tag tag-coral">Critical</span></div><div className="body">Queries routed to cheaper models (Haiku, Flash) while interface showed premium ones. CEO called it a &quot;bug&quot; — but many users perceived the downgrading as deliberate cost optimization.</div><div className="src">Remio.ai, XDA Developers, MakeUseOf · Nov 2025–Feb 2026</div></div></div>
           <div className="pain"><div className="pain-bar" style={{ background:"#c4841d" }}/><div><div className="pain-head"><span className="pain-title">Zero Communication</span><span className="tag tag-gold">High</span></div><div className="body">Annual subs who prepaid $200 got no notice. 72-hour refund window made recourse nearly impossible.</div></div></div>
         </div>
         <div className="quote quote-coral"><div className="quote-text">Perplexity quietly gutted the usage limits on its Pro plan, swapped the models running under the hood, and redesigned the interface — all without sending so much as an email to the people who already paid.</div><div className="quote-attr">MakeUseOf · February 2026</div></div>
@@ -316,11 +316,11 @@ const App = () => {
           <tbody>
             <tr><td className="bold">Anthropic</td><td>Clear daily caps per model tier</td><td className="g">Published upfront</td></tr>
             <tr><td className="bold">OpenAI</td><td>Raised Plus to $22, defined caps</td><td className="g">Advance notice</td></tr>
-            <tr><td className="bold">Google</td><td>Specifies "high limits," explains when hit</td><td className="g">Transparent</td></tr>
+            <tr><td className="bold">Google</td><td>Specifies &quot;high limits,&quot; explains when hit</td><td className="g">Transparent</td></tr>
             <tr><td className="bold">Perplexity</td><td>Dynamic limits, secret model swap</td><td className="r">Silent enforcement</td></tr>
           </tbody>
         </table>
-        <div className="insight insight-coral"><div className="insight-lbl" style={{ color:"#FF6B6B" }}>⚠️ Red Flag</div><div className="insight-body">Textbook case of optimizing short-term unit economics at the expense of long-term trust. The subreddit was "a bloodbath." XDA reviewer: went "from one of my favorites to one I never reach for anymore."</div></div>
+        <div className="insight insight-coral"><div className="insight-lbl" style={{ color:"#FF6B6B" }}>⚠️ Red Flag</div><div className="insight-body">Textbook case of optimizing short-term unit economics at the expense of long-term trust. The subreddit was &quot;a bloodbath.&quot; XDA reviewer: went &quot;from one of my favorites to one I never reach for anymore.&quot;</div></div>
       </div>
     </section>
 
@@ -332,7 +332,7 @@ const App = () => {
         <p className="lead">Internal $656M ARR target for 2026 would require ~3.3× growth in 12 months — without ad revenue, which was abandoned February 2026.</p>
         <div className="met-grid">
           <div className="met"><div className="met-val">$750M</div><div className="met-lbl">Azure Commitment</div><div className="met-note" style={{ color:"#FF6B6B" }}>3-year deal · Jan 2026</div></div>
-          <div className="met"><div className="met-val">~$20K</div><div className="met-lbl">Total Ad Revenue '24</div><div className="met-note" style={{ color:"#FF6B6B" }}>Out of ~$34M total · Sacra</div></div>
+          <div className="met"><div className="met-val">~$20K</div><div className="met-lbl">Total Ad Revenue &apos;24</div><div className="met-note" style={{ color:"#FF6B6B" }}>Out of ~$34M total · Sacra</div></div>
           <div className="met"><div className="met-val">TBD</div><div className="met-lbl">IPO Timeline</div><div className="met-note" style={{ color:"#6C5CE7" }}>No IPO planned near term · CEO</div></div>
         </div>
         <div className="insight insight-gold"><div className="insight-lbl" style={{ color:"#B8860B" }}>💡 PM Insight</div><div className="insight-body">The reported $656M internal target requires massive conversion improvement OR enterprise adoption OR both. Running inference across 4+ providers at $20/mo may not be structurally sustainable. Max ($200/mo) and high-tier enterprise seats are the real margin levers.</div></div>
@@ -343,7 +343,7 @@ const App = () => {
     <section className="sect" data-nav="risks">
       <div className="wrap">
         <div className="eyebrow">07 · Risks & Strategic Expansion</div>
-        <h2 className="h2">What Could Go Wrong (and What's Next)</h2>
+        <h2 className="h2">What Could Go Wrong (and What&apos;s Next)</h2>
         <div style={{ marginTop:28 }}>
           <div className="risk"><div><div className="risk-title">Trust Erosion from Silent Downgrades</div><div className="risk-body">Brand damaged exactly where value prop depends on credibility.</div></div><div><div className="mit-tag" style={{ background:"#e6f9fc",color:"#00B4D8" }}>Expansion</div><div className="risk-body"><strong>Comet Browser</strong> (Jul 2025): AI-native Chromium. Perplexity has pledged tens of millions (~$40M+) in publisher revenue-sharing.</div></div></div>
           <div className="risk"><div><div className="risk-title">Copyright Lawsuits (NYT, News Corp, BBC)</div><div className="risk-body">Crawlers reportedly bypass robots.txt. Amazon filed suit over agentic shopping features; legal pressure ongoing.</div></div><div><div className="mit-tag" style={{ background:"#e6f9fc",color:"#00B4D8" }}>Expansion</div><div className="risk-body"><strong>Perplexity Computer</strong> (Feb 2026): Agentic multi-model workspace, CrowdStrike security partnership.</div></div></div>
