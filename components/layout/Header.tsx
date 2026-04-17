@@ -54,8 +54,16 @@ export function Header() {
   }, [lastScrollY]);
 
   const headerVisible = visible || isMobileMenuOpen;
-  const isCaseStudySubPage =
-    pathname.startsWith('/casestudies/') && pathname !== '/casestudies';
+  // Any /casestudies page (index + sub-pages): avoid mix-blend-difference.
+  // Also treat /projects, /work, /about, /resume, /contact as "content pages"
+  // so their hero titles don't collide with the header via difference blending.
+  const isContentPage =
+    pathname.startsWith('/casestudies') ||
+    pathname.startsWith('/projects') ||
+    pathname.startsWith('/work') ||
+    pathname.startsWith('/about') ||
+    pathname.startsWith('/resume') ||
+    pathname.startsWith('/contact');
 
   const handleResumeClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -69,7 +77,7 @@ export function Header() {
         transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={cn(
           'fixed top-0 left-0 right-0 z-[1000] transition-all duration-500',
-          isCaseStudySubPage
+          isContentPage
             ? scrolled
               ? 'bg-black/85 backdrop-blur-md border-b border-white/10'
               : 'bg-transparent'
@@ -129,7 +137,7 @@ export function Header() {
           {/* Right side controls */}
           <div className="flex items-center gap-3">
             {/* Dark mode toggle */}
-            <div className={isCaseStudySubPage ? '' : 'mix-blend-normal'}>
+            <div className={isContentPage ? '' : 'mix-blend-normal'}>
               <DarkModeToggle />
             </div>
 
