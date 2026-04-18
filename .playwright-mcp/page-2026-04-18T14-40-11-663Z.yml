@@ -1,0 +1,268 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Chetan J — Home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "CJ monogram" [ref=e5]
+        - generic [ref=e8]: Chetan J
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Work" [ref=e11] [cursor=pointer]:
+          - /url: /work
+        - link "Case Studies" [ref=e12] [cursor=pointer]:
+          - /url: /casestudies
+        - link "Projects" [ref=e13] [cursor=pointer]:
+          - /url: /projects
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+        - button "Resume" [ref=e15] [cursor=pointer]
+      - generic [ref=e16]:
+        - button "Toggle theme" [disabled] [ref=e18]
+        - button "Menu" [ref=e20] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e22]:
+      - generic [ref=e23]:
+        - generic [ref=e26]: "[ PRODUCT MANAGER ]"
+        - heading "I build products from zero to live." [level=1] [ref=e27]:
+          - text: I build products
+          - text: from zero to live.
+        - paragraph [ref=e28]: Co-Founder of a live iOS app. Former B2B marketplace PM who doubled GMV at seed stage. I find the real problem, scope ruthlessly, and ship.
+        - generic [ref=e29]:
+          - link "Aatram — Live on the App Store" [ref=e30] [cursor=pointer]:
+            - /url: https://apps.apple.com/us/app/aatram/id6760587556
+            - text: Aatram — Live on the App Store
+          - link "FrictionLens — Live at frictionlens.net" [ref=e32] [cursor=pointer]:
+            - /url: https://www.frictionlens.net/
+            - text: FrictionLens — Live at frictionlens.net
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]: "0"
+            - generic [ref=e37]: Products live
+          - generic [ref=e38]:
+            - generic [ref=e39]: 0.0x
+            - generic [ref=e40]: Vendor growth
+          - generic [ref=e41]:
+            - generic [ref=e42]: 0x
+            - generic [ref=e43]: GMV doubled
+          - generic [ref=e44]:
+            - generic [ref=e45]: 35–0%
+            - generic [ref=e46]: D7 retention, $0 spend
+      - generic [ref=e47]:
+        - paragraph [ref=e48]: Scroll
+        - img [ref=e50]
+    - generic [ref=e53]:
+      - generic [ref=e55]:
+        - generic [ref=e56]: "[ 02 ]"
+        - generic [ref=e57]: "[ APPROACH ]"
+      - heading "Fundam entals" [level=2]:
+        - text: Fundam
+        - text: entals
+      - generic [ref=e58]:
+        - generic [ref=e60]:
+          - img "Chetan Jonnalagadda" [ref=e62]
+          - generic [ref=e63]:
+            - text: "X: 33.4255"
+            - text: "Y: -111.9400"
+          - generic [ref=e64]: Tempe, AZ
+        - generic [ref=e66]:
+          - heading "Building With Evidence" [level=3] [ref=e67]:
+            - text: Building
+            - text: With
+            - text: Evidence
+          - paragraph [ref=e68]: Product manager who shipped a live AI-powered iOS app hitting 35–40% D7 retention (2x category average) and scaled a seed-stage B2B marketplace 2.3x. Engineering background with hands-on SQL, Python, and analytics. CSPO certified. M.S. Management of Technology at ASU (May 2026).
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - generic [ref=e71]: "01"
+              - generic [ref=e72]: Discover
+              - generic [ref=e73]: User interviews before wireframes — always
+            - generic [ref=e74]:
+              - generic [ref=e75]: "02"
+              - generic [ref=e76]: Prioritize
+              - generic [ref=e77]: RICE over gut feeling, every sprint
+            - generic [ref=e78]:
+              - generic [ref=e79]: "03"
+              - generic [ref=e80]: Ship
+              - generic [ref=e81]: 70% solution shipped beats 100% stuck in review
+            - generic [ref=e82]:
+              - generic [ref=e83]: "04"
+              - generic [ref=e84]: Iterate
+              - generic [ref=e85]: Retention cohorts reveal what NPS scores hide
+          - link "About Me" [ref=e87] [cursor=pointer]:
+            - /url: /about
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e92]:
+          - generic [ref=e93]: "[ 04 ]"
+          - generic [ref=e94]: "[ WORKS ]"
+        - generic [ref=e97]: "[ FILTER ]"
+      - generic [ref=e99]:
+        - generic [ref=e100]: Products I've
+        - heading "Shipped" [level=2] [ref=e101]
+      - generic [ref=e102]:
+        - link "Aatram 2026 Aatram Co-Founder & Product Manager full-time 35–40% D7 Retention" [ref=e104] [cursor=pointer]:
+          - /url: /work/aatram
+          - generic [ref=e105]:
+            - heading "Aatram" [level=3] [ref=e106]
+            - generic [ref=e107]: "2026"
+          - img "Aatram" [ref=e109]
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: Co-Founder & Product Manager
+              - paragraph [ref=e113]: full-time
+            - generic [ref=e114]:
+              - text: 35–40%
+              - paragraph [ref=e115]: D7 Retention
+        - link "IKT INDIA 2023 IKT INDIA Product Manager full-time 2.3x Vendor Growth" [ref=e117] [cursor=pointer]:
+          - /url: /work/ikt-india
+          - generic [ref=e118]:
+            - heading "IKT INDIA" [level=3] [ref=e119]
+            - generic [ref=e120]: "2023"
+          - img "IKT INDIA" [ref=e122]
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - paragraph [ref=e125]: Product Manager
+              - paragraph [ref=e126]: full-time
+            - generic [ref=e127]:
+              - text: 2.3x
+              - paragraph [ref=e128]: Vendor Growth
+        - link "IKT INDIA 2023 IKT INDIA Product Management Intern internship 15+ Seller Interviews" [ref=e130] [cursor=pointer]:
+          - /url: /work/ikt-india-intern
+          - generic [ref=e131]:
+            - heading "IKT INDIA" [level=3] [ref=e132]
+            - generic [ref=e133]: "2023"
+          - img "IKT INDIA" [ref=e135]
+          - generic [ref=e136]:
+            - generic [ref=e137]:
+              - paragraph [ref=e138]: Product Management Intern
+              - paragraph [ref=e139]: internship
+            - generic [ref=e140]:
+              - text: 15+
+              - paragraph [ref=e141]: Seller Interviews
+        - link "Gangothri Nutrients 2023 Gangothri Nutrients Product Operations Intern internship 3,700+ Dealer Network" [ref=e143] [cursor=pointer]:
+          - /url: /work/gangothri-nutrients
+          - generic [ref=e144]:
+            - heading "Gangothri Nutrients" [level=3] [ref=e145]
+            - generic [ref=e146]: "2023"
+          - img "Gangothri Nutrients" [ref=e148]
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - paragraph [ref=e151]: Product Operations Intern
+              - paragraph [ref=e152]: internship
+            - generic [ref=e153]:
+              - text: 3,700+
+              - paragraph [ref=e154]: Dealer Network
+      - generic [ref=e155]:
+        - generic [ref=e156]:
+          - generic [ref=e157]: / 0-to-1 Product
+          - generic [ref=e158]: / AI / On-Device ML
+          - generic [ref=e159]: / B2B Marketplace Growth
+          - generic [ref=e160]: / Retention Analytics
+        - generic [ref=e161]:
+          - generic [ref=e162]: User Research
+          - generic [ref=e163]: PRDs
+          - generic [ref=e164]: RICE Prioritization
+          - generic [ref=e165]: Cohort Analysis
+          - generic [ref=e166]: SQL + Mixpanel
+          - generic [ref=e167]: A/B Testing
+    - generic [ref=e170]:
+      - text: "[ Engineer turned product builder ]"
+      - paragraph [ref=e171]:
+        - text: Engineering taught me
+        - emphasis [ref=e172]: to debug systems.
+        - text: Product management taught me to debug businesses. The tools are different — the mindset isn't.
+      - generic [ref=e173]:
+        - paragraph [ref=e174]: Chetan Jonnalagadda
+        - paragraph [ref=e175]: Product Manager / Open to relocation
+    - generic [ref=e177]:
+      - generic [ref=e178]:
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - generic [ref=e181]: "[ 05 ]"
+            - generic [ref=e182]: "[ RESEARCH ]"
+          - heading "Case studies" [level=2] [ref=e183]
+        - link "View all →" [ref=e185] [cursor=pointer]:
+          - /url: /casestudies
+      - generic [ref=e186]:
+        - link "Aatram — Live on App Store Shipped 35–0% D7 retention · 2x category Pivoted the app around an emotion most PMs miss Every top-10 productivity app treats procrastination as a time problem. Users create tasks but never start them. Read →" [ref=e188] [cursor=pointer]:
+          - /url: /casestudies/aatram
+          - generic [ref=e189]:
+            - generic [ref=e190]:
+              - generic [ref=e191]: Aatram — Live on App Store
+              - generic [ref=e192]: Shipped
+            - generic [ref=e193]:
+              - generic [ref=e194]: 35–0%
+              - paragraph [ref=e195]: D7 retention · 2x category
+            - heading "Pivoted the app around an emotion most PMs miss" [level=3] [ref=e196]
+            - paragraph [ref=e197]: Every top-10 productivity app treats procrastination as a time problem. Users create tasks but never start them.
+            - generic [ref=e198]: Read →
+        - link "Notion Teardown $40–0M Est. incremental ARR Found the $600M activation paradox 8 of 10 users learned Notion's value from YouTube, not the product — the flexibility that makes it powerful makes it overwhelming. Read →" [ref=e200] [cursor=pointer]:
+          - /url: /casestudies/notion
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - generic [ref=e203]: Notion
+              - generic [ref=e204]: Teardown
+            - generic [ref=e205]:
+              - generic [ref=e206]: $40–0M
+              - paragraph [ref=e207]: Est. incremental ARR
+            - heading "Found the $600M activation paradox" [level=3] [ref=e208]
+            - paragraph [ref=e209]: 8 of 10 users learned Notion's value from YouTube, not the product — the flexibility that makes it powerful makes it overwhelming.
+            - generic [ref=e210]: Read →
+        - link "Cursor (Anysphere) Teardown 0B Annualized revenue Reverse-engineered the $2B/yr SaaS play Four MIT students forked VS Code and grew with almost no traditional marketing — while every model provider funds them and competes with them. Read →" [ref=e212] [cursor=pointer]:
+          - /url: /casestudies/cursor
+          - generic [ref=e213]:
+            - generic [ref=e214]:
+              - generic [ref=e215]: Cursor (Anysphere)
+              - generic [ref=e216]: Teardown
+            - generic [ref=e217]:
+              - generic [ref=e218]: 0B
+              - paragraph [ref=e219]: Annualized revenue
+            - heading "Reverse-engineered the $2B/yr SaaS play" [level=3] [ref=e220]
+            - paragraph [ref=e221]: Four MIT students forked VS Code and grew with almost no traditional marketing — while every model provider funds them and competes with them.
+            - generic [ref=e222]: Read →
+    - generic [ref=e225]:
+      - generic [ref=e226]: Open to full-time PM roles · May 2026
+      - heading "Hiring a PM who ships? Let's talk." [level=2] [ref=e228]:
+        - text: Hiring a PM who ships?
+        - text: Let's talk.
+      - paragraph [ref=e229]: B2B marketplaces, AI products, 0-to-1, consumer iOS. Based in Tempe, AZ — open to relocation. CSPO certified.
+      - generic [ref=e230]:
+        - link "Get in touch" [ref=e231] [cursor=pointer]:
+          - /url: /contact
+          - img [ref=e232]
+          - text: Get in touch
+        - button "View resume" [ref=e235] [cursor=pointer]:
+          - img [ref=e236]
+          - text: View resume
+      - paragraph [ref=e239]: jonnalagadda8800@gmail.com · (602) 807-9130
+  - contentinfo [ref=e240]:
+    - generic [ref=e241]:
+      - generic [ref=e242]:
+        - link "Home" [ref=e243] [cursor=pointer]:
+          - /url: /
+        - link "Work" [ref=e244] [cursor=pointer]:
+          - /url: /work
+        - link "Case Studies" [ref=e245] [cursor=pointer]:
+          - /url: /casestudies
+        - link "Projects" [ref=e246] [cursor=pointer]:
+          - /url: /projects
+      - generic [ref=e247]:
+        - link "LinkedIn" [ref=e248] [cursor=pointer]:
+          - /url: https://linkedin.com/in/cjonn
+        - link "GitHub" [ref=e249] [cursor=pointer]:
+          - /url: https://github.com/chetanjonnalagadda
+        - link "Email" [ref=e250] [cursor=pointer]:
+          - /url: mailto:jonnalagadda8800@gmail.com
+      - link "JONNALAGADDA8800@GMAIL.COM" [ref=e252] [cursor=pointer]:
+        - /url: mailto:jonnalagadda8800@gmail.com
+      - heading "Product Manager" [level=2] [ref=e253]
+      - generic [ref=e254]:
+        - generic [ref=e255]:
+          - generic [ref=e256]: © 2026 Chetan Jonnalagadda
+          - generic [ref=e257]: ·
+          - generic [ref=e258]: All Rights Reserved
+        - generic [ref=e260]: Requires H1B Sponsorship
+        - link "Scroll to Top" [ref=e261] [cursor=pointer]:
+          - /url: "#top"
+  - button "Open Next.js Dev Tools" [ref=e267] [cursor=pointer]:
+    - img [ref=e268]

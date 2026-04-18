@@ -1,0 +1,330 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Chetan J — Home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "CJ monogram" [ref=e5]
+        - generic [ref=e8]: Chetan J
+      - navigation [ref=e9]:
+        - link "Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Work" [ref=e11] [cursor=pointer]:
+          - /url: /work
+        - link "Case Studies" [ref=e12] [cursor=pointer]:
+          - /url: /casestudies
+        - link "Projects" [ref=e13] [cursor=pointer]:
+          - /url: /projects
+        - link "About" [ref=e14] [cursor=pointer]:
+          - /url: /about
+        - button "Resume" [ref=e15] [cursor=pointer]
+      - generic [ref=e16]:
+        - button "Toggle theme" [disabled] [ref=e18]
+        - button "Menu" [ref=e20] [cursor=pointer]
+  - main [ref=e21]:
+    - generic [ref=e24]:
+      - generic [ref=e26]: "[ RESEARCH & STRATEGY ]"
+      - heading "Case Studies" [level=1] [ref=e27]
+      - paragraph [ref=e28]: In-depth product teardowns applying CIRCLES, PRD writing, UX research, and competitive analysis — the frameworks that drive real product decisions.
+    - generic [ref=e31]:
+      - button "All 11" [pressed] [ref=e32] [cursor=pointer]:
+        - generic [ref=e33]: All
+        - generic [ref=e34]: "11"
+      - button "Shipped 1" [ref=e35] [cursor=pointer]:
+        - generic [ref=e36]: Shipped
+        - generic [ref=e37]: "1"
+      - button "Teardown 4" [ref=e38] [cursor=pointer]:
+        - generic [ref=e39]: Teardown
+        - generic [ref=e40]: "4"
+      - button "Case Study 6" [ref=e41] [cursor=pointer]:
+        - generic [ref=e42]: Case Study
+        - generic [ref=e43]: "6"
+    - generic [ref=e46]:
+      - link "Cursor (Anysphere) / 2026 / 9 min read / Teardown The $29B Fork How four MIT students forked VS Code, grew with almost no traditional marketing, and built what may be the fastest-growing SaaS product ever — while every model provider simultaneously funds them and competes with them. Product Teardown SaaS AI Coding Competitive Analysis Unit Economics Read Teardown → $2B Annualized Revenue" [ref=e48] [cursor=pointer]:
+        - /url: /casestudies/cursor
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: Cursor (Anysphere)
+              - generic [ref=e55]: /
+              - generic [ref=e56]: "2026"
+              - generic [ref=e57]: /
+              - generic [ref=e58]: 9 min read
+              - generic [ref=e59]: /
+              - generic [ref=e60]: Teardown
+            - heading "The $29B Fork" [level=2] [ref=e61]
+            - paragraph [ref=e62]: How four MIT students forked VS Code, grew with almost no traditional marketing, and built what may be the fastest-growing SaaS product ever — while every model provider simultaneously funds them and competes with them.
+            - generic [ref=e63]:
+              - generic [ref=e64]: Product Teardown
+              - generic [ref=e65]: SaaS
+              - generic [ref=e66]: AI Coding
+              - generic [ref=e67]: Competitive Analysis
+              - generic [ref=e68]: Unit Economics
+            - text: Read Teardown →
+          - generic [ref=e69]:
+            - generic [ref=e70]: $2B
+            - generic [ref=e71]: Annualized Revenue
+      - link "Duolingo / 2026 / 10 min read Breaking the B1 Wall 52 million daily users. $1 billion in revenue. A learning ceiling nobody's fixing. A product strategy using the CIRCLES framework and PRD to address Duolingo's intermediate plateau. CIRCLES PRD UX Research RICE Scoring Wireframes Read Case Study → 52.7M Daily Active Users" [ref=e73] [cursor=pointer]:
+        - /url: /casestudies/duolingo
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - generic [ref=e79]: Duolingo
+              - generic [ref=e80]: /
+              - generic [ref=e81]: "2026"
+              - generic [ref=e82]: /
+              - generic [ref=e83]: 10 min read
+            - heading "Breaking the B1 Wall" [level=2] [ref=e84]
+            - paragraph [ref=e85]: 52 million daily users. $1 billion in revenue. A learning ceiling nobody's fixing. A product strategy using the CIRCLES framework and PRD to address Duolingo's intermediate plateau.
+            - generic [ref=e86]:
+              - generic [ref=e87]: CIRCLES
+              - generic [ref=e88]: PRD
+              - generic [ref=e89]: UX Research
+              - generic [ref=e90]: RICE Scoring
+              - generic [ref=e91]: Wireframes
+            - text: Read Case Study →
+          - generic [ref=e92]:
+            - generic [ref=e93]: 52.7M
+            - generic [ref=e94]: Daily Active Users
+      - link "Figma / 2026 / 8 min read Rebuilding Trust After UI3 How a major redesign and AI data-sharing controversy tested trust with Figma's power users — and a PM framework for earning it back through progressive migration and transparent AI. Trust Recovery CIRCLES PRD RICE Scoring Wireframes Read Case Study → $1.06B FY2025 Revenue" [ref=e96] [cursor=pointer]:
+        - /url: /casestudies/figma
+        - generic [ref=e99]:
+          - generic [ref=e100]:
+            - generic [ref=e101]:
+              - generic [ref=e102]: Figma
+              - generic [ref=e103]: /
+              - generic [ref=e104]: "2026"
+              - generic [ref=e105]: /
+              - generic [ref=e106]: 8 min read
+            - heading "Rebuilding Trust After UI3" [level=2] [ref=e107]
+            - paragraph [ref=e108]: How a major redesign and AI data-sharing controversy tested trust with Figma's power users — and a PM framework for earning it back through progressive migration and transparent AI.
+            - generic [ref=e109]:
+              - generic [ref=e110]: Trust Recovery
+              - generic [ref=e111]: CIRCLES
+              - generic [ref=e112]: PRD
+              - generic [ref=e113]: RICE Scoring
+              - generic [ref=e114]: Wireframes
+            - text: Read Case Study →
+          - generic [ref=e115]:
+            - generic [ref=e116]: $1.06B
+            - generic [ref=e117]: FY2025 Revenue
+      - link "Apple / 2026 / 10 min read When Glass Cracked How Apple's most ambitious redesign since iOS 7 broke accessibility for millions — and what a better path forward looks like. A UX case study analyzing WCAG failures, heuristic violations, and solution design. UX Research Accessibility WCAG 2.2 Heuristic Evaluation RICE Read Case Study → 1.5:1 Contrast Measured" [ref=e119] [cursor=pointer]:
+        - /url: /casestudies/liquid-glass
+        - generic [ref=e122]:
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e125]: Apple
+              - generic [ref=e126]: /
+              - generic [ref=e127]: "2026"
+              - generic [ref=e128]: /
+              - generic [ref=e129]: 10 min read
+            - heading "When Glass Cracked" [level=2] [ref=e130]
+            - paragraph [ref=e131]: How Apple's most ambitious redesign since iOS 7 broke accessibility for millions — and what a better path forward looks like. A UX case study analyzing WCAG failures, heuristic violations, and solution design.
+            - generic [ref=e132]:
+              - generic [ref=e133]: UX Research
+              - generic [ref=e134]: Accessibility
+              - generic [ref=e135]: WCAG 2.2
+              - generic [ref=e136]: Heuristic Evaluation
+              - generic [ref=e137]: RICE
+            - text: Read Case Study →
+          - generic [ref=e138]:
+            - generic [ref=e139]: 1.5:1
+            - generic [ref=e140]: Contrast Measured
+      - 'link "Notion / 2026 / 12 min read / Teardown Notion''s $600M Paradox How AI Agents Could Solve the Onboarding Problem That Templates Never Fixed. After interviewing 10 Notion users and analyzing 10,000+ reviews, one pattern dominated: the flexibility that makes Notion powerful makes it overwhelming. AARRR Funnel User Interviews RICE Scoring Wireframes ARR Modeling Read Teardown → ~$600M Est. ARR" [ref=e142] [cursor=pointer]':
+        - /url: /casestudies/notion
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - generic [ref=e148]: Notion
+              - generic [ref=e149]: /
+              - generic [ref=e150]: "2026"
+              - generic [ref=e151]: /
+              - generic [ref=e152]: 12 min read
+              - generic [ref=e153]: /
+              - generic [ref=e154]: Teardown
+            - heading "Notion's $600M Paradox" [level=2] [ref=e155]
+            - paragraph [ref=e156]: "How AI Agents Could Solve the Onboarding Problem That Templates Never Fixed. After interviewing 10 Notion users and analyzing 10,000+ reviews, one pattern dominated: the flexibility that makes Notion powerful makes it overwhelming."
+            - generic [ref=e157]:
+              - generic [ref=e158]: AARRR Funnel
+              - generic [ref=e159]: User Interviews
+              - generic [ref=e160]: RICE Scoring
+              - generic [ref=e161]: Wireframes
+              - generic [ref=e162]: ARR Modeling
+            - text: Read Teardown →
+          - generic [ref=e163]:
+            - generic [ref=e164]: ~$600M
+            - generic [ref=e165]: Est. ARR
+      - link "Rivian / 2026 / 7 min read Rivian's Broken Handshake How phone key failure rates as high as 70% threaten a $5.8B joint venture — and a PM framework for rebuilding trust through feedback, state communication, and failure recovery improvements. CIRCLES PRD RICE Scoring UX Wireframes BLE/UWB Read Case Study → Up to 70% Failure Rate" [ref=e167] [cursor=pointer]:
+        - /url: /casestudies/rivian
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - generic [ref=e173]: Rivian
+              - generic [ref=e174]: /
+              - generic [ref=e175]: "2026"
+              - generic [ref=e176]: /
+              - generic [ref=e177]: 7 min read
+            - heading "Rivian's Broken Handshake" [level=2] [ref=e178]
+            - paragraph [ref=e179]: How phone key failure rates as high as 70% threaten a $5.8B joint venture — and a PM framework for rebuilding trust through feedback, state communication, and failure recovery improvements.
+            - generic [ref=e180]:
+              - generic [ref=e181]: CIRCLES
+              - generic [ref=e182]: PRD
+              - generic [ref=e183]: RICE Scoring
+              - generic [ref=e184]: UX Wireframes
+              - generic [ref=e185]: BLE/UWB
+            - text: Read Case Study →
+          - generic [ref=e186]:
+            - generic [ref=e187]: Up to 70%
+            - generic [ref=e188]: Failure Rate
+      - link "Perplexity AI / 2026 / 7 min read / Teardown The $20 Billion Subscription Gamble Perplexity built the fastest-growing AI subscription business — then silently gutted its Pro plan, swapped premium models for cheaper ones, and pushed users toward a 10× more expensive tier. Product Teardown Pricing Strategy AARRR Competitive Analysis Trust Read Teardown → $20B Valuation" [ref=e190] [cursor=pointer]:
+        - /url: /casestudies/perplexity
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - generic [ref=e195]:
+              - generic [ref=e196]: Perplexity AI
+              - generic [ref=e197]: /
+              - generic [ref=e198]: "2026"
+              - generic [ref=e199]: /
+              - generic [ref=e200]: 7 min read
+              - generic [ref=e201]: /
+              - generic [ref=e202]: Teardown
+            - heading "The $20 Billion Subscription Gamble" [level=2] [ref=e203]
+            - paragraph [ref=e204]: Perplexity built the fastest-growing AI subscription business — then silently gutted its Pro plan, swapped premium models for cheaper ones, and pushed users toward a 10× more expensive tier.
+            - generic [ref=e205]:
+              - generic [ref=e206]: Product Teardown
+              - generic [ref=e207]: Pricing Strategy
+              - generic [ref=e208]: AARRR
+              - generic [ref=e209]: Competitive Analysis
+              - generic [ref=e210]: Trust
+            - text: Read Teardown →
+          - generic [ref=e211]:
+            - generic [ref=e212]: $20B
+            - generic [ref=e213]: Valuation
+      - link "Sonos / 2026 / 8 min read When the Music Stopped How Sonos shipped a major app rewrite that removed core features, broke accessibility, and cost the CEO his job. A PM framework for how the migration should have been managed. CIRCLES PRD Safe Migration Accessibility RICE Scoring Read Case Study → ~$500M Market Cap Lost" [ref=e215] [cursor=pointer]:
+        - /url: /casestudies/sonos
+        - generic [ref=e218]:
+          - generic [ref=e219]:
+            - generic [ref=e220]:
+              - generic [ref=e221]: Sonos
+              - generic [ref=e222]: /
+              - generic [ref=e223]: "2026"
+              - generic [ref=e224]: /
+              - generic [ref=e225]: 8 min read
+            - heading "When the Music Stopped" [level=2] [ref=e226]
+            - paragraph [ref=e227]: How Sonos shipped a major app rewrite that removed core features, broke accessibility, and cost the CEO his job. A PM framework for how the migration should have been managed.
+            - generic [ref=e228]:
+              - generic [ref=e229]: CIRCLES
+              - generic [ref=e230]: PRD
+              - generic [ref=e231]: Safe Migration
+              - generic [ref=e232]: Accessibility
+              - generic [ref=e233]: RICE Scoring
+            - text: Read Case Study →
+          - generic [ref=e234]:
+            - generic [ref=e235]: ~$500M
+            - generic [ref=e236]: Market Cap Lost
+      - link "TikTok Shop / 2026 / 8 min read Redesigning Trust in Social Commerce Redesigning trust, discovery & purchase confidence in the world's fastest-growing social commerce platform. CIRCLES framework, wireframes, and a full PRD for a Trust Layer. CIRCLES Social Commerce PRD Wireframes Trust Design Read Case Study → ~$64B GMV 2025 Est." [ref=e238] [cursor=pointer]:
+        - /url: /casestudies/tiktok-shop
+        - generic [ref=e241]:
+          - generic [ref=e242]:
+            - generic [ref=e243]:
+              - generic [ref=e244]: TikTok Shop
+              - generic [ref=e245]: /
+              - generic [ref=e246]: "2026"
+              - generic [ref=e247]: /
+              - generic [ref=e248]: 8 min read
+            - heading "Redesigning Trust in Social Commerce" [level=2] [ref=e249]
+            - paragraph [ref=e250]: Redesigning trust, discovery & purchase confidence in the world's fastest-growing social commerce platform. CIRCLES framework, wireframes, and a full PRD for a Trust Layer.
+            - generic [ref=e251]:
+              - generic [ref=e252]: CIRCLES
+              - generic [ref=e253]: Social Commerce
+              - generic [ref=e254]: PRD
+              - generic [ref=e255]: Wireframes
+              - generic [ref=e256]: Trust Design
+            - text: Read Case Study →
+          - generic [ref=e257]:
+            - generic [ref=e258]: ~$64B
+            - generic [ref=e259]: GMV 2025 Est.
+      - link "Spotify / 2026 / 7 min read / Teardown Listening Into Loyalty How Spotify turned a music player into a growth machine. A teardown of Discover Weekly and Wrapped — the two features that drive retention and acquisition through algorithmic personalization and viral data storytelling. Product Teardown Growth Loops Recommendation Systems Viral Mechanics Retention Read Teardown → 751M Monthly Active Users" [ref=e261] [cursor=pointer]:
+        - /url: /casestudies/spotify
+        - generic [ref=e264]:
+          - generic [ref=e265]:
+            - generic [ref=e266]:
+              - generic [ref=e267]: Spotify
+              - generic [ref=e268]: /
+              - generic [ref=e269]: "2026"
+              - generic [ref=e270]: /
+              - generic [ref=e271]: 7 min read
+              - generic [ref=e272]: /
+              - generic [ref=e273]: Teardown
+            - heading "Listening Into Loyalty" [level=2] [ref=e274]
+            - paragraph [ref=e275]: How Spotify turned a music player into a growth machine. A teardown of Discover Weekly and Wrapped — the two features that drive retention and acquisition through algorithmic personalization and viral data storytelling.
+            - generic [ref=e276]:
+              - generic [ref=e277]: Product Teardown
+              - generic [ref=e278]: Growth Loops
+              - generic [ref=e279]: Recommendation Systems
+              - generic [ref=e280]: Viral Mechanics
+              - generic [ref=e281]: Retention
+            - text: Read Teardown →
+          - generic [ref=e282]:
+            - generic [ref=e283]: 751M
+            - generic [ref=e284]: Monthly Active Users
+      - link "Aatram / 2026 / 6 min read / Shipped Start Starting Built a 0-to-1 iOS app that treats procrastination as an emotion problem, not a discipline problem. Live on the App Store at 35–40% D7 retention — 2x the category average — on $0 ad spend. User research, a full pivot that killed 7 features, and a re-engagement system that doubled notification tap rate. 0-to-1 Behavioral Science User Research iOS Live Read Shipped → 35–40% D7 Retention · 2x category" [ref=e286] [cursor=pointer]:
+        - /url: /casestudies/aatram
+        - generic [ref=e289]:
+          - generic [ref=e290]:
+            - generic [ref=e291]:
+              - generic [ref=e292]: Aatram
+              - generic [ref=e293]: /
+              - generic [ref=e294]: "2026"
+              - generic [ref=e295]: /
+              - generic [ref=e296]: 6 min read
+              - generic [ref=e297]: /
+              - generic [ref=e298]: Shipped
+            - heading "Start Starting" [level=2] [ref=e299]
+            - paragraph [ref=e300]: Built a 0-to-1 iOS app that treats procrastination as an emotion problem, not a discipline problem. Live on the App Store at 35–40% D7 retention — 2x the category average — on $0 ad spend. User research, a full pivot that killed 7 features, and a re-engagement system that doubled notification tap rate.
+            - generic [ref=e301]:
+              - generic [ref=e302]: 0-to-1
+              - generic [ref=e303]: Behavioral Science
+              - generic [ref=e304]: User Research
+              - generic [ref=e305]: iOS
+              - generic [ref=e306]: Live
+            - text: Read Shipped →
+          - generic [ref=e307]:
+            - generic [ref=e308]: 35–40%
+            - generic [ref=e309]: D7 Retention · 2x category
+    - generic [ref=e312]:
+      - generic [ref=e313]: / CIRCLES Framework
+      - generic [ref=e314]: / PRD Writing
+      - generic [ref=e315]: / RICE Prioritization
+      - generic [ref=e316]: / UX Research
+      - generic [ref=e317]: / Competitive Analysis
+  - contentinfo [ref=e318]:
+    - generic [ref=e319]:
+      - generic [ref=e320]:
+        - link "Home" [ref=e321] [cursor=pointer]:
+          - /url: /
+        - link "Work" [ref=e322] [cursor=pointer]:
+          - /url: /work
+        - link "Case Studies" [ref=e323] [cursor=pointer]:
+          - /url: /casestudies
+        - link "Projects" [ref=e324] [cursor=pointer]:
+          - /url: /projects
+      - generic [ref=e325]:
+        - link "LinkedIn" [ref=e326] [cursor=pointer]:
+          - /url: https://linkedin.com/in/cjonn
+        - link "GitHub" [ref=e327] [cursor=pointer]:
+          - /url: https://github.com/chetanjonnalagadda
+        - link "Email" [ref=e328] [cursor=pointer]:
+          - /url: mailto:jonnalagadda8800@gmail.com
+      - link "JONNALAGADDA8800@GMAIL.COM" [ref=e330] [cursor=pointer]:
+        - /url: mailto:jonnalagadda8800@gmail.com
+      - heading "Product Manager" [level=2] [ref=e331]
+      - generic [ref=e332]:
+        - generic [ref=e333]:
+          - generic [ref=e334]: © 2026 Chetan Jonnalagadda
+          - generic [ref=e335]: ·
+          - generic [ref=e336]: All Rights Reserved
+        - generic [ref=e338]: Requires H1B Sponsorship
+        - link "Scroll to Top" [ref=e339] [cursor=pointer]:
+          - /url: "#top"
+  - button "Open Next.js Dev Tools" [ref=e345] [cursor=pointer]:
+    - img [ref=e346]
