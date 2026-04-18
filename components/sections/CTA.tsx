@@ -39,14 +39,14 @@ export function CTA() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-bg-primary rounded-full text-xs uppercase tracking-widest font-medium hover:opacity-80 transition-opacity"
+                className="cta-glow inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-bg-primary rounded-full text-xs uppercase tracking-widest font-medium hover:opacity-80"
               >
                 <Mail className="w-3.5 h-3.5" />
                 Get in touch
               </Link>
               <button
                 onClick={() => setResumeOpen(true)}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-border-default rounded-full text-xs uppercase tracking-widest font-medium hover:border-text-primary transition-colors cursor-pointer"
+                className="cta-glow inline-flex items-center gap-2 px-6 py-3 border border-border-default rounded-full text-xs uppercase tracking-widest font-medium hover:border-text-primary cursor-pointer"
               >
                 <FileText className="w-3.5 h-3.5" />
                 View resume
