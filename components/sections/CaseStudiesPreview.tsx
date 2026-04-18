@@ -88,7 +88,7 @@ export function CaseStudiesPreview() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <Link href={`/casestudies/${study.slug}`} className="block group">
-                <div className="bg-bg-primary border border-border-default rounded-lg p-6 md:p-7 hover:border-border-hover transition-colors h-full flex flex-col">
+                <div className="gradient-card-hover bg-bg-primary border border-border-default rounded-lg p-6 md:p-7 hover:border-border-hover transition-colors h-full flex flex-col">
                   {/* Top: company + tag */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] tracking-widest uppercase text-text-muted">
