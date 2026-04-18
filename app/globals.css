@@ -30,6 +30,20 @@
   --shadow-button: 0 2px 8px rgba(26, 26, 26, 0.15);
   --shadow-glow: 0 0 30px rgba(26, 26, 26, 0.08);
 
+  /* Gradients (sage-extension) */
+  --color-gradient-glow-from: rgba(201, 210, 197, 0.55);
+  --color-gradient-glow-via:  rgba(212, 221, 208, 0.25);
+  --color-gradient-glow-to:   rgba(248, 249, 252, 0);
+
+  --color-gradient-fade-from: rgba(248, 249, 252, 0);
+  --color-gradient-fade-to:   rgba(201, 210, 197, 0.35);
+
+  --color-gradient-accent-from: #5A6B55;
+  --color-gradient-accent-to:   #1A1A1A;
+
+  --color-gradient-card-from: rgba(201, 210, 197, 0.18);
+  --color-gradient-card-to:   rgba(201, 210, 197, 0);
+
   /* Fonts */
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
@@ -64,6 +78,20 @@
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
   --shadow-button: 0 2px 8px rgba(255, 255, 255, 0.1);
   --shadow-glow: 0 0 30px rgba(255, 255, 255, 0.05);
+
+  /* Gradients (~50% intensity vs light) */
+  --color-gradient-glow-from: rgba(42, 51, 40, 0.45);
+  --color-gradient-glow-via:  rgba(35, 42, 34, 0.20);
+  --color-gradient-glow-to:   rgba(10, 10, 10, 0);
+
+  --color-gradient-fade-from: rgba(10, 10, 10, 0);
+  --color-gradient-fade-to:   rgba(42, 51, 40, 0.20);
+
+  --color-gradient-accent-from: #A8B5A2;
+  --color-gradient-accent-to:   #E5E5E5;
+
+  --color-gradient-card-from: rgba(168, 181, 162, 0.10);
+  --color-gradient-card-to:   rgba(168, 181, 162, 0);
 }
 
 html {
@@ -274,6 +302,10 @@ p {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .hero-orb {
+    animation: none !important;
+  }
 }
 
 /* Font classes for the new typography system */
@@ -404,4 +436,90 @@ input[type="color"]::-webkit-color-swatch {
 
 .dark .orb-gradient {
   background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 55%);
+}
+
+/* ─── Gradient utilities ────────────────────────────────────────────────────── */
+
+/* Hero animated orb — slow ambient drift */
+@keyframes hero-orb-drift {
+  0%   { transform: translate(-3%, -2%); }
+  100% { transform: translate(3%, 2%); }
+}
+
+.hero-orb {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 60% 55% at 50% 40%,
+    var(--color-gradient-glow-from) 0%,
+    var(--color-gradient-glow-via) 35%,
+    var(--color-gradient-glow-to) 75%
+  );
+  animation: hero-orb-drift 25s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Section fade — softens the hard color seam between adjacent sections */
+.gradient-section-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 96px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--color-gradient-fade-from) 0%,
+    var(--color-gradient-fade-to) 100%
+  );
+}
+
+/* Card hover wash — appears on hover, pure CSS, no JS */
+.gradient-card-hover {
+  position: relative;
+  isolation: isolate;
+}
+
+.gradient-card-hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    to bottom,
+    var(--color-gradient-card-from) 0%,
+    var(--color-gradient-card-to) 100%
+  );
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.gradient-card-hover:hover::before {
+  opacity: 1;
+}
+
+/* Text accent — single-word gradient via background-clip */
+.gradient-text-accent {
+  background: linear-gradient(
+    180deg,
+    var(--color-gradient-accent-from) 0%,
+    var(--color-gradient-accent-to) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* CTA glow — subtle outer glow on hover */
+.cta-glow {
+  transition: box-shadow 250ms ease-out, opacity 200ms ease, border-color 300ms ease, background-color 300ms ease, color 300ms ease;
+}
+
+.cta-glow:hover {
+  box-shadow: 0 0 24px var(--color-gradient-glow-from);
 }
