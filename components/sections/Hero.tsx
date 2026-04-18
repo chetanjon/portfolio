@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 import { CountUp } from '@/components/ui/CountUp';
+import { HeroGlow } from '@/components/sections/HeroGlow';
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,6 +20,7 @@ export function Hero() {
       ref={ref}
       className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-28 pb-20 overflow-hidden bg-bg-primary"
     >
+      <HeroGlow />
       <motion.div
         style={{ y, opacity }}
         className="max-w-2xl text-center z-10 flex flex-col items-center"
@@ -41,7 +43,7 @@ export function Hero() {
         >
           I build products
           <br />
-          from <span className="font-display font-bold uppercase not-italic tracking-tight">zero to live.</span>
+          from <span className="font-display font-bold uppercase not-italic tracking-tight gradient-text-accent">zero to live.</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -135,6 +137,8 @@ export function Hero() {
           </svg>
         </motion.div>
       </motion.div>
+
+      <div className="gradient-section-fade" aria-hidden="true" />
     </section>
   );
 }
