@@ -197,6 +197,14 @@ p {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  background: linear-gradient(
+    180deg,
+    var(--color-gradient-accent-from) 0%,
+    var(--color-text-muted) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Grayscale image with hover color */
