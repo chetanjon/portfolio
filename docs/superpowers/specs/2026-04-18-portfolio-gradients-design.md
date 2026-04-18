@@ -23,13 +23,14 @@ recruiter-friendly aesthetic.
 - `app/globals.css` — add `@theme` tokens for sage gradient stops (light + dark
   variants) and four utility classes (`.gradient-section-fade`,
   `.gradient-card-hover`, `.gradient-text-accent`, `.gradient-marker`).
-- `components/HeroGlow.tsx` *(new, ~40 lines)* — server component that renders
-  the animated radial-gradient orb behind the hero. Animation is pure CSS
-  `@keyframes`; reduced-motion handled by the existing global media query.
-- `components/Hero.tsx` *(existing)* — replace the static `.orb-gradient` div
-  with `<HeroGlow />`.
-- Page section wrappers (Hero, Fundamentals) — apply `.gradient-section-fade`
-  on the bottom edge to soften the hard color jump between sections.
+- `components/sections/HeroGlow.tsx` *(new, ~40 lines)* — server component that
+  renders the animated radial-gradient orb behind the hero. Animation is pure
+  CSS `@keyframes`; reduced-motion handled by the existing global media query.
+- `components/sections/Hero.tsx` *(existing)* — replace the static
+  `.orb-gradient` div with `<HeroGlow />`.
+- `components/sections/Hero.tsx` and `components/sections/Fundamentals.tsx` —
+  apply `.gradient-section-fade` on the bottom edge to soften the hard color
+  jump between sections.
 - Case study preview cards (`.card-minimal`) — extend with a hover overlay
   using `.gradient-card-hover`. No markup changes; class addition only.
 - Primary CTA buttons — soft outer glow on hover via existing button classes.
