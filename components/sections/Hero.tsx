@@ -98,11 +98,7 @@ export function Hero() {
           ].map((item) => (
             <div key={item.label} className="flex flex-col items-center gap-1">
               <span className="font-serif text-2xl md:text-3xl tabular-nums">
-                <CountUp
-                  to={item.value}
-                  decimals={item.decimals ?? 0}
-                  suffix={item.suffix ?? ''}
-                />
+                <CountUp to={item.value} suffix={item.suffix} />
               </span>
               <span className="text-[9px] md:text-[10px] tracking-widest uppercase text-text-muted">
                 {item.label}
