@@ -36,9 +36,10 @@ export function WorkContent() {
             </h1>
 
             <p className="text-lg text-text-secondary max-w-xl">
-              Currently Co-Founder &amp; PM at Aatram (live iOS app, 35–40% D7 retention, 2x category
-              average). Previously scaled a B2B marketplace from 20 to 45+ vendors and doubled GMV
-              in 9 months. Here&apos;s the full path — from ops intern to shipping 0-to-1.
+              Currently Co-Founder &amp; PM at Aatram (consumer iOS app live on the App Store —
+              5.0 launch rating, shipped V1 in 7 days). Previously scaled a B2B marketplace from
+              20 to 75+ vendors and doubled monthly GMV with a 4-engineer team. Here&apos;s the full
+              path — from ops intern to shipping 0-to-1.
             </p>
           </motion.div>
         </div>
@@ -153,7 +154,7 @@ export function WorkContent() {
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
-            {['Roadmapping', 'PRDs', 'Sprint Planning', 'A/B Testing', 'SQL', 'Python', 'Mixpanel', 'Figma', 'Jira'].map((skill, i) => (
+            {['PRDs', 'Jobs-to-be-Done', 'A/B Testing', 'Cohort Analysis', 'SQL', 'Python', 'Apple Foundation Models', 'Gemini (AI SDK)', 'Zod Structured Outputs', 'Figma', 'SwiftUI', 'Next.js'].map((skill, i) => (
               <motion.span
                 key={skill}
                 initial={{ opacity: 0, scale: 0.9 }}

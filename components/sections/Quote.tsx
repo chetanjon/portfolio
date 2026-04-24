@@ -19,7 +19,7 @@ export function Quote() {
 
           <p className="font-serif text-xl md:text-2xl lg:text-3xl leading-relaxed">
             Engineering taught me <em>to debug systems.</em> Product management
-            taught me to debug businesses. The tools are different — the mindset isn&apos;t.
+            taught me to debug businesses. The tools are different. The mindset isn&apos;t.
           </p>
 
           <div>

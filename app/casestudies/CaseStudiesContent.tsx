@@ -157,9 +157,9 @@ const caseStudies: Array<{
     company: 'Aatram',
     title: 'Start Starting',
     description:
-      'Built a 0-to-1 iOS app that treats procrastination as an emotion problem, not a discipline problem. Live on the App Store at 35–40% D7 retention — 2x the category average — on $0 ad spend. User research, a full pivot that killed 7 features, and a re-engagement system that doubled notification tap rate.',
-    tags: ['0-to-1', 'Behavioral Science', 'User Research', 'iOS', 'Live'],
-    metric: { value: '35–40%', label: 'D7 Retention · 2x category' },
+      'Shipped V1 to the App Store in 7 days from first commit with a 3-person founding team on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack. 25-user closed beta and 16 archetype-segmented interviews (anxious avoider, overwhelmed planner, avoidance-loop, burnt-out performer) validated the V1 cut and sourced V2. Killed Plan Mode, shipped Study Rooms and Crew for social accountability, and specced an on-device nudge engine on Apple Foundation Models. Owned UI/UX, logo, visual identity, and aatram.com end-to-end.',
+    tags: ['0-to-1', 'iOS', 'Apple Foundation Models', 'Brand & Design', 'Social Accountability'],
+    metric: { value: '7 days', label: 'First commit → App Store · 5.0 launch rating' },
     accentColor: '#5B4EB8',
     bgColor: '#EEEBF8',
     year: '2026',

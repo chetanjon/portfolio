@@ -34,8 +34,9 @@ export function ResumeContent() {
                   <span className="font-serif italic font-normal lowercase"> picture</span>
                 </h1>
                 <p className="text-lg text-text-secondary max-w-xl">
-                  Co-Founder &amp; PM shipping a live iOS app (35–40% D7 retention, 2x category average),
-                  1.5+ years scaling B2B marketplaces, CSPO certified. Here&apos;s everything in one place.
+                  Co-Founder &amp; PM who shipped V1 to the App Store in 7 days with a 5.0 launch rating,
+                  scaled a seed-stage B2B marketplace 3.75x, and doubled its GMV. CSPO certified, MS in
+                  Management of Technology at ASU. Here&apos;s everything in one place.
                 </p>
               </div>
 
@@ -166,16 +167,28 @@ export function ResumeContent() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: 'Product',
-                skills: ['Product Strategy', 'Roadmapping', 'PRDs & User Stories', 'MVP Scoping', 'RICE Prioritization', 'Go-to-Market', 'User Research', 'Competitive Analysis', 'Funnel Optimization', 'A/B Testing'],
+                title: 'Analytics & Data',
+                skills: ['SQL', 'Python', 'Mixpanel', 'PostHog', 'Google Analytics'],
               },
               {
-                title: 'Tools',
-                skills: ['Figma', 'Jira', 'Confluence', 'Mixpanel', 'Amplitude', 'Google Analytics', 'Notion', 'SQL', 'Python', 'PostHog'],
+                title: 'PM Tooling',
+                skills: ['Figma', 'Notion', 'Jira', 'Confluence'],
+              },
+              {
+                title: 'AI / ML',
+                skills: ['Apple Foundation Models', 'Google Gemini (AI SDK)', 'OpenAI API', 'Structured Outputs (Zod)', 'Prompt Engineering'],
               },
               {
                 title: 'Methods',
-                skills: ['Agile/Scrum', 'Sprint Planning', 'OKRs', 'Experimentation Design', 'Retention Analysis', 'Cohort Segmentation'],
+                skills: ['Agile/Scrum', 'A/B Testing', 'User Research', 'Jobs-to-be-Done', 'PRDs', 'RICE Prioritization', 'Cohort Analysis', 'Funnel Instrumentation'],
+              },
+              {
+                title: 'Design & Brand',
+                skills: ['UI/UX Design', 'Design Systems', 'Visual Identity', 'Logo Design', 'Landing Page Design'],
+              },
+              {
+                title: 'Technical Fluency',
+                skills: ['TypeScript', 'Next.js', 'Supabase', 'Swift/SwiftUI'],
               },
             ].map((category, i) => (
               <motion.div

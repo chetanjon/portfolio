@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const steps = [
-  { number: '01', title: 'Discover', description: 'User interviews before wireframes — always' },
+  { number: '01', title: 'Discover', description: 'User interviews before wireframes. Always.' },
   { number: '02', title: 'Prioritize', description: 'RICE over gut feeling, every sprint' },
   { number: '03', title: 'Ship', description: '70% solution shipped beats 100% stuck in review' },
   { number: '04', title: 'Iterate', description: 'Retention cohorts reveal what NPS scores hide' },

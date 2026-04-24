@@ -53,8 +53,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-sm md:text-base text-text-secondary leading-relaxed max-w-md mb-10"
         >
-          Co-Founder of a live iOS app. Former B2B marketplace PM who doubled GMV at seed stage.
-          I find the real problem, scope ruthlessly, and ship.
+          Co-Founder of a live iOS app shipped in 7 days. Former B2B marketplace PM who grew vendors
+          3.75x and doubled GMV at seed stage. I find the real problem, scope ruthlessly, and ship.
         </motion.p>
 
         {/* Live badges */}
@@ -71,7 +71,7 @@ export function Hero() {
             className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            Aatram — Live on the App Store
+            Aatram · Live on the App Store
           </a>
           <a
             href="https://www.frictionlens.net/"
@@ -80,7 +80,7 @@ export function Hero() {
             className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            FrictionLens — Live at frictionlens.net
+            FrictionLens · Live at frictionlens.net
           </a>
         </motion.div>
 
@@ -93,16 +93,14 @@ export function Hero() {
         >
           {[
             { value: 2, suffix: '', label: 'Products live' },
-            { value: 2.3, decimals: 1, suffix: 'x', label: 'Vendor growth' },
-            { value: 2, suffix: 'x', label: 'GMV doubled' },
-            { value: 40, prefix: '35–', suffix: '%', label: 'D7 retention, $0 spend' },
+            { value: 7, suffix: ' days', label: 'First commit to App Store' },
+            { value: 2, suffix: 'x', label: 'GMV at seed stage' },
           ].map((item) => (
             <div key={item.label} className="flex flex-col items-center gap-1">
               <span className="font-serif text-2xl md:text-3xl tabular-nums">
                 <CountUp
                   to={item.value}
                   decimals={item.decimals ?? 0}
-                  prefix={item.prefix ?? ''}
                   suffix={item.suffix ?? ''}
                 />
               </span>

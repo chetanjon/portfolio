@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Chetan Jonnalagadda — Product Manager who ships AI products 0→live';
+export const alt = 'Chetan Jonnalagadda — Product Manager who ships 0→live. iOS app shipped in 7 days at a 5.0 App Store rating.';
 export const size = {
   width: 1200,
   height: 630,
@@ -125,10 +125,10 @@ export default function OGImage() {
               maxWidth: 1000,
             }}
           >
-            <span>Shipped a live AI iOS app at&nbsp;</span>
-            <span style={{ color: '#E07A5F' }}>35–40% D7 retention.&nbsp;</span>
+            <span>Shipped a live iOS app in&nbsp;</span>
+            <span style={{ color: '#E07A5F' }}>7 days at a 5.0 rating.&nbsp;</span>
             <span>Scaled a B2B marketplace&nbsp;</span>
-            <span style={{ color: '#E07A5F' }}>2.3x.</span>
+            <span style={{ color: '#E07A5F' }}>3.75x.</span>
           </div>
         </div>
 
@@ -143,8 +143,8 @@ export default function OGImage() {
         >
           <div style={{ display: 'flex', gap: 48 }}>
             {[
-              { v: '2x', l: 'Category avg' },
-              { v: '2.3x', l: 'Vendor growth' },
+              { v: '5.0★', l: 'App Store launch' },
+              { v: '20→75+', l: 'Vendor growth' },
               { v: '25→40%', l: 'Gross margin' },
             ].map((m) => (
               <div key={m.l} style={{ display: 'flex', flexDirection: 'column' }}>

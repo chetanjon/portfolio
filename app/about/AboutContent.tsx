@@ -29,18 +29,20 @@ const values = [
     number: '04',
     quote: 'Every no earns a better yes',
     description:
-      "With a 3-engineer team and a growing vendor base, I learned to say no relentlessly. Scope discipline is how small teams punch above their weight. The features we didn't build were as important as the ones we did.",
+      "At Aatram with a 3-person founding team — and at IKT India with a 4-engineer team and a growing vendor base — I learned to say no relentlessly. Scope discipline is how small teams punch above their weight. The features we didn't build were as important as the ones we did.",
   },
 ];
 
 const timeline = [
   { year: '2019–2023', title: 'B.Tech in Electrical & Electronics Engineering', place: 'JNTU Hyderabad' },
-  { year: '2023', title: 'Product Ops Intern', place: 'Gangothri Nutrients — 3,700+ dealer GTM' },
-  { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India — B2B Handloom Marketplace' },
+  { year: '2023', title: 'Product Ops Intern', place: 'Gangothri Nutrients — Excel sales model, FAQ authoring' },
+  { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India — B2B handloom marketplace (20 → 75+ vendors)' },
   { year: '2024', title: 'M.S. in Management of Technology', place: 'Arizona State University' },
+  { year: '2025', title: 'Innovation Index Analysis', place: 'ASU MOT — G20 vs non-G20 (1,862 records)' },
   { year: '2025', title: 'CSPO Certified', place: 'Scrum Alliance' },
-  { year: '2026', title: 'Co-Founder & Product Manager', place: 'Aatram — iOS App' },
+  { year: '2025', title: 'Digital Product Management', place: 'University of Virginia (Coursera)' },
   { year: '2026', title: 'Launched FrictionLens', place: 'frictionlens.net — AI review analyzer' },
+  { year: '2026', title: 'Co-Founder & Product Manager', place: 'Aatram — iOS app live on the App Store' },
   { year: '2026', title: 'M.S. Graduation (Expected)', place: 'Arizona State University' },
 ];
 
@@ -108,26 +110,32 @@ export function AboutContent() {
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-6">
-                Right now I&apos;m Co-Founder &amp; Product Manager at Aatram, a 0-to-1 AI-powered iOS app
-                live on the App Store. With a 2-engineer team we&apos;re running at 35–40% D7 retention —
-                about 2x the category average — on $0 ad spend. The turning point was a full product
-                pivot: after benchmarking 12+ competitors I killed 7 features and rebuilt the app around
-                emotion-rated tasks and a predictive engine, because every top-10 productivity app was
-                treating procrastination as a time problem.
+                Right now I&apos;m Co-Founder &amp; Product Manager at Aatram, a consumer iOS app live
+                on the App Store. With a 3-person founding team we shipped V1 seven days from first
+                commit on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack — and launched at
+                a 5.0 App Store rating. I own product, design, and brand: the design system, the logo,
+                aatram.com, and the positioning that reframes procrastination as an emotion-regulation
+                problem rather than a discipline one. After 16 segmented interviews across procrastination
+                archetypes I killed V1&apos;s Plan Mode, shipped V2 Study Rooms and Crew for social
+                accountability, and specced an on-device nudge engine on Apple Foundation Models.
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-6">
-                Before Aatram, I cut my teeth at IKT India, where I took a B2B handloom marketplace
-                from 20 vendors to 45+ in nine months. What made it work wasn&apos;t a clever feature — it
-                was spending weeks talking to artisans who&apos;d never used a smartphone, watching them
-                struggle with 3-day onboarding flows, and rebuilding the funnel from scratch. Activation
-                improved 30–35%, setup time dropped from 3 days to 6 hours, and gross margin went from 25% to 40%.
+                Before Aatram, I cut my teeth at IKT India, where I took a seed-stage B2B handloom
+                marketplace from 20 vendors to 75+ across multiple states — promoted from intern to PM
+                inside of six months. The unlock was a concurrent A/B test on 50 SKUs with price floors
+                against a matched control; order volume held flat, so I scaled the winner to 500+ SKUs,
+                lifted gross margin from 25% to 40%, and doubled monthly GMV. Along the way I cut seller
+                onboarding from 3 days to 6 hours, built the SQL + Mixpanel seller-health dashboard
+                whose inactivity triggers lifted 60-day retention 20%, and ran weekly standups with a
+                4-engineer team shipping across web, mobile, and ops.
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-8">
-                Currently finishing my M.S. in Management of Technology at Arizona State University
-                (May 2026), where I&apos;m applying the same rigor to behavioral UX research,
-                financial modeling, and data analytics at scale. CSPO certified.
+                I&apos;m finishing my M.S. in Management of Technology at Arizona State University
+                (May 2026, 3.7 GPA), where my coursework includes a Python-driven G20 vs non-G20
+                innovation index analysis across 1,862 records. CSPO (Scrum Alliance) and Digital
+                Product Management (UVA, Coursera) certified.
               </p>
 
               <div className="flex gap-4">
