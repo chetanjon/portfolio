@@ -23,7 +23,7 @@ const caseStudies: Array<{
     company: 'Cursor (Anysphere)',
     title: 'The $29B Fork',
     description:
-      'How four MIT students forked VS Code, grew with almost no traditional marketing, and built what may be the fastest-growing SaaS product ever — while every model provider simultaneously funds them and competes with them.',
+      'How four MIT students forked VS Code, grew with almost no traditional marketing, and built what may be the fastest-growing SaaS product ever, while every model provider simultaneously funds them and competes with them.',
     tags: ['Product Teardown', 'SaaS', 'AI Coding', 'Competitive Analysis', 'Unit Economics'],
     metric: { value: '$2B', label: 'Annualized Revenue' },
     accentColor: '#0E7C6B',
@@ -50,7 +50,7 @@ const caseStudies: Array<{
     company: 'Figma',
     title: 'Rebuilding Trust After UI3',
     description:
-      'How a major redesign and AI data-sharing controversy tested trust with Figma\'s power users — and a PM framework for earning it back through progressive migration and transparent AI.',
+      'How a major redesign and AI data-sharing controversy tested trust with Figma\'s power users, and a PM framework for earning it back through progressive migration and transparent AI.',
     tags: ['Trust Recovery', 'CIRCLES', 'PRD', 'RICE Scoring', 'Wireframes'],
     metric: { value: '$1.06B', label: 'FY2025 Revenue' },
     accentColor: '#5B3DC8',
@@ -63,7 +63,7 @@ const caseStudies: Array<{
     company: 'Apple',
     title: 'When Glass Cracked',
     description:
-      'How Apple\'s most ambitious redesign since iOS 7 broke accessibility for millions — and what a better path forward looks like. A UX case study analyzing WCAG failures, heuristic violations, and solution design.',
+      'How Apple\'s most ambitious redesign since iOS 7 broke accessibility for millions, and what a better path forward looks like. A UX case study analyzing WCAG failures, heuristic violations, and solution design.',
     tags: ['UX Research', 'Accessibility', 'WCAG 2.2', 'Heuristic Evaluation', 'RICE'],
     metric: { value: '1.5:1', label: 'Contrast Measured' },
     accentColor: '#0071e3',
@@ -90,7 +90,7 @@ const caseStudies: Array<{
     company: 'Rivian',
     title: 'Rivian\'s Broken Handshake',
     description:
-      'How phone key failure rates as high as 70% threaten a $5.8B joint venture — and a PM framework for rebuilding trust through feedback, state communication, and failure recovery improvements.',
+      'How phone key failure rates as high as 70% threaten a $5.8B joint venture, and a PM framework for rebuilding trust through feedback, state communication, and failure recovery improvements.',
     tags: ['CIRCLES', 'PRD', 'RICE Scoring', 'UX Wireframes', 'BLE/UWB'],
     metric: { value: 'Up to 70%', label: 'Failure Rate' },
     accentColor: '#2D5A3D',
@@ -103,7 +103,7 @@ const caseStudies: Array<{
     company: 'Perplexity AI',
     title: 'The $20 Billion Subscription Gamble',
     description:
-      'Perplexity built the fastest-growing AI subscription business — then silently gutted its Pro plan, swapped premium models for cheaper ones, and pushed users toward a 10× more expensive tier.',
+      'Perplexity built the fastest-growing AI subscription business, then silently gutted its Pro plan, swapped premium models for cheaper ones, and pushed users toward a 10× more expensive tier.',
     tags: ['Product Teardown', 'Pricing Strategy', 'AARRR', 'Competitive Analysis', 'Trust'],
     metric: { value: '$20B', label: 'Valuation' },
     accentColor: '#6C5CE7',
@@ -143,7 +143,7 @@ const caseStudies: Array<{
     company: 'Spotify',
     title: 'Listening Into Loyalty',
     description:
-      'How Spotify turned a music player into a growth machine. A teardown of Discover Weekly and Wrapped — the two features that drive retention and acquisition through algorithmic personalization and viral data storytelling.',
+      'How Spotify turned a music player into a growth machine. A teardown of Discover Weekly and Wrapped: the two features that drive retention and acquisition through algorithmic personalization and viral data storytelling.',
     tags: ['Product Teardown', 'Growth Loops', 'Recommendation Systems', 'Viral Mechanics', 'Retention'],
     metric: { value: '751M', label: 'Monthly Active Users' },
     accentColor: '#1DB954',
@@ -217,7 +217,7 @@ export function CaseStudiesContent() {
 
             <p className="text-lg text-text-secondary max-w-xl">
               In-depth product teardowns applying CIRCLES, PRD writing, UX research, and
-              competitive analysis — the frameworks that drive real product decisions.
+              competitive analysis: the frameworks that drive real product decisions.
             </p>
           </motion.div>
         </div>

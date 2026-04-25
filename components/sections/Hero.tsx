@@ -41,9 +41,9 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="font-serif italic text-4xl md:text-5xl lg:text-6xl leading-[1.15] mt-10 mb-6 font-normal"
         >
-          I find the problem worth solving
+          I find the problem worth solving.
           <br />
-          — then <span className="font-display font-bold uppercase not-italic tracking-tight gradient-text-accent">ship the fix.</span>
+          Then <span className="font-display font-bold uppercase not-italic tracking-tight gradient-text-accent">ship the fix.</span>
         </motion.h1>
 
         {/* Subtitle */}

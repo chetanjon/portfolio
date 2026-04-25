@@ -79,7 +79,7 @@ export default function RivianCaseStudy() {
           Rivian&apos;s Broken<br/><em style={{ fontWeight: 400, fontStyle: "italic" }}>Handshake</em>
         </h1>
         <p style={{ fontSize: 18, color: c.textSoft, maxWidth: 560, margin: "0 0 40px", fontWeight: 300, lineHeight: 1.8 }}>
-          How phone key failure rates as high as 70% threaten a $5.8B joint venture — and a PM framework for rebuilding trust.
+          How phone key failure rates as high as 70% threaten a $5.8B joint venture, and a PM framework for rebuilding trust.
         </p>
         <div style={{ display: "flex", gap: 32, fontSize: 12, color: c.textMuted, fontFamily: fonts.mono }}>
           <span>Chetan Jonnalagadda</span>
@@ -97,9 +97,9 @@ export default function RivianCaseStudy() {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0 }}>
           {[
-            { val: "Up to 70%", label: "Failure Rate", sub: "Single owner report — range 3–70%" },
+            { val: "Up to 70%", label: "Failure Rate", sub: "Single owner report; range 3–70%" },
             { val: "$5.8B", label: "VW Partnership", sub: "Joint venture (software + EV platform)" },
-            { val: "#1 / Last", label: "Satisfaction / Reliability", sub: "Consumer Reports — top in satisfaction, bottom in reliability" },
+            { val: "#1 / Last", label: "Satisfaction / Reliability", sub: "Consumer Reports: top in satisfaction, bottom in reliability" },
             { val: "~123K", label: "Total Deliveries", sub: "Cumulative through 2024 (R1T, R1S, EDV)" },
           ].map((s, i) => (
             <div key={i} style={{ padding: "0 24px", borderLeft: i > 0 ? `1px solid ${c.border}` : "none" }}>
@@ -118,22 +118,22 @@ export default function RivianCaseStudy() {
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80 }}>
           <div>
-            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>01 — Comprehend</span>
+            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>01 · Comprehend</span>
             <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>The Problem</h2>
           </div>
           <div>
             <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, margin: "0 0 32px", fontWeight: 300 }}>
-              For a vehicle that costs $71K–$78K+, the most basic interaction — walking up and getting in — fails with alarming regularity. Rivian&apos;s Phone-as-a-Key system suffers from documented proximity unlock failures, a confusing lock/unlock toggle, and zero graceful degradation when things go wrong.
+              For a vehicle that costs $71K–$78K+, the most basic interaction (walking up and getting in) fails with alarming regularity. Rivian&apos;s Phone-as-a-Key system suffers from documented proximity unlock failures, a confusing lock/unlock toggle, and zero graceful degradation when things go wrong.
             </p>
 
             {/* Quotes */}
             {[
-              { q: "About 70% of the time, the vehicle will not proximity unlock via phone key unless I pull out my phone and open the Rivian app.", s: "Representative composite — based on Rivian Forums owner reports" },
-              { q: "I walk up to my Rivian and stand at the door and wait. And wait. Sometimes 30 seconds. Sometimes 90 seconds.", s: "Representative composite — based on Rivian Owners Forum posts" },
+              { q: "About 70% of the time, the vehicle will not proximity unlock via phone key unless I pull out my phone and open the Rivian app.", s: "Representative composite, based on Rivian Forums owner reports" },
+              { q: "I walk up to my Rivian and stand at the door and wait. And wait. Sometimes 30 seconds. Sometimes 90 seconds.", s: "Representative composite, based on Rivian Owners Forum posts" },
             ].map((quote, i) => (
               <div key={i} style={{ borderLeft: `2px solid ${c.green}`, paddingLeft: 24, margin: "28px 0" }}>
                 <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>&quot;{quote.q}&quot;</p>
-                <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 10, letterSpacing: 1 }}>— {quote.s}</p>
+                <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 10, letterSpacing: 1 }}>{quote.s}</p>
               </div>
             ))}
           </div>
@@ -143,9 +143,9 @@ export default function RivianCaseStudy() {
         <div style={{ marginTop: 60, background: c.white, borderRadius: 16, padding: 40, border: `1px solid ${c.border}` }}>
           <h3 style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, margin: "0 0 28px", textTransform: "uppercase" }}>Failure Mode Taxonomy</h3>
           {[
-            { mode: "BLE Handshake Timeout", sev: "High", freq: "Most Common", desc: "Phone OS kills Rivian app background process — BLE beacon goes silent", color: c.amber },
-            { mode: "'Present Key to Drive' Error", sev: "Critical", freq: "~50% of affected", desc: "Doors unlock but vehicle refuses to start — requires restart cycle", color: c.red },
-            { mode: "Lock/Unlock State Confusion", sev: "Medium", freq: "Universal", desc: "Toggle shows ambiguous state — users can't distinguish locked from unlocked", color: c.clay },
+            { mode: "BLE Handshake Timeout", sev: "High", freq: "Most Common", desc: "Phone OS kills Rivian app background process; BLE beacon goes silent", color: c.amber },
+            { mode: "'Present Key to Drive' Error", sev: "Critical", freq: "~50% of affected", desc: "Doors unlock but vehicle refuses to start; requires restart cycle", color: c.red },
+            { mode: "Lock/Unlock State Confusion", sev: "Medium", freq: "Universal", desc: "Toggle shows ambiguous state; users can't distinguish locked from unlocked", color: c.clay },
             { mode: "OTA Update Breaks PAAK", sev: "High", freq: "3+ occurrences", desc: "Software updates documented as breaking previously working phone keys", color: c.amber },
             { mode: "Server Outage Locks Fleet", sev: "Critical", freq: "1 major event", desc: "Fleet-wide outage disabled all phone-as-key functionality simultaneously", color: c.red },
           ].map((f, i) => (
@@ -166,7 +166,7 @@ export default function RivianCaseStudy() {
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
             <div>
-              <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>02 — Identify & Report</span>
+              <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>02 · Identify & Report</span>
               <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>Research &<br/>Root Causes</h2>
             </div>
             <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
@@ -182,7 +182,7 @@ export default function RivianCaseStudy() {
             <img src={BEACH_IMG} alt="Family with Rivian R1T at the beach" style={{ width: "100%", height: 320, objectFit: "cover", objectPosition: "center", display: "block" }}/>
             <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "40px 28px 16px", background: "linear-gradient(transparent, rgba(0,0,0,0.5))" }}>
               <p style={{ fontFamily: fonts.mono, fontSize: 10, color: "rgba(255,255,255,0.8)", margin: 0, letterSpacing: 1 }}>
-                The Rivian R1T in its element — but can the family get in? Phone key failures hit hardest in real-world moments.
+                The Rivian R1T in its element, but can the family get in? Phone key failures hit hardest in real-world moments.
               </p>
               <p style={{ fontFamily: fonts.mono, fontSize: 8, color: "rgba(255,255,255,0.5)", margin: "6px 0 0", letterSpacing: 1 }}>
                 Image courtesy of Rivian · rivian.com
@@ -193,7 +193,7 @@ export default function RivianCaseStudy() {
           {/* Persona Cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 60 }}>
             {[
-              { name: "The Daily Driver", type: "Commuter · Gen 1 R1T", pain: "90-second door waits, carries backup fob everywhere", need: "Reliability over features — wants it to just work", accent: c.green },
+              { name: "The Daily Driver", type: "Commuter · Gen 1 R1T", pain: "90-second door waits, carries backup fob everywhere", need: "Reliability over features; wants it to just work", accent: c.green },
               { name: "The Road Tripper", type: "Adventure · Gen 2 R1S", pain: "Phone key dies at trailheads with no signal", need: "Offline resilience and NFC fallback awareness", accent: c.amber },
               { name: "The Family", type: "Multi-driver household", pain: "Key sharing is fragile, kids can't set up PAAK", need: "Simple sharing without app dependency", accent: c.clay },
             ].map((p, i) => (
@@ -238,11 +238,11 @@ export default function RivianCaseStudy() {
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
           <div>
-            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>03 — Solution</span>
+            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>03 · Solution</span>
             <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>The Trust<br/><em style={{ fontStyle: "italic" }}>Layer</em></h2>
           </div>
           <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
-            Rather than rebuilding the unlock protocol, I propose a Trust Layer — feedback, state communication, and failure recovery improvements that wrap around the existing system. The core insight: owners don&apos;t need perfection. They need transparency, confidence, and instant recovery.
+            Rather than rebuilding the unlock protocol, I propose a Trust Layer: feedback, state communication, and failure recovery improvements that wrap around the existing system. The core insight: owners don&apos;t need perfection. They need transparency, confidence, and instant recovery.
           </p>
         </div>
 
@@ -265,7 +265,7 @@ export default function RivianCaseStudy() {
       {/* ─── SECTION 04: WIREFRAMES ─── */}
       <section style={{ background: c.bgDark, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
-          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.greenLight, textTransform: "uppercase" }}>04 — Wireframes</span>
+          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.greenLight, textTransform: "uppercase" }}>04 · Wireframes</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px", lineHeight: 1.2, color: c.white }}>Before → After</h2>
 
           <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: 60, flexWrap: "wrap" }}>
@@ -329,7 +329,7 @@ export default function RivianCaseStudy() {
 
       {/* ─── SECTION 05: PRIORITIZATION ─── */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
-        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>05 — Prioritize</span>
+        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>05 · Prioritize</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 40px" }}>RICE Scoring</h2>
 
         <div style={{ background: c.white, borderRadius: 12, border: `1px solid ${c.border}`, overflow: "hidden" }}>
@@ -360,7 +360,7 @@ export default function RivianCaseStudy() {
       {/* ─── SECTION 06: PRD ─── */}
       <section style={{ background: c.white, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
-          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>06 — PRD Excerpt</span>
+          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>06 · PRD Excerpt</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>Product Requirements</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
@@ -369,7 +369,7 @@ export default function RivianCaseStudy() {
               { label: "Goal", text: "Reduce phone key support tickets by 40% and improve Google Play rating from 4.0★ to 4.5★ within 90 days. Secondary: increase Connect+ trial-to-paid conversion by 5%." },
               { label: "Users", text: "All Rivian app owners (~50K+ Android installs, est.). Priority: Gen 1 BLE-only owners (highest failure rate) and new Gen 2 owners onboarding to Digital Key." },
               { label: "Metrics", text: "P0: Success rate ≥95%. P1: Approach-to-open ≤3s. P2: Lock/unlock error rate <2%. Guardrail: Battery drain increase <5%." },
-              { label: "Non-Goals", text: "Not rebuilding BLE/UWB protocol stack. Not adding Gen 1 hardware. Not replacing the physical key fob — complementing it." },
+              { label: "Non-Goals", text: "Not rebuilding BLE/UWB protocol stack. Not adding Gen 1 hardware. Not replacing the physical key fob; complementing it." },
               { label: "Risks", text: "Gen 1 BLE improvements may be marginal without hardware. iOS background limits are OS-level. Multi-modal feedback needs firmware coordination." },
             ].map((item, i) => (
               <div key={i} style={{ padding: "28px 32px", borderBottom: `1px solid ${c.border}`, borderRight: i % 2 === 0 ? `1px solid ${c.border}` : "none" }}>
@@ -383,7 +383,7 @@ export default function RivianCaseStudy() {
 
       {/* ─── SECTION 07: METRICS ─── */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
-        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>07 — Impact</span>
+        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>07 · Impact</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>Projected Outcomes</h2>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginBottom: 60 }}>
@@ -431,7 +431,7 @@ export default function RivianCaseStudy() {
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "0 48px", textAlign: "center" }}>
           <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.greenLight, textTransform: "uppercase" }}>Reflection</span>
           <p style={{ fontFamily: fonts.serif, fontSize: 26, fontWeight: 300, color: c.white, lineHeight: 1.7, margin: "24px 0 0", fontStyle: "italic" }}>
-            The highest-impact improvements aren&apos;t in the unlock protocol — they&apos;re in the feedback and recovery layers that wrap around it. An owner who waits 5 seconds with clear visual feedback has a fundamentally different experience than one who stands for 90 seconds with no indication of what&apos;s happening.
+            The highest-impact improvements aren&apos;t in the unlock protocol. They&apos;re in the feedback and recovery layers that wrap around it. An owner who waits 5 seconds with clear visual feedback has a fundamentally different experience than one who stands for 90 seconds with no indication of what&apos;s happening.
           </p>
           <p style={{ fontFamily: fonts.serif, fontSize: 20, fontWeight: 400, color: c.greenLight, marginTop: 32, lineHeight: 1.6 }}>
             The phone key doesn&apos;t need to be perfect.<br/>It needs to be transparent, recoverable, and trustworthy.

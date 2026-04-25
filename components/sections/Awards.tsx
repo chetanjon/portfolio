@@ -48,7 +48,7 @@ export function Awards() {
               transition={{ duration: 0.6 }}
               className="text-xs uppercase tracking-widest text-right max-w-xs ml-auto mb-12 text-text-muted"
             >
-              Each number has a user story behind it — a funnel rebuilt, a seller unblocked, a decision backed by data instead of instinct.
+              Each number has a user story behind it: a funnel rebuilt, a seller unblocked, a decision backed by data instead of instinct.
             </motion.p>
 
             <motion.div

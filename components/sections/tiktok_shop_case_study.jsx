@@ -62,7 +62,7 @@ const GMVChart = () => {
   const d = [{y:"2021",v:0.9,l:"$0.9B"},{y:"2022",v:4.4,l:"$4.4B"},{y:"2023",v:11,l:"$11B"},{y:"2024",v:33.2,l:"$33.2B"},{y:"H1'25",v:26.2,l:"$26.2B"},{y:"2025E",v:64,l:"~$64B"},{y:"2026F",v:112,l:"~$112B"}];
   return (
     <div style={{ background:"#1C1410",borderRadius:14,padding:"28px 24px 20px",margin:"28px 0" }}>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".12em",color:"#8A7E73",fontWeight:600,marginBottom:20 }}>TIKTOK SHOP — GLOBAL GMV TRAJECTORY</div>
+      <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".12em",color:"#8A7E73",fontWeight:600,marginBottom:20 }}>TIKTOK SHOP · GLOBAL GMV TRAJECTORY</div>
       <div style={{ display:"flex",alignItems:"flex-end",gap:6,height:170 }}>
         {d.map((item,i) => {
           const h = (item.v/120)*150; const fc = i >= 5;
@@ -139,7 +139,7 @@ export default function TikTokShopCaseStudy() {
         <div style={{ position:"absolute",top:-150,right:-100,width:500,height:500,borderRadius:"50%",background:"radial-gradient(circle,rgba(196,149,106,.08) 0%,transparent 70%)" }}/>
         <div style={{ position:"absolute",bottom:-100,left:-80,width:350,height:350,borderRadius:"50%",background:"radial-gradient(circle,rgba(92,107,79,.06) 0%,transparent 70%)" }}/>
         <Wrap>
-          <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:12,letterSpacing:".25em",color:"#C4956A",marginBottom:28,fontWeight:600 }}>PM CASE STUDY — SOCIAL COMMERCE</div>
+          <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:12,letterSpacing:".25em",color:"#C4956A",marginBottom:28,fontWeight:600 }}>PM CASE STUDY · SOCIAL COMMERCE</div>
           <h1 style={{ fontFamily:"'Playfair Display',serif",fontSize:56,lineHeight:1.05,color:"#F8F4EF",margin:"0 0 20px",fontWeight:700,maxWidth:560 }}>TikTok Shop</h1>
           <p style={{ fontFamily:"'Source Serif 4',serif",fontSize:20,lineHeight:1.55,color:"rgba(248,244,239,.5)",margin:"0 0 44px",maxWidth:500,fontStyle:"italic" }}>Redesigning trust, discovery & purchase confidence in the world&apos;s fastest-growing social commerce platform.</p>
           <div style={{ display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:1,borderRadius:12,overflow:"hidden",maxWidth:600 }}>
@@ -274,15 +274,15 @@ export default function TikTokShopCaseStudy() {
       <section id="solutions" style={{ padding:"70px 0" }}>
         <Wrap>
           <Head n={5} title="Proposed Solutions" sub="Three-part Trust Layer to transform purchase confidence" />
-          <h3 style={h3s}>5.1 — Seller Trust Score</h3>
+          <h3 style={h3s}>5.1 · Seller Trust Score</h3>
           <p style={body}>A composite reliability metric (0–100) computed from five weighted signals: on-time shipping rate (25%), review authenticity score (25%), return/dispute rate (20%), account age & verification (15%), and video-product match rate (15%). Displayed as a color-coded badge at every purchase touchpoint. Builds on TikTok&apos;s existing Shop Performance Score but makes it buyer-facing.</p>
           <div style={{ background:"#F5F1EC",borderRadius:8,padding:"14px 18px",margin:"0 0 20px",border:"1px solid rgba(28,20,16,.04)" }}>
             <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,letterSpacing:".1em",fontWeight:700,color:"#6B5E52",marginBottom:6 }}>TECHNICAL FEASIBILITY</div>
             <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>V1 is low complexity. The signals already exist in TikTok&apos;s seller analytics backend (Shop Performance Score). The work is surfacing an aggregated score client-side and designing the badge component. Eng estimate: 2–3 sprints. V2 (video-product match AI) is high complexity and requires computer vision to compare product listing images against in-video product appearances. I&apos;d propose a 2-week technical spike before committing to this, and would work with the ML team to evaluate whether existing content moderation models can be adapted.</div>
           </div>
-          <h3 style={h3s}>5.2 — Smart Product Card</h3>
+          <h3 style={h3s}>5.2 · Smart Product Card</h3>
           <p style={body}>An enhanced overlay triggered by tapping a product tag in any video. Instead of navigating away, users see a contextual card: price with shipping estimate, trust score badge, top 3 verified-purchase review snippets, &quot;similar from trusted sellers&quot; shortcut, and one-tap add-to-cart. Collapses with a swipe, preserving content flow.</p>
-          <h3 style={h3s}>5.3 — Creator Transparency Labels</h3>
+          <h3 style={h3s}>5.3 · Creator Transparency Labels</h3>
           <p style={body}>Three-tier disclosure: &quot;Paid Partnership,&quot; &quot;Affiliate,&quot; or &quot;Organic.&quot; Each includes a tap-to-expand showing the creator&apos;s track record: percentage of promoted products maintaining 4+ stars after 30 days, average return rate, and total items promoted. Leverages the fact that a majority of US TikTok Shop GMV is creator-driven (Momentum Works/Tabcut report roughly half or more flows through affiliate and influencer content).</p>
           <Insight type="opp">The creator track record creates a positive flywheel: creators who recommend quality build visible credibility → attracts more brand deals → incentivizes selectivity. This turns 851K active affiliate creators into quality gatekeepers without TikTok manually policing every listing. The market incentive does the enforcement work.</Insight>
         </Wrap>
@@ -438,11 +438,11 @@ export default function TikTokShopCaseStudy() {
           <h3 style={h3s}>Phased Scope</h3>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,margin:"16px 0" }}>
             <div style={{ background:"#F2F5EF",borderRadius:12,padding:20,border:"1px solid rgba(92,107,79,.08)" }}>
-              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#5C6B4F",marginBottom:10 }}>PHASE 1 — Q1</div>
+              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#5C6B4F",marginBottom:10 }}>PHASE 1 · Q1</div>
               <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Trust Score v1 (badge). Creator Transparency Labels (3-tier). Verified Purchase filter. Seller dashboard with score breakdown.</div>
             </div>
             <div style={{ background:"#FAF3ED",borderRadius:12,padding:20,border:"1px solid rgba(139,69,19,.06)" }}>
-              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8B4513",marginBottom:10 }}>PHASE 2 — Q2</div>
+              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8B4513",marginBottom:10 }}>PHASE 2 · Q2</div>
               <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Smart Product Card (in-feed). Creator track records. &quot;Similar from trusted sellers&quot; engine. Trust Score v2 with AI video-match.</div>
             </div>
           </div>
@@ -492,18 +492,18 @@ export default function TikTokShopCaseStudy() {
           <Head n={11} title="Sources" sub="All data cross-referenced across multiple sources" />
           <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:12.5,lineHeight:1.9,color:"#6B5E52" }}>
             {[
-              "Momentum Works & Tabcut (Feb 2026) — ~$64B global GMV (2025 est.); $26.2B H1 global; ~$15B US full-year; channel mix; seller concentration",
-              "DealStreetAsia — $45.6B SEA 2025; channel mix breakdown (Video ~50%, Shop ~36%, Live ~14%)",
-              "eMarketer — ~18–20% US social commerce share (2025); US ad revenue estimates; buyer count methodologies",
-              "Earnest Analytics (Feb 2024) — 68.1% of tracked US social shopping GMV among marketplace platforms; 81.3% repeat purchase rate",
-              "Charm.io / eFulfillment Service — US monthly GMV curve: ~$15M (Sep '23 launch) → $1.1B (mid-2025)",
-              "TikTok Safety Report H1 2025 — Tens of millions of listings rejected; hundreds of thousands of sellers removed (exact figures per report)",
-              "Trustpilot — shop.tiktok.com: ~1.3/5 (fluctuates), overwhelmingly negative; BBB: 135+ unresolved complaints",
-              "Momentum Works/Tabcut — AOV compression: avg transaction prices declined in most US categories (2024)",
-              "dcdx Gen Z Survey (Feb 2024, n=195) — 27% cite TikTok Shop/ads as top complaint; 1 in 3 using app less",
-              "TechCrunch / AP / multiple outlets — USDS Joint Venture: Oracle, Silver Lake, MGX at 15% each; ByteDance at reported 19.9%",
-              "Dashboardly / Printify — Fee structure: 6% US referral, 9% EU5, 3% first 30 days; FBT pricing",
-              "Cube Asia — Gross (~$42B) vs Net (~$33B) GMV distinction for 2024; important methodology note",
+              "Momentum Works & Tabcut (Feb 2026): ~$64B global GMV (2025 est.); $26.2B H1 global; ~$15B US full-year; channel mix; seller concentration",
+              "DealStreetAsia: $45.6B SEA 2025; channel mix breakdown (Video ~50%, Shop ~36%, Live ~14%)",
+              "eMarketer: ~18–20% US social commerce share (2025); US ad revenue estimates; buyer count methodologies",
+              "Earnest Analytics (Feb 2024): 68.1% of tracked US social shopping GMV among marketplace platforms; 81.3% repeat purchase rate",
+              "Charm.io / eFulfillment Service: US monthly GMV curve: ~$15M (Sep '23 launch) → $1.1B (mid-2025)",
+              "TikTok Safety Report H1 2025: Tens of millions of listings rejected; hundreds of thousands of sellers removed (exact figures per report)",
+              "Trustpilot: shop.tiktok.com: ~1.3/5 (fluctuates), overwhelmingly negative; BBB: 135+ unresolved complaints",
+              "Momentum Works/Tabcut: AOV compression: avg transaction prices declined in most US categories (2024)",
+              "dcdx Gen Z Survey (Feb 2024, n=195): 27% cite TikTok Shop/ads as top complaint; 1 in 3 using app less",
+              "TechCrunch / AP / multiple outlets: USDS Joint Venture: Oracle, Silver Lake, MGX at 15% each; ByteDance at reported 19.9%",
+              "Dashboardly / Printify: Fee structure: 6% US referral, 9% EU5, 3% first 30 days; FBT pricing",
+              "Cube Asia: Gross (~$42B) vs Net (~$33B) GMV distinction for 2024; important methodology note",
             ].map((s,i) => (
               <div key={i} style={{ padding:"6px 0",borderBottom:i<11?"1px solid #E8E2DA":"none" }}>
                 <span style={{ fontFamily:"'Cormorant Garamond',serif",fontWeight:700,color:"#8B4513",marginRight:8,fontSize:11 }}>[{i+1}]</span>{s}
@@ -515,7 +515,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ FOOTER ══ */}
       <div style={{ background:"#1C1410",padding:"44px 0",textAlign:"center" }}>
-        <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".18em",color:"rgba(196,149,106,.4)",fontWeight:600 }}>PM CASE STUDY — TIKTOK SHOP TRUST LAYER</div>
+        <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".18em",color:"rgba(196,149,106,.4)",fontWeight:600 }}>PM CASE STUDY · TIKTOK SHOP TRUST LAYER</div>
         <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:12,color:"rgba(248,244,239,.2)",marginTop:8,fontStyle:"italic" }}>CIRCLES Framework · Wireframes · PRD · March 2026</div>
       </div>
     </div>

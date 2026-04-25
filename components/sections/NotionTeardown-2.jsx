@@ -538,8 +538,8 @@ export default function NotionTeardown() {
 <div className="persona-represents">Represents: Sai Teja, Kruthik, Avishka</div></div>
 </div>
 <div className="persona-jtbd">&quot;I need one place to organize my entire life: notes, tasks, projects, goals, all in a way that makes sense to me.&quot;</div>
-<div className="quote"><p>It looked beautiful, but I had no idea where to start or which templates to trust. I bounced between YouTube tutorials and template galleries, constantly feeling like I was doing Notion wrong.</p><div className="quote-author">— Sai Teja</div></div>
-<div className="quote"><p>Databases plus relations could basically model anything: content pipelines, OKRs, even a lightweight CRM. That flexibility is still why I use it.</p><div className="quote-author">— Kruthik</div></div>
+<div className="quote"><p>It looked beautiful, but I had no idea where to start or which templates to trust. I bounced between YouTube tutorials and template galleries, constantly feeling like I was doing Notion wrong.</p><div className="quote-author">Sai Teja</div></div>
+<div className="quote"><p>Databases plus relations could basically model anything: content pipelines, OKRs, even a lightweight CRM. That flexibility is still why I use it.</p><div className="quote-author">Kruthik</div></div>
 <p><strong>Frustrations:</strong> Performance on large databases, steep learning curve, AI locked behind $20/mo, slow mobile app (6–7 seconds).</p>
 </div>
 
@@ -551,8 +551,8 @@ export default function NotionTeardown() {
 <div className="persona-represents">Represents: Varshini, Vishwajith</div></div>
 </div>
 <div className="persona-jtbd">&quot;I need to replace 5 tools with one that my whole team will actually adopt.&quot;</div>
-<div className="quote"><p>The first week was a honeymoon phase. Everyone on my team was thrilled to have docs, tasks, and wikis in one place. It felt modern and collaborative.</p><div className="quote-author">— Vishwajith</div></div>
-<div className="quote"><p>They upgraded us in a way that resulted in a large unexpected charge with almost no warning. Trying to get a refund was painful.</p><div className="quote-author">— Varshini</div></div>
+<div className="quote"><p>The first week was a honeymoon phase. Everyone on my team was thrilled to have docs, tasks, and wikis in one place. It felt modern and collaborative.</p><div className="quote-author">Vishwajith</div></div>
+<div className="quote"><p>They upgraded us in a way that resulted in a large unexpected charge with almost no warning. Trying to get a refund was painful.</p><div className="quote-author">Varshini</div></div>
 <p><strong>Frustrations:</strong> The &quot;evangelist burden,&quot; billing surprises, limited offline, email-only support.</p>
 </div>
 
@@ -564,7 +564,7 @@ export default function NotionTeardown() {
 <div className="persona-represents">Represents: Ujjwal Reddy</div></div>
 </div>
 <div className="persona-jtbd">&quot;I need a simple, clean tool for notes and tasks that doesn&apos;t require a PhD to use.&quot;</div>
-<div className="quote"><p>I spent more time decorating pages than actually studying. After about a month, I accepted I was spending more time building a system than using it. That&apos;s when I went back to Google Docs and Apple Notes.</p><div className="quote-author">— Ujjwal Reddy</div></div>
+<div className="quote"><p>I spent more time decorating pages than actually studying. After about a month, I accepted I was spending more time building a system than using it. That&apos;s when I went back to Google Docs and Apple Notes.</p><div className="quote-author">Ujjwal Reddy</div></div>
 <p><strong>Current usage:</strong> &quot;This week I opened Notion once to grab an old syllabus and then closed it again.&quot;</p>
 <p><strong>Frustrations:</strong> Steep learning curve, AI trial too limited, no student-friendly pricing.</p>
 </div>
@@ -577,9 +577,9 @@ export default function NotionTeardown() {
 <div className="persona-represents">Represents: Abhishek, Heber, Sharath, Jayanth</div></div>
 </div>
 <div className="persona-jtbd">&quot;I need a workspace that genuinely replaces multiple tools, not one that just adds to the pile.&quot;</div>
-<div className="quote"><p>Notion wants to be my entire operating system but doesn&apos;t fully replace specialized tools. I still need Jira, Figma, and others, so Notion becomes yet another tool rather than the only one.</p><div className="quote-author">— Abhishek</div></div>
-<div className="quote"><p>Even after connecting Calendar and Mail, Notion AI still can&apos;t answer basic questions like &quot;What meetings do I have tomorrow?&quot; The tools coexist more than they collaborate.</p><div className="quote-author">— Sharath</div></div>
-<div className="quote"><p>We actually left Notion a month ago. I only log in to export old PDFs.</p><div className="quote-author">— Jayanth</div></div>
+<div className="quote"><p>Notion wants to be my entire operating system but doesn&apos;t fully replace specialized tools. I still need Jira, Figma, and others, so Notion becomes yet another tool rather than the only one.</p><div className="quote-author">Abhishek</div></div>
+<div className="quote"><p>Even after connecting Calendar and Mail, Notion AI still can&apos;t answer basic questions like &quot;What meetings do I have tomorrow?&quot; The tools coexist more than they collaborate.</p><div className="quote-author">Sharath</div></div>
+<div className="quote"><p>We actually left Notion a month ago. I only log in to export old PDFs.</p><div className="quote-author">Jayanth</div></div>
 <p><strong>Frustrations:</strong> Calendar/Mail feel disconnected, pricing bait-and-switch, AI governance concerns.</p>
 </div>
 </div>
@@ -626,9 +626,9 @@ export default function NotionTeardown() {
 <h3 className="reveal">The pricing trust deficit</h3>
 
 <div className="reveal">
-<div className="quote"><p>That pricing feels like it&apos;s meant for companies, not individuals who just want better AI inside their notes.</p><div className="quote-author">— Sai Teja (Plus plan)</div></div>
-<div className="quote"><p>I&apos;m not upgrading to Business just for unlimited AI when I can pay the same $20/month directly to a standalone AI product.</p><div className="quote-author">— Heber (Plus plan)</div></div>
-<div className="quote"><p>It went from &quot;nice upgrade&quot; to &quot;expensive requirement&quot; very quickly.</p><div className="quote-author">— Jayanth (churned)</div></div>
+<div className="quote"><p>That pricing feels like it&apos;s meant for companies, not individuals who just want better AI inside their notes.</p><div className="quote-author">Sai Teja (Plus plan)</div></div>
+<div className="quote"><p>I&apos;m not upgrading to Business just for unlimited AI when I can pay the same $20/month directly to a standalone AI product.</p><div className="quote-author">Heber (Plus plan)</div></div>
+<div className="quote"><p>It went from &quot;nice upgrade&quot; to &quot;expensive requirement&quot; very quickly.</p><div className="quote-author">Jayanth (churned)</div></div>
 </div>
 
 <p className="reveal"><strong>7 of 10 interviewees</strong> expressed frustration with AI pricing. This is a brand risk that financial metrics alone don&apos;t capture, and it compounds with every price-sensitive user who tells their network.</p>
@@ -847,24 +847,24 @@ export default function NotionTeardown() {
 <span>Try Notion AI</span>
 </div>
 </div>
-<div className="ob-annotation" style={{marginTop:"16px"}}>No mention of databases — the core &quot;aha&quot;</div>
+<div className="ob-annotation" style={{marginTop:"16px"}}>No mention of databases: the core &quot;aha&quot;</div>
 </div>
 </div>
 </div>
 
-<p className="reveal" style={{marginTop:"8px",fontSize:"15px"}}><strong>The critical gap:</strong> This flow teaches users <em>what Notion has</em> (templates, features, plans) but never shows them <em>what makes Notion special</em> — the moment a page connects to a database and becomes something more than a doc. The checklist doesn&apos;t even mention databases.</p>
+<p className="reveal" style={{marginTop:"8px",fontSize:"15px"}}><strong>The critical gap:</strong> This flow teaches users <em>what Notion has</em> (templates, features, plans) but never shows them <em>what makes Notion special</em>: the moment a page connects to a database and becomes something more than a doc. The checklist doesn&apos;t even mention databases.</p>
 
 <h3 className="reveal">What&apos;s broken: The Lego problem</h3>
 <p className="reveal">My interviews revealed three failing paths, each losing users in a different way:</p>
 
 <h4 className="reveal">Path A: Random pieces (blank page)</h4>
-<div className="quote reveal"><p>I spent more time decorating pages than actually studying.</p><div className="quote-author">— Ujjwal Reddy (churned after 1 month)</div></div>
+<div className="quote reveal"><p>I spent more time decorating pages than actually studying.</p><div className="quote-author">Ujjwal Reddy (churned after 1 month)</div></div>
 
 <h4 className="reveal">Path B: Homework (template exploration)</h4>
-<div className="quote reveal"><p>I bounced between YouTube tutorials and template galleries, constantly feeling like I was doing Notion wrong.</p><div className="quote-author">— Sai Teja (stuck for 2 weeks)</div></div>
+<div className="quote reveal"><p>I bounced between YouTube tutorials and template galleries, constantly feeling like I was doing Notion wrong.</p><div className="quote-author">Sai Teja (stuck for 2 weeks)</div></div>
 
 <h4 className="reveal">Path C: Pre-built set (someone else&apos;s system)</h4>
-<div className="quote reveal"><p>Once it became a boring-but-reliable table, Notion started to help instead of hinder.</p><div className="quote-author">— Heber (took 1 month to simplify)</div></div>
+<div className="quote reveal"><p>Once it became a boring-but-reliable table, Notion started to help instead of hinder.</p><div className="quote-author">Heber (took 1 month to simplify)</div></div>
 
 <p className="reveal"><strong>None of these paths efficiently guide users to the aha moment:</strong> building a connected page + database. The onboarding teaches what Notion has, not what makes Notion special.</p>
 
@@ -883,19 +883,19 @@ export default function NotionTeardown() {
 <p className="reveal">In September 2025, Notion launched AI Agents (the &quot;Personal Agent&quot;) capable of autonomous multi-step sessions. By early 2026, Custom Agents arrived: trigger-based and running 24/7. Early adoption appeared strong, with Notion highlighting rapid uptake in its announcements.</p>
 
 <div className="reveal">
-<div className="quote"><p>Agents feel confusing and a bit overkill for an individual user, so I haven&apos;t invested time to set them up.</p><div className="quote-author">— Sai Teja</div></div>
-<div className="quote"><p>I tried Notion AI to ask about my schedule and inbox, but it responded that it couldn&apos;t access that information, which was confusing after I&apos;d just connected those integrations.</p><div className="quote-author">— Sharath</div></div>
-<div className="quote"><p>Agents are still more of a novelty; I don&apos;t trust them enough to automate important workflows.</p><div className="quote-author">— Avishka</div></div>
+<div className="quote"><p>Agents feel confusing and a bit overkill for an individual user, so I haven&apos;t invested time to set them up.</p><div className="quote-author">Sai Teja</div></div>
+<div className="quote"><p>I tried Notion AI to ask about my schedule and inbox, but it responded that it couldn&apos;t access that information, which was confusing after I&apos;d just connected those integrations.</p><div className="quote-author">Sharath</div></div>
+<div className="quote"><p>Agents are still more of a novelty; I don&apos;t trust them enough to automate important workflows.</p><div className="quote-author">Avishka</div></div>
 </div>
 
 <h3 className="reveal">Calendar: Beautiful acquisition lever, frustrating daily driver</h3>
 <p className="reveal">Free on all plans. Beautifully designed (inherited from the Cron acquisition). The database deadline overlay is the killer feature. But polish gaps keep users from committing:</p>
-<div className="quote reveal"><p>I keep drifting back to my old tools because Notion&apos;s versions feel half a step behind in UX and reliability.</p><div className="quote-author">— Avishka</div></div>
+<div className="quote reveal"><p>I keep drifting back to my old tools because Notion&apos;s versions feel half a step behind in UX and reliability.</p><div className="quote-author">Avishka</div></div>
 <p className="reveal"><strong>The missing month view on mobile</strong> forces every user to keep a second calendar installed.</p>
 
 <h3 className="reveal">Mail: Promising concept, premature launch</h3>
 <p className="reveal">Gmail-only. Custom Views with AI auto-labeling (~60–70% accuracy) are innovative. But the product shipped before the integration layer was ready:</p>
-<div className="quote reveal"><p>Notion&apos;s AI can&apos;t really see my events and emails in a meaningful way yet, which defeats the point.</p><div className="quote-author">— Heber</div></div>
+<div className="quote reveal"><p>Notion&apos;s AI can&apos;t really see my events and emails in a meaningful way yet, which defeats the point.</p><div className="quote-author">Heber</div></div>
 <p className="reveal"><strong>0 of 10 interviewees</strong> had fully replaced Gmail with Notion Mail.</p>
 </div>
 </section>
@@ -942,7 +942,7 @@ export default function NotionTeardown() {
 <div className="assumptions reveal">
 <strong>How I estimated Reach</strong><br />
 Notion reports 100M+ registered users with ~20M monthly visits. I assume ~40M quarterly active users (QAUs) based on typical freemium engagement ratios (monthly active ≈ 60–70% of quarterly active).<br />
-<strong>#1 AI trial ramp (10M/Q):</strong> Notion states over half of paying customers use AI, suggesting high AI trial intent across the user base. I estimate ~25% of QAUs trigger the AI limit in a given quarter — some try it once, some hit the wall repeatedly. That&apos;s ~10M quarterly.<br />
+<strong>#1 AI trial ramp (10M/Q):</strong> Notion states over half of paying customers use AI, suggesting high AI trial intent across the user base. I estimate ~25% of QAUs trigger the AI limit in a given quarter: some try it once, some hit the wall repeatedly. That&apos;s ~10M quarterly.<br />
 <strong>#2 Onboarding (8M/Q):</strong> Notion grew from ~30M users (2022) to 100M+ (2024), adding ~70M in roughly 2 years, or ~8–9M per quarter in that growth phase. I use 8M/Q as a conservative current-state estimate.<br />
 <strong>#3 Workspace Doctor (3M/Q):</strong> Scoped to active team workspaces. ~4M paying users × ~75% on team plans = ~3M quarterly.<br />
 <strong>#4 Skill tree (6M/Q):</strong> All active users past onboarding who haven&apos;t used advanced features. ~40M QAUs × ~15% who are past basics but haven&apos;t used databases/relations = ~6M.<br />
@@ -1019,7 +1019,7 @@ Notion reports 100M+ registered users with ~20M monthly visits. I assume ~40M qu
 
 <div className="assumptions reveal">
 <strong>Key assumptions & caveats</strong><br />
-These are order-of-magnitude estimates, not forecasts. The two most sensitive variables: (1) the 10% upgrade-eligible filter on Lever 1 — if it&apos;s 5%, the number halves; if 15%, it grows proportionally, and (2) the execution discount, which I range from 33–55% to account for cohort overlap, cannibalization of organic upgrades, and the gap between modeled and real-world behavior. A real PM would A/B test the ramp first (fastest to ship, lowest effort) to validate the conversion lift before investing in the onboarding rebuild.<br /><br />
+These are order-of-magnitude estimates, not forecasts. The two most sensitive variables: (1) the 10% upgrade-eligible filter on Lever 1 (if it&apos;s 5%, the number halves; if 15%, it grows proportionally), and (2) the execution discount, which I range from 33–55% to account for cohort overlap, cannibalization of organic upgrades, and the gap between modeled and real-world behavior. A real PM would A/B test the ramp first (fastest to ship, lowest effort) to validate the conversion lift before investing in the onboarding rebuild.<br /><br />
 <em>In an interview, I&apos;d present this as &quot;here&apos;s my hypothesis and how I&apos;d test it,&quot; not as a prediction.</em>
 </div>
 </div>
@@ -1030,7 +1030,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="container wide">
 <span className="section-num reveal">10</span>
 <h2 className="reveal">Risks & Tradeoffs</h2>
-<p className="reveal">Every recommendation has a way it could fail. Acknowledging these upfront makes the case stronger, not weaker — it shows the thinking behind what I&apos;d test first and what I&apos;d watch for.</p>
+<p className="reveal">Every recommendation has a way it could fail. Acknowledging these upfront makes the case stronger, not weaker: it shows the thinking behind what I&apos;d test first and what I&apos;d watch for.</p>
 
 <div className="risk-grid reveal">
 
@@ -1078,7 +1078,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 <div className="risk-rec">Rec #4 · Skill Tree</div>
 <div className="risk-level">Medium Risk</div>
 <h4>Gamification feels patronizing to power users</h4>
-<p>Experienced PMs and engineers don&apos;t want badges. If the skill tree feels like a tutorial game, it&apos;ll reduce perceived product seriousness — especially in enterprise evaluations.</p>
+<p>Experienced PMs and engineers don&apos;t want badges. If the skill tree feels like a tutorial game, it&apos;ll reduce perceived product seriousness, especially in enterprise evaluations.</p>
 <div className="mitigation">Mitigation: Make it invisible to users who&apos;ve already passed each level organically. Frame as &quot;feature discovery,&quot; not &quot;achievements.&quot; Test with The Dabbler segment first, not Builders.</div>
 </div>
 
@@ -1310,7 +1310,7 @@ Month 2+: 2/day
 
 <p className="reveal"><strong>3. Pricing is the primary battleground.</strong> Confluence at $5/user with AI included. Loop free with M365. Notion&apos;s $20/user Business tier must deliver clearly superior value to justify the premium. The AI Agent capabilities are differentiated today, but the window is narrowing fast.</p>
 
-<div className="quote reveal" style={{borderLeft:"4px solid var(--accent)",background:"var(--card)"}}><p>I&apos;d pause big new feature launches for a cycle and focus entirely on speed, offline mode, and making existing features feel truly integrated and reliable.</p><div className="quote-author">— Avishka</div></div>
+<div className="quote reveal" style={{borderLeft:"4px solid var(--accent)",background:"var(--card)"}}><p>I&apos;d pause big new feature launches for a cycle and focus entirely on speed, offline mode, and making existing features feel truly integrated and reliable.</p><div className="quote-author">Avishka</div></div>
 
 <p className="reveal"><strong>My bet:</strong> The winner of the &quot;AI work OS&quot; category won&apos;t be the company with the most powerful agents. It will be the one that gets the most users to a state where agents are actually useful to them. That&apos;s an activation problem, not a feature problem. And it&apos;s the single highest-leverage investment Notion can make right now.</p>
 </div>

@@ -36,10 +36,10 @@ export function WorkContent() {
             </h1>
 
             <p className="text-lg text-text-secondary max-w-xl">
-              Currently Co-Founder &amp; PM at Aatram (consumer iOS app live on the App Store —
+              Currently Co-Founder &amp; PM at Aatram (consumer iOS app live on the App Store,
               5.0 launch rating, shipped V1 in 7 days). Previously scaled a B2B marketplace from
               20 to 75+ vendors and doubled monthly GMV with a 4-engineer team. Here&apos;s the full
-              path — from ops intern to shipping 0-to-1.
+              path: from ops intern to shipping 0-to-1.
             </p>
           </motion.div>
         </div>

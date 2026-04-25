@@ -9,7 +9,7 @@ const timelineData: TimelineItem[] = [
   {
     year: '2026',
     title: 'Co-Founder & Product Manager',
-    subtitle: 'Aatram (iOS App — Live on App Store)',
+    subtitle: 'Aatram (iOS App · Live on App Store)',
     description: 'Shipped V1 in 7 days from first commit with a 3-person founding team on SwiftUI, SwiftData, WidgetKit, and FamilyControls. 5.0 launch rating, 25-user closed beta, 16 archetype interviews. Owned UI/UX, brand, and aatram.com end-to-end.',
     type: 'work',
   },
@@ -23,14 +23,14 @@ const timelineData: TimelineItem[] = [
   {
     year: '2025',
     title: 'Innovation Index Analysis (G20 vs Non-G20)',
-    subtitle: 'ASU MOT Coursework — 2-person team',
+    subtitle: 'ASU MOT Coursework · 2-person team',
     description: 'Python analysis on a 1,862-record dataset (130 countries, 13 years) merged from WIPO, World Bank, UNESCO. Surfaced 15 non-G20 overperformers (F=19.14, p<0.001) and a counter-finding: education explains only 7.3% of innovation variance.',
     type: 'education',
   },
   {
     year: '2024',
     title: 'M.S. in Management of Technology',
-    subtitle: 'Arizona State University, Tempe, AZ — 3.7 GPA',
+    subtitle: 'Arizona State University, Tempe, AZ · 3.7 GPA',
     description: 'Graduate studies in technology management; expected graduation May 2026.',
     type: 'education',
   },
@@ -45,7 +45,7 @@ const timelineData: TimelineItem[] = [
     year: '2023',
     title: 'Product Manager (Promoted from Intern)',
     subtitle: 'IKT India',
-    description: 'Scaled the B2B handloom marketplace from 20 to 75+ vendors across multiple states. Ran a 50-SKU price-floor A/B that scaled to 500+ SKUs — lifting gross margin 25% → 40% and doubling monthly GMV. 4-engineer team.',
+    description: 'Scaled the B2B handloom marketplace from 20 to 75+ vendors across multiple states. Ran a 50-SKU price-floor A/B that scaled to 500+ SKUs, lifting gross margin 25% → 40% and doubling monthly GMV. 4-engineer team.',
     type: 'work',
   },
   {

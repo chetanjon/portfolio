@@ -107,7 +107,7 @@ const ContrastDemo = () => {
           fontSize: 13, fontWeight: 700, color: pass ? C.green : C.red,
           background: pass ? "rgba(48,209,88,0.15)" : "rgba(255,59,48,0.15)",
           padding: "5px 14px", borderRadius: 8,
-        }}>{pass ? "✓ WCAG AA Pass" : "✗ WCAG AA Fail"} — {ratio}:1</div>
+        }}>{pass ? "✓ WCAG AA Pass" : "✗ WCAG AA Fail"} · {ratio}:1</div>
       </div>
       <div style={{
         position: "relative", borderRadius: 16, overflow: "hidden", height: 220,
@@ -120,7 +120,7 @@ const ContrastDemo = () => {
             borderRadius: 16, padding: "20px 32px", border: "1px solid rgba(255,255,255,0.18)",
             textAlign: "center", maxWidth: 340, transition: "all 0.3s ease",
           }}>
-            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8, fontFamily: MONO }}>Mail — Inbox</div>
+            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8, fontFamily: MONO }}>Mail · Inbox</div>
             <div style={{ fontSize: 18, fontWeight: 600, color: "#fff", marginBottom: 4 }}>Meeting Tomorrow at 9am</div>
             <div style={{ fontSize: 14, color: "rgba(255,255,255,0.75)" }}>Hi team, just a reminder about our...</div>
           </div>
@@ -135,7 +135,7 @@ const ContrastDemo = () => {
         <span style={{ fontSize: 12, color: "rgba(255,255,255,0.35)", fontFamily: MONO, flexShrink: 0 }}>24px</span>
       </div>
       <div style={{ textAlign: "center", marginTop: 8, fontSize: 12, color: "rgba(255,255,255,0.3)" }}>
-        Frost blur: {frost}px — {frost <= 8 ? "Current Liquid Glass (low frost, high transparency)" : frost <= 16 ? "Moderate frost — improved but below WCAG" : "Proposed Adaptive Glass — WCAG compliant"}
+        Frost blur: {frost}px · {frost <= 8 ? "Current Liquid Glass (low frost, high transparency)" : frost <= 16 ? "Moderate frost (improved but below WCAG)" : "Proposed Adaptive Glass (WCAG compliant)"}
       </div>
     </div>
   );
@@ -228,7 +228,7 @@ const Quote = ({ text, author, borderColor = C.red }) => (
   }}>
     <div style={{ position: "absolute", top: 16, left: 12, fontSize: 48, color: `${borderColor}20`, fontFamily: "Georgia, serif", lineHeight: 1 }}>&quot;</div>
     <div style={{ fontSize: 16, fontStyle: "italic", color: C.dark, lineHeight: 1.65, marginBottom: 10 }}>{text}</div>
-    <div style={{ fontSize: 13, color: C.mid, fontWeight: 500 }}>— {author}</div>
+    <div style={{ fontSize: 13, color: C.mid, fontWeight: 500 }}>{author}</div>
   </div>
 );
 
@@ -299,7 +299,7 @@ export default function LiquidGlassCaseStudy() {
         <div style={{ position: "absolute", top: "60%", left: "60%", width: 250, height: 250, borderRadius: "50%", background: "radial-gradient(circle, rgba(100,210,255,0.1), transparent 70%)", filter: "blur(50px)", animation: "float 6s ease-in-out infinite 4s" }} />
 
         <Reveal>
-          <Tag color="rgba(255,255,255,0.3)">UX Case Study — iOS 26</Tag>
+          <Tag color="rgba(255,255,255,0.3)">UX Case Study · iOS 26</Tag>
         </Reveal>
         <Reveal delay={0.1}>
           <h1 style={{
@@ -316,7 +316,7 @@ export default function LiquidGlassCaseStudy() {
         </Reveal>
         <Reveal delay={0.2}>
           <p style={{ fontSize: "clamp(17px,2.2vw,21px)", color: "rgba(255,255,255,0.5)", maxWidth: 600, lineHeight: 1.55, margin: "0 auto 56px" }}>
-            How Apple&apos;s most ambitious redesign since iOS 7 broke accessibility for millions — and what a better path forward looks like.
+            How Apple&apos;s most ambitious redesign since iOS 7 broke accessibility for millions, and what a better path forward looks like.
           </p>
         </Reveal>
         <Reveal delay={0.35}>
@@ -336,7 +336,7 @@ export default function LiquidGlassCaseStudy() {
         </Reveal>
         <Reveal delay={0.5} style={{ marginTop: 72 }}>
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap", justifyContent: "center", fontSize: 12, color: "rgba(255,255,255,0.25)", fontFamily: MONO }}>
-            <span>iOS 26 — Liquid Glass</span><span style={{ opacity: 0.4 }}>•</span>
+            <span>iOS 26 · Liquid Glass</span><span style={{ opacity: 0.4 }}>•</span>
             <span>Released Sept 15, 2025</span><span style={{ opacity: 0.4 }}>•</span>
             <span>WCAG 2.2 AA Analysis</span>
           </div>
@@ -349,10 +349,10 @@ export default function LiquidGlassCaseStudy() {
 
       {/* ═══════════════ PROBLEM ═══════════════ */}
       <Sect bg={C.white} id="problem">
-        <Reveal><Tag>Step 1 — Problem Definition</Tag></Reveal>
+        <Reveal><Tag>Step 1 · Problem Definition</Tag></Reveal>
         <Reveal delay={0.05}><H2>Apple shipped beauty.<br />Users got barriers.</H2></Reveal>
         <Reveal delay={0.1}>
-          <P>In September 2025, Apple released iOS 26 — its biggest visual overhaul since iOS 7. At its center: Liquid Glass, a translucent design language that makes every UI element shimmer, refract, and float. It looked stunning in WWDC demos. But within days of public release, accessibility experts, UX researchers, and millions of everyday users discovered the same thing: Liquid Glass made their phones harder to use.</P>
+          <P>In September 2025, Apple released iOS 26, its biggest visual overhaul since iOS 7. At its center: Liquid Glass, a translucent design language that makes every UI element shimmer, refract, and float. It looked stunning in WWDC demos. But within days of public release, accessibility experts, UX researchers, and millions of everyday users discovered the same thing: Liquid Glass made their phones harder to use.</P>
           <P>The core problem is deceptively simple. When you make interface elements transparent, they inherit whatever is behind them. Text becomes illegible over busy backgrounds. Buttons blur into content. Tap targets shrink. And constant animation turns routine phone use into a source of eye strain and nausea.</P>
         </Reveal>
         <Reveal delay={0.15} style={{ marginTop: 40 }}>
@@ -363,10 +363,10 @@ export default function LiquidGlassCaseStudy() {
             }}>
               <div style={{ fontSize: "clamp(36px,5vw,56px)", fontWeight: 700, color: C.red, letterSpacing: "-0.03em", lineHeight: 1, fontFamily: FONT }}>1.5:1</div>
               <div style={{ fontSize: 14, fontWeight: 600, color: C.dark, marginTop: 10 }}>Contrast measured</div>
-              <div style={{ fontSize: 12, color: C.mid, marginTop: 4 }}>vs. 4.5:1 WCAG AA min — Infinum audit</div>
+              <div style={{ fontSize: 12, color: C.mid, marginTop: 4 }}>vs. 4.5:1 WCAG AA min · Infinum audit</div>
             </div>
-            <AnimStat end={8000} suffix="+" label="Forum votes to disable" sublabel="Thread 256136970 — Apple Community" color={C.orange} />
-            <AnimStat end={13} suffix="%" label="Battery drain (iOS 26)" sublabel="vs. 1% same actions — In Depth Tech Reviews" color={C.purple} />
+            <AnimStat end={8000} suffix="+" label="Forum votes to disable" sublabel="Thread 256136970 · Apple Community" color={C.orange} />
+            <AnimStat end={13} suffix="%" label="Battery drain (iOS 26)" sublabel="vs. 1% same actions · In Depth Tech Reviews" color={C.purple} />
           </div>
         </Reveal>
 
@@ -378,12 +378,12 @@ export default function LiquidGlassCaseStudy() {
         <Reveal delay={0.25} style={{ marginTop: 48 }}>
           <Quote
             text="There is a serious issue around accessibility with the Liquid Glass display... I work for a charity for blind people and in terms of Apple's usual excellence with accessibility this is a huge fail."
-            author="Apple Community forum — Representative feedback from a charity worker supporting blind users"
+            author="Apple Community forum · Representative feedback from a charity worker supporting blind users"
             borderColor={C.red}
           />
           <Quote
             text="My phone updated to iOS 26.2 and I hate this so much. I turned on the reduce transparency and motion, but the whole update has changed so much it's making me nauseous most of the time. I'm actually considering switching to Android."
-            author="Apple Community user — iOS 26.2 update feedback"
+            author="Apple Community user · iOS 26.2 update feedback"
             borderColor={C.orange}
           />
         </Reveal>
@@ -396,8 +396,8 @@ export default function LiquidGlassCaseStudy() {
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 40 }}>
           {[
             { emoji: "👁️", title: "Low Vision Users", stat: "2.2B", statLabel: "people globally (WHO)", desc: "Dynamic contrast makes text unreadable over varied backgrounds. Users must navigate 4+ accessibility menus to achieve basic legibility.", pain: "Cannot read emails or notifications without workarounds", color: C.red },
-            { emoji: "🧠", title: "Vestibular Sensitivity", stat: "35%", statLabel: "of adults 40+ affected (NIH)", desc: "Constant animations — bubbling tabs, morphing controls, pulsating buttons — trigger nausea, eye strain, and disorientation.", pain: "Physical symptoms from routine phone use", color: C.orange },
-            { emoji: "📱", title: "Older Device Owners", stat: "15-20%", statLabel: "est. battery drop (projected)", desc: "GPU-intensive rendering strains older A-series chips. Battery tests on iPhone 16 Pro Max showed 13% drain vs. 1% on iOS 18 — impact is expected to be worse on older hardware. Apple's Adaptive Power Mode is iPhone 15 Pro+ only.", pain: "Phone feels years older overnight after update", color: C.purple },
+            { emoji: "🧠", title: "Vestibular Sensitivity", stat: "35%", statLabel: "of adults 40+ affected (NIH)", desc: "Constant animations (bubbling tabs, morphing controls, pulsating buttons) trigger nausea, eye strain, and disorientation.", pain: "Physical symptoms from routine phone use", color: C.orange },
+            { emoji: "📱", title: "Older Device Owners", stat: "15-20%", statLabel: "est. battery drop (projected)", desc: "GPU-intensive rendering strains older A-series chips. Battery tests on iPhone 16 Pro Max showed 13% drain vs. 1% on iOS 18; impact is expected to be worse on older hardware. Apple's Adaptive Power Mode is iPhone 15 Pro+ only.", pain: "Phone feels years older overnight after update", color: C.purple },
           ].map((seg, i) => (
             <Reveal key={i} delay={i * 0.1} style={{ flex: "1 1 280px", minWidth: 260 }}>
               <div style={{
@@ -423,18 +423,18 @@ export default function LiquidGlassCaseStudy() {
 
       {/* ═══════════════ RESEARCH ═══════════════ */}
       <Sect bg={C.white} id="research">
-        <Reveal><Tag>Step 2 — Research & Discovery</Tag></Reveal>
+        <Reveal><Tag>Step 2 · Research & Discovery</Tag></Reveal>
         <Reveal delay={0.05}><H2>What the evidence says.</H2></Reveal>
         <Reveal delay={0.1}>
           <P>Triangulated across four research streams: expert UX analysis (NNG), quantitative accessibility audits (Infinum), community sentiment (Apple Forums, Reddit, Hacker News), and competitive analysis (iOS 7, Material You, visionOS).</P>
         </Reveal>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 36 }}>
           {[
-            { icon: "🔬", title: "NNG published its most critical Apple analysis in a decade", desc: "Raluca Budiu documented floating controls obscuring content, animations that distract, truncated Safari URLs, hidden tabs, and shrunken targets. She described Apple as prioritizing spectacle over usability.", src: "Nielsen Norman Group — October 9, 2025" },
-            { icon: "📊", title: "Contrast failures are measurable, not subjective", desc: "Infinum's team measured 1.5:1 contrast over busy backgrounds — 3x below the 4.5:1 WCAG AA minimum. This isn't aesthetic preference; it's a quantified barrier.", src: "Infinum Accessibility Team — June 2025" },
-            { icon: "🤢", title: "Physical symptoms are widespread and documented", desc: "TechRadar: eye strain and vertigo. Phandroid: 'Café Wall Illusion' in Dark Mode. Reddit: 3,000+ upvote post on icon distortion. Users describe nausea within seconds.", src: "TechRadar, Phandroid, Reddit — September 2025" },
-            { icon: "⚡", title: "Performance creates a two-tier experience", desc: "13% battery drain for 150 actions on iOS 26 vs. 1% on iOS 18 (iPhone 16 Pro Max). Mac Observer reported est. 15–20% battery impact on iPhone 12. Older devices report lag resembling 30Hz despite 60Hz displays.", src: "BGR (Sept 22, 2025), Mac Observer — September 2025" },
-            { icon: "⚖️", title: "EU regulatory risk is real and ticking", desc: "European Accessibility Act enforceable June 28, 2025. Mandates 4.5:1 contrast (EN 301 549). App developers using Liquid Glass bear compliance risk. Penalties vary by member state and are now enforceable.", src: "EU Directive 2019/882 — EN 301 549" },
+            { icon: "🔬", title: "NNG published its most critical Apple analysis in a decade", desc: "Raluca Budiu documented floating controls obscuring content, animations that distract, truncated Safari URLs, hidden tabs, and shrunken targets. She described Apple as prioritizing spectacle over usability.", src: "Nielsen Norman Group · October 9, 2025" },
+            { icon: "📊", title: "Contrast failures are measurable, not subjective", desc: "Infinum's team measured 1.5:1 contrast over busy backgrounds, 3x below the 4.5:1 WCAG AA minimum. This isn't aesthetic preference; it's a quantified barrier.", src: "Infinum Accessibility Team · June 2025" },
+            { icon: "🤢", title: "Physical symptoms are widespread and documented", desc: "TechRadar: eye strain and vertigo. Phandroid: 'Café Wall Illusion' in Dark Mode. Reddit: 3,000+ upvote post on icon distortion. Users describe nausea within seconds.", src: "TechRadar, Phandroid, Reddit · September 2025" },
+            { icon: "⚡", title: "Performance creates a two-tier experience", desc: "13% battery drain for 150 actions on iOS 26 vs. 1% on iOS 18 (iPhone 16 Pro Max). Mac Observer reported est. 15–20% battery impact on iPhone 12. Older devices report lag resembling 30Hz despite 60Hz displays.", src: "BGR (Sept 22, 2025), Mac Observer · September 2025" },
+            { icon: "⚖️", title: "EU regulatory risk is real and ticking", desc: "European Accessibility Act enforceable June 28, 2025. Mandates 4.5:1 contrast (EN 301 549). App developers using Liquid Glass bear compliance risk. Penalties vary by member state and are now enforceable.", src: "EU Directive 2019/882 · EN 301 549" },
           ].map((d, i) => (
             <Reveal key={i} delay={i * 0.06}>
               <div style={{ display: "flex", gap: 16, alignItems: "flex-start", background: C.card, borderRadius: 18, padding: "24px 22px", border: "1px solid rgba(0,0,0,0.05)" }}>
@@ -470,7 +470,7 @@ export default function LiquidGlassCaseStudy() {
         <Reveal delay={0.15} style={{ marginTop: 32 }}>
           <div style={{ background: C.white, borderRadius: 20, padding: "12px 24px", border: "1px solid rgba(0,0,0,0.05)", overflowX: "auto" }}>
             {[
-              { app: "Mail", issue: "Search bar overlaps email previews; text on text — NNG: 'cryptographic decoder skills' needed", sev: "Severe" },
+              { app: "Mail", issue: "Search bar overlaps email previews; text on text. NNG: 'cryptographic decoder skills' needed", sev: "Severe" },
               { app: "Safari", issue: "Floating URL bar competes with page elements; tabs hidden behind overflow; URLs truncated", sev: "Severe" },
               { app: "Messages", issue: "Photo backgrounds camouflage message text; typing indicator blurs into conversation", sev: "High" },
               { app: "Photos", issue: "Smaller tap targets vs. iOS 18; selection indicators indistinguishable from decoration", sev: "High" },
@@ -497,7 +497,7 @@ export default function LiquidGlassCaseStudy() {
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 40 }}>
           {[
             { name: "Android Material You", grade: "B+", approach: "Dynamic color from wallpaper, but solid backgrounds behind text. Translucency limited to quick settings.", lesson: "Personalization without sacrificing readability." },
-            { name: "visionOS (Apple)", grade: "A-", approach: "Heavy glassmorphism, but background complexity is managed by the OS — not random wallpapers.", lesson: "Apple already solved this — in VR, they control what's behind the glass. On iPhone, they don't." },
+            { name: "visionOS (Apple)", grade: "A-", approach: "Heavy glassmorphism, but background complexity is managed by the OS, not random wallpapers.", lesson: "Apple already solved this in VR, where they control what's behind the glass. On iPhone, they don't." },
             { name: "Windows 11 Mica", grade: "B+", approach: "Mica samples wallpaper but heavily desaturates and blurs. Acrylic adds noise texture for contrast.", lesson: "Aggressive blur + noise guarantees minimum contrast while keeping glass aesthetic." },
           ].map((c, i) => (
             <Reveal key={i} delay={i * 0.1} style={{ flex: "1 1 280px", minWidth: 260 }}>
@@ -516,34 +516,34 @@ export default function LiquidGlassCaseStudy() {
 
       {/* ═══════════════ SOLUTION ═══════════════ */}
       <Sect bg={C.dark} id="solution" style={{ color: C.white }}>
-        <Reveal><Tag color={C.teal}>Step 3 — Solution Design</Tag></Reveal>
+        <Reveal><Tag color={C.teal}>Step 3 · Solution Design</Tag></Reveal>
         <Reveal delay={0.05}><H2 color={C.white}>Adaptive Glass.<br />Beautiful and readable.</H2></Reveal>
-        <Reveal delay={0.1}><P color="rgba(255,255,255,0.5)">The goal isn&apos;t to kill Liquid Glass — it&apos;s to make it work for everyone. Three architectural changes preserve Apple&apos;s visual ambition while restoring accessibility.</P></Reveal>
+        <Reveal delay={0.1}><P color="rgba(255,255,255,0.5)">The goal isn&apos;t to kill Liquid Glass. It&apos;s to make it work for everyone. Three architectural changes preserve Apple&apos;s visual ambition while restoring accessibility.</P></Reveal>
         <div style={{ display: "flex", flexDirection: "column", gap: 24, marginTop: 48 }}>
           <Reveal delay={0.15}>
             <SolutionCard num="01" icon="🎯" title="Dynamic Contrast Floor"
-              what="Real-time pipeline measuring foreground text contrast against blurred background. When contrast drops below WCAG AA, the system auto-increases frost or adds a subtle scrim — pixel by pixel, frame by frame."
+              what="Real-time pipeline measuring foreground text contrast against blurred background. When contrast drops below WCAG AA, the system auto-increases frost or adds a subtle scrim, pixel by pixel, frame by frame."
               why="visionOS already does this in spatial environments. The compositing shader exists in Apple's GPU toolkit. This extends it to 2D."
-              nongoal="Does NOT remove transparency — it modulates it. Glass stays glassy; text stays readable." />
+              nongoal="Does NOT remove transparency; it modulates it. Glass stays glassy; text stays readable." />
           </Reveal>
           <Reveal delay={0.2}>
             <SolutionCard num="02" icon="✨" title="Motion Intelligence System"
               what="Context-aware motion: first interaction animates fully (delight). Subsequent ones in the same session reduce to subtle transitions. Scrolling animations pause during active reading. Per-animation Reduce Motion vs. binary kill switch."
               why="NNG's core critique: 'delight turns to distraction on the tenth time.' Users need animation that rewards discovery, then fades to functional."
-              nongoal="Does NOT eliminate motion — it makes motion earn its presence." />
+              nongoal="Does NOT eliminate motion; it makes motion earn its presence." />
           </Reveal>
           <Reveal delay={0.25}>
             <SolutionCard num="03" icon="💡" title="Legibility Mode Toggle"
-              what="Single toggle in Display & Brightness (not Accessibility) switching between 'Vivid' (current) and 'Clear' (guaranteed WCAG contrast). Surfaced during first-run setup. Applies to ALL floating elements — not just background tinting."
+              what="Single toggle in Display & Brightness (not Accessibility) switching between 'Vivid' (current) and 'Clear' (guaranteed WCAG contrast). Surfaced during first-run setup. Applies to ALL floating elements, not just background tinting."
               why="Current Clear/Tinted toggle only adjusts background opacity. Users shouldn't stack 4 accessibility settings to read email."
-              nongoal="Does NOT treat accessibility as afterthought — makes readability a first-class preference." />
+              nongoal="Does NOT treat accessibility as afterthought; makes readability a first-class preference." />
           </Reveal>
         </div>
       </Sect>
 
       {/* ═══════════════ PRIORITIZATION ═══════════════ */}
       <Sect bg={C.white} id="priority">
-        <Reveal><Tag>Step 4 — Prioritization (RICE)</Tag></Reveal>
+        <Reveal><Tag>Step 4 · Prioritization (RICE)</Tag></Reveal>
         <Reveal delay={0.05}><H2>What to build first.</H2></Reveal>
         <Reveal delay={0.1}>
           <P>Reach estimated from iOS 26&apos;s ~1.1B eligible devices (est.). Impact 0–3. Confidence reflects technical precedent. Effort in person-months.</P>
@@ -578,9 +578,9 @@ export default function LiquidGlassCaseStudy() {
         <Reveal delay={0.2} style={{ marginTop: 48 }}>
           <div style={{ fontSize: 16, fontWeight: 600, color: C.dark, marginBottom: 24 }}>Phased Delivery</div>
           {[
-            { ph: "1", color: C.green, title: "iOS 26.3 — Quick Wins (Wk 1–6)", items: ["Ship Legibility Mode in Display & Brightness", "Surface toggle during first-run for upgraders", "Fix Mail search bar overlap (highest-severity NNG finding)", "Restore Safari back-button breadcrumbs"] },
-            { ph: "2", color: C.blue, title: "iOS 26.4 — Contrast Engine (Wk 7–16)", items: ["Deploy Dynamic Contrast Floor across system UI", "Per-element frost modulation based on background analysis", "Add 'Reduce Bright Effects' toggle for vestibular sensitivity", "A/B test contrast thresholds: 3:1 vs. 4.5:1 for UI components"] },
-            { ph: "3", color: C.purple, title: "iOS 27 — Motion Intelligence (Fall 2026)", items: ["Context-aware animation: full delight → functional fade", "Granular Reduce Motion: per-animation vs. binary", "Performance-adaptive rendering by chip generation", "Developer API for contrast-aware Liquid Glass components"] },
+            { ph: "1", color: C.green, title: "iOS 26.3 · Quick Wins (Wk 1–6)", items: ["Ship Legibility Mode in Display & Brightness", "Surface toggle during first-run for upgraders", "Fix Mail search bar overlap (highest-severity NNG finding)", "Restore Safari back-button breadcrumbs"] },
+            { ph: "2", color: C.blue, title: "iOS 26.4 · Contrast Engine (Wk 7–16)", items: ["Deploy Dynamic Contrast Floor across system UI", "Per-element frost modulation based on background analysis", "Add 'Reduce Bright Effects' toggle for vestibular sensitivity", "A/B test contrast thresholds: 3:1 vs. 4.5:1 for UI components"] },
+            { ph: "3", color: C.purple, title: "iOS 27 · Motion Intelligence (Fall 2026)", items: ["Context-aware animation: full delight → functional fade", "Granular Reduce Motion: per-animation vs. binary", "Performance-adaptive rendering by chip generation", "Developer API for contrast-aware Liquid Glass components"] },
           ].map((t, i) => (
             <Reveal key={i} delay={0.25 + i * 0.08}>
               <div style={{ display: "flex", gap: 20, marginBottom: 32 }}>
@@ -600,14 +600,14 @@ export default function LiquidGlassCaseStudy() {
         <Reveal delay={0.4} style={{ marginTop: 32 }}>
           <div style={{ background: C.light, borderRadius: 16, padding: "24px 28px" }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: C.dark, marginBottom: 8 }}>Trade-off: Why not remove Liquid Glass?</div>
-            <P style={{ maxWidth: "none", marginBottom: 0 }}>Rolling back would undermine Apple&apos;s design credibility and strand thousands of developers rebuilding around it. The better path: adaptive rendering — keeping the visual identity while engineering accessibility in. Apple did this with Dark Mode (iOS 13), which required similar system-wide contrast management.</P>
+            <P style={{ maxWidth: "none", marginBottom: 0 }}>Rolling back would undermine Apple&apos;s design credibility and strand thousands of developers rebuilding around it. The better path: adaptive rendering, keeping the visual identity while engineering accessibility in. Apple did this with Dark Mode (iOS 13), which required similar system-wide contrast management.</P>
           </div>
         </Reveal>
       </Sect>
 
       {/* ═══════════════ METRICS ═══════════════ */}
       <Sect bg={C.light} id="metrics">
-        <Reveal><Tag>Step 5 — Impact & Metrics</Tag></Reveal>
+        <Reveal><Tag>Step 5 · Impact & Metrics</Tag></Reveal>
         <Reveal delay={0.05}><H2>How we&apos;d measure success.</H2></Reveal>
         <Reveal delay={0.1}>
           <P>Success means users stop needing accessibility workarounds for basic readability.</P>
@@ -639,7 +639,7 @@ export default function LiquidGlassCaseStudy() {
           <div style={{ background: C.white, borderRadius: 20, padding: "28px", border: "1px solid rgba(0,0,0,0.05)" }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: C.dark, marginBottom: 10 }}>Estimated Impact (Fermi)</div>
             <P style={{ maxWidth: "none", marginBottom: 0 }}>
-              If 2% of iOS 26&apos;s ~1.1B eligible users (est.) delay upgrading due to Liquid Glass — that&apos;s ~22M users on older iOS. At an estimated ~$1.50/user/year in reduced Services revenue (App Store, iCloud), that&apos;s ~$33M in annual opportunity cost. Restoring adoption parity recovers this while strengthening Apple&apos;s accessibility positioning ahead of EU enforcement.
+              If 2% of iOS 26&apos;s ~1.1B eligible users (est.) delay upgrading due to Liquid Glass, that&apos;s ~22M users on older iOS. At an estimated ~$1.50/user/year in reduced Services revenue (App Store, iCloud), that&apos;s ~$33M in annual opportunity cost. Restoring adoption parity recovers this while strengthening Apple&apos;s accessibility positioning ahead of EU enforcement.
             </P>
           </div>
         </Reveal>
@@ -647,7 +647,7 @@ export default function LiquidGlassCaseStudy() {
 
       {/* ═══════════════ LEARNINGS ═══════════════ */}
       <Sect bg={C.white} id="learnings">
-        <Reveal><Tag>Step 6 — Learnings & Reflection</Tag></Reveal>
+        <Reveal><Tag>Step 6 · Learnings & Reflection</Tag></Reveal>
         <Reveal delay={0.05}><H2>What I&apos;d do differently.<br />What I&apos;d test next.</H2></Reveal>
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 40 }}>
           <Reveal style={{ flex: "1 1 300px" }}>
@@ -656,7 +656,7 @@ export default function LiquidGlassCaseStudy() {
               {[
                 { b: "No internal data.", d: "Contrast measurements rely on Infinum and NNG. Apple's telemetry would reveal exact settings adoption and engagement deltas." },
                 { b: "Battery test limits.", d: "The 13% vs. 1% figure is from one creator's test. MacRumors found negligible Clear vs. Tinted differences separately." },
-                { b: "Adoption narrative was noisy.", d: "The 'iOS 26 crisis' was largely a StatCounter error (Safari anti-fingerprinting). Corrected data shows ~56% adoption — marginally below prior years, not catastrophic." },
+                { b: "Adoption narrative was noisy.", d: "The 'iOS 26 crisis' was largely a StatCounter error (Safari anti-fingerprinting). Corrected data shows ~56% adoption, marginally below prior years, not catastrophic." },
               ].map((c, i) => (
                 <div key={i} style={{ marginBottom: 14, fontSize: 14, color: C.mid, lineHeight: 1.65 }}>
                   <strong style={{ color: C.dark }}>{c.b}</strong> {c.d}
@@ -688,19 +688,19 @@ export default function LiquidGlassCaseStudy() {
         <Reveal delay={0.1} style={{ marginTop: 24 }}>
           <div style={{ columns: "2 300px", columnGap: 32, fontSize: 13, color: C.mid, lineHeight: 1.85 }}>
             {[
-              ["NNG", "\"Liquid Glass Is Cracked\" — Raluca Budiu, Oct 9 2025"],
-              ["Infinum", "\"Sleek, Shiny, Questionably Accessible\" — June 2025"],
+              ["NNG", "\"Liquid Glass Is Cracked\" · Raluca Budiu, Oct 9 2025"],
+              ["Infinum", "\"Sleek, Shiny, Questionably Accessible\" · June 2025"],
               ["Apple Community", "Thread 256136970 (8K+ votes) + thousands more across related threads"],
-              ["UX Collective", "\"Did Apple abandon its own heuristics?\" — June 12 2025"],
-              ["BGR", "iOS 26 vs iOS 18 battery test — Sept 22 2025"],
-              ["TechRadar", "Eye strain and vertigo reports — Sept 2025"],
-              ["MacRumors", "iOS 26.1 Liquid Glass toggle — Oct 2025"],
-              ["Mac Observer", "Older iPhone hands-on testing — Sept 2025"],
+              ["UX Collective", "\"Did Apple abandon its own heuristics?\" · June 12 2025"],
+              ["BGR", "iOS 26 vs iOS 18 battery test · Sept 22 2025"],
+              ["TechRadar", "Eye strain and vertigo reports · Sept 2025"],
+              ["MacRumors", "iOS 26.1 Liquid Glass toggle · Oct 2025"],
+              ["Mac Observer", "Older iPhone hands-on testing · Sept 2025"],
               ["Access Advisors NZ", "Accessibility challenges analysis"],
-              ["EU Directive 2019/882", "European Accessibility Act — June 28 2025"],
-              ["Daring Fireball", "Adoption rate analysis — John Gruber, Jan–Feb 2026"],
-              ["TelemetryDeck", "iOS 26 adoption tracking data — Jan 2026"],
-              ["OSnews", "Editorial commentary — Thom Holwerda, Oct 11 2025"],
+              ["EU Directive 2019/882", "European Accessibility Act · June 28 2025"],
+              ["Daring Fireball", "Adoption rate analysis · John Gruber, Jan–Feb 2026"],
+              ["TelemetryDeck", "iOS 26 adoption tracking data · Jan 2026"],
+              ["OSnews", "Editorial commentary · Thom Holwerda, Oct 11 2025"],
             ].map(([src, desc], i) => (
               <div key={i} style={{ marginBottom: 6, breakInside: "avoid" }}>
                 <strong style={{ color: C.dark }}>{src}:</strong> {desc}
@@ -720,7 +720,7 @@ export default function LiquidGlassCaseStudy() {
           <div style={{ maxWidth: 640, margin: "0 auto", position: "relative" }}>
             <h2 style={{ fontSize: "clamp(28px,4.5vw,44px)", fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1.12, marginBottom: 24 }}>
               Good design is invisible.<br />
-              <span style={{ color: "rgba(255,255,255,0.35)" }}>Liquid Glass isn&apos;t — and that&apos;s the problem.</span>
+              <span style={{ color: "rgba(255,255,255,0.35)" }}>Liquid Glass isn&apos;t, and that&apos;s the problem.</span>
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.4)", lineHeight: 1.65, marginBottom: 40 }}>
               This case study demonstrates UX research, accessibility analysis (WCAG 2.2), heuristic evaluation, competitive benchmarking, RICE prioritization, and solution design for a product used by over 1 billion people.

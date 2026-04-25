@@ -29,7 +29,7 @@ export function FeaturedWork() {
             Where I&apos;ve Built
           </h2>
           <p className="text-text-secondary max-w-lg">
-            From intern to PM — scaling marketplaces and shipping features with lean teams.
+            From intern to PM, scaling marketplaces and shipping features with lean teams.
           </p>
         </motion.div>
 

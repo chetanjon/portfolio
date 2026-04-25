@@ -92,7 +92,7 @@ export default function SonosCaseStudy() {
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80 }}>
           <div>
-            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>01 — Comprehend</span>
+            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>01 · Comprehend</span>
             <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>The Problem</h2>
           </div>
           <div>
@@ -106,7 +106,7 @@ export default function SonosCaseStudy() {
             ].map((quote, i) => (
               <div key={i} style={{ borderLeft: `2px solid ${c.accent}`, paddingLeft: 24, margin: "28px 0" }}>
                 <p style={{ fontFamily: fonts.serif, fontSize: 18, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0 }}>&quot;{quote.q}&quot;</p>
-                <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 10, letterSpacing: 1 }}>— {quote.s}</p>
+                <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 10, letterSpacing: 1 }}>{quote.s}</p>
               </div>
             ))}
             <p style={{ fontSize: 11, color: c.textMuted, marginTop: 4, fontStyle: "italic" }}>Quotes are anonymized composites derived from public Sonos Community forum posts, edited for brevity and clarity.</p>
@@ -141,7 +141,7 @@ export default function SonosCaseStudy() {
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
             <div>
-              <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>02 — Research</span>
+              <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>02 · Research</span>
               <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>Business<br/>Context</h2>
             </div>
             <div>
@@ -193,7 +193,7 @@ export default function SonosCaseStudy() {
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
           <div>
-            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>03 — Solution</span>
+            <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>03 · Solution</span>
             <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 0", lineHeight: 1.2 }}>The Safe<br/><em style={{ fontStyle: "italic" }}>Migration</em></h2>
           </div>
           <p style={{ fontSize: 17, color: c.textSoft, lineHeight: 1.9, fontWeight: 300, margin: 0 }}>
@@ -222,7 +222,7 @@ export default function SonosCaseStudy() {
       {/* ─── SECTION 04: WIREFRAMES ─── */}
       <section style={{ background: c.bgDark, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
-          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accentLight, textTransform: "uppercase" }}>04 — Wireframes</span>
+          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accentLight, textTransform: "uppercase" }}>04 · Wireframes</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px", lineHeight: 1.2, color: c.white }}>Before → After</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 48px 1fr", gap: 24, alignItems: "stretch" }}>
@@ -291,7 +291,7 @@ export default function SonosCaseStudy() {
 
       {/* ─── SECTION 05: PRIORITIZATION ─── */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
-        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>05 — Prioritize</span>
+        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>05 · Prioritize</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 40px" }}>RICE Scoring</h2>
 
         <div style={{ background: c.white, borderRadius: 12, border: `1px solid ${c.border}`, overflow: "hidden" }}>
@@ -322,7 +322,7 @@ export default function SonosCaseStudy() {
       {/* ─── SECTION 06: PRD ─── */}
       <section style={{ background: c.white, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
-          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>06 — PRD Excerpt</span>
+          <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>06 · PRD Excerpt</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>Product Requirements</h2>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
@@ -345,7 +345,7 @@ export default function SonosCaseStudy() {
 
       {/* ─── SECTION 07: METRICS ─── */}
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
-        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>07 — Impact</span>
+        <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>07 · Impact</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>What Could Have Been Different</h2>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginBottom: 60 }}>

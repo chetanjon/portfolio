@@ -81,7 +81,7 @@ export function Header() {
           <Link
             href="/"
             className={cn('flex items-center gap-3 group', textStrong)}
-            aria-label="Chetan J — Home"
+            aria-label="Chetan J · Home"
           >
             <LogoMark
               size={60}

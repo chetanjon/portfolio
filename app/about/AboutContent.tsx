@@ -15,9 +15,9 @@ const values = [
   },
   {
     number: '02',
-    quote: 'Data informs — context decides',
+    quote: 'Data informs, context decides',
     description:
-      'I built the seller analytics dashboard before adding new features — not because analytics is always urgent, but because flying blind is worse than moving slow. Numbers tell you what happened. Users tell you why.',
+      'I built the seller analytics dashboard before adding new features, not because analytics is always urgent, but because flying blind is worse than moving slow. Numbers tell you what happened. Users tell you why.',
   },
   {
     number: '03',
@@ -29,20 +29,20 @@ const values = [
     number: '04',
     quote: 'Every no earns a better yes',
     description:
-      "At Aatram with a 3-person founding team — and at IKT India with a 4-engineer team and a growing vendor base — I learned to say no relentlessly. Scope discipline is how small teams punch above their weight. The features we didn't build were as important as the ones we did.",
+      "At Aatram with a 3-person founding team, and at IKT India with a 4-engineer team and a growing vendor base, I learned to say no relentlessly. Scope discipline is how small teams punch above their weight. The features we didn't build were as important as the ones we did.",
   },
 ];
 
 const timeline = [
   { year: '2019–2023', title: 'B.Tech in Electrical & Electronics Engineering', place: 'JNTU Hyderabad' },
-  { year: '2023', title: 'Product Ops Intern', place: 'Gangothri Nutrients — Excel sales model, FAQ authoring' },
-  { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India — B2B handloom marketplace (20 → 75+ vendors)' },
+  { year: '2023', title: 'Product Ops Intern', place: 'Gangothri Nutrients · Excel sales model, FAQ authoring' },
+  { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India · B2B handloom marketplace (20 → 75+ vendors)' },
   { year: '2024', title: 'M.S. in Management of Technology', place: 'Arizona State University' },
-  { year: '2025', title: 'Innovation Index Analysis', place: 'ASU MOT — G20 vs non-G20 (1,862 records)' },
+  { year: '2025', title: 'Innovation Index Analysis', place: 'ASU MOT · G20 vs non-G20 (1,862 records)' },
   { year: '2025', title: 'CSPO Certified', place: 'Scrum Alliance' },
   { year: '2025', title: 'Digital Product Management', place: 'University of Virginia (Coursera)' },
-  { year: '2026', title: 'Launched FrictionLens', place: 'frictionlens.net — AI review analyzer' },
-  { year: '2026', title: 'Co-Founder & Product Manager', place: 'Aatram — iOS app live on the App Store' },
+  { year: '2026', title: 'Launched FrictionLens', place: 'frictionlens.net · AI review analyzer' },
+  { year: '2026', title: 'Co-Founder & Product Manager', place: 'Aatram · iOS app live on the App Store' },
   { year: '2026', title: 'M.S. Graduation (Expected)', place: 'Arizona State University' },
 ];
 
@@ -103,7 +103,7 @@ export function AboutContent() {
               </h1>
 
               <p className="text-text-secondary leading-relaxed mb-6">
-                My path from electrical engineering to product management wasn&apos;t a pivot — it was
+                My path from electrical engineering to product management wasn&apos;t a pivot. It was
                 an evolution. Engineering trained me to think in systems: identify inputs, model behaviors,
                 debug failures. Product management just means applying those same mental models to human
                 systems instead of electrical ones.
@@ -112,7 +112,7 @@ export function AboutContent() {
               <p className="text-text-secondary leading-relaxed mb-6">
                 Right now I&apos;m Co-Founder &amp; Product Manager at Aatram, a consumer iOS app live
                 on the App Store. With a 3-person founding team we shipped V1 seven days from first
-                commit on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack — and launched at
+                commit on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack, and launched at
                 a 5.0 App Store rating. I own product, design, and brand: the design system, the logo,
                 aatram.com, and the positioning that reframes procrastination as an emotion-regulation
                 problem rather than a discipline one. After 16 segmented interviews across procrastination
@@ -122,7 +122,7 @@ export function AboutContent() {
 
               <p className="text-text-secondary leading-relaxed mb-6">
                 Before Aatram, I cut my teeth at IKT India, where I took a seed-stage B2B handloom
-                marketplace from 20 vendors to 75+ across multiple states — promoted from intern to PM
+                marketplace from 20 vendors to 75+ across multiple states, promoted from intern to PM
                 inside of six months. The unlock was a concurrent A/B test on 50 SKUs with price floors
                 against a matched control; order volume held flat, so I scaled the winner to 500+ SKUs,
                 lifted gross margin from 25% to 40%, and doubled monthly GMV. Along the way I cut seller
@@ -256,17 +256,17 @@ export function AboutContent() {
             <p className="text-text-secondary leading-relaxed mb-6">
               When I&apos;m not rebuilding funnels or writing PRDs, I&apos;m watching cricket
               (die-hard India fan), exploring every new restaurant that opens in Tempe, or reading
-              about behavioral economics and how people actually make decisions — which turns out
+              about behavioral economics and how people actually make decisions, which turns out
               to be very useful for a PM. I&apos;m also mildly obsessed with how startups in
               emerging markets solve problems that Silicon Valley tools weren&apos;t designed for.
-              There&apos;s a whole product design language invented out of necessity — and it&apos;s
+              There&apos;s a whole product design language invented out of necessity, and it&apos;s
               where I feel most at home.
             </p>
 
             <p className="text-text-secondary leading-relaxed">
               My engineering background keeps me grounded in &ldquo;is this actually buildable?&rdquo;
               while my business education keeps me asking &ldquo;but does this move the needle?&rdquo;
-              The best product decisions sit at that intersection — technically pragmatic and
+              The best product decisions sit at that intersection: technically pragmatic and
               commercially ambitious at the same time.
             </p>
           </motion.div>

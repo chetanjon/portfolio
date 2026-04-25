@@ -3,7 +3,7 @@ import { getWorkBySlug } from '@/data/work';
 
 export const runtime = 'edge';
 
-export const alt = 'Case Study — Chetan Jonnalagadda';
+export const alt = 'Case Study | Chetan Jonnalagadda';
 export const size = {
   width: 1200,
   height: 630,

@@ -50,7 +50,7 @@ export function Contact() {
             <p className="text-text-secondary max-w-md mb-8">
               I&apos;m looking for PM roles where I can dig deep into user problems,
               move fast with lean teams, and build products that measurably improve outcomes.
-              B2B, marketplaces, or anywhere users have real friction — let&apos;s talk.
+              B2B, marketplaces, or anywhere users have real friction. Let&apos;s talk.
             </p>
 
             <motion.p

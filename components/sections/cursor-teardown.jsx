@@ -66,7 +66,7 @@ const Divider = () => (
 const PullQuote = ({ text, attr }) => (
   <div style={{ borderLeft: `3px solid ${c.accent}`, paddingLeft: 24, margin: "40px 0" }}>
     <p style={{ fontFamily: fonts.serif, fontSize: 20, fontStyle: "italic", color: c.slate, lineHeight: 1.7, margin: 0, fontWeight: 300 }}>{text}</p>
-    {attr && <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 12, letterSpacing: 0.5 }}>— {attr}</p>}
+    {attr && <p style={{ fontFamily: fonts.mono, fontSize: 10, color: c.textMuted, marginTop: 12, letterSpacing: 0.5 }}>{attr}</p>}
   </div>
 );
 const Insight = ({ children, label = "KEY INSIGHT" }) => (
@@ -226,7 +226,7 @@ export default function CursorTeardown() {
       <section id="context" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, alignItems: "start" }}>
           <div>
-            <SectionLabel>01 — Context</SectionLabel>
+            <SectionLabel>01 · Context</SectionLabel>
             <SectionTitle>One of the Fastest SaaS Ramps Ever</SectionTitle>
           </div>
           <div>
@@ -281,7 +281,7 @@ export default function CursorTeardown() {
       {/* ═══════ 02 · BUSINESS MODEL ═══════ */}
       <section id="model" style={{ background: c.white, padding: "80px 0" }}>
         <Wrap>
-          <SectionLabel>02 — Business Model</SectionLabel>
+          <SectionLabel>02 · Business Model</SectionLabel>
           <SectionTitle style={{ marginBottom: 12 }}>Pricing & the Unit Economics Question</SectionTitle>
           <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>Cursor runs a PLG SaaS model with a generous free tier, a $20/month Pro plan that drives most revenue, and an Ultra tier at $200/month for power users.</Body>
 
@@ -306,7 +306,7 @@ export default function CursorTeardown() {
             <div style={{ background: c.bullPale, borderRadius: 12, padding: 32, border: `1px solid #C8DCC9` }}>
               <div style={{ fontFamily: fonts.mono, fontSize: 9, letterSpacing: 2, color: c.bull, marginBottom: 14, textTransform: "uppercase", fontWeight: 500 }}>BULL CASE</div>
               <div style={{ fontFamily: fonts.serif, fontSize: 28, fontWeight: 400, color: c.text, marginBottom: 16 }}>~70%+ gross margins</div>
-              <Body style={{ margin: 0 }}>Bullish analyst models suggest healthy margins driven by proprietary model development and efficient inference routing. Cursor is building its own models — Composer, a custom Tab model — specifically to reduce dependency on expensive third-party APIs. These are modeled estimates, not audited figures.</Body>
+              <Body style={{ margin: 0 }}>Bullish analyst models suggest healthy margins driven by proprietary model development and efficient inference routing. Cursor is building its own models (Composer, a custom Tab model) specifically to reduce dependency on expensive third-party APIs. These are modeled estimates, not audited figures.</Body>
             </div>
             <div style={{ background: c.bearPale, borderRadius: 12, padding: 32, border: `1px solid #E0C9C6` }}>
               <div style={{ fontFamily: fonts.mono, fontSize: 9, letterSpacing: 2, color: c.bear, marginBottom: 14, textTransform: "uppercase", fontWeight: 500 }}>BEAR CASE</div>
@@ -320,7 +320,7 @@ export default function CursorTeardown() {
 
       {/* ═══════ 03 · COMPETITIVE LANDSCAPE ═══════ */}
       <section id="compete" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
-        <SectionLabel>03 — Competitive Landscape</SectionLabel>
+        <SectionLabel>03 · Competitive Landscape</SectionLabel>
         <SectionTitle style={{ marginBottom: 12 }}>The Battleground</SectionTitle>
         <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>AI-assisted coding is the most contested market in software. Every major model provider is simultaneously funding Cursor and building products that compete directly with it.</Body>
 
@@ -387,7 +387,7 @@ export default function CursorTeardown() {
       {/* ═══════ 04 · MOAT ANALYSIS ═══════ */}
       <section id="moat" style={{ background: c.white, padding: "80px 0" }}>
         <Wrap>
-          <SectionLabel>04 — Moat Analysis</SectionLabel>
+          <SectionLabel>04 · Moat Analysis</SectionLabel>
           <SectionTitle style={{ marginBottom: 12 }}>Does Cursor Have a Defensible Moat?</SectionTitle>
           <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>This is the $29 billion question. Cursor&apos;s growth is undeniable, but growth is not a moat. Every layer of potential defensibility has a credible counter-argument.</Body>
 
@@ -417,7 +417,7 @@ export default function CursorTeardown() {
 
       {/* ═══════ 05 · PRICING CRISIS ═══════ */}
       <section id="crisis" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
-        <SectionLabel>05 — The Pricing Crisis</SectionLabel>
+        <SectionLabel>05 · The Pricing Crisis</SectionLabel>
         <SectionTitle style={{ marginBottom: 12 }}>The Pricing Crisis</SectionTitle>
         <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>In June 2025, Cursor quietly replaced its 500-fast-requests/month model with a usage-based credit system. The backlash was immediate and severe.</Body>
 
@@ -447,7 +447,7 @@ export default function CursorTeardown() {
       {/* ═══════ 06 · RISKS ═══════ */}
       <section id="risks" style={{ background: c.white, padding: "80px 0" }}>
         <Wrap>
-          <SectionLabel>06 — Risks</SectionLabel>
+          <SectionLabel>06 · Risks</SectionLabel>
           <SectionTitle style={{ marginBottom: 48 }}>What Could Kill Cursor</SectionTitle>
 
           {[
@@ -475,7 +475,7 @@ export default function CursorTeardown() {
       {/* ═══════ 07 · VERDICT ═══════ */}
       <section id="verdict" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <Wrap narrow style={{ padding: 0 }}>
-          <SectionLabel>07 — Verdict</SectionLabel>
+          <SectionLabel>07 · Verdict</SectionLabel>
           <SectionTitle style={{ marginBottom: 12 }}>What to Watch</SectionTitle>
           <Body style={{ fontSize: 16, marginBottom: 48 }}>
             Cursor is the most consequential product in developer tools since VS Code itself. Its growth is real, its product is genuinely loved, and its strategic position is genuinely precarious. That combination makes it the most interesting company in software right now.
@@ -483,7 +483,7 @@ export default function CursorTeardown() {
 
           {[
             { signal: "Proprietary Model Quality", q: "Can Cursor's custom models match Claude and GPT quality? If yes, unit economics transform and the moat deepens. If no, the margin squeeze continues indefinitely." },
-            { signal: "Editor Independence", q: "Does Cursor ship a non-VS-Code editor? This is the single most important strategic move they could make — and the hardest. It would eliminate the platform dependency but risk alienating users who chose Cursor because it felt like VS Code." },
+            { signal: "Editor Independence", q: "Does Cursor ship a non-VS-Code editor? This is the single most important strategic move they could make, and the hardest. It would eliminate the platform dependency but risk alienating users who chose Cursor because it felt like VS Code." },
             { signal: "Enterprise Revenue Mix", q: "What percentage of ARR comes from Business/Enterprise vs. individual Pro subscriptions? Enterprise lock-in is the only moat that durably resists Big Tech distribution advantages." },
           ].map((s, i) => (
             <div key={i} style={{ padding: "28px 0", borderTop: `1px solid ${c.border}` }}>

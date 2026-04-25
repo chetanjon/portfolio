@@ -42,7 +42,7 @@ export function ContactContent() {
             </h1>
 
             <p className="text-lg text-text-secondary max-w-xl">
-              Hiring a PM? I&apos;m open to full-time roles starting May 2026 — in B2B marketplaces,
+              Hiring a PM? I&apos;m open to full-time roles starting May 2026 in B2B marketplaces,
               AI, 0-to-1, or consumer product. Based in Tempe, AZ; open to relocation. Fastest
               reply via email below.
             </p>

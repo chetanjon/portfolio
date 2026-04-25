@@ -62,7 +62,7 @@ export default async function CaseStudyPage({
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: `${work.company} — ${work.role}`,
+    headline: `${work.company}: ${work.role}`,
     description: work.description,
     author: {
       '@type': 'Person',

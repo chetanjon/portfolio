@@ -16,11 +16,11 @@ export const workExperiences: WorkExperience[] = [
       'Shipped V1 to the App Store in 7 days from first commit, leading product and design across a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack',
       'Ran a 25-user closed beta and 16 segmented interviews across procrastination archetypes (anxious avoider, overwhelmed planner, avoidance-loop, burnt-out performer) to validate V1 and source V2 priorities',
       'Killed V1’s Plan Mode (calendar task-scheduling) after interviews surfaced that users already used Google Calendar and saw no reason to duplicate it inside a procrastination app',
-      'Shipped V2 Study Rooms and Crew — 3–5 person accountability groups with live-presence notifications over Supabase Realtime — after interviews identified social accountability as the strongest consistency lever',
+      'Shipped V2 Study Rooms and Crew (3–5 person accountability groups with live-presence notifications over Supabase Realtime) after interviews identified social accountability as the strongest consistency lever',
       'Specced an on-device nudge engine on Apple Foundation Models with a weighted urgency scorer balancing dread, time pressure, and momentum signals to decide when to interrupt vs defer',
-      'Chose a logarithmic momentum meter over binary streaks to avoid reset anxiety — a known churn driver in procrastination-focused audiences — and designed a 4-zone instrument-style gauge (Starting / Building / Rolling / Locked In)',
+      'Chose a logarithmic momentum meter over binary streaks to avoid reset anxiety (a known churn driver in procrastination-focused audiences) and designed a 4-zone instrument-style gauge (Starting / Building / Rolling / Locked In)',
       'Rebuilt V1 onboarding for V2 to strip friction and front-load the “how are you feeling?” emotional-state question that transforms the UI based on user answer; added Sign in with Apple and Google after V1 drop-off showed users churning before setup completion',
-      'Owned end-to-end UI/UX, logo, and visual identity for the iOS app and aatram.com — building the product’s design system and brand language from scratch in Figma; positioned the app against the “discipline problem” frame competitors assume, reframing procrastination as an emotion-regulation problem',
+      'Owned end-to-end UI/UX, logo, and visual identity for the iOS app and aatram.com, building the product’s design system and brand language from scratch in Figma; positioned the app against the “discipline problem” frame competitors assume, reframing procrastination as an emotion-regulation problem',
       'Led launch marketing across LinkedIn and Instagram (organic content from founder and brand accounts) and owned Apple App Store submission, metadata, screenshots, and PostHog instrumentation for session, drop-off, and retention analytics',
     ],
     metrics: [
@@ -45,15 +45,15 @@ export const workExperiences: WorkExperience[] = [
     featured: true,
     caseStudy: {
       overview:
-        'Aatram is a consumer iOS app live on the App Store, built by a 3-person founding team. I co-founded the company and own product, design, and brand. The strategic bet underneath every feature decision: procrastination is not a discipline problem — it is an emotion-regulation problem. The entire habit-tracker category assumes the opposite, which is why most of its users have tried three apps and still procrastinate.',
+        'Aatram is a consumer iOS app live on the App Store, built by a 3-person founding team. I co-founded the company and own product, design, and brand. The strategic bet underneath every feature decision: procrastination is not a discipline problem. It is an emotion-regulation problem. The entire habit-tracker category assumes the opposite, which is why most of its users have tried three apps and still procrastinate.',
       challenge:
-        'The habit-tracker market is saturated with streaks, calendars, and to-do lists — and users still procrastinate. The discipline frame is the problem, not the solution. We had to validate an emotion-regulation thesis, ship it on a 3-person team with no PM-eng-design separation, and stand out in a category where the incumbents already won the discipline game.',
+        'The habit-tracker market is saturated with streaks, calendars, and to-do lists, and users still procrastinate. The discipline frame is the problem, not the solution. We had to validate an emotion-regulation thesis, ship it on a 3-person team with no PM-eng-design separation, and stand out in a category where the incumbents already won the discipline game.',
       challengePoints: [
         'Crowded habit-tracker market with strong incumbents owning the discipline frame',
         'No way to validate the emotion-regulation thesis without shipping a real product',
-        '3-person founding team — every spec had to earn its build cost',
+        '3-person founding team: every spec had to earn its build cost',
         'iOS-only stack with on-device ML constraints (Apple Foundation Models, FamilyControls)',
-        'Procrastination-prone audiences are highly sensitive to streak resets — a known churn driver in the segment we were targeting',
+        'Procrastination-prone audiences are highly sensitive to streak resets, a known churn driver in the segment we were targeting',
       ],
       approach: [
         {
@@ -64,7 +64,7 @@ export const workExperiences: WorkExperience[] = [
         {
           phase: 'V1 in 7 Days',
           description:
-            'Shipped V1 to the App Store 7 days after first commit with a 3-person team across SwiftUI, SwiftData, WidgetKit, and FamilyControls. Treated V1 as a learning artifact, not a finished product — the goal was to earn the right to do user research with shipped software in users’ hands.',
+            'Shipped V1 to the App Store 7 days after first commit with a 3-person team across SwiftUI, SwiftData, WidgetKit, and FamilyControls. Treated V1 as a learning artifact, not a finished product: the goal was to earn the right to do user research with shipped software in users’ hands.',
         },
         {
           phase: 'Segmented User Research',
@@ -74,7 +74,7 @@ export const workExperiences: WorkExperience[] = [
         {
           phase: 'V2 Pivot',
           description:
-            'Killed V1’s Plan Mode and shipped Study Rooms and Crew — 3–5 person accountability groups with live-presence notifications over Supabase Realtime — after interviews identified social accountability as the strongest consistency lever. Rebuilt onboarding to front-load the emotional-state question that transforms the UI based on user answer.',
+            'Killed V1’s Plan Mode and shipped Study Rooms and Crew (3–5 person accountability groups with live-presence notifications over Supabase Realtime) after interviews identified social accountability as the strongest consistency lever. Rebuilt onboarding to front-load the emotional-state question that transforms the UI based on user answer.',
         },
         {
           phase: 'Launch & Instrumentation',
@@ -86,35 +86,35 @@ export const workExperiences: WorkExperience[] = [
         {
           decision: 'Positioned against the discipline frame the entire category assumes',
           context:
-            'Interviews showed users had tried multiple habit apps and still procrastinated. The discipline frame was the problem, not the solution. Choosing to fight the category positioning was a real bet — it limited the comparison set but earned a story no incumbent could tell.',
+            'Interviews showed users had tried multiple habit apps and still procrastinated. The discipline frame was the problem, not the solution. Choosing to fight the category positioning was a real bet: it limited the comparison set but earned a story no incumbent could tell.',
           outcome:
             'aatram.com leads with the emotion-regulation reframe, and the V2 onboarding now front-loads the emotional-state question that transforms the UI based on user answer.',
         },
         {
           decision: 'Killed V1’s Plan Mode instead of expanding it',
           context:
-            'Plan Mode was a calendar task-scheduling surface inside the app. 16 interviews surfaced that users already used Google Calendar and saw no reason to duplicate it inside a procrastination app — the feature added complexity without value.',
+            'Plan Mode was a calendar task-scheduling surface inside the app. 16 interviews surfaced that users already used Google Calendar and saw no reason to duplicate it inside a procrastination app: the feature added complexity without value.',
           outcome:
             'Freed engineering capacity for Crew and Study Rooms, the V2 features that interviews identified as the strongest consistency lever.',
         },
         {
           decision: 'Built Crew (social accountability) over more solo features',
           context:
-            'Solo features have ceiling effects competitors had already proven. Interviews surfaced social accountability as the highest-leverage consistency mechanism for procrastination-prone users — and no incumbent in the category was building for it.',
+            'Solo features have ceiling effects competitors had already proven. Interviews surfaced social accountability as the highest-leverage consistency mechanism for procrastination-prone users, and no incumbent in the category was building for it.',
           outcome:
             'Shipped Study Rooms and 3–5 person Crew accountability groups with live-presence notifications over Supabase Realtime in V2.',
         },
         {
           decision: 'Logarithmic momentum meter over binary streaks',
           context:
-            'Binary streaks reset to zero on any miss — a known churn driver in procrastination-focused audiences, which is the exact segment we were targeting. Streak resets re-trigger the dread loop the product is supposed to solve.',
+            'Binary streaks reset to zero on any miss, a known churn driver in procrastination-focused audiences, which is the exact segment we were targeting. Streak resets re-trigger the dread loop the product is supposed to solve.',
           outcome:
             'Designed a 4-zone instrument-style momentum gauge (Starting / Building / Rolling / Locked In) that degrades gracefully and absorbs misses without resetting user motivation.',
         },
         {
           decision: 'On-device nudge engine via Apple Foundation Models, not a cloud LLM',
           context:
-            'Procrastination signals are intensely personal — dread, time pressure, momentum. Cloud round-trips also introduce latency that breaks the “right moment to interrupt” window the nudge engine needs to hit.',
+            'Procrastination signals are intensely personal: dread, time pressure, momentum. Cloud round-trips also introduce latency that breaks the “right moment to interrupt” window the nudge engine needs to hit.',
           outcome:
             'Specced an on-device weighted urgency scorer balancing dread, time pressure, and momentum to decide when to interrupt vs defer.',
         },
@@ -122,9 +122,9 @@ export const workExperiences: WorkExperience[] = [
       results:
         'Shipped V1 to the App Store in 7 days from first commit with a 3-person founding team and a 5.0 launch rating. Validated the emotion-regulation thesis through 16 segmented archetype interviews and a 25-user closed beta. Shipped V2 Study Rooms and Crew with Supabase Realtime live presence. Owned product, design, brand, App Store submission, and launch marketing end-to-end. The app is live today at aatram.com.',
       learnings:
-        'Framing wins. Reframing procrastination from a discipline problem to an emotion-regulation problem was the highest-leverage decision of the entire build — it determined every feature priority that followed and made the V2 pivot obvious in retrospect. Ship-to-learn beats spec-to-perfect on a 3-person team: what we learned from users with V1 in their hands was worth more than seven weeks of spec.',
+        'Framing wins. Reframing procrastination from a discipline problem to an emotion-regulation problem was the highest-leverage decision of the entire build. It determined every feature priority that followed and made the V2 pivot obvious in retrospect. Ship-to-learn beats spec-to-perfect on a 3-person team: what we learned from users with V1 in their hands was worth more than seven weeks of spec.',
       whatWouldChange:
-        'I would have front-loaded the emotional-state question in V1, not V2. The whole product hinges on it, and we lost users to onboarding drop-off before they ever experienced the reframe. I would also have instrumented PostHog from day one rather than during the App Store submission window — we lost early behavioral data that would have sharpened the V2 priorities further.',
+        'I would have front-loaded the emotional-state question in V1, not V2. The whole product hinges on it, and we lost users to onboarding drop-off before they ever experienced the reframe. I would also have instrumented PostHog from day one rather than during the App Store submission window. We lost early behavioral data that would have sharpened the V2 priorities further.',
     },
   },
   {
@@ -139,7 +139,7 @@ export const workExperiences: WorkExperience[] = [
     description:
       'Seed-stage B2B handloom marketplace. Promoted from intern after 6 months. Led seller-side product with a 4-engineer team shipping across web, mobile, and ops integrations.',
     highlights: [
-      'Ran a concurrent A/B test on 50 SKUs with price floors against a matched control group, held order volume flat in the test cohort, and scaled the winning variant to 500+ SKUs — lifting gross margin from 25% to 40% and doubling monthly GMV',
+      'Ran a concurrent A/B test on 50 SKUs with price floors against a matched control group, held order volume flat in the test cohort, and scaled the winning variant to 500+ SKUs, lifting gross margin from 25% to 40% and doubling monthly GMV',
       'Scaled the vendor base from 20 to 75+ across multiple states by owning the seller-acquisition playbook and prioritizing regions by weaver-cluster density',
       'Cut seller onboarding from 3 days to 6 hours via verification automation, doubling first-listing rate from 30% to 60%',
       'Built a SQL + Mixpanel seller-health dashboard whose 7-day inactivity triggers lifted 60-day active-seller retention by 20%',
@@ -170,11 +170,11 @@ export const workExperiences: WorkExperience[] = [
       challenge:
         'When I joined, the platform had ~20 vendors, 25% gross margins, and a seller funnel that leaked everywhere. Artisans signed up but never listed. The ones who listed dropped off within 60 days. And a 4-engineer team meant every feature had to be earned.',
       challengePoints: [
-        'Low activation — many signed up but never completed KYC or listed products',
+        'Low activation: many signed up but never completed KYC or listed products',
         'High churn among vendors in the first 60 days',
         'Complex onboarding for non-tech-savvy artisans in rural India',
         'Thin 25% gross margins threatening unit economics',
-        'No analytics infrastructure — we were flying blind on seller behavior',
+        'No analytics infrastructure: we were flying blind on seller behavior',
       ],
       approach: [
         {
@@ -216,7 +216,7 @@ export const workExperiences: WorkExperience[] = [
           context:
             'Gross margin was 25% and threatening unit economics, but leadership was worried raising floors would kill volume. A concurrent test with a matched control was the only way to prove the trade-off.',
           outcome:
-            'Order volume held flat in the test cohort, so I scaled to 500+ SKUs and renegotiated supplier terms — lifting gross margin to 40% and doubling monthly GMV.',
+            'Order volume held flat in the test cohort, so I scaled to 500+ SKUs and renegotiated supplier terms, lifting gross margin to 40% and doubling monthly GMV.',
         },
         {
           decision: 'Built the seller analytics dashboard before adding new features',
@@ -231,7 +231,7 @@ export const workExperiences: WorkExperience[] = [
       learnings:
         'The biggest lesson was the power of talking to sellers directly. Field context changed what “simple” meant for different user segments. Data-informed decisions beat gut feelings, but you need qualitative context to interpret the numbers correctly.',
       whatWouldChange:
-        'I would have invested in analytics infrastructure earlier — we lost months of behavioral data because tracking wasn’t set up. I also would have pushed harder for a mobile-first seller experience from day one; many artisans primarily used low-end smartphones.',
+        'I would have invested in analytics infrastructure earlier. We lost months of behavioral data because tracking wasn’t set up. I also would have pushed harder for a mobile-first seller experience from day one; many artisans primarily used low-end smartphones.',
     },
   },
   {

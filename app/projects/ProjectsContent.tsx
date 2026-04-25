@@ -179,7 +179,7 @@ export function ProjectsContent() {
 
             <p className="text-lg text-text-secondary max-w-2xl">
               From sizing a $20M mobility platform in Phoenix to redesigning how people find
-              compatible partners — this is where I apply PM rigor outside the day job.
+              compatible partners. This is where I apply PM rigor outside the day job.
               Academic projects with real data, real users, and real decisions.
             </p>
           </motion.div>

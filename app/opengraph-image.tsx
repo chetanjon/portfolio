@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Chetan Jonnalagadda — Product Manager who ships 0→live. iOS app shipped in 7 days at a 5.0 App Store rating.';
+export const alt = 'Chetan Jonnalagadda · Product Manager who ships 0→live. iOS app shipped in 7 days at a 5.0 App Store rating.';
 export const size = {
   width: 1200,
   height: 630,
