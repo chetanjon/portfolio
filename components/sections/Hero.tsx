@@ -41,9 +41,9 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="font-serif italic text-4xl md:text-5xl lg:text-6xl leading-[1.15] mt-10 mb-6 font-normal"
         >
-          I build products
+          I find the problem worth solving
           <br />
-          from <span className="font-display font-bold uppercase not-italic tracking-tight gradient-text-accent">zero to live.</span>
+          — then <span className="font-display font-bold uppercase not-italic tracking-tight gradient-text-accent">ship the fix.</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -54,7 +54,7 @@ export function Hero() {
           className="text-sm md:text-base text-text-secondary leading-relaxed max-w-md mb-10"
         >
           Co-Founder of a live iOS app shipped in 7 days. Former B2B marketplace PM who grew vendors
-          3.75x and doubled GMV at seed stage. I find the real problem, scope ruthlessly, and ship.
+          3.75x and doubled GMV at seed stage. Scope ruthlessly. Ship.
         </motion.p>
 
         {/* Live badges */}

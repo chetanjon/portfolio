@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { workExperiences, getWorkBySlug } from '@/data/work';
 import { CaseStudyContent } from './CaseStudyContent';
 
+const SITE_URL = 'https://chetanjonnalagadda.com';
+
 export function generateStaticParams() {
   return workExperiences.map((w) => ({ slug: w.slug }));
 }
@@ -16,9 +18,25 @@ export async function generateMetadata({
   const work = getWorkBySlug(slug);
   if (!work) return { title: 'Not Found' };
 
+  const title = `${work.company} Case Study`;
+  const url = `${SITE_URL}/work/${slug}`;
+
   return {
-    title: `${work.company} Case Study`,
+    title,
     description: work.description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      url,
+      title: `${title} | Chetan Jonnalagadda`,
+      description: work.description,
+      siteName: 'Chetan Jonnalagadda',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Chetan Jonnalagadda`,
+      description: work.description,
+    },
   };
 }
 
@@ -36,5 +54,40 @@ export default async function CaseStudyPage({
   const prev = currentIndex > 0 ? workExperiences[currentIndex - 1] : null;
   const next = currentIndex < workExperiences.length - 1 ? workExperiences[currentIndex + 1] : null;
 
-  return <CaseStudyContent work={work} prev={prev} next={next} />;
+  const url = `${SITE_URL}/work/${slug}`;
+  const datePublished = `${work.startDate}-01`;
+  const dateModified =
+    work.endDate === 'Present' ? new Date().toISOString().slice(0, 10) : `${work.endDate}-01`;
+
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `${work.company} — ${work.role}`,
+    description: work.description,
+    author: {
+      '@type': 'Person',
+      name: 'Chetan Jonnalagadda',
+      url: SITE_URL,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Chetan Jonnalagadda',
+      url: SITE_URL,
+    },
+    datePublished,
+    dateModified,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    about: work.skills,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <CaseStudyContent work={work} prev={prev} next={next} />
+    </>
+  );
 }

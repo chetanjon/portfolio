@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FileText, Mail } from 'lucide-react';
+import { Calendar, FileText, Mail } from 'lucide-react';
 import ResumeModal from '@/components/ui/ResumeModal';
 
 export function CTA() {
@@ -37,9 +37,18 @@ export function CTA() {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+              <a
+                href="https://calendly.com/jonnalagadda8800/15-min-intro"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-glow inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-bg-primary rounded-full text-xs uppercase tracking-widest font-medium hover:opacity-80"
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                Book a 15-min intro
+              </a>
               <Link
                 href="/contact"
-                className="cta-glow inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-bg-primary rounded-full text-xs uppercase tracking-widest font-medium hover:opacity-80"
+                className="cta-glow inline-flex items-center gap-2 px-6 py-3 border border-border-default rounded-full text-xs uppercase tracking-widest font-medium hover:border-text-primary"
               >
                 <Mail className="w-3.5 h-3.5" />
                 Get in touch

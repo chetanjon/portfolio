@@ -43,6 +43,89 @@ export const workExperiences: WorkExperience[] = [
     ],
     thumbnail: '/work/aatram.svg',
     featured: true,
+    caseStudy: {
+      overview:
+        'Aatram is a consumer iOS app live on the App Store, built by a 3-person founding team. I co-founded the company and own product, design, and brand. The strategic bet underneath every feature decision: procrastination is not a discipline problem — it is an emotion-regulation problem. The entire habit-tracker category assumes the opposite, which is why most of its users have tried three apps and still procrastinate.',
+      challenge:
+        'The habit-tracker market is saturated with streaks, calendars, and to-do lists — and users still procrastinate. The discipline frame is the problem, not the solution. We had to validate an emotion-regulation thesis, ship it on a 3-person team with no PM-eng-design separation, and stand out in a category where the incumbents already won the discipline game.',
+      challengePoints: [
+        'Crowded habit-tracker market with strong incumbents owning the discipline frame',
+        'No way to validate the emotion-regulation thesis without shipping a real product',
+        '3-person founding team — every spec had to earn its build cost',
+        'iOS-only stack with on-device ML constraints (Apple Foundation Models, FamilyControls)',
+        'Procrastination-prone audiences are highly sensitive to streak resets — a known churn driver in the segment we were targeting',
+      ],
+      approach: [
+        {
+          phase: 'Thesis & Positioning',
+          description:
+            'Reframed procrastination as an emotion-regulation problem and positioned aatram.com against the “discipline problem” frame the category assumes. Wrote the brand voice, visual identity, and landing page from scratch in Figma to make the reframe visible from the first scroll.',
+        },
+        {
+          phase: 'V1 in 7 Days',
+          description:
+            'Shipped V1 to the App Store 7 days after first commit with a 3-person team across SwiftUI, SwiftData, WidgetKit, and FamilyControls. Treated V1 as a learning artifact, not a finished product — the goal was to earn the right to do user research with shipped software in users’ hands.',
+        },
+        {
+          phase: 'Segmented User Research',
+          description:
+            'Ran a 25-user closed beta and 16 segmented interviews across four procrastination archetypes (anxious avoider, overwhelmed planner, avoidance-loop, burnt-out performer). Used the archetype taxonomy to source V2 priorities and decide which V1 surfaces to kill, keep, or expand.',
+        },
+        {
+          phase: 'V2 Pivot',
+          description:
+            'Killed V1’s Plan Mode and shipped Study Rooms and Crew — 3–5 person accountability groups with live-presence notifications over Supabase Realtime — after interviews identified social accountability as the strongest consistency lever. Rebuilt onboarding to front-load the emotional-state question that transforms the UI based on user answer.',
+        },
+        {
+          phase: 'Launch & Instrumentation',
+          description:
+            'Owned Apple App Store submission, metadata, and screenshots. Stood up PostHog instrumentation covering session, drop-off, and retention. Led organic launch marketing across LinkedIn and Instagram from founder and brand accounts.',
+        },
+      ],
+      decisions: [
+        {
+          decision: 'Positioned against the discipline frame the entire category assumes',
+          context:
+            'Interviews showed users had tried multiple habit apps and still procrastinated. The discipline frame was the problem, not the solution. Choosing to fight the category positioning was a real bet — it limited the comparison set but earned a story no incumbent could tell.',
+          outcome:
+            'aatram.com leads with the emotion-regulation reframe, and the V2 onboarding now front-loads the emotional-state question that transforms the UI based on user answer.',
+        },
+        {
+          decision: 'Killed V1’s Plan Mode instead of expanding it',
+          context:
+            'Plan Mode was a calendar task-scheduling surface inside the app. 16 interviews surfaced that users already used Google Calendar and saw no reason to duplicate it inside a procrastination app — the feature added complexity without value.',
+          outcome:
+            'Freed engineering capacity for Crew and Study Rooms, the V2 features that interviews identified as the strongest consistency lever.',
+        },
+        {
+          decision: 'Built Crew (social accountability) over more solo features',
+          context:
+            'Solo features have ceiling effects competitors had already proven. Interviews surfaced social accountability as the highest-leverage consistency mechanism for procrastination-prone users — and no incumbent in the category was building for it.',
+          outcome:
+            'Shipped Study Rooms and 3–5 person Crew accountability groups with live-presence notifications over Supabase Realtime in V2.',
+        },
+        {
+          decision: 'Logarithmic momentum meter over binary streaks',
+          context:
+            'Binary streaks reset to zero on any miss — a known churn driver in procrastination-focused audiences, which is the exact segment we were targeting. Streak resets re-trigger the dread loop the product is supposed to solve.',
+          outcome:
+            'Designed a 4-zone instrument-style momentum gauge (Starting / Building / Rolling / Locked In) that degrades gracefully and absorbs misses without resetting user motivation.',
+        },
+        {
+          decision: 'On-device nudge engine via Apple Foundation Models, not a cloud LLM',
+          context:
+            'Procrastination signals are intensely personal — dread, time pressure, momentum. Cloud round-trips also introduce latency that breaks the “right moment to interrupt” window the nudge engine needs to hit.',
+          outcome:
+            'Specced an on-device weighted urgency scorer balancing dread, time pressure, and momentum to decide when to interrupt vs defer.',
+        },
+      ],
+      results:
+        'Shipped V1 to the App Store in 7 days from first commit with a 3-person founding team and a 5.0 launch rating. Validated the emotion-regulation thesis through 16 segmented archetype interviews and a 25-user closed beta. Shipped V2 Study Rooms and Crew with Supabase Realtime live presence. Owned product, design, brand, App Store submission, and launch marketing end-to-end. The app is live today at aatram.com.',
+      learnings:
+        'Framing wins. Reframing procrastination from a discipline problem to an emotion-regulation problem was the highest-leverage decision of the entire build — it determined every feature priority that followed and made the V2 pivot obvious in retrospect. Ship-to-learn beats spec-to-perfect on a 3-person team: what we learned from users with V1 in their hands was worth more than seven weeks of spec.',
+      whatWouldChange:
+        'I would have front-loaded the emotional-state question in V1, not V2. The whole product hinges on it, and we lost users to onboarding drop-off before they ever experienced the reframe. I would also have instrumented PostHog from day one rather than during the App Store submission window — we lost early behavioral data that would have sharpened the V2 priorities further.',
+    },
   },
   {
     id: '1',
