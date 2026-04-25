@@ -157,6 +157,12 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfair.variable} ${syne.variable} font-sans antialiased`}>
+        <a
+          href="#main-content"
+          className="skip-link fixed left-4 top-4 z-[2000] rounded-md bg-bg-primary px-4 py-2 text-sm font-medium text-text-primary shadow-md"
+        >
+          Skip to main content
+        </a>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var s=localStorage.getItem('theme');var p=window.matchMedia('(prefers-color-scheme: dark)').matches;var t=s||(p?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
@@ -170,7 +176,9 @@ export default function RootLayout({
           <NoiseOverlay />
           <DebugWrapper />
           <Header />
-          <main className="relative z-10 min-h-screen">{children}</main>
+          <main id="main-content" className="relative z-10 min-h-screen">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

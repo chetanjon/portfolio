@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://chetanjonnalagadda.com';
+  const defaultLastModified = new Date('2026-04-24T00:00:00.000Z');
 
   const caseStudySlugs = [
     'cursor',
@@ -20,43 +21,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: defaultLastModified,
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: defaultLastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/casestudies`,
-      lastModified: new Date(),
+      lastModified: defaultLastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/resume`,
-      lastModified: new Date(),
+      lastModified: defaultLastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date(),
+      lastModified: defaultLastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: new Date(),
+      lastModified: defaultLastModified,
       changeFrequency: 'yearly',
       priority: 0.5,
     },
     {
       url: `${baseUrl}/work`,
-      lastModified: new Date(),
+      lastModified: defaultLastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
@@ -64,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const caseStudyPages: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
     url: `${baseUrl}/casestudies/${slug}`,
-    lastModified: new Date(),
+    lastModified: defaultLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));

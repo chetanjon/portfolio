@@ -8,5 +8,13 @@ const ThemeCustomizer = dynamic(
 );
 
 export function DebugWrapper() {
+  const isEnabled =
+    process.env.NODE_ENV === 'development' ||
+    process.env.NEXT_PUBLIC_ENABLE_THEME_CUSTOMIZER === 'true';
+
+  if (!isEnabled) {
+    return null;
+  }
+
   return <ThemeCustomizer />;
 }

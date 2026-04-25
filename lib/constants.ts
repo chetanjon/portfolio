@@ -15,6 +15,6 @@ export const siteConfig = {
   title: 'CJ | Product Manager',
   description:
     'Product Manager focused on B2B marketplace growth, seller experience, and data-driven product development. CSPO certified, MS in Management of Technology at ASU.',
-  url: 'https://chetanj.com',
+  url: 'https://chetanjonnalagadda.com',
   ogImage: '/og-image.png',
 };
