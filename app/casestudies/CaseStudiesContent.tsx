@@ -274,15 +274,15 @@ export function CaseStudiesContent() {
               >
                 <Link href={`/casestudies/${study.slug}`} className="block group">
                   <motion.div
-                    whileHover={{ y: -4 }}
-                    whileTap={{ y: -2 }}
-                    transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="border border-border-default rounded-sm overflow-hidden"
+                    whileHover={{ y: -6 }}
+                    whileTap={{ y: -3 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative border border-border-default rounded-sm overflow-hidden transition-[box-shadow,border-color] duration-500 group-hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.22)] dark:group-hover:shadow-[0_18px_50px_-15px_rgba(0,0,0,0.6)] group-hover:border-border-hover"
                   >
-                    {/* Accent bar */}
+                    {/* Accent bar — scales vertically on hover for a subtle "lift" cue */}
                     <div
-                      className="h-1 w-full"
-                      style={{ background: study.accentColor }}
+                      className="w-full origin-top transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-y-[1.75]"
+                      style={{ height: 4, background: study.accentColor }}
                     />
 
                     <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0">
@@ -350,10 +350,16 @@ export function CaseStudiesContent() {
                         </div>
 
                         <span
-                          className="text-sm font-medium tracking-wide transition-colors"
+                          className="inline-flex items-center gap-2 text-sm font-medium tracking-wide transition-colors"
                           style={{ color: study.accentColor }}
                         >
-                          Read {study.type} →
+                          Read {study.type}
+                          <span
+                            aria-hidden
+                            className="inline-block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1.5"
+                          >
+                            →
+                          </span>
                         </span>
                       </div>
 

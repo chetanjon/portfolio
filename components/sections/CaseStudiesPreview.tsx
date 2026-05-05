@@ -87,8 +87,13 @@ export function CaseStudiesPreview() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <Link href={`/casestudies/${study.slug}`} className="block group">
-                <div className="gradient-card-hover bg-bg-primary border border-border-default rounded-lg p-6 md:p-7 hover:border-border-hover transition-colors h-full flex flex-col">
+              <Link href={`/casestudies/${study.slug}`} className="block group h-full">
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  whileTap={{ y: -2 }}
+                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                  className="gradient-card-hover bg-bg-primary border border-border-default rounded-lg p-6 md:p-7 group-hover:border-border-hover transition-[border-color,box-shadow] duration-500 group-hover:shadow-[0_18px_40px_-20px_rgba(0,0,0,0.22)] dark:group-hover:shadow-[0_18px_40px_-15px_rgba(0,0,0,0.6)] h-full flex flex-col"
+                >
                   {/* Top: company + tag */}
                   <div className="flex items-center justify-between mb-4 gap-3">
                     <span className="text-[10px] tracking-widest uppercase text-text-muted truncate">
@@ -146,12 +151,18 @@ export function CaseStudiesPreview() {
 
                   {/* CTA */}
                   <span
-                    className="text-[11px] font-medium tracking-wider uppercase"
+                    className="inline-flex items-center gap-2 text-[11px] font-medium tracking-wider uppercase"
                     style={{ color: study.accent }}
                   >
-                    Read →
+                    Read
+                    <span
+                      aria-hidden
+                      className="inline-block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1.5"
+                    >
+                      →
+                    </span>
                   </span>
-                </div>
+                </motion.div>
               </Link>
             </motion.div>
           ))}
