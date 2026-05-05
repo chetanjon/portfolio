@@ -90,16 +90,30 @@ export function CaseStudiesPreview() {
               <Link href={`/casestudies/${study.slug}`} className="block group">
                 <div className="gradient-card-hover bg-bg-primary border border-border-default rounded-lg p-6 md:p-7 hover:border-border-hover transition-colors h-full flex flex-col">
                   {/* Top: company + tag */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] tracking-widest uppercase text-text-muted">
+                  <div className="flex items-center justify-between mb-4 gap-3">
+                    <span className="text-[10px] tracking-widest uppercase text-text-muted truncate">
                       {study.company}
                     </span>
-                    <span
-                      className="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full border font-medium"
-                      style={{ color: study.accent, borderColor: study.accent, opacity: 0.85 }}
-                    >
-                      {study.tag}
-                    </span>
+                    {study.tag === 'Shipped' ? (
+                      <span
+                        className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-semibold inline-flex items-center gap-1.5 flex-shrink-0"
+                        style={{ background: study.accent, color: '#fff' }}
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden />
+                        Shipped
+                      </span>
+                    ) : study.tag === 'Case Study' ? (
+                      <span
+                        className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-medium flex-shrink-0"
+                        style={{ background: `${study.accent}1A`, color: study.accent }}
+                      >
+                        Case Study
+                      </span>
+                    ) : (
+                      <span className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-border-default text-text-muted font-medium flex-shrink-0">
+                        Teardown
+                      </span>
+                    )}
                   </div>
 
                   {/* Big metric */}

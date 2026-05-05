@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 
+type CaseStudyType = 'Shipped' | 'Case Study' | 'Teardown';
+
 const caseStudies: Array<{
   slug: string;
   company: string;
@@ -15,9 +17,23 @@ const caseStudies: Array<{
   accentColor: string;
   bgColor: string;
   year: string;
-  type?: string;
+  type: CaseStudyType;
   readMin: number;
 }> = [
+  {
+    slug: 'aatram',
+    company: 'Aatram',
+    title: 'Start Starting',
+    description:
+      'Shipped V1 to the App Store in 7 days from first commit with a 3-person founding team on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack. 25-user closed beta and 16 archetype-segmented interviews (anxious avoider, overwhelmed planner, avoidance-loop, burnt-out performer) validated the V1 cut and sourced V2. Killed Plan Mode, shipped Study Rooms and Crew for social accountability, and specced an on-device nudge engine on Apple Foundation Models. Owned UI/UX, logo, visual identity, and aatram.com end-to-end.',
+    tags: ['0-to-1', 'iOS', 'Apple Foundation Models', 'Brand & Design', 'Social Accountability'],
+    metric: { value: '7 days', label: 'First commit → App Store · 5.0 launch rating' },
+    accentColor: '#5B4EB8',
+    bgColor: '#EEEBF8',
+    year: '2026',
+    type: 'Shipped',
+    readMin: 6,
+  },
   {
     slug: 'cursor',
     company: 'Cursor (Anysphere)',
@@ -43,6 +59,7 @@ const caseStudies: Array<{
     accentColor: '#D4790E',
     bgColor: '#FFF8ED',
     year: '2026',
+    type: 'Case Study',
     readMin: 10,
   },
   {
@@ -56,6 +73,7 @@ const caseStudies: Array<{
     accentColor: '#5B3DC8',
     bgColor: '#EEEBF8',
     year: '2026',
+    type: 'Case Study',
     readMin: 8,
   },
   {
@@ -69,6 +87,7 @@ const caseStudies: Array<{
     accentColor: '#0071e3',
     bgColor: '#f5f5f7',
     year: '2026',
+    type: 'Case Study',
     readMin: 10,
   },
   {
@@ -96,6 +115,7 @@ const caseStudies: Array<{
     accentColor: '#2D5A3D',
     bgColor: '#E8F0EA',
     year: '2026',
+    type: 'Case Study',
     readMin: 7,
   },
   {
@@ -123,6 +143,7 @@ const caseStudies: Array<{
     accentColor: '#E8590C',
     bgColor: '#FFF3ED',
     year: '2026',
+    type: 'Case Study',
     readMin: 8,
   },
   {
@@ -136,6 +157,7 @@ const caseStudies: Array<{
     accentColor: '#8B4513',
     bgColor: '#FAF3ED',
     year: '2026',
+    type: 'Case Study',
     readMin: 8,
   },
   {
@@ -152,25 +174,11 @@ const caseStudies: Array<{
     type: 'Teardown',
     readMin: 7,
   },
-  {
-    slug: 'aatram',
-    company: 'Aatram',
-    title: 'Start Starting',
-    description:
-      'Shipped V1 to the App Store in 7 days from first commit with a 3-person founding team on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack. 25-user closed beta and 16 archetype-segmented interviews (anxious avoider, overwhelmed planner, avoidance-loop, burnt-out performer) validated the V1 cut and sourced V2. Killed Plan Mode, shipped Study Rooms and Crew for social accountability, and specced an on-device nudge engine on Apple Foundation Models. Owned UI/UX, logo, visual identity, and aatram.com end-to-end.',
-    tags: ['0-to-1', 'iOS', 'Apple Foundation Models', 'Brand & Design', 'Social Accountability'],
-    metric: { value: '7 days', label: 'First commit → App Store · 5.0 launch rating' },
-    accentColor: '#5B4EB8',
-    bgColor: '#EEEBF8',
-    year: '2026',
-    type: 'Shipped',
-    readMin: 6,
-  },
 ];
 
-type Filter = 'All' | 'Shipped' | 'Teardown' | 'Case Study';
+type Filter = 'All' | 'Shipped' | 'Case Study' | 'Teardown';
 
-const FILTERS: Filter[] = ['All', 'Shipped', 'Teardown', 'Case Study'];
+const FILTERS: Filter[] = ['All', 'Shipped', 'Case Study', 'Teardown'];
 
 export function CaseStudiesContent() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -180,7 +188,6 @@ export function CaseStudiesContent() {
 
   const filteredStudies = useMemo(() => {
     if (filter === 'All') return caseStudies;
-    if (filter === 'Case Study') return caseStudies.filter((s) => !s.type);
     return caseStudies.filter((s) => s.type === filter);
   }, [filter]);
 
@@ -188,8 +195,8 @@ export function CaseStudiesContent() {
     () => ({
       All: caseStudies.length,
       Shipped: caseStudies.filter((s) => s.type === 'Shipped').length,
+      'Case Study': caseStudies.filter((s) => s.type === 'Case Study').length,
       Teardown: caseStudies.filter((s) => s.type === 'Teardown').length,
-      'Case Study': caseStudies.filter((s) => !s.type).length,
     }),
     []
   );
@@ -282,6 +289,34 @@ export function CaseStudiesContent() {
                       {/* Left: content */}
                       <div className="p-8 md:p-10">
                         <div className="flex items-center flex-wrap gap-3 mb-5">
+                          {study.type === 'Shipped' && (
+                            <span
+                              className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-semibold inline-flex items-center gap-1.5"
+                              style={{ background: study.accentColor, color: '#fff' }}
+                            >
+                              <span
+                                className="w-1.5 h-1.5 rounded-full bg-white"
+                                aria-hidden
+                              />
+                              Shipped
+                            </span>
+                          )}
+                          {study.type === 'Case Study' && (
+                            <span
+                              className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-medium"
+                              style={{
+                                background: `${study.accentColor}1A`,
+                                color: study.accentColor,
+                              }}
+                            >
+                              Case Study
+                            </span>
+                          )}
+                          {study.type === 'Teardown' && (
+                            <span className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-border-default text-text-muted font-medium">
+                              Teardown
+                            </span>
+                          )}
                           <span className="text-[10px] uppercase tracking-widest text-text-muted">
                             {study.company}
                           </span>
@@ -293,17 +328,6 @@ export function CaseStudiesContent() {
                           <span className="text-[10px] uppercase tracking-widest text-text-muted">
                             {study.readMin} min read
                           </span>
-                          {'type' in study && study.type && (
-                            <>
-                              <span className="text-[10px] text-text-muted opacity-40">/</span>
-                              <span
-                                className="text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full border font-medium"
-                                style={{ color: study.accentColor, borderColor: study.accentColor, opacity: 0.85 }}
-                              >
-                                {study.type}
-                              </span>
-                            </>
-                          )}
                         </div>
 
                         <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] mb-4 group-hover:text-text-secondary transition-colors">
@@ -329,7 +353,7 @@ export function CaseStudiesContent() {
                           className="text-sm font-medium tracking-wide transition-colors"
                           style={{ color: study.accentColor }}
                         >
-                          {'type' in study && study.type ? `Read ${study.type} →` : 'Read Case Study →'}
+                          Read {study.type} →
                         </span>
                       </div>
 
