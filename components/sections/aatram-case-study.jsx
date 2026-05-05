@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
 
 // ——— THEME SYSTEM ———
 const darkPalette = {
@@ -183,10 +184,37 @@ const EmotionDemo = () => {
 // ===================================================
 // MAIN
 // ===================================================
+const AATRAM_TOC_SECTIONS = [
+  { id: "cs-01", number: "01", label: "The Spark" },
+  { id: "cs-02", number: "02", label: "The Thesis" },
+  { id: "cs-03", number: "03", label: "What We Built", children: [
+    { id: "cs-03b", label: "A real PM decision" },
+  ]},
+  { id: "cs-04", number: "04", label: "Core Mechanics" },
+  { id: "cs-05", number: "05", label: "The Landscape" },
+  { id: "cs-06", number: "06", label: "Beta Learnings" },
+  { id: "cs-07", number: "07", label: "What I Got Wrong" },
+  { id: "cs-08", number: "08", label: "Success Framework" },
+  { id: "cs-09", number: "09", label: "What's Next" },
+  { id: "cs-10", number: "10", label: "On The Horizon" },
+];
+
 export default function AatramCaseStudy() {
   const progressRef = useScroll();
   const theme = lightPalette;
   const {bg,cream,dim,dim2,lav,w01,w04,quoteColor2,quoteColor3,quoteColor4,quoteColor5} = theme;
+
+  const tocTheme = {
+    accent: lav,
+    text: cream,
+    textMuted: dim,
+    textDim: dim2,
+    bg: "rgba(245, 241, 235, 0.94)",
+    border: w04,
+    fontMono: MONO,
+    fontSans: SANS,
+    fontSerif: SERIF,
+  };
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -241,6 +269,9 @@ export default function AatramCaseStudy() {
         <div ref={progressRef} style={{height:"100%",width:"0%",background:`linear-gradient(90deg,${lav}40,${lav})`,opacity:0.6,transition:"width 60ms linear"}}/>
       </div>
 
+      {/* Section TOC: cinematic scrubber rail + mobile pill */}
+      <CaseStudyTOC sections={AATRAM_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
+
       {/* === HERO === */}
       <section style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",padding:"100px 32px",position:"relative",textAlign:"center"}}>
         <div style={{position:"absolute",top:"30%",left:"50%",transform:"translate(-50%,-50%)",width:700,height:700,borderRadius:"50%",background:`radial-gradient(circle,${lav}06,transparent 70%)`,filter:"blur(100px)"}}/>
@@ -265,7 +296,7 @@ export default function AatramCaseStudy() {
             </p>
           </Fade>
           <Fade delay={0.45}>
-            <div style={{display:"flex",gap:40,justifyContent:"center",fontFamily:MONO,fontSize:10,color:dim2,letterSpacing:"0.06em"}}>
+            <div style={{display:"flex",gap:40,justifyContent:"center",fontFamily:MONO,fontSize:11,color:dim2,letterSpacing:"0.08em"}}>
               <span>PM / Co-Founder</span>
               <span style={{opacity:0.3}}>{"\u00B7"}</span>
               <span>3 co-founders</span>
@@ -300,18 +331,18 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === ORIGIN === */}
-      <section style={{padding:"clamp(80px,14vw,180px) 32px",maxWidth:720,margin:"0 auto"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>01 THE SPARK</div></Fade>
+      <section id="cs-01" style={{padding:"clamp(80px,14vw,180px) 32px",maxWidth:720,margin:"0 auto"}}>
+        <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>01 THE SPARK</div></Fade>
         <Fade delay={0.06}>
-          <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.1,margin:"0 0 40px"}}>
+          <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.05,margin:"0 0 40px"}}>
             A 30-minute brainstorm that became a <em style={{fontStyle:"italic",color:lav}}>startup</em>.
           </h2>
         </Fade>
         <Fade delay={0.12}>
-          <p style={{fontSize:16,lineHeight:1.9,color:dim,marginBottom:24}}>
+          <p style={{fontSize:17.5,lineHeight:1.8,color:dim,marginBottom:24}}>
             It started the way most good ideas start: complaining. Three roommates, late at night. Chetan had wasted an entire day despite having nothing stopping him. Sai admitted the same. Ujjwal set a 30-minute timer.
           </p>
-          <p style={{fontSize:16,lineHeight:1.9,color:dim,marginBottom:40}}>
+          <p style={{fontSize:17.5,lineHeight:1.8,color:dim,marginBottom:40}}>
             The conversation kept circling back to one feeling: <em style={{fontFamily:SERIF,fontSize:18,color:cream,fontStyle:"italic"}}>&quot;I wish someone would just push me to start.&quot;</em> Not plan. Not organize. Just start.
           </p>
         </Fade>
@@ -324,7 +355,7 @@ export default function AatramCaseStudy() {
             ].map((p,i)=>(
               <div key={i} style={{flex:"1 1 180px"}}>
                 <div style={{fontFamily:SANS,fontSize:14,fontWeight:600,color:cream}}>{p.n}</div>
-                <div style={{fontFamily:MONO,fontSize:10,color:lav,marginTop:2}}>{p.r}</div>
+                <div style={{fontFamily:MONO,fontSize:11,color:lav,marginTop:2}}>{p.r}</div>
                 <div style={{fontFamily:SANS,fontSize:12,color:dim2,marginTop:2}}>{p.d}</div>
               </div>
             ))}
@@ -333,10 +364,10 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === THESIS (full-width cinematic) === */}
-      <section style={{padding:"clamp(100px,16vw,220px) 32px",textAlign:"center",position:"relative"}}>
+      <section id="cs-02" style={{padding:"clamp(100px,16vw,220px) 32px",textAlign:"center",position:"relative"}}>
         <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:600,height:600,borderRadius:"50%",background:`radial-gradient(circle,${lav}05,transparent 70%)`,filter:"blur(100px)"}}/>
         <div style={{maxWidth:700,margin:"0 auto",position:"relative"}}>
-          <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>02 THE THESIS</div></Fade>
+          <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>02 THE THESIS</div></Fade>
           <Fade delay={0.08}>
             <h2 style={{fontFamily:SERIF,fontSize:"clamp(40px,6vw,72px)",fontWeight:400,lineHeight:1.08,margin:"0 0 40px"}}>
               Procrastination isn&apos;t a <em style={{fontStyle:"italic",color:lav}}>discipline</em> problem.
@@ -368,17 +399,17 @@ export default function AatramCaseStudy() {
           <Fade key={i} delay={i*0.08}>
             <div style={{display:"flex",gap:20,alignItems:"flex-start",padding:"36px 0",borderBottom:i<2?`1px solid ${w04}`:"none"}}>
               <span style={{fontSize:28,flexShrink:0,marginTop:2}}>{x.emoji}</span>
-              <p style={{fontSize:16,lineHeight:1.85,color:dim,margin:0}}>{x.text}</p>
+              <p style={{fontSize:17.5,lineHeight:1.8,color:dim,margin:0}}>{x.text}</p>
             </div>
           </Fade>
         ))}
       </section>
 
       {/* === THE PRODUCT (screenshots) === */}
-      <section style={{padding:"clamp(80px,14vw,180px) 32px",textAlign:"center"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>03 WHAT WE BUILT</div></Fade>
+      <section id="cs-03" style={{padding:"clamp(80px,14vw,180px) 32px",textAlign:"center"}}>
+        <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>03 WHAT WE BUILT</div></Fade>
         <Fade delay={0.06}>
-          <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.1,margin:"0 0 20px"}}>
+          <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.05,margin:"0 0 20px"}}>
             Five features. One philosophy.
           </h2>
         </Fade>
@@ -420,10 +451,10 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === KEY TRADEOFF === */}
-      <section style={{padding:"clamp(60px,10vw,120px) 32px",maxWidth:720,margin:"0 auto"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>A REAL PM DECISION</div></Fade>
+      <section id="cs-03b" style={{padding:"clamp(60px,10vw,120px) 32px",maxWidth:720,margin:"0 auto"}}>
+        <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>A REAL PM DECISION</div></Fade>
         <Fade delay={0.06}>
-          <h2 style={{fontFamily:SERIF,fontSize:"clamp(28px,4vw,44px)",fontWeight:400,lineHeight:1.1,margin:"0 0 20px"}}>
+          <h2 style={{fontFamily:SERIF,fontSize:"clamp(28px,4vw,44px)",fontWeight:400,lineHeight:1.05,margin:"0 0 20px"}}>
             Why we killed <em style={{fontStyle:"italic",color:lav}}>streaks</em>.
           </h2>
         </Fade>
@@ -461,11 +492,11 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === INTERACTIVE DEMOS === */}
-      <section style={{padding:"clamp(80px,14vw,180px) 32px"}}>
+      <section id="cs-04" style={{padding:"clamp(80px,14vw,180px) 32px"}}>
         <div style={{maxWidth:800,margin:"0 auto"}}>
-          <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20,textAlign:"center"}}>04 TRY THE CORE MECHANICS</div></Fade>
+          <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20,textAlign:"center"}}>04 TRY THE CORE MECHANICS</div></Fade>
           <Fade delay={0.06}>
-            <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.1,margin:"0 0 60px",textAlign:"center"}}>
+            <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.05,margin:"0 0 60px",textAlign:"center"}}>
               The emotion shapes <em style={{fontStyle:"italic",color:lav}}>everything</em>.
             </h2>
           </Fade>
@@ -475,7 +506,7 @@ export default function AatramCaseStudy() {
 
           <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.2em",color:lav,marginBottom:20,textAlign:"center",fontWeight:500}}>NUDGE ESCALATION</div></Fade>
           <Fade delay={0.06}>
-            <h2 style={{fontFamily:SERIF,fontSize:"clamp(28px,4vw,44px)",fontWeight:400,lineHeight:1.1,margin:"0 0 48px",textAlign:"center"}}>
+            <h2 style={{fontFamily:SERIF,fontSize:"clamp(28px,4vw,44px)",fontWeight:400,lineHeight:1.05,margin:"0 0 48px",textAlign:"center"}}>
               Five touches. Five techniques. <em style={{fontStyle:"italic",color:lav}}>Then silence.</em>
             </h2>
           </Fade>
@@ -485,7 +516,7 @@ export default function AatramCaseStudy() {
 
           <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.2em",color:lav,marginBottom:20,textAlign:"center",fontWeight:500}}>FRIENDS ZONE</div></Fade>
           <Fade delay={0.06}>
-            <h2 style={{fontFamily:SERIF,fontSize:"clamp(28px,4vw,44px)",fontWeight:400,lineHeight:1.1,margin:"0 0 16px",textAlign:"center"}}>
+            <h2 style={{fontFamily:SERIF,fontSize:"clamp(28px,4vw,44px)",fontWeight:400,lineHeight:1.05,margin:"0 0 16px",textAlign:"center"}}>
               Accountability without <em style={{fontStyle:"italic",color:lav}}>competition.</em>
             </h2>
           </Fade>
@@ -515,10 +546,10 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === COMPETITIVE === */}
-      <section style={{padding:"80px 32px 120px",maxWidth:720,margin:"0 auto"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>05 THE LANDSCAPE</div></Fade>
+      <section id="cs-05" style={{padding:"80px 32px 120px",maxWidth:720,margin:"0 auto"}}>
+        <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>05 THE LANDSCAPE</div></Fade>
         <Fade delay={0.06}>
-          <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.1,margin:"0 0 48px"}}>
+          <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.05,margin:"0 0 48px"}}>
             Everyone punishes. <em style={{fontStyle:"italic",color:lav}}>Nobody asks why.</em>
           </h2>
         </Fade>
@@ -542,10 +573,10 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === BETA LEARNINGS === */}
-      <section style={{padding:"clamp(80px,14vw,180px) 32px",maxWidth:720,margin:"0 auto"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>06 BETA LEARNINGS</div></Fade>
+      <section id="cs-06" style={{padding:"clamp(80px,14vw,180px) 32px",maxWidth:720,margin:"0 auto"}}>
+        <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>06 BETA LEARNINGS</div></Fade>
         <Fade delay={0.06}>
-          <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.1,margin:"0 0 48px"}}>
+          <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.05,margin:"0 0 48px"}}>
             16 testers. <em style={{fontStyle:"italic",color:lav}}>Brutally honest.</em>
           </h2>
         </Fade>
@@ -607,12 +638,12 @@ export default function AatramCaseStudy() {
           </div>
         </Fade>
       </section>
-      <section style={{padding:"clamp(100px,16vw,220px) 32px",textAlign:"center",position:"relative"}}>
+      <section id="cs-07" style={{padding:"clamp(100px,16vw,220px) 32px",textAlign:"center",position:"relative"}}>
         <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:500,height:500,borderRadius:"50%",background:`radial-gradient(circle,${lav}04,transparent 70%)`,filter:"blur(100px)"}}/>
         <div style={{maxWidth:640,margin:"0 auto",position:"relative"}}>
-          <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>07 WHAT I GOT WRONG</div></Fade>
+          <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>07 WHAT I GOT WRONG</div></Fade>
           <Fade delay={0.08}>
-            <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.1,margin:"0 0 60px"}}>
+            <h2 style={{fontFamily:SERIF,fontSize:"clamp(36px,5vw,60px)",fontWeight:400,lineHeight:1.05,margin:"0 0 60px"}}>
               Mistakes I made. <em style={{fontStyle:"italic",color:lav}}>What they taught me.</em>
             </h2>
           </Fade>
@@ -638,10 +669,10 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === METRICS === */}
-      <section style={{padding:"80px 32px 120px",maxWidth:720,margin:"0 auto"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>08 SUCCESS FRAMEWORK</div></Fade>
+      <section id="cs-08" style={{padding:"80px 32px 120px",maxWidth:720,margin:"0 auto"}}>
+        <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>08 SUCCESS FRAMEWORK</div></Fade>
         <Fade delay={0.06}>
-          <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.1,margin:"0 0 48px"}}>
+          <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.05,margin:"0 0 48px"}}>
             What we&apos;re <em style={{fontStyle:"italic",color:lav}}>measuring</em>.
           </h2>
         </Fade>
@@ -666,10 +697,10 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === ROADMAP === */}
-      <section style={{padding:"80px 32px 120px",maxWidth:640,margin:"0 auto"}}>
-        <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>09 WHAT&apos;S NEXT</div></Fade>
+      <section id="cs-09" style={{padding:"80px 32px 120px",maxWidth:640,margin:"0 auto"}}>
+        <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>09 WHAT&apos;S NEXT</div></Fade>
         <Fade delay={0.06}>
-          <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.1,margin:"0 0 48px"}}>
+          <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.05,margin:"0 0 48px"}}>
             From beta to <em style={{fontStyle:"italic",color:lav}}>launch</em>.
           </h2>
         </Fade>
@@ -692,12 +723,12 @@ export default function AatramCaseStudy() {
       </section>
 
       {/* === WHAT'S COMING === */}
-      <section style={{padding:"clamp(80px,14vw,180px) 32px",textAlign:"center",position:"relative"}}>
+      <section id="cs-10" style={{padding:"clamp(80px,14vw,180px) 32px",textAlign:"center",position:"relative"}}>
         <div style={{position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",width:400,height:400,borderRadius:"50%",background:`radial-gradient(circle,${lav}06,transparent 70%)`,filter:"blur(80px)"}}/>
         <div style={{maxWidth:600,margin:"0 auto",position:"relative"}}>
-          <Fade><div style={{fontFamily:MONO,fontSize:10,letterSpacing:"0.2em",color:lav,marginBottom:20}}>10 ON THE HORIZON</div></Fade>
+          <Fade><div style={{fontFamily:MONO,fontSize:11,letterSpacing:"0.24em",color:lav,marginBottom:20}}>10 ON THE HORIZON</div></Fade>
           <Fade delay={0.06}>
-            <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.1,margin:"0 0 40px"}}>
+            <h2 style={{fontFamily:SERIF,fontSize:"clamp(32px,4.5vw,52px)",fontWeight:400,lineHeight:1.05,margin:"0 0 40px"}}>
               Nudges that know <em style={{fontStyle:"italic",color:lav}}>you</em>.
             </h2>
           </Fade>
