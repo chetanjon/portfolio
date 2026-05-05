@@ -53,8 +53,8 @@ export function Header() {
   // On content pages use theme-aware colors (work in light + dark).
   // On the homepage, the header uses mix-blend-difference and thus requires pure white.
   const textStrong = isContentPage ? 'text-text-primary' : 'text-white';
-  const textMuted = isContentPage ? 'text-text-muted hover:text-text-primary' : 'text-white/60 hover:text-white';
-  const textSubtle = isContentPage ? 'text-text-secondary group-hover:text-text-primary' : 'text-white/70 group-hover:text-white';
+  const textMuted = isContentPage ? 'text-text-muted hover:text-text-primary' : 'text-white/85 hover:text-white';
+  const textSubtle = isContentPage ? 'text-text-secondary group-hover:text-text-primary' : 'text-white/90 group-hover:text-white';
   const pillBorder = isContentPage
     ? 'border-border-default text-text-primary hover:bg-text-primary hover:text-bg-primary'
     : 'border-white/50 text-white hover:bg-white hover:text-black';
