@@ -132,7 +132,7 @@ const jsonLd = {
   ],
   sameAs: [
     'https://linkedin.com/in/cjonn',
-    'https://github.com/chetanjonnalagadda',
+    'https://github.com/chetanjon',
   ],
   url: 'https://chetanjonnalagadda.com',
 };

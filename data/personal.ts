@@ -7,7 +7,7 @@ export const personalInfo = {
   phone: '(602) 807-9130',
   email: 'jonnalagadda8800@gmail.com',
   linkedin: 'https://linkedin.com/in/cjonn',
-  github: 'https://github.com/chetanjonnalagadda',
+  github: 'https://github.com/chetanjon',
   education: {
     current: {
       degree: 'M.S. in Management of Technology',

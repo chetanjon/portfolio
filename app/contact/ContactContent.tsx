@@ -148,7 +148,7 @@ export function ContactContent() {
                   {[
                     { icon: Mail, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
                     { icon: Linkedin, label: 'LinkedIn', value: 'cjonn', href: personalInfo.linkedin },
-                    { icon: Github, label: 'GitHub', value: 'chetanjonnalagadda', href: personalInfo.github },
+                    { icon: Github, label: 'GitHub', value: 'chetanjon', href: personalInfo.github },
                   ].map((link) => (
                     <a
                       key={link.label}
