@@ -1,6 +1,18 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
+
+const SPOTIFY_TOC_SECTIONS = [
+  { id: "spo-01", number: "01", label: "The Numbers" },
+  { id: "spo-02", number: "02", label: "Two Engines" },
+  { id: "spo-03", number: "03", label: "Under the Hood" },
+  { id: "spo-04", number: "04", label: "The Viral Machine" },
+  { id: "spo-05", number: "05", label: "The Flywheel" },
+  { id: "spo-06", number: "06", label: "What's Broken" },
+  { id: "spo-07", number: "07", label: "Key Metrics" },
+  { id: "spo-08", number: "08", label: "If I Were PM" },
+];
 
 const SERIF = "'Instrument Serif','Georgia',serif";
 const SANS = "'Outfit','DM Sans',system-ui,sans-serif";
@@ -23,8 +35,21 @@ const Src = ({children}) => <span style={{fontFamily:MONO,fontSize:9,color:dim2,
 export default function SpotifyTeardown() {
   const progress = useScroll();
 
+  const tocTheme = {
+    accent: grn,
+    text: cream,
+    textMuted: dim,
+    textDim: dim2,
+    bg: "rgba(8, 8, 12, 0.94)",
+    border: "rgba(255,255,255,0.04)",
+    fontMono: MONO,
+    fontSans: SANS,
+    fontSerif: SERIF,
+  };
+
   return (
     <div style={{ background: bg, color: cream, minHeight: "100vh", fontFamily: SANS, WebkitFontSmoothing: "antialiased", overflowX: "hidden" }}>
+      <CaseStudyTOC sections={SPOTIFY_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
       <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: 1.5, zIndex: 999 }}>
         <div style={{ height: "100%", width: `${progress * 100}%`, background: grn, opacity: 0.5, transition: "width 60ms linear" }} />
       </div>
@@ -59,7 +84,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* THE NUMBERS */}
-      <section style={{ padding: "80px 32px 120px", textAlign: "center" }}>
+      <section id="spo-01" style={{ padding: "80px 32px 120px", textAlign: "center" }}>
         <Fade>
           <div style={{ display: "flex", justifyContent: "center", gap: "clamp(40px,8vw,100px)", flexWrap: "wrap" }}>
             {[
@@ -81,7 +106,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* TWO ENGINES */}
-      <section style={{ padding: "clamp(80px,14vw,180px) 32px", maxWidth: 720, margin: "0 auto" }}>
+      <section id="spo-02" style={{ padding: "clamp(80px,14vw,180px) 32px", maxWidth: 720, margin: "0 auto" }}>
         <Fade><div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.2em", color: grn, marginBottom: 20 }}>01 TWO ENGINES</div></Fade>
         <Fade delay={0.06}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(36px,5vw,60px)", fontWeight: 400, lineHeight: 1.1, margin: "0 0 40px" }}>
@@ -113,7 +138,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* UNDER THE HOOD */}
-      <section style={{ padding: "clamp(80px,14vw,180px) 32px", textAlign: "center", position: "relative" }}>
+      <section id="spo-03" style={{ padding: "clamp(80px,14vw,180px) 32px", textAlign: "center", position: "relative" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle,${grn}05,transparent 70%)`, filter: "blur(100px)" }} />
         <div style={{ maxWidth: 700, margin: "0 auto", position: "relative" }}>
           <Fade><div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.2em", color: grn, marginBottom: 20 }}>02 UNDER THE HOOD</div></Fade>
@@ -150,7 +175,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* THE VIRAL MACHINE */}
-      <section style={{ padding: "clamp(80px,14vw,180px) 32px", maxWidth: 720, margin: "0 auto" }}>
+      <section id="spo-04" style={{ padding: "clamp(80px,14vw,180px) 32px", maxWidth: 720, margin: "0 auto" }}>
         <Fade><div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.2em", color: grn, marginBottom: 20 }}>03 THE VIRAL MACHINE</div></Fade>
         <Fade delay={0.06}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(36px,5vw,60px)", fontWeight: 400, lineHeight: 1.1, margin: "0 0 20px" }}>
@@ -181,7 +206,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* THE FLYWHEEL */}
-      <section style={{ padding: "clamp(80px,14vw,180px) 32px", textAlign: "center", position: "relative" }}>
+      <section id="spo-05" style={{ padding: "clamp(80px,14vw,180px) 32px", textAlign: "center", position: "relative" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 400, height: 400, borderRadius: "50%", background: `radial-gradient(circle,${grn}06,transparent 70%)`, filter: "blur(80px)" }} />
         <div style={{ maxWidth: 640, margin: "0 auto", position: "relative" }}>
           <Fade><div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.2em", color: grn, marginBottom: 20 }}>04 THE FLYWHEEL</div></Fade>
@@ -219,7 +244,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* WHAT'S BROKEN */}
-      <section style={{ padding: "clamp(80px,14vw,180px) 32px", maxWidth: 720, margin: "0 auto" }}>
+      <section id="spo-06" style={{ padding: "clamp(80px,14vw,180px) 32px", maxWidth: 720, margin: "0 auto" }}>
         <Fade><div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.2em", color: grn, marginBottom: 20 }}>{"05 WHAT'S BROKEN"}</div></Fade>
         <Fade delay={0.06}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(36px,5vw,60px)", fontWeight: 400, lineHeight: 1.1, margin: "0 0 48px" }}>
@@ -247,7 +272,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* KEY METRICS */}
-      <section style={{ padding: "80px 32px 120px", maxWidth: 720, margin: "0 auto" }}>
+      <section id="spo-07" style={{ padding: "80px 32px 120px", maxWidth: 720, margin: "0 auto" }}>
         <Fade><div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.2em", color: grn, marginBottom: 20 }}>06 KEY METRICS</div></Fade>
         <Fade delay={0.06}>
           <h2 style={{ fontFamily: SERIF, fontSize: "clamp(32px,4.5vw,52px)", fontWeight: 400, lineHeight: 1.1, margin: "0 0 48px" }}>
@@ -278,7 +303,7 @@ export default function SpotifyTeardown() {
       </section>
 
       {/* IF I WERE PM */}
-      <section style={{ padding: "clamp(80px,14vw,180px) 32px", textAlign: "center", position: "relative" }}>
+      <section id="spo-08" style={{ padding: "clamp(80px,14vw,180px) 32px", textAlign: "center", position: "relative" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 400, height: 400, borderRadius: "50%", background: `radial-gradient(circle,${grn}05,transparent 70%)`, filter: "blur(80px)" }} />
         <div style={{ maxWidth: 640, margin: "0 auto", position: "relative" }}>
           <Fade><div style={{ fontFamily: MONO, fontSize: 10, letterSpacing: "0.2em", color: grn, marginBottom: 20 }}>07 IF I WERE PM</div></Fade>

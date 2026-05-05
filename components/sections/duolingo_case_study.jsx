@@ -1,6 +1,30 @@
 'use client';
 
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
+
+const DUOLINGO_TOC_SECTIONS = [
+  { id: "duo-01", number: "01", label: "Snapshot" },
+  { id: "duo-02", number: "02", label: "Context" },
+  { id: "duo-03", number: "03", label: "Problem" },
+  { id: "duo-04", number: "04", label: "Framework" },
+  { id: "duo-05", number: "05", label: "Wireframes" },
+  { id: "duo-06", number: "06", label: "PRD" },
+  { id: "duo-07", number: "07", label: "Metrics" },
+  { id: "duo-08", number: "08", label: "Strategy" },
+];
+
 export default function DuolingoCaseStudy() {
+  const tocTheme = {
+    accent: "#D4790E",
+    text: "#141C2B",
+    textMuted: "#6B7A8D",
+    textDim: "#3D4A5C",
+    bg: "rgba(248, 246, 241, 0.94)",
+    border: "#D6CFC3",
+    fontMono: "'IBM Plex Mono', monospace",
+    fontSans: "'Instrument Sans', system-ui, sans-serif",
+    fontSerif: "'DM Serif Display', serif",
+  };
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
@@ -169,7 +193,8 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 }
 
       ` }} />
-      
+
+<CaseStudyTOC sections={DUOLINGO_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
 
 {/* ===== TOC ===== */}
 <nav className="toc" aria-label="Sections">
@@ -198,6 +223,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== COMPANY SNAPSHOT ===== */}
+<div id="duo-01" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section" id="snapshot">
 <div className="container">
 <span className="section-label">Company Snapshot</span>
@@ -290,6 +316,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== CONTEXT ===== */}
+<div id="duo-02" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section-dark section" id="context">
 <div className="container">
 <span className="section-label">Context</span>
@@ -318,6 +345,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== THE PROBLEM ===== */}
+<div id="duo-03" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section section-alt" id="problem">
 <div className="container">
 <span className="section-label">The Problem</span>
@@ -413,6 +441,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== CIRCLES ===== */}
+<div id="duo-04" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section" id="circles">
 <div className="container">
 <span className="section-label">Framework</span>
@@ -499,6 +528,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== WIREFRAMES ===== */}
+<div id="duo-05" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section section-alt" id="wireframes">
 <div className="container">
 <span className="section-label">Wireframes</span>
@@ -721,6 +751,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== PRD ===== */}
+<div id="duo-06" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section" id="prd">
 <div className="container">
 <span className="section-label">Product Requirements Document</span>
@@ -775,6 +806,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== METRICS ===== */}
+<div id="duo-07" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section section-alt" id="metrics">
 <div className="container">
 <span className="section-label">Success Metrics</span>
@@ -811,6 +843,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 </section>
 
 {/* ===== STRATEGIC CONTEXT ===== */}
+<div id="duo-08" aria-hidden="true" style={{ position: "relative", top: 0 }} />
 <section className="section">
 <div className="container">
 <span className="section-label">Strategic Context</span>

@@ -1,19 +1,21 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
 
-const S = ["Cover","Why This","Overview","CIRCLES","Users","Pain Points","Solutions","Wireframes","Metrics","Landscape","PRD","Reflection","Sources"];
-const SID = ["hero","why","overview","circles","users","pain","solutions","wireframes","metrics","landscape","prd","reflection","sources"];
-
-const useActive = () => {
-  const [a, setA] = useState("hero");
-  useEffect(() => {
-    const o = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && setA(x.target.id)), { rootMargin: "-35% 0px -35% 0px" });
-    SID.forEach(id => { const el = document.getElementById(id); if (el) o.observe(el); });
-    return () => o.disconnect();
-  }, []);
-  return a;
-};
+const TIKTOK_TOC_SECTIONS = [
+  { id: "tik-01", number: "01", label: "Why" },
+  { id: "tik-02", number: "02", label: "Overview" },
+  { id: "tik-03", number: "03", label: "CIRCLES" },
+  { id: "tik-04", number: "04", label: "Users" },
+  { id: "tik-05", number: "05", label: "Pain Points" },
+  { id: "tik-06", number: "06", label: "Solutions" },
+  { id: "tik-07", number: "07", label: "Wireframes" },
+  { id: "tik-08", number: "08", label: "Metrics" },
+  { id: "tik-09", number: "09", label: "Landscape" },
+  { id: "tik-10", number: "10", label: "PRD" },
+  { id: "tik-11", number: "11", label: "Reflection" },
+];
 
 const Progress = () => {
   const [p, setP] = useState(0);
@@ -23,12 +25,6 @@ const Progress = () => {
   }, []);
   return <div style={{ position:"fixed",top:0,left:0,width:"100%",height:2,zIndex:999,background:"rgba(0,0,0,.04)" }}><div style={{ height:"100%",width:`${p}%`,background:"linear-gradient(90deg,#8B4513,#C4956A)",transition:"width .15s" }}/></div>;
 };
-
-const Nav = ({ active }) => (
-  <div style={{ position:"fixed",right:16,top:"50%",transform:"translateY(-50%)",zIndex:90,display:"flex",flexDirection:"column",gap:6 }}>
-    {SID.map((id,i) => <a key={id} href={`#${id}`} title={S[i]} style={{ width:active===id?20:6,height:6,borderRadius:3,background:active===id?"#8B4513":"rgba(139,69,19,.15)",transition:"all .3s ease",display:"block",textDecoration:"none" }}/>)}
-  </div>
-);
 
 const Wrap = ({ children, style = {} }) => <div style={{ maxWidth:720,margin:"0 auto",padding:"0 32px",...style }}>{children}</div>;
 
@@ -120,19 +116,31 @@ const CStep = ({ letter, title, sub, color, bg, children }) => (
 );
 
 export default function TikTokShopCaseStudy() {
-  const active = useActive();
   const body = { fontFamily:"'Source Serif 4',serif",fontSize:15.5,lineHeight:1.85,color:"#3D3229",margin:"0 0 20px" };
   const h3s = { fontFamily:"'Playfair Display',serif",fontSize:20,fontWeight:700,color:"#1C1410",margin:"36px 0 14px" };
 
+  const tocTheme = {
+    accent: "#8B4513",
+    text: "#1C1410",
+    textMuted: "#8A7E73",
+    textDim: "#6B5E52",
+    bg: "rgba(248, 244, 239, 0.94)",
+    border: "rgba(28,20,16,.05)",
+    fontMono: "'Cormorant Garamond', serif",
+    fontSans: "'Source Serif 4', serif",
+    fontSerif: "'Playfair Display', serif",
+  };
+
   return (
     <div style={{ background:"#F8F4EF",minHeight:"100vh" }}>
+      <CaseStudyTOC sections={TIKTOK_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&display=swap');
         *{box-sizing:border-box;scroll-behavior:smooth}
         ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(139,69,19,.15);border-radius:3px}
         ::selection{background:rgba(139,69,19,.12)}
       `}</style>
-      <Progress /><Nav active={active} />
+      <Progress />
 
       {/* ══ HERO ══ */}
       <section id="hero" style={{ minHeight:"100vh",background:"linear-gradient(170deg,#1C1410 0%,#2A1F18 40%,#3D2E22 100%)",display:"flex",flexDirection:"column",justifyContent:"center",padding:"80px 0",position:"relative",overflow:"hidden" }}>
@@ -160,6 +168,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ WHY THIS ══ */}
       <section id="why" style={{ padding:"70px 0",background:"#fff" }}>
+        <div id="tik-01" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={0} title="Why TikTok Shop?" sub="Why I chose this product, and what makes this case study different" />
           <p style={body}>I chose TikTok Shop because it sits at the intersection of three trends I&apos;m deeply interested in: creator-driven commerce, algorithmic discovery, and marketplace trust design. As someone who studies how content platforms evolve into transactional ecosystems, TikTok Shop represents the most aggressive experiment in collapsing the entertainment-to-purchase funnel, and its growing pains are the most instructive product challenges in social commerce today.</p>
@@ -177,6 +186,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ OVERVIEW ══ */}
       <section id="overview" style={{ padding:"90px 0 70px" }}>
+        <div id="tik-02" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={1} title="Company Overview" sub="From entertainment app to ~$64B commerce engine in four years" />
           <p style={body}>TikTok Shop has transformed from a bolt-on feature into one of the fastest-growing commerce platforms in history. Global GMV grew from roughly $0.9B (2021) to an estimated $64B+ in 2025 (per Momentum Works/Tabcut), approximately 70x in four years. In the US, monthly GMV grew from about $15M at launch (September 2023) to over $1.1B by mid-2025. According to Earnest Analytics, TikTok commanded 68% of tracked US social shopping GMV among marketplace platforms, with over 800K US shops and tens of millions of active buyers.</p>
@@ -194,6 +204,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ CIRCLES ══ */}
       <section id="circles" style={{ padding:"70px 0",background:"#fff" }}>
+        <div id="tik-03" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={2} title="CIRCLES Framework" sub="Structured product thinking for TikTok Shop's trust & discovery challenge" />
           <CStep letter="C" title="Comprehend the Situation" sub="What problem space are we in?" color="#8B4513" bg="#FAF3ED">
@@ -235,6 +246,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ USERS ══ */}
       <section id="users" style={{ padding:"70px 0" }}>
+        <div id="tik-04" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={3} title="User Personas" sub="Who we're designing for, based on verified behavioral data" />
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:14 }}>
@@ -247,6 +259,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ PAIN POINTS ══ */}
       <section id="pain" style={{ padding:"70px 0",background:"#fff" }}>
+        <div id="tik-05" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={4} title="Documented Pain Points" sub="Verified friction across the buyer journey, with sourced data" />
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,marginBottom:24 }}>
@@ -272,6 +285,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ SOLUTIONS ══ */}
       <section id="solutions" style={{ padding:"70px 0" }}>
+        <div id="tik-06" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={5} title="Proposed Solutions" sub="Three-part Trust Layer to transform purchase confidence" />
           <h3 style={h3s}>5.1 · Seller Trust Score</h3>
@@ -290,6 +304,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ WIREFRAMES ══ */}
       <section id="wireframes" style={{ padding:"70px 0",background:"#fff" }}>
+        <div id="tik-07" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={6} title="Key Screen Wireframes" sub="Proposed UX improvements across core purchase flows" />
           <div style={{ display:"flex",gap:20,justifyContent:"center",flexWrap:"wrap" }}>
@@ -364,6 +379,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ METRICS ══ */}
       <section id="metrics" style={{ padding:"70px 0" }}>
+        <div id="tik-08" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={7} title="Success Metrics" sub="How we measure impact: north star and supporting KPIs" />
           <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,marginBottom:14 }}>
@@ -385,6 +401,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ LANDSCAPE ══ */}
       <section id="landscape" style={{ padding:"70px 0",background:"#fff" }}>
+        <div id="tik-09" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={8} title="Competitive Landscape" sub="TikTok Shop vs. the social commerce field, verified 2025-26 data" />
           <div style={{ overflowX:"auto",margin:"20px 0" }}>
@@ -417,6 +434,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ PRD ══ */}
       <section id="prd" style={{ padding:"70px 0" }}>
+        <div id="tik-10" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={9} title="Product Requirements Document" sub="Trust Layer, Phase 1 & 2 specification" />
           <div style={{ background:"#1C1410",borderRadius:14,padding:"28px 30px",marginBottom:28 }}>
@@ -475,6 +493,7 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ REFLECTION ══ */}
       <section id="reflection" style={{ padding:"70px 0" }}>
+        <div id="tik-11" aria-hidden style={{ position:"relative",top:-1 }}/>
         <Wrap>
           <Head n={10} title="Reflection" sub="What I'd do differently, and what this case study taught me" />
           <h3 style={h3s}>What I&apos;d improve with more time</h3>

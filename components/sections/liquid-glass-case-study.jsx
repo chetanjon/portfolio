@@ -1,6 +1,19 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
+
+const LIQUID_GLASS_TOC_SECTIONS = [
+  { id: "liq-01", number: "01", label: "Problem" },
+  { id: "liq-02", number: "02", label: "Users" },
+  { id: "liq-03", number: "03", label: "Research" },
+  { id: "liq-04", number: "04", label: "Apps" },
+  { id: "liq-05", number: "05", label: "Compete" },
+  { id: "liq-06", number: "06", label: "Solution" },
+  { id: "liq-07", number: "07", label: "Priority" },
+  { id: "liq-08", number: "08", label: "Metrics" },
+  { id: "liq-09", number: "09", label: "Learnings" },
+];
 
 // ─── DESIGN TOKENS ───
 const C = {
@@ -232,27 +245,23 @@ const Quote = ({ text, author, borderColor = C.red }) => (
   </div>
 );
 
-const SECTIONS = ["problem", "users", "research", "apps", "competitive", "solution", "priority", "metrics", "learnings"];
-const LABELS = ["Problem", "Users", "Research", "App Impact", "Competitive", "Solution", "Priority", "Metrics", "Learnings"];
-
 // ─── MAIN ───
 export default function LiquidGlassCaseStudy() {
   const progress = useScrollProgress();
-  const [activeSection, setActiveSection] = useState("");
 
-  useEffect(() => {
-    const h = () => {
-      for (let i = SECTIONS.length - 1; i >= 0; i--) {
-        const el = document.getElementById(SECTIONS[i]);
-        if (el && el.getBoundingClientRect().top < 200) { setActiveSection(SECTIONS[i]); return; }
-      }
-    };
-    window.addEventListener("scroll", h, { passive: true });
-    return () => window.removeEventListener("scroll", h);
-  }, []);
+  const tocTheme = {
+    accent: C.blue,
+    text: C.dark,
+    textMuted: C.mid,
+    bg: "rgba(255, 255, 255, 0.94)",
+    fontMono: MONO,
+    fontSans: FONT,
+    fontSerif: FONT,
+  };
 
   return (
     <div style={{ fontFamily: FONT, color: C.dark, background: C.white, WebkitFontSmoothing: "antialiased", MozOsxFontSmoothing: "grayscale" }}>
+      <CaseStudyTOC sections={LIQUID_GLASS_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -267,25 +276,6 @@ export default function LiquidGlassCaseStudy() {
 
       {/* ─── SCROLL PROGRESS ─── */}
       <div style={{ position: "fixed", top: 0, left: 0, width: `${progress * 100}%`, height: 3, background: `linear-gradient(90deg, ${C.blue}, ${C.purple})`, zIndex: 1000, transition: "width 0.1s linear" }} />
-
-      {/* ─── STICKY NAV ─── */}
-      <nav style={{
-        position: "fixed", top: 12, left: "50%", transform: "translateX(-50%)", zIndex: 999,
-        background: "rgba(29,29,31,0.82)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-        borderRadius: 22, padding: "6px 8px", display: "flex", gap: 2,
-        border: "1px solid rgba(255,255,255,0.08)", maxWidth: "calc(100vw - 32px)", overflowX: "auto",
-        opacity: progress > 0.03 ? 1 : 0, pointerEvents: progress > 0.03 ? "auto" : "none",
-        transition: "opacity 0.3s ease",
-      }}>
-        {SECTIONS.map((s, i) => (
-          <a key={s} href={`#${s}`} style={{
-            fontSize: 11, fontWeight: 600, color: activeSection === s ? C.white : "rgba(255,255,255,0.4)",
-            background: activeSection === s ? "rgba(255,255,255,0.12)" : "transparent",
-            padding: "6px 12px", borderRadius: 16, textDecoration: "none", whiteSpace: "nowrap",
-            transition: "all 0.2s ease", letterSpacing: "0.01em",
-          }}>{LABELS[i]}</a>
-        ))}
-      </nav>
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section style={{
@@ -348,7 +338,7 @@ export default function LiquidGlassCaseStudy() {
       </section>
 
       {/* ═══════════════ PROBLEM ═══════════════ */}
-      <Sect bg={C.white} id="problem">
+      <Sect bg={C.white} id="liq-01">
         <Reveal><Tag>Step 1 · Problem Definition</Tag></Reveal>
         <Reveal delay={0.05}><H2>Apple shipped beauty.<br />Users got barriers.</H2></Reveal>
         <Reveal delay={0.1}>
@@ -390,7 +380,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ USER SEGMENTS ═══════════════ */}
-      <Sect bg={C.light} id="users">
+      <Sect bg={C.light} id="liq-02">
         <Reveal><Tag>Who Is Affected</Tag></Reveal>
         <Reveal delay={0.05}><H2>Three user segments.<br />One shared frustration.</H2></Reveal>
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 40 }}>
@@ -422,7 +412,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ RESEARCH ═══════════════ */}
-      <Sect bg={C.white} id="research">
+      <Sect bg={C.white} id="liq-03">
         <Reveal><Tag>Step 2 · Research & Discovery</Tag></Reveal>
         <Reveal delay={0.05}><H2>What the evidence says.</H2></Reveal>
         <Reveal delay={0.1}>
@@ -461,7 +451,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ APP IMPACT ═══════════════ */}
-      <Sect bg={C.light} id="apps">
+      <Sect bg={C.light} id="liq-04">
         <Reveal><Tag>App-Level Impact</Tag></Reveal>
         <Reveal delay={0.05}><H2>Where Liquid Glass hurts most.</H2></Reveal>
         <Reveal delay={0.1}>
@@ -491,7 +481,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ COMPETITIVE ═══════════════ */}
-      <Sect bg={C.white} id="competitive">
+      <Sect bg={C.white} id="liq-05">
         <Reveal><Tag>Competitive Analysis</Tag></Reveal>
         <Reveal delay={0.05}><H2>How others handle translucency.</H2></Reveal>
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 40 }}>
@@ -515,7 +505,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ SOLUTION ═══════════════ */}
-      <Sect bg={C.dark} id="solution" style={{ color: C.white }}>
+      <Sect bg={C.dark} id="liq-06" style={{ color: C.white }}>
         <Reveal><Tag color={C.teal}>Step 3 · Solution Design</Tag></Reveal>
         <Reveal delay={0.05}><H2 color={C.white}>Adaptive Glass.<br />Beautiful and readable.</H2></Reveal>
         <Reveal delay={0.1}><P color="rgba(255,255,255,0.5)">The goal isn&apos;t to kill Liquid Glass. It&apos;s to make it work for everyone. Three architectural changes preserve Apple&apos;s visual ambition while restoring accessibility.</P></Reveal>
@@ -542,7 +532,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ PRIORITIZATION ═══════════════ */}
-      <Sect bg={C.white} id="priority">
+      <Sect bg={C.white} id="liq-07">
         <Reveal><Tag>Step 4 · Prioritization (RICE)</Tag></Reveal>
         <Reveal delay={0.05}><H2>What to build first.</H2></Reveal>
         <Reveal delay={0.1}>
@@ -606,7 +596,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ METRICS ═══════════════ */}
-      <Sect bg={C.light} id="metrics">
+      <Sect bg={C.light} id="liq-08">
         <Reveal><Tag>Step 5 · Impact & Metrics</Tag></Reveal>
         <Reveal delay={0.05}><H2>How we&apos;d measure success.</H2></Reveal>
         <Reveal delay={0.1}>
@@ -646,7 +636,7 @@ export default function LiquidGlassCaseStudy() {
       </Sect>
 
       {/* ═══════════════ LEARNINGS ═══════════════ */}
-      <Sect bg={C.white} id="learnings">
+      <Sect bg={C.white} id="liq-09">
         <Reveal><Tag>Step 6 · Learnings & Reflection</Tag></Reveal>
         <Reveal delay={0.05}><H2>What I&apos;d do differently.<br />What I&apos;d test next.</H2></Reveal>
         <div style={{ display: "flex", gap: 20, flexWrap: "wrap", marginTop: 40 }}>

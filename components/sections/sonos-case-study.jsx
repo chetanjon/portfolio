@@ -1,5 +1,17 @@
 'use client';
 
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
+
+const SONOS_TOC_SECTIONS = [
+  { id: "son-01", number: "01", label: "Comprehend" },
+  { id: "son-02", number: "02", label: "Research" },
+  { id: "son-03", number: "03", label: "Solution" },
+  { id: "son-04", number: "04", label: "Wireframes" },
+  { id: "son-05", number: "05", label: "Prioritize" },
+  { id: "son-06", number: "06", label: "PRD" },
+  { id: "son-07", number: "07", label: "Impact" },
+];
+
 const c = {
   bg: "#F5F1EB",
   bgWarm: "#EDE8E0",
@@ -34,8 +46,21 @@ const fonts = {
 };
 
 export default function SonosCaseStudy() {
+  const tocTheme = {
+    accent: c.accent,
+    text: c.text,
+    textMuted: c.textMuted,
+    textDim: c.textSoft,
+    bg: "rgba(245, 241, 235, 0.94)",
+    border: c.border,
+    fontMono: fonts.mono,
+    fontSans: fonts.sans,
+    fontSerif: fonts.serif,
+  };
+
   return (
     <div style={{ background: c.bg, color: c.text, minHeight: "100vh", fontFamily: fonts.sans, lineHeight: 1.7 }}>
+      <CaseStudyTOC sections={SONOS_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
       {/* ─── HERO ─── */}
       <div style={{ position: "relative", width: "100%", height: 340, overflow: "hidden", background: `linear-gradient(135deg, ${c.charcoal} 0%, #44403C 40%, #78716C 80%, #A8A29E 100%)` }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(245,241,235,0.5) 75%, #F5F1EB 100%)" }}/>
@@ -89,7 +114,7 @@ export default function SonosCaseStudy() {
 
       {/* ─── SECTION 01: PROBLEM ─── */}
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}><div style={{ height: 1, background: c.border }}/></div>
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="son-01" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80 }}>
           <div>
             <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>01 · Comprehend</span>
@@ -137,7 +162,7 @@ export default function SonosCaseStudy() {
       </section>
 
       {/* ─── SECTION 02: RESEARCH ─── */}
-      <section style={{ background: c.white, padding: "80px 0" }}>
+      <section id="son-02" style={{ background: c.white, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
             <div>
@@ -190,7 +215,7 @@ export default function SonosCaseStudy() {
       </section>
 
       {/* ─── SECTION 03: SOLUTION ─── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="son-03" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
           <div>
             <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>03 · Solution</span>
@@ -220,7 +245,7 @@ export default function SonosCaseStudy() {
       </section>
 
       {/* ─── SECTION 04: WIREFRAMES ─── */}
-      <section style={{ background: c.bgDark, padding: "80px 0" }}>
+      <section id="son-04" style={{ background: c.bgDark, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accentLight, textTransform: "uppercase" }}>04 · Wireframes</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px", lineHeight: 1.2, color: c.white }}>Before → After</h2>
@@ -290,7 +315,7 @@ export default function SonosCaseStudy() {
       </section>
 
       {/* ─── SECTION 05: PRIORITIZATION ─── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="son-05" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>05 · Prioritize</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 40px" }}>RICE Scoring</h2>
 
@@ -320,7 +345,7 @@ export default function SonosCaseStudy() {
       </section>
 
       {/* ─── SECTION 06: PRD ─── */}
-      <section style={{ background: c.white, padding: "80px 0" }}>
+      <section id="son-06" style={{ background: c.white, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>06 · PRD Excerpt</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>Product Requirements</h2>
@@ -344,7 +369,7 @@ export default function SonosCaseStudy() {
       </section>
 
       {/* ─── SECTION 07: METRICS ─── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="son-07" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.accent, textTransform: "uppercase" }}>07 · Impact</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>What Could Have Been Different</h2>
 

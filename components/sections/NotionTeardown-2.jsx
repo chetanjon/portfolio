@@ -1,6 +1,24 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
+
+const NOTION_TOC_SECTIONS = [
+  { id: "not-overview", number: "00", label: "Overview" },
+  { id: "not-01", number: "01", label: "Context" },
+  { id: "not-02", number: "02", label: "Research" },
+  { id: "not-03", number: "03", label: "Personas" },
+  { id: "not-04", number: "04", label: "AARRR" },
+  { id: "not-05", number: "05", label: "Compete" },
+  { id: "not-06", number: "06", label: "Onboarding" },
+  { id: "not-07", number: "07", label: "UX" },
+  { id: "not-08", number: "08", label: "Lessons" },
+  { id: "not-09", number: "09", label: "RICE" },
+  { id: "not-10", number: "10", label: "Risks" },
+  { id: "not-11", number: "11", label: "Wireframes" },
+  { id: "not-12", number: "12", label: "Metrics" },
+  { id: "not-13", number: "13", label: "Outlook" },
+];
 
 const CSS = `*{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -24,15 +42,6 @@ body{font-family:var(--sans);color:var(--text);background:var(--bg);line-height:
 
 /* ===== READING PROGRESS BAR ===== */
 .progress-bar{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple));z-index:1000;transition:width .1s linear}
-
-/* ===== FLOATING NAV ===== */
-.floating-nav{position:fixed;top:50%;right:24px;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:6px;opacity:0;transition:opacity .4s ease}
-.floating-nav.visible{opacity:1}
-.floating-nav a{display:block;width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s ease;position:relative}
-.floating-nav a:hover,.floating-nav a.active{background:var(--accent);transform:scale(1.5)}
-.floating-nav a::after{content:attr(data-label);position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:var(--text3);white-space:nowrap;opacity:0;transition:opacity .2s ease;pointer-events:none}
-.floating-nav a:hover::after{opacity:1}
-@media(max-width:1100px){.floating-nav{display:none}}
 
 /* ===== HERO ===== */
 .hero{padding:120px 0 72px;text-align:center;position:relative;overflow:hidden}
@@ -306,9 +315,7 @@ html{scroll-behavior:smooth}
 
 export default function NotionTeardown() {
   const [progress, setProgress] = useState(0);
-  const [showNav, setShowNav] = useState(false);
   const [showTop, setShowTop] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     // Inject font
@@ -323,7 +330,6 @@ export default function NotionTeardown() {
       const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
       setProgress(pct);
       setShowTop(h.scrollTop > 600);
-      setShowNav(h.scrollTop > 400);
     };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
@@ -344,47 +350,29 @@ export default function NotionTeardown() {
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // Section observer for nav
-    const navObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActiveSection(e.target.id);
-        });
-      },
-      { threshold: 0.3 }
-    );
-    document.querySelectorAll("section[id]").forEach((s) => navObserver.observe(s));
-
     return () => {
       observer.disconnect();
-      navObserver.disconnect();
     };
   }, []);
 
-  const navItems = [
-    ["overview", "Overview"], ["context", "Context"], ["research", "Research"],
-    ["personas", "Personas"], ["aarrr", "AARRR"], ["competitive", "Competitive"],
-    ["onboarding", "Onboarding"], ["ux-analysis", "UX Analysis"], ["lessons", "Lessons"],
-    ["rice", "RICE"], ["risks", "Risks"], ["wireframes", "Wireframes"],
-    ["metrics-section", "Metrics"], ["outlook", "Outlook"]
-  ];
+  const tocTheme = {
+    accent: "#2383E2",
+    text: "#1A1A1A",
+    textMuted: "#7A7A78",
+    textDim: "#4A4A48",
+    bg: "rgba(250, 250, 248, 0.94)",
+    border: "#E0DFDB",
+    fontMono: "'JetBrains Mono', monospace",
+    fontSans: "'DM Sans', system-ui, sans-serif",
+    fontSerif: "'Instrument Serif', Georgia, serif",
+  };
 
   return (
     <>
+      <CaseStudyTOC sections={NOTION_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
       <style>{CSS}</style>
 
       <div className="progress-bar" style={{width: progress + "%"}} />
-
-      <nav className={"floating-nav" + (showNav ? " visible" : "")}>
-        {navItems.map(([id, label]) => (
-          <a
-            key={id}
-            href={"#" + id}
-            data-label={label}
-            className={activeSection === id ? "active" : ""}
-          />
-        ))}
-      </nav>
 
       <button
         className={"back-to-top" + (showTop ? " visible" : "")}
@@ -396,24 +384,6 @@ export default function NotionTeardown() {
       
 {/* Reading Progress Bar */}
 <div className="progress-bar" id="progressBar"></div>
-
-{/* Floating Nav Dots */}
-<nav className="floating-nav" id="floatingNav">
-  <a href="#overview" data-label="Overview"></a>
-  <a href="#context" data-label="Context"></a>
-  <a href="#research" data-label="Research"></a>
-  <a href="#personas" data-label="Personas"></a>
-  <a href="#aarrr" data-label="AARRR"></a>
-  <a href="#competitive" data-label="Competitive"></a>
-  <a href="#onboarding" data-label="Onboarding"></a>
-  <a href="#ux-analysis" data-label="UX Analysis"></a>
-  <a href="#lessons" data-label="Lessons"></a>
-  <a href="#rice" data-label="RICE"></a>
-  <a href="#risks" data-label="Risks"></a>
-  <a href="#wireframes" data-label="Wireframes"></a>
-  <a href="#metrics-section" data-label="Metrics"></a>
-  <a href="#outlook" data-label="Outlook"></a>
-</nav>
 
 {/* Back to Top */}
 <button className="back-to-top" id="backToTop" onClick={() => window.scrollTo({top:0})}>↑</button>
@@ -428,7 +398,7 @@ export default function NotionTeardown() {
 </header>
 
 {/* ==================== TL;DR ==================== */}
-<section id="overview">
+<section id="not-overview">
 <div className="container">
 <span className="section-num reveal">Overview</span>
 <h2 className="reveal">TL;DR</h2>
@@ -448,7 +418,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 1. CONTEXT ==================== */}
-<section id="context">
+<section id="not-01">
 <div className="container">
 <span className="section-num reveal">01</span>
 <h2 className="reveal">Product & Business Context</h2>
@@ -494,7 +464,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 2. RESEARCH ==================== */}
-<section id="research">
+<section id="not-02">
 <div className="container">
 <span className="section-num reveal">02</span>
 <h2 className="reveal">Research Methodology</h2>
@@ -525,7 +495,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 3. PERSONAS ==================== */}
-<section id="personas">
+<section id="not-03">
 <div className="container">
 <span className="section-num reveal">03</span>
 <h2 className="reveal">User Personas & Jobs to Be Done</h2>
@@ -586,7 +556,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 4. AARRR ==================== */}
-<section id="aarrr">
+<section id="not-04">
 <div className="container">
 <span className="section-num reveal">04</span>
 <h2 className="reveal">AARRR Funnel Analysis</h2>
@@ -636,7 +606,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 5. COMPETITIVE ==================== */}
-<section id="competitive">
+<section id="not-05">
 <div className="container">
 <span className="section-num reveal">05</span>
 <h2 className="reveal">Competitive Positioning</h2>
@@ -686,7 +656,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 6. ONBOARDING ==================== */}
-<section id="onboarding">
+<section id="not-06">
 <div className="container">
 <span className="section-num reveal">06</span>
 <h2 className="reveal">User Journey Deep Dive: Onboarding</h2>
@@ -874,7 +844,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 7. AI/CAL/MAIL ==================== */}
-<section id="ux-analysis">
+<section id="not-07">
 <div className="container">
 <span className="section-num reveal">07</span>
 <h2 className="reveal">UX Analysis: AI Agents, Calendar & Mail</h2>
@@ -901,7 +871,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 8. COMPETITIVE LESSONS ==================== */}
-<section id="lessons">
+<section id="not-08">
 <div className="container">
 <span className="section-num reveal">08</span>
 <h2 className="reveal">What Notion Should Learn From Competitors</h2>
@@ -921,7 +891,7 @@ export default function NotionTeardown() {
 </section>
 
 {/* ==================== 9. RICE ==================== */}
-<section id="rice">
+<section id="not-09">
 <div className="container wide">
 <span className="section-num reveal">09</span>
 <h2 className="reveal">RICE-Scored Recommendations</h2>
@@ -1026,7 +996,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 </section>
 
 {/* ==================== 10. RISKS & TRADEOFFS ==================== */}
-<section id="risks">
+<section id="not-10">
 <div className="container wide">
 <span className="section-num reveal">10</span>
 <h2 className="reveal">Risks & Tradeoffs</h2>
@@ -1091,7 +1061,7 @@ These are order-of-magnitude estimates, not forecasts. The two most sensitive va
 </section>
 
 {/* ==================== 11. WIREFRAMES ==================== */}
-<section id="wireframes">
+<section id="not-11">
 <div className="container wide">
 <span className="section-num reveal">11</span>
 <h2 className="reveal">Wireframe Mockups</h2>
@@ -1268,7 +1238,7 @@ Month 2+: 2/day
 </section>
 
 {/* ==================== 12. METRICS ==================== */}
-<section id="metrics-section">
+<section id="not-12">
 <div className="container">
 <span className="section-num reveal">12</span>
 <h2 className="reveal">Success Framework</h2>
@@ -1297,7 +1267,7 @@ Month 2+: 2/day
 </section>
 
 {/* ==================== 13. OUTLOOK ==================== */}
-<section id="outlook">
+<section id="not-13">
 <div className="container">
 <span className="section-num reveal">13</span>
 <h2 className="reveal">Strategic Outlook</h2>

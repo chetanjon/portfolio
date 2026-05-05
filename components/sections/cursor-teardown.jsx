@@ -1,6 +1,17 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
+
+const CURSOR_TOC_SECTIONS = [
+  { id: "cur-01", number: "01", label: "Context" },
+  { id: "cur-02", number: "02", label: "Model Architecture" },
+  { id: "cur-03", number: "03", label: "Competitive Positioning" },
+  { id: "cur-04", number: "04", label: "Moat Analysis" },
+  { id: "cur-05", number: "05", label: "Crisis & Pivot" },
+  { id: "cur-06", number: "06", label: "Risk Assessment" },
+  { id: "cur-07", number: "07", label: "Verdict" },
+];
 
 /* ═══════════════════════════════════════════════════════════════
    CURSOR TEARDOWN — "The $29B Fork"
@@ -76,19 +87,7 @@ const Insight = ({ children, label = "KEY INSIGHT" }) => (
   </div>
 );
 
-/* —— Scroll-aware section tracker —— */
-const SIDS = ["hero","context","model","compete","moat","crisis","risks","verdict","sources"];
-const SLBL = ["Top","Context","Model","Compete","Moat","Crisis","Risks","Verdict","Sources"];
-const useActive = () => {
-  const [a, setA] = useState("hero");
-  useEffect(() => {
-    const o = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && setA(x.target.id)), { rootMargin: "-30% 0px -30% 0px" });
-    SIDS.forEach(id => { const el = document.getElementById(id); if (el) o.observe(el); });
-    return () => o.disconnect();
-  }, []);
-  return a;
-};
-
+/* —— Scroll progress bar (thin top-of-page line) —— */
 const Progress = () => {
   const [p, setP] = useState(0);
   useEffect(() => {
@@ -98,14 +97,6 @@ const Progress = () => {
   }, []);
   return <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: 2, zIndex: 999, background: "rgba(0,0,0,.04)" }}><div style={{ height: "100%", width: `${p}%`, background: c.accent, transition: "width .12s" }} /></div>;
 };
-
-const SideNav = ({ active }) => (
-  <div className="side-nav" style={{ position: "fixed", left: 28, top: "50%", transform: "translateY(-50%)", zIndex: 90, display: "flex", flexDirection: "column", gap: 14 }}>
-    {SIDS.map((id, i) => (
-      <a key={id} href={`#${id}`} title={SLBL[i]} style={{ width: active === id ? 22 : 5, height: 5, borderRadius: 3, background: active === id ? c.accent : c.border, transition: "all .3s", display: "block", textDecoration: "none" }} />
-    ))}
-  </div>
-);
 
 /* —— Data visualizations (light theme) —— */
 const ARRChart = () => {
@@ -166,14 +157,24 @@ const ShareBars = () => {
 
 /* ═══════════════ MAIN ═══════════════ */
 export default function CursorTeardown() {
-  const active = useActive();
+  const tocTheme = {
+    accent: c.accent,
+    text: c.text,
+    textMuted: c.textMuted,
+    textDim: c.textSoft,
+    bg: "rgba(245, 241, 235, 0.94)",
+    border: c.border,
+    fontMono: fonts.mono,
+    fontSans: fonts.sans,
+    fontSerif: fonts.serif,
+  };
 
   return (
     <div style={{ background: c.bg, color: c.text, minHeight: "100vh", fontFamily: fonts.sans, lineHeight: 1.7 }}>
-      <style dangerouslySetInnerHTML={{ __html: `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap');::selection{background:rgba(14,124,107,.15);color:#1A1A18}html{scroll-behavior:smooth}@media(max-width:900px){.side-nav{display:none!important}}` }} />
+      <CaseStudyTOC sections={CURSOR_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
+      <style dangerouslySetInnerHTML={{ __html: `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600&family=IBM+Plex+Mono:wght@300;400;500&display=swap');::selection{background:rgba(14,124,107,.15);color:#1A1A18}html{scroll-behavior:smooth}` }} />
 
       <Progress />
-      <SideNav active={active} />
 
       {/* ═══════ HERO GRADIENT ═══════ */}
       <div style={{ position: "relative", width: "100%", height: 360, overflow: "hidden", background: `linear-gradient(135deg, ${c.indigo} 0%, #1B4D5A 40%, ${c.accent} 70%, ${c.accentLight} 100%)` }}>
@@ -223,7 +224,7 @@ export default function CursorTeardown() {
 
       {/* ═══════ 01 · CONTEXT ═══════ */}
       <Divider />
-      <section id="context" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="cur-01" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, alignItems: "start" }}>
           <div>
             <SectionLabel>01 · Context</SectionLabel>
@@ -279,7 +280,7 @@ export default function CursorTeardown() {
       </section>
 
       {/* ═══════ 02 · BUSINESS MODEL ═══════ */}
-      <section id="model" style={{ background: c.white, padding: "80px 0" }}>
+      <section id="cur-02" style={{ background: c.white, padding: "80px 0" }}>
         <Wrap>
           <SectionLabel>02 · Business Model</SectionLabel>
           <SectionTitle style={{ marginBottom: 12 }}>Pricing & the Unit Economics Question</SectionTitle>
@@ -319,7 +320,7 @@ export default function CursorTeardown() {
       </section>
 
       {/* ═══════ 03 · COMPETITIVE LANDSCAPE ═══════ */}
-      <section id="compete" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="cur-03" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <SectionLabel>03 · Competitive Landscape</SectionLabel>
         <SectionTitle style={{ marginBottom: 12 }}>The Battleground</SectionTitle>
         <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>AI-assisted coding is the most contested market in software. Every major model provider is simultaneously funding Cursor and building products that compete directly with it.</Body>
@@ -385,7 +386,7 @@ export default function CursorTeardown() {
       </section>
 
       {/* ═══════ 04 · MOAT ANALYSIS ═══════ */}
-      <section id="moat" style={{ background: c.white, padding: "80px 0" }}>
+      <section id="cur-04" style={{ background: c.white, padding: "80px 0" }}>
         <Wrap>
           <SectionLabel>04 · Moat Analysis</SectionLabel>
           <SectionTitle style={{ marginBottom: 12 }}>Does Cursor Have a Defensible Moat?</SectionTitle>
@@ -416,7 +417,7 @@ export default function CursorTeardown() {
       </section>
 
       {/* ═══════ 05 · PRICING CRISIS ═══════ */}
-      <section id="crisis" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="cur-05" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <SectionLabel>05 · The Pricing Crisis</SectionLabel>
         <SectionTitle style={{ marginBottom: 12 }}>The Pricing Crisis</SectionTitle>
         <Body style={{ fontSize: 16, maxWidth: 640, marginBottom: 48 }}>In June 2025, Cursor quietly replaced its 500-fast-requests/month model with a usage-based credit system. The backlash was immediate and severe.</Body>
@@ -445,7 +446,7 @@ export default function CursorTeardown() {
       </section>
 
       {/* ═══════ 06 · RISKS ═══════ */}
-      <section id="risks" style={{ background: c.white, padding: "80px 0" }}>
+      <section id="cur-06" style={{ background: c.white, padding: "80px 0" }}>
         <Wrap>
           <SectionLabel>06 · Risks</SectionLabel>
           <SectionTitle style={{ marginBottom: 48 }}>What Could Kill Cursor</SectionTitle>
@@ -473,7 +474,7 @@ export default function CursorTeardown() {
       </section>
 
       {/* ═══════ 07 · VERDICT ═══════ */}
-      <section id="verdict" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="cur-07" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <Wrap narrow style={{ padding: 0 }}>
           <SectionLabel>07 · Verdict</SectionLabel>
           <SectionTitle style={{ marginBottom: 12 }}>What to Watch</SectionTitle>

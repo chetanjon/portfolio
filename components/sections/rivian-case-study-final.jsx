@@ -1,5 +1,17 @@
 'use client';
 
+import { CaseStudyTOC } from "@/components/ui/CaseStudyTOC";
+
+const RIVIAN_TOC_SECTIONS = [
+  { id: "riv-01", number: "01", label: "Problem" },
+  { id: "riv-02", number: "02", label: "Context" },
+  { id: "riv-03", number: "03", label: "Solution" },
+  { id: "riv-04", number: "04", label: "Before → After" },
+  { id: "riv-05", number: "05", label: "Prioritize" },
+  { id: "riv-06", number: "06", label: "PRD" },
+  { id: "riv-07", number: "07", label: "Learnings" },
+];
+
 const c = {
   bg: "#F5F1EB",
   bgWarm: "#EDE8E0",
@@ -52,8 +64,21 @@ const PhoneMockup = ({ label, labelColor, children }) => (
 );
 
 export default function RivianCaseStudy() {
+  const tocTheme = {
+    accent: c.green,
+    text: c.text,
+    textMuted: c.textMuted,
+    textDim: c.textSoft,
+    bg: "rgba(245, 241, 235, 0.94)",
+    border: c.border,
+    fontMono: fonts.mono,
+    fontSans: fonts.sans,
+    fontSerif: fonts.serif,
+  };
+
   return (
     <div style={{ background: c.bg, color: c.text, minHeight: "100vh", fontFamily: fonts.sans, lineHeight: 1.7 }}>
+      <CaseStudyTOC sections={RIVIAN_TOC_SECTIONS} theme={tocTheme} variant="scrubber" />
       {/* ─── HERO GRADIENT ─── */}
       <div style={{ position: "relative", width: "100%", height: 360, overflow: "hidden", background: "linear-gradient(135deg, #1E3A2B 0%, #2D5A3D 40%, #3A7A52 70%, #4A9264 100%)" }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 40%, rgba(245,241,235,0.5) 75%, #F5F1EB 100%)" }}/>
@@ -115,7 +140,7 @@ export default function RivianCaseStudy() {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
         <div style={{ height: 1, background: c.border }}/>
       </div>
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="riv-01" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80 }}>
           <div>
             <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>01 · Comprehend</span>
@@ -162,7 +187,7 @@ export default function RivianCaseStudy() {
       </section>
 
       {/* ─── SECTION 02: RESEARCH ─── */}
-      <section style={{ background: c.white, padding: "80px 0" }}>
+      <section id="riv-02" style={{ background: c.white, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
             <div>
@@ -235,7 +260,7 @@ export default function RivianCaseStudy() {
       </section>
 
       {/* ─── SECTION 03: SOLUTION ─── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="riv-03" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "280px 1fr", gap: 80, marginBottom: 60 }}>
           <div>
             <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>03 · Solution</span>
@@ -263,7 +288,7 @@ export default function RivianCaseStudy() {
       </section>
 
       {/* ─── SECTION 04: WIREFRAMES ─── */}
-      <section style={{ background: c.bgDark, padding: "80px 0" }}>
+      <section id="riv-04" style={{ background: c.bgDark, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.greenLight, textTransform: "uppercase" }}>04 · Wireframes</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px", lineHeight: 1.2, color: c.white }}>Before → After</h2>
@@ -328,7 +353,7 @@ export default function RivianCaseStudy() {
       </section>
 
       {/* ─── SECTION 05: PRIORITIZATION ─── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="riv-05" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>05 · Prioritize</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 40px" }}>RICE Scoring</h2>
 
@@ -358,7 +383,7 @@ export default function RivianCaseStudy() {
       </section>
 
       {/* ─── SECTION 06: PRD ─── */}
-      <section style={{ background: c.white, padding: "80px 0" }}>
+      <section id="riv-06" style={{ background: c.white, padding: "80px 0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 48px" }}>
           <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>06 · PRD Excerpt</span>
           <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>Product Requirements</h2>
@@ -382,7 +407,7 @@ export default function RivianCaseStudy() {
       </section>
 
       {/* ─── SECTION 07: METRICS ─── */}
-      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
+      <section id="riv-07" style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 48px" }}>
         <span style={{ fontFamily: fonts.mono, fontSize: 10, letterSpacing: 3, color: c.green, textTransform: "uppercase" }}>07 · Impact</span>
         <h2 style={{ fontFamily: fonts.serif, fontSize: 36, fontWeight: 400, margin: "12px 0 48px" }}>Projected Outcomes</h2>
 
