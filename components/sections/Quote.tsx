@@ -27,7 +27,7 @@ export function Quote() {
               Chetan Jonnalagadda
             </p>
             <p className="text-[11px] tracking-wider uppercase text-text-muted mt-1">
-              Product Manager / Open to relocation
+              PM who designs / Open to relocation
             </p>
           </div>
         </motion.div>

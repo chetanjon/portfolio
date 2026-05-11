@@ -250,23 +250,27 @@ export function ResumeContent() {
             {[
               {
                 title: 'Analytics & Data',
-                skills: ['SQL', 'Python', 'Mixpanel', 'PostHog', 'Google Analytics', 'Excel'],
+                skills: ['SQL', 'Python', 'Mixpanel', 'PostHog', 'Google Analytics', 'Excel', 'Power BI'],
               },
               {
                 title: 'AI / ML',
-                skills: ['Apple Foundation Models', 'Google Gemini', 'OpenAI API', 'Structured Outputs (Zod)', 'On-Device AI'],
+                skills: ['Apple Foundation Models', 'Google Gemini', 'OpenAI API', 'Structured Outputs (Zod)', 'On-Device AI', 'Behavioral Pattern Detection'],
               },
               {
                 title: 'Methods',
-                skills: ['Agile/Scrum', 'A/B Testing', 'User Research', 'PRDs', 'RICE', 'Cohort Analysis', 'Statistical Testing'],
+                skills: ['Agile/Scrum', 'A/B Testing', 'User Research', 'Jobs-to-be-Done', 'PRDs', 'RICE', 'Cohort Analysis', 'Statistical Testing', 'Heuristic Evaluation', 'TAM/SAM/SOM'],
               },
               {
                 title: 'Design & Build',
-                skills: ['UI/UX', 'Design Systems', 'Brand Voice', 'TypeScript', 'Next.js', 'React', 'SwiftUI', 'Supabase'],
+                skills: ['UI/UX', 'Design Systems', 'Design Tokens', 'Brand Voice', 'Motion', 'TypeScript', 'Next.js', 'React', 'Tailwind', 'SwiftUI', 'Supabase'],
               },
               {
                 title: 'Tools',
-                skills: ['Figma', 'Notion', 'Jira', 'Confluence'],
+                skills: ['Figma', 'Notion', 'Jira', 'Confluence', 'Retool'],
+              },
+              {
+                title: 'Languages',
+                skills: ['English (fluent)', 'Telugu (native)', 'Hindi (conversational)'],
               },
             ].map((category, i) => (
               <motion.div

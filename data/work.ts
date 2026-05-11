@@ -41,7 +41,7 @@ export const workExperiences: WorkExperience[] = [
     featured: true,
     caseStudy: {
       overview:
-        'Aatram is a consumer iOS app live on the App Store, built by a 3-person founding team. I co-founded the company and own product, design, and brand. The strategic bet underneath every feature decision: procrastination is not a discipline problem. It is an emotion-regulation problem. The entire habit-tracker category assumes the opposite, which is why most of its users have tried three apps and still procrastinate.',
+        'Aatram is a consumer iOS app live on the App Store, free and bootstrapped, built by a 3-person founding team. I co-founded the company and own product, design, and brand. Co-built the codebase across 158 commits on SwiftUI, SwiftData, Supabase, and Apple Foundation Models. Owned an 18-component design system on hex-locked tokens, a vector logo drawn as 80 SwiftUI Canvas stroke segments, motion language with named timing values, and an anti-cheerleader brand voice codified as a 7-Always / 13-Never ruleset. The strategic bet underneath every decision: procrastination is not a discipline problem. It is an emotion-regulation problem. The entire habit-tracker category assumes the opposite, which is why most of its users have tried three apps and still procrastinate.',
       challenge:
         'The habit-tracker market is saturated with streaks, calendars, and to-do lists, and users still procrastinate. The discipline frame is the problem, not the solution. We had to validate an emotion-regulation thesis, ship it on a 3-person team with no PM-eng-design separation, and stand out in a category where the incumbents already won the discipline game.',
       challengePoints: [
@@ -116,7 +116,7 @@ export const workExperiences: WorkExperience[] = [
         },
       ],
       results:
-        'Shipped V1 to the App Store in 7 days from first commit with a 3-person founding team and a 5.0 launch rating. Validated the emotion-regulation thesis through 16 segmented archetype interviews and a 25-user closed beta. Shipped V2 Study Rooms and Crew with Supabase Realtime live presence. Owned product, design, brand, App Store submission, and launch marketing end-to-end. The app is live today at aatram.com.',
+        'Shipped V1 to the App Store in seven days from first commit with a 3-person founding team. Validated the emotion-regulation thesis through 16 segmented archetype interviews and a 25-user closed beta, then shipped V2 as an anti-interruption rewrite that killed 11+ surfaces (going-live pushes, in-app crew banners, the Mirror tab, em-dashes in copy, and the Profile tab among them) and restructured 5 tabs to 3 visible. Drove a 22-finding pre-submission audit and shepherded build 3 through App Review with screen-recording proof for guideline 5.1.1(v). Owned product, design, brand, App Store submission, and launch marketing end-to-end. The app is live today at aatram.com.',
       learnings:
         'Framing wins. Reframing procrastination from a discipline problem to an emotion-regulation problem was the highest-leverage decision of the entire build. It determined every feature priority that followed and made the V2 pivot obvious in retrospect. Ship-to-learn beats spec-to-perfect on a 3-person team: what we learned from users with V1 in their hands was worth more than seven weeks of spec.',
       whatWouldChange:
@@ -133,7 +133,7 @@ export const workExperiences: WorkExperience[] = [
     endDate: '2024-08',
     location: 'Hyderabad, India',
     description:
-      'Seed-stage B2B handloom marketplace. Promoted from intern after 6 months. Led seller-side product with a 4-engineer team shipping across web, mobile, and ops integrations.',
+      'Seed-stage curated B2B marketplace for handloom and sustainable clothing brands across 15 Indian states. INR 20–35L annual revenue, 15–20 person team. Promoted from Product Operations Intern to PM in six months as the company’s first dedicated PM. Led vendor-side product with a 4-engineer team shipping across web, mobile, and ops.',
     highlights: [
       'Operated as PM at a 15–20 person seed-stage B2B marketplace for handloom and sustainable clothing brands across 15 Indian states, owning vendor-side product surfaces and partnering directly with the founders on quarterly roadmap',
       'Designed and ran a concurrent A/B test on 50 SKUs with price floors against a matched control cohort, scaled the winner to 500+ SKUs, lifting gross margin from 25% to 40% and doubling monthly GMV',
@@ -161,7 +161,7 @@ export const workExperiences: WorkExperience[] = [
     featured: true,
     caseStudy: {
       overview:
-        'IKT India is a seed-stage B2B handloom marketplace connecting traditional Indian artisans with retailers. I joined as a PM intern, got promoted after 6 months, and owned the seller-side product with a 4-engineer team shipping across web, mobile, and ops integrations. The core job was growing the vendor network and making the unit economics work at scale.',
+        'IKT India is a seed-stage curated B2B marketplace for handloom and eco-friendly sustainable clothing brands across 15 Indian states, generating INR 20–35L annual revenue with a 15–20 person team. I joined as Product Operations Intern, got promoted to PM in six months as the company’s first dedicated PM, and owned vendor-side product with a 4-engineer team shipping across web, mobile, and ops. The core job was growing the vendor network, making unit economics work at scale, and setting up the product tooling stack from scratch (Notion for PRDs, Mixpanel for instrumentation, recurring SQL for ad-hoc analysis).',
       challenge:
         'When I joined, the platform had ~20 vendors, 25% gross margins, and a seller funnel that leaked everywhere. Artisans signed up but never listed. The ones who listed dropped off within 60 days. And a 4-engineer team meant every feature had to be earned.',
       challengePoints: [

@@ -32,8 +32,8 @@ export function CTA() {
             </h2>
 
             <p className="text-sm md:text-base text-text-secondary max-w-md mx-auto">
-              B2B marketplaces, AI products, 0-to-1, consumer iOS. Based in Phoenix, AZ. Open to
-              relocation. CSPO certified.
+              PM who designs end-to-end. B2B marketplaces, AI products, 0-to-1, consumer iOS.
+              Based in Phoenix, AZ. Open to relocation. CSPO certified.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">

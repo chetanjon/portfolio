@@ -25,13 +25,29 @@ export function Hero() {
         style={{ y, opacity }}
         className="max-w-2xl text-center z-10 flex flex-col items-center"
       >
-        {/* Tag */}
+        {/* Open to work pill */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="mb-6"
         >
-          <SectionMarker label="Product Manager" align="center" />
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border-default bg-bg-secondary/40 text-[10px] uppercase tracking-widest text-text-muted">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60 animate-ping" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+            </span>
+            Open to roles · May 2026 · Phoenix or remote
+          </span>
+        </motion.div>
+
+        {/* Tag */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+        >
+          <SectionMarker label="PM who designs" align="center" />
         </motion.div>
 
         {/* Headline */}
@@ -53,8 +69,9 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-sm md:text-base text-text-secondary leading-relaxed max-w-md mb-10"
         >
-          Co-Founder of a live iOS app shipped in 7 days. Former B2B marketplace PM who grew vendors
-          3.75x and doubled GMV at seed stage. Scope ruthlessly. Ship.
+          Co-Founder of a live iOS app shipped in 7 days. Owns product, design, and brand end-to-end:
+          18-component design system, vector logo, brand voice, motion language. Former B2B
+          marketplace PM who scaled vendors 3.75x and doubled GMV at seed stage.
         </motion.p>
 
         {/* Live badges */}

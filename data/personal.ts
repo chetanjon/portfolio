@@ -2,7 +2,7 @@ export const personalInfo = {
   name: 'CJ',
   fullName: 'Chetan Jonnalagadda',
   title: 'Product Manager',
-  tagline: 'I ship products 0→live and scale B2B marketplaces, owning product, design, and brand end-to-end.',
+  tagline: 'PM who designs end-to-end. Ships consumer iOS, scales B2B marketplaces, and owns the verb chain from research through brand voice, motion, and launch.',
   location: 'Phoenix, Arizona',
   phone: '(602) 807-9130',
   email: 'jonnalagadda8800@gmail.com',
@@ -29,5 +29,5 @@ export const personalInfo = {
   visaStatus: 'Requires H1B Sponsorship',
   openTo: ['Full-time', 'Remote', 'Hybrid', 'Relocation'],
   summary:
-    'Product manager who shipped a consumer iOS app to the App Store in 7 days (5.0 launch rating) with a 3-person founding team, scaled a seed-stage B2B marketplace 20 → 75+ vendors with 2x monthly GMV, and built FrictionLens, a full-stack AI review analyzer. Owns product, design, and brand end-to-end. CSPO + Digital Product Management (UVA) certified. M.S. Management of Technology at ASU, May 2026 (3.7 GPA).',
+    'Co-founder PM who designs. Shipped a consumer iOS app to the App Store in 7 days with a 3-person founding team, rewrote V2 as an anti-interruption product after archetype interviews, and owned UI, brand voice, an 18-component design system, and the logo drawn in SwiftUI Canvas. Previously scaled a seed-stage B2B marketplace from 20 to 75+ vendors with 2x monthly GMV. CSPO + UVA Digital Product Management certified. M.S. Management of Technology (Tech-MBA equivalent, PM focus) at ASU, May 2026, 3.7 GPA.',
 };

@@ -110,14 +110,24 @@ export function AboutContent() {
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-6">
-                Right now I&apos;m Co-Founder &amp; Product Manager at Aatram, a consumer iOS app live
-                on the App Store. With a 3-person founding team we shipped V1 seven days from first
-                commit on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack, and launched at
-                a 5.0 App Store rating. I own product, design, and brand: the design system, the logo,
-                aatram.com, and the positioning that reframes procrastination as an emotion-regulation
-                problem rather than a discipline one. After 16 segmented interviews across procrastination
-                archetypes I killed V1&apos;s Plan Mode, shipped V2 Study Rooms and Crew for social
-                accountability, and specced an on-device nudge engine on Apple Foundation Models.
+                Right now I&apos;m Co-Founder &amp; Product Manager at Aatram, a consumer iOS app live on
+                the App Store. With a 3-person founding team we shipped V1 in seven days from first
+                commit, then rewrote V2 as an anti-interruption product after interviews showed our own
+                notifications were pulling avoidance-prone users back out of focus. I co-built the
+                codebase across 158 commits on SwiftUI, SwiftData, Supabase, and Apple Foundation Models,
+                and owned UI, brand voice, an 18-component design system on hex-locked tokens, the
+                logo drawn as 80 SwiftUI Canvas stroke segments, and aatram.com end-to-end. Aatram is
+                the Tamil/Sanskrit word for resolve, or strength of mind. The product is named for the
+                trait it builds.
+              </p>
+
+              <p className="text-text-secondary leading-relaxed mb-6">
+                Every decision sits on behavioral-psychology research: implementation intentions
+                (Gollwitzer), temporal landmarks (Dai/Milkman), commitment devices (Ariely), and CBT
+                avoidance-loop literature. That&apos;s why we chose a stopwatch over a countdown
+                (deadlines increase dread for avoidance-prone users), capped accountability circles at
+                three (trust over performance), and encoded &ldquo;no leaderboards&rdquo; at the schema
+                level so ranking is a compile-time impossibility, not a policy promise.
               </p>
 
               <p className="text-text-secondary leading-relaxed mb-6">
@@ -133,9 +143,11 @@ export function AboutContent() {
 
               <p className="text-text-secondary leading-relaxed mb-8">
                 I&apos;m finishing my M.S. in Management of Technology at Arizona State University
-                (May 2026, 3.7 GPA), where my coursework includes a Python-driven G20 vs non-G20
-                innovation index analysis across 1,862 records. CSPO (Scrum Alliance) and Digital
-                Product Management (UVA, Coursera) certified.
+                (a Tech-MBA equivalent with a Product Management focus), graduating May 2026 with a
+                3.7 GPA. Coursework includes a Python pipeline analyzing G20 vs non-G20 innovation
+                across 1,862 records over 13 years, with t-tests and ANOVA surfacing 15 non-G20
+                countries outperforming the G20 average. CSPO (Scrum Alliance) and Digital Product
+                Management (UVA, Coursera) certified.
               </p>
 
               <div className="flex gap-4">
