@@ -32,7 +32,7 @@ export function CTA() {
             </h2>
 
             <p className="text-sm md:text-base text-text-secondary max-w-md mx-auto">
-              B2B marketplaces, AI products, 0-to-1, consumer iOS. Based in Tempe, AZ. Open to
+              B2B marketplaces, AI products, 0-to-1, consumer iOS. Based in Phoenix, AZ. Open to
               relocation. CSPO certified.
             </p>
 

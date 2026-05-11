@@ -3,7 +3,7 @@ export const personalInfo = {
   fullName: 'Chetan Jonnalagadda',
   title: 'Product Manager',
   tagline: 'I ship products 0→live and scale B2B marketplaces, owning product, design, and brand end-to-end.',
-  location: 'Tempe, Arizona',
+  location: 'Phoenix, Arizona',
   phone: '(602) 807-9130',
   email: 'jonnalagadda8800@gmail.com',
   linkedin: 'https://linkedin.com/in/cjonn',

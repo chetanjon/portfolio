@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState, useCallback } from 'react';
 
 export type TOCSection = {
@@ -91,6 +92,8 @@ export function CaseStudyTOC({ sections, theme, variant = 'editorial' }: CaseStu
 
   return (
     <>
+      <BackToIndex theme={theme} />
+
       {variant === 'editorial' ? (
         <EditorialRail
           sections={sections}
@@ -120,6 +123,78 @@ export function CaseStudyTOC({ sections, theme, variant = 'editorial' }: CaseStu
         onToggle={() => setMobileOpen(o => !o)}
         onSelect={scrollTo}
       />
+    </>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// BACK-TO-INDEX (top-left pill, themed per case study)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function BackToIndex({ theme }: { theme: TOCTheme }) {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: `
+        .case-study-back {
+          position: fixed;
+          top: 110px;
+          left: 32px;
+          z-index: 40;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 10px;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          padding: 9px 16px 9px 12px;
+          border-radius: 999px;
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          text-decoration: none;
+          transition: color 280ms ease, border-color 280ms ease, background 280ms ease;
+          font-family: inherit;
+          line-height: 1;
+        }
+        .case-study-back .cs-back-arrow {
+          display: inline-block;
+          transition: transform 320ms cubic-bezier(.22,1,.36,1);
+        }
+        .case-study-back:hover .cs-back-arrow {
+          transform: translateX(-4px);
+        }
+        @media (max-width: 640px) {
+          .case-study-back {
+            top: 88px;
+            left: 16px;
+            padding: 8px 14px 8px 10px;
+            font-size: 9px;
+          }
+        }
+      ` }} />
+      <Link
+        href="/casestudies"
+        className="case-study-back"
+        aria-label="Back to case studies"
+        style={{
+          color: theme.textMuted,
+          background: theme.bg,
+          border: `1px solid ${theme.border ?? theme.textMuted + '40'}`,
+          fontFamily: theme.fontMono ?? 'monospace',
+        }}
+        onMouseEnter={e => {
+          e.currentTarget.style.color = theme.accent;
+          e.currentTarget.style.borderColor = theme.accent;
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.color = theme.textMuted;
+          e.currentTarget.style.borderColor = theme.border ?? `${theme.textMuted}40`;
+        }}
+      >
+        <span className="cs-back-arrow" aria-hidden>
+          ←
+        </span>
+        Case Studies
+      </Link>
     </>
   );
 }

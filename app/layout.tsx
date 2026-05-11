@@ -101,7 +101,7 @@ const jsonLd = {
   telephone: '(602) 807-9130',
   address: {
     '@type': 'PostalAddress',
-    addressLocality: 'Tempe',
+    addressLocality: 'Phoenix',
     addressRegion: 'AZ',
     addressCountry: 'US',
   },

@@ -85,7 +85,7 @@ export function Fundamentals() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="absolute -bottom-4 -right-4 bg-text-primary text-bg-primary text-[9px] uppercase tracking-widest px-3 py-2"
               >
-                Tempe, AZ
+                Phoenix, AZ
               </motion.div>
             </div>
           </motion.div>
