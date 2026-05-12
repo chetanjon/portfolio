@@ -5,14 +5,9 @@ import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { SectionMarker } from '@/components/ui/SectionMarker';
-
-const tokens = [
-  { name: 'aLavender', hex: '#B8A9D4', usage: 'Primary accent. Highlights and calls to attention.' },
-  { name: 'aRose', hex: '#C9929B', usage: 'Dread tiers 1–4. Rose-coded emotional escalation.' },
-  { name: 'aMint', hex: '#7DBFAB', usage: 'Momentum, calm, in-session signals.' },
-  { name: 'aSand', hex: '#C9B97A', usage: 'Insights and softer informational copy.' },
-  { name: 'aSlate', hex: '#8BA4B8', usage: 'Neutral metadata and secondary chrome.' },
-];
+import { TokenSwatches } from '@/components/ui/TokenSwatches';
+import { AatramLogoSVG } from '@/components/ui/AatramLogoSVG';
+import { MomentumGauge } from '@/components/ui/MomentumGauge';
 
 const voiceRules = {
   always: [
@@ -102,29 +97,8 @@ export function CraftContent() {
               </p>
             </div>
 
-            <div className="lg:col-span-7 space-y-3">
-              {tokens.map((token, i) => (
-                <motion.div
-                  key={token.name}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className="flex items-center gap-5 p-4 border border-border-default rounded-lg hover:border-text-muted transition-colors"
-                >
-                  <div
-                    className="w-14 h-14 rounded-md shrink-0 border border-border-default"
-                    style={{ background: token.hex }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-baseline gap-3 mb-1">
-                      <span className="font-mono text-sm font-semibold">{token.name}</span>
-                      <span className="font-mono text-xs text-text-muted">{token.hex}</span>
-                    </div>
-                    <p className="text-sm text-text-secondary leading-snug">{token.usage}</p>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="lg:col-span-7">
+              <TokenSwatches />
             </div>
           </div>
         </div>
@@ -156,49 +130,7 @@ export function CraftContent() {
 
             <div className="lg:col-span-7">
               <div className="aspect-square max-w-md mx-auto bg-bg-secondary border border-border-default rounded-lg p-8 flex items-center justify-center">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <defs>
-                    <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="rgba(184,169,212,0.18)" />
-                      <stop offset="100%" stopColor="rgba(184,169,212,0)" />
-                    </radialGradient>
-                  </defs>
-                  <circle cx="100" cy="100" r="90" fill="url(#logoGlow)" />
-                  {Array.from({ length: 80 }).map((_, i) => {
-                    const startAngle = 25 + (i * 120) / 80;
-                    const opacity = 0.85 - (i / 80) * (0.85 - 0.08);
-                    const x1 = 100 + 65 * Math.cos((startAngle * Math.PI) / 180);
-                    const y1 = 100 + 65 * Math.sin((startAngle * Math.PI) / 180);
-                    const x2 = 100 + 80 * Math.cos((startAngle * Math.PI) / 180);
-                    const y2 = 100 + 80 * Math.sin((startAngle * Math.PI) / 180);
-                    return (
-                      <line
-                        key={i}
-                        x1={x1}
-                        y1={y1}
-                        x2={x2}
-                        y2={y2}
-                        stroke="#B8A9D4"
-                        strokeWidth="2"
-                        strokeOpacity={opacity}
-                        strokeLinecap="round"
-                      />
-                    );
-                  })}
-                  {[3.0, 2.16, 1.56, 1.12].map((mult, i) => {
-                    const r = 30 * mult;
-                    return (
-                      <circle
-                        key={i}
-                        cx={100 + r * Math.cos(((85 - i * 10) * Math.PI) / 180)}
-                        cy={100 + r * Math.sin(((85 - i * 10) * Math.PI) / 180)}
-                        r={2.5 - i * 0.4}
-                        fill="#B8A9D4"
-                        opacity={0.7 - i * 0.12}
-                      />
-                    );
-                  })}
-                </svg>
+                <AatramLogoSVG className="w-full h-full" />
               </div>
               <p className="text-xs text-text-muted text-center mt-4 font-mono">
                 Approximation rendered in SVG. Production uses SwiftUI Canvas.
@@ -299,80 +231,7 @@ export function CraftContent() {
 
             <div className="lg:col-span-7">
               <div className="aspect-square max-w-md mx-auto bg-bg-secondary border border-border-default rounded-lg p-8 flex flex-col items-center justify-center">
-                <svg viewBox="0 0 240 200" className="w-full h-auto">
-                  {(() => {
-                    const cx = 120;
-                    const cy = 130;
-                    const r = 85;
-                    const startA = 150;
-                    const endA = 390;
-                    const ticks = [];
-                    for (let i = 0; i <= 40; i++) {
-                      const a = startA + ((endA - startA) * i) / 40;
-                      const major = i % 10 === 0;
-                      const mid = i % 5 === 0;
-                      const len = major ? 12 : mid ? 8 : 5;
-                      const x1 = cx + (r - len) * Math.cos((a * Math.PI) / 180);
-                      const y1 = cy + (r - len) * Math.sin((a * Math.PI) / 180);
-                      const x2 = cx + r * Math.cos((a * Math.PI) / 180);
-                      const y2 = cy + r * Math.sin((a * Math.PI) / 180);
-                      ticks.push(
-                        <line
-                          key={i}
-                          x1={x1}
-                          y1={y1}
-                          x2={x2}
-                          y2={y2}
-                          stroke="#8BA4B8"
-                          strokeWidth={major ? 1.5 : 1}
-                          strokeOpacity={major ? 0.7 : mid ? 0.5 : 0.3}
-                          strokeLinecap="round"
-                        />
-                      );
-                    }
-                    const fillEnd = startA + (endA - startA) * 0.68;
-                    const arcPath = (() => {
-                      const x1 = cx + r * Math.cos((startA * Math.PI) / 180);
-                      const y1 = cy + r * Math.sin((startA * Math.PI) / 180);
-                      const x2 = cx + r * Math.cos((fillEnd * Math.PI) / 180);
-                      const y2 = cy + r * Math.sin((fillEnd * Math.PI) / 180);
-                      const largeArc = fillEnd - startA > 180 ? 1 : 0;
-                      return `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2}`;
-                    })();
-                    return (
-                      <>
-                        {ticks}
-                        <path
-                          d={arcPath}
-                          fill="none"
-                          stroke="#7DBFAB"
-                          strokeWidth="5"
-                          strokeLinecap="round"
-                        />
-                        <text
-                          x={cx}
-                          y={cy + 5}
-                          textAnchor="middle"
-                          fill="currentColor"
-                          className="font-serif"
-                          style={{ fontSize: 48, letterSpacing: '-0.02em' }}
-                        >
-                          68
-                        </text>
-                        <text
-                          x={cx}
-                          y={cy + 30}
-                          textAnchor="middle"
-                          fill="currentColor"
-                          opacity="0.5"
-                          style={{ fontSize: 9, letterSpacing: '0.2em' }}
-                        >
-                          MOMENTUM
-                        </text>
-                      </>
-                    );
-                  })()}
-                </svg>
+                <MomentumGauge value={68} className="w-full h-auto" />
                 <div className="flex justify-between w-full text-[10px] font-mono text-text-muted mt-2 uppercase tracking-wider">
                   <span>Starting</span>
                   <span>Building</span>

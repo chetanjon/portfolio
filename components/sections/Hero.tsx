@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 import { CountUp } from '@/components/ui/CountUp';
 import { HeroGlow } from '@/components/sections/HeroGlow';
+import { MomentumGauge } from '@/components/ui/MomentumGauge';
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,6 +22,16 @@ export function Hero() {
       className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-28 pb-20 overflow-hidden bg-bg-primary"
     >
       <HeroGlow />
+      {/* Instrument motif — faint MomentumArc ticks behind the headline */}
+      <motion.div
+        style={{ opacity }}
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 z-0 w-[min(900px,120vw)] -translate-x-1/2 -translate-y-[58%]"
+      >
+        <div className="opacity-[0.18] dark:opacity-25">
+          <MomentumGauge ticksOnly sweepTick={27} className="w-full h-auto" />
+        </div>
+      </motion.div>
       <motion.div
         style={{ y, opacity }}
         className="max-w-2xl text-center z-10 flex flex-col items-center"

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display, Syne } from 'next/font/google';
+import { Instrument_Serif, Outfit } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
@@ -7,21 +7,17 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { DebugWrapper } from '@/components/ui/DebugWrapper';
 import './globals.css';
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-outfit',
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
-const playfair = Playfair_Display({
+const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-instrument-serif',
+  weight: '400',
   style: ['normal', 'italic'],
-});
-
-const syne = Syne({
-  subsets: ['latin'],
-  variable: '--font-syne',
-  weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata: Metadata = {
@@ -82,12 +78,15 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   other: {
-    'msapplication-TileColor': '#C9D2C5',
+    'msapplication-TileColor': '#F4F1EA',
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#C9D2C5',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#F4F1EA' },
+    { media: '(prefers-color-scheme: dark)', color: '#0B0B0E' },
+  ],
   width: 'device-width',
   initialScale: 1,
 };
@@ -156,7 +155,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap"
         />
       </head>
-      <body className={`${inter.variable} ${playfair.variable} ${syne.variable} font-sans antialiased`}>
+      <body className={`${outfit.variable} ${instrumentSerif.variable} font-sans antialiased`}>
         <a
           href="#main-content"
           className="skip-link fixed left-4 top-4 z-[2000] rounded-md bg-bg-primary px-4 py-2 text-sm font-medium text-text-primary shadow-md"

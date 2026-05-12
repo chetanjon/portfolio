@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 
-type CaseStudyType = 'Shipped' | 'Case Study' | 'Teardown';
+type CaseStudyType = 'Shipped' | 'Thinking';
 
 const caseStudies: Array<{
   slug: string;
+  href?: string;
   company: string;
   title: string;
   description: string;
@@ -25,14 +26,29 @@ const caseStudies: Array<{
     company: 'Aatram',
     title: 'Start Starting',
     description:
-      'Shipped V1 to the App Store in 7 days from first commit with a 3-person founding team on a SwiftUI, SwiftData, WidgetKit, and FamilyControls stack. 25-user closed beta and 16 archetype-segmented interviews (anxious avoider, overwhelmed planner, avoidance-loop, burnt-out performer) validated the V1 cut and sourced V2. Killed Plan Mode, shipped Study Rooms and Crew for social accountability, and specced an on-device nudge engine on Apple Foundation Models. Owned UI/UX, logo, visual identity, and aatram.com end-to-end.',
-    tags: ['0-to-1', 'iOS', 'Apple Foundation Models', 'Brand & Design', 'Social Accountability'],
-    metric: { value: '7 days', label: 'First commit → App Store · 5.0 launch rating' },
-    accentColor: '#5B4EB8',
+      'Co-founded with two friends. Shipped V1 to the App Store in seven days from first commit, then rewrote V2 as an anti-interruption product after archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. Co-built the codebase across 158 commits and owned UI, brand voice, an 18-component design system, the logo drawn as 80 SwiftUI Canvas stroke segments, and aatram.com end-to-end. Drove a 22-finding pre-submission audit through App Review.',
+    tags: ['0-to-1', 'iOS', 'Apple Foundation Models', 'Brand & Design', 'Anti-Interruption'],
+    metric: { value: '7 days', label: 'First commit → App Store · 158 commits' },
+    accentColor: '#6B5DAD',
     bgColor: '#EEEBF8',
     year: '2026',
     type: 'Shipped',
     readMin: 6,
+  },
+  {
+    slug: 'ikt-india',
+    href: '/work/ikt-india',
+    company: 'IKT India',
+    title: "Margins, Vendors, and a Marketplace That Worked",
+    description:
+      "Seed-stage curated B2B marketplace for handloom and sustainable clothing brands across 15 Indian states. Promoted from Product Operations Intern to PM in six months as the company's first dedicated PM. Designed and ran a concurrent A/B test on 50 SKUs with price floors against a matched control, scaled the winner to 500+ SKUs, lifted gross margin from 25% to 40%, doubled monthly GMV. Cut seller onboarding from 3 days to 6 hours and grew the vendor base 20 → 75+.",
+    tags: ['B2B Marketplace', 'A/B Testing', 'SQL', 'Pricing Strategy', 'Vendor Growth'],
+    metric: { value: '3.75x', label: 'Vendor growth · 2x GMV · 25→40% margin' },
+    accentColor: '#3F8C73',
+    bgColor: '#E6F2EC',
+    year: '2024',
+    type: 'Shipped',
+    readMin: 7,
   },
   {
     slug: 'cursor',
@@ -45,7 +61,7 @@ const caseStudies: Array<{
     accentColor: '#0E7C6B',
     bgColor: '#E6F5F1',
     year: '2026',
-    type: 'Teardown',
+    type: 'Thinking',
     readMin: 9,
   },
   {
@@ -59,7 +75,7 @@ const caseStudies: Array<{
     accentColor: '#D4790E',
     bgColor: '#FFF8ED',
     year: '2026',
-    type: 'Case Study',
+    type: 'Thinking',
     readMin: 10,
   },
   {
@@ -73,7 +89,7 @@ const caseStudies: Array<{
     accentColor: '#5B3DC8',
     bgColor: '#EEEBF8',
     year: '2026',
-    type: 'Case Study',
+    type: 'Thinking',
     readMin: 8,
   },
   {
@@ -87,7 +103,7 @@ const caseStudies: Array<{
     accentColor: '#0071e3',
     bgColor: '#f5f5f7',
     year: '2026',
-    type: 'Case Study',
+    type: 'Thinking',
     readMin: 10,
   },
   {
@@ -101,7 +117,7 @@ const caseStudies: Array<{
     accentColor: '#2383E2',
     bgColor: '#EBF4FD',
     year: '2026',
-    type: 'Teardown',
+    type: 'Thinking',
     readMin: 12,
   },
   {
@@ -115,7 +131,7 @@ const caseStudies: Array<{
     accentColor: '#2D5A3D',
     bgColor: '#E8F0EA',
     year: '2026',
-    type: 'Case Study',
+    type: 'Thinking',
     readMin: 7,
   },
   {
@@ -129,7 +145,7 @@ const caseStudies: Array<{
     accentColor: '#6C5CE7',
     bgColor: '#f0eeff',
     year: '2026',
-    type: 'Teardown',
+    type: 'Thinking',
     readMin: 7,
   },
   {
@@ -143,7 +159,7 @@ const caseStudies: Array<{
     accentColor: '#E8590C',
     bgColor: '#FFF3ED',
     year: '2026',
-    type: 'Case Study',
+    type: 'Thinking',
     readMin: 8,
   },
   {
@@ -157,7 +173,7 @@ const caseStudies: Array<{
     accentColor: '#8B4513',
     bgColor: '#FAF3ED',
     year: '2026',
-    type: 'Case Study',
+    type: 'Thinking',
     readMin: 8,
   },
   {
@@ -171,14 +187,14 @@ const caseStudies: Array<{
     accentColor: '#1DB954',
     bgColor: '#E8F8EE',
     year: '2026',
-    type: 'Teardown',
+    type: 'Thinking',
     readMin: 7,
   },
 ];
 
-type Filter = 'All' | 'Shipped' | 'Case Study' | 'Teardown';
+type Filter = 'All' | 'Shipped' | 'Thinking';
 
-const FILTERS: Filter[] = ['All', 'Shipped', 'Case Study', 'Teardown'];
+const FILTERS: Filter[] = ['All', 'Shipped', 'Thinking'];
 
 export function CaseStudiesContent() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -195,8 +211,7 @@ export function CaseStudiesContent() {
     () => ({
       All: caseStudies.length,
       Shipped: caseStudies.filter((s) => s.type === 'Shipped').length,
-      'Case Study': caseStudies.filter((s) => s.type === 'Case Study').length,
-      Teardown: caseStudies.filter((s) => s.type === 'Teardown').length,
+      Thinking: caseStudies.filter((s) => s.type === 'Thinking').length,
     }),
     []
   );
@@ -215,16 +230,16 @@ export function CaseStudiesContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <SectionMarker label="Research & Strategy" className="mb-8" />
+            <SectionMarker label="Work & Thinking" className="mb-8" />
 
             <h1 className="font-display font-bold text-5xl md:text-7xl uppercase tracking-tight leading-[0.9] mb-6">
-              Case
-              <span className="font-serif italic font-normal normal-case text-4xl md:text-6xl"> Studies</span>
+              Selected
+              <span className="font-serif italic font-normal normal-case text-4xl md:text-6xl"> work &amp; thinking</span>
             </h1>
 
             <p className="text-lg text-text-secondary max-w-xl">
-              In-depth product teardowns applying CIRCLES, PRD writing, UX research, and
-              competitive analysis: the frameworks that drive real product decisions.
+              Shipped products I co-built and owned, plus product-thinking exercises on companies I
+              don&apos;t work for. The first set is what I&apos;ve done. The second is how I think.
             </p>
           </motion.div>
         </div>
@@ -272,7 +287,7 @@ export function CaseStudiesContent() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, delay: i * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
-                <Link href={`/casestudies/${study.slug}`} className="block group">
+                <Link href={study.href ?? `/casestudies/${study.slug}`} className="block group">
                   <motion.div
                     whileHover={{ y: -6 }}
                     whileTap={{ y: -3 }}
@@ -289,7 +304,7 @@ export function CaseStudiesContent() {
                       {/* Left: content */}
                       <div className="p-8 md:p-10">
                         <div className="flex items-center flex-wrap gap-3 mb-5">
-                          {study.type === 'Shipped' && (
+                          {study.type === 'Shipped' ? (
                             <span
                               className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-semibold inline-flex items-center gap-1.5"
                               style={{ background: study.accentColor, color: '#fff' }}
@@ -300,21 +315,9 @@ export function CaseStudiesContent() {
                               />
                               Shipped
                             </span>
-                          )}
-                          {study.type === 'Case Study' && (
-                            <span
-                              className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-medium"
-                              style={{
-                                background: `${study.accentColor}1A`,
-                                color: study.accentColor,
-                              }}
-                            >
-                              Case Study
-                            </span>
-                          )}
-                          {study.type === 'Teardown' && (
+                          ) : (
                             <span className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-border-default text-text-muted font-medium">
-                              Teardown
+                              Thinking exercise
                             </span>
                           )}
                           <span className="text-[10px] uppercase tracking-widest text-text-muted">
@@ -353,7 +356,7 @@ export function CaseStudiesContent() {
                           className="inline-flex items-center gap-2 text-sm font-medium tracking-wide transition-colors"
                           style={{ color: study.accentColor }}
                         >
-                          Read {study.type}
+                          {study.type === 'Shipped' ? 'Read the story' : 'Read the breakdown'}
                           <span
                             aria-hidden
                             className="inline-block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1.5"
@@ -405,10 +408,10 @@ export function CaseStudiesContent() {
             transition={{ duration: 0.6 }}
             className="flex flex-wrap justify-center gap-8 md:gap-16 text-[10px] uppercase tracking-widest font-medium"
           >
-            <span>/ CIRCLES Framework</span>
-            <span>/ PRD Writing</span>
+            <span>/ 0-to-1 Shipping</span>
+            <span>/ User Research</span>
+            <span>/ A/B Testing</span>
             <span>/ RICE Prioritization</span>
-            <span>/ UX Research</span>
             <span>/ Competitive Analysis</span>
           </motion.div>
         </div>

@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'aatram',
   ];
 
+  const workSlugs = ['aatram', 'ikt-india', 'gangothri-nutrients'];
+
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
@@ -27,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/about`,
+      lastModified: defaultLastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/craft`,
       lastModified: defaultLastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -70,5 +78,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...caseStudyPages];
+  const workPages: MetadataRoute.Sitemap = workSlugs.map((slug) => ({
+    url: `${baseUrl}/work/${slug}`,
+    lastModified: defaultLastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...caseStudyPages, ...workPages];
 }

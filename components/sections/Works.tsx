@@ -30,7 +30,7 @@ export function Works() {
             viewport={{ once: false, amount: 0.4 }}
             transition={{ duration: 0.6 }}
           >
-            <SectionMarker number="04" label="Works" />
+            <SectionMarker number="03" label="Experience" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,8 +51,8 @@ export function Works() {
           className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8"
         >
           <div className="flex items-baseline gap-4">
-            <span className="font-serif italic text-2xl md:text-3xl text-text-secondary">Products I&apos;ve</span>
-            <h2 className="font-display font-bold text-4xl md:text-5xl uppercase tracking-tight">Shipped</h2>
+            <span className="font-serif italic text-2xl md:text-3xl text-text-secondary">Where I&apos;ve</span>
+            <h2 className="font-display font-bold text-4xl md:text-5xl uppercase tracking-tight">Worked</h2>
           </div>
         </motion.div>
 

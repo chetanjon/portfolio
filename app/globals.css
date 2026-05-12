@@ -1,97 +1,107 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light mode colors (default) */
-  /* Hero/main background - fixed off-white with subtle blue tint */
-  --color-bg-primary: #F8F9FC;
-  /* Secondary sections (Fundamentals, etc.) - customizable accent palette */
-  --color-bg-secondary: #C9D2C5;
-  --color-bg-tertiary: #D4DDD0;
-  --color-bg-card: #BFC9BB;
+  /* Light mode — warm paper surface, Aatram-derived lavender/mint accents */
+  /* Hero/main background — warm paper, echoes Aatram body cream #F0EDE8 */
+  --color-bg-primary: #F4F1EA;
+  /* Secondary sections — soft lavender wash */
+  --color-bg-secondary: #E8E2EC;
+  --color-bg-tertiary: #EFEAE0;
+  --color-bg-card: #EAE4EE;
 
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #3A3A3A;
-  --color-text-tertiary: #5A5A5A;
-  --color-text-muted: #6A6A6A;
+  --color-text-primary: #1A1820;
+  --color-text-secondary: #3A3640;
+  --color-text-tertiary: #5A555F;
+  --color-text-muted: #6E6976;
 
-  --color-accent-primary: #1A1A1A;
-  --color-accent-secondary: #1A1A1A;
-  --color-accent-tertiary: #1A1A1A;
+  /* Accents — deep lavender / deep mint for readable foreground use in light mode */
+  --color-accent-primary: #6B5DAD;
+  --color-accent-secondary: #3F8C73;
+  --color-accent-mint: #3F8C73;
+  --color-accent-tertiary: #6B5DAD;
+  /* aLavender, the literal Aatram token — decorative washes, gauge motif */
+  --color-accent-soft: #B8A9D4;
+  /* foreground color to use ON an accent-primary surface */
+  --color-accent-on: #F4F1EA;
 
-  --color-border-default: rgba(26, 26, 26, 0.1);
-  --color-border-hover: rgba(26, 26, 26, 0.25);
-  --color-surface-hover: rgba(26, 26, 26, 0.05);
+  --color-border-default: rgba(107, 93, 173, 0.16);
+  --color-border-hover: rgba(107, 93, 173, 0.34);
+  --color-surface-hover: rgba(107, 93, 173, 0.07);
 
   /* Shadows - softer for light mode */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
-  --shadow-button: 0 2px 8px rgba(26, 26, 26, 0.15);
-  --shadow-glow: 0 0 30px rgba(26, 26, 26, 0.08);
+  --shadow-sm: 0 1px 2px rgba(40, 30, 60, 0.05);
+  --shadow-md: 0 4px 6px rgba(40, 30, 60, 0.07);
+  --shadow-lg: 0 10px 25px rgba(40, 30, 60, 0.1);
+  --shadow-xl: 0 20px 40px rgba(40, 30, 60, 0.15);
+  --shadow-button: 0 2px 8px rgba(107, 93, 173, 0.18);
+  --shadow-glow: 0 0 30px rgba(184, 169, 212, 0.2);
 
-  /* Gradients (sage-extension) */
-  --color-gradient-glow-from: rgba(201, 210, 197, 0.55);
-  --color-gradient-glow-via:  rgba(212, 221, 208, 0.25);
-  --color-gradient-glow-to:   rgba(248, 249, 252, 0);
+  /* Gradients — lavender → mint */
+  --color-gradient-glow-from: rgba(184, 169, 212, 0.45);
+  --color-gradient-glow-via:  rgba(125, 191, 171, 0.18);
+  --color-gradient-glow-to:   rgba(244, 241, 234, 0);
 
-  --color-gradient-fade-from: rgba(248, 249, 252, 0);
-  --color-gradient-fade-to:   rgba(201, 210, 197, 0.35);
+  --color-gradient-fade-from: rgba(244, 241, 234, 0);
+  --color-gradient-fade-to:   rgba(184, 169, 212, 0.28);
 
-  --color-gradient-accent-from: #5A6B55;
-  --color-gradient-accent-to:   #1A1A1A;
+  --color-gradient-accent-from: #6B5DAD;
+  --color-gradient-accent-to:   #3F8C73;
 
-  --color-gradient-card-from: rgba(201, 210, 197, 0.18);
-  --color-gradient-card-to:   rgba(201, 210, 197, 0);
+  --color-gradient-card-from: rgba(184, 169, 212, 0.16);
+  --color-gradient-card-to:   rgba(184, 169, 212, 0);
 
-  /* Fonts */
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
-  --font-display: var(--font-syne);
+  /* Fonts — Instrument Serif (display voice) + Outfit (body) */
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-instrument-serif);
+  --font-display: var(--font-outfit);
 }
 
 /* Dark mode overrides */
 .dark {
-  /* Hero/main background - fixed black */
-  --color-bg-primary: #0A0A0A;
-  /* Secondary sections - customizable accent palette (darker sage green) */
-  --color-bg-secondary: #2A3328;
-  --color-bg-tertiary: #1F2620;
-  --color-bg-card: #232A22;
+  /* Hero/main background — near-black, echoes Aatram #08080C */
+  --color-bg-primary: #0B0B0E;
+  /* Secondary sections — dark lavender-grey */
+  --color-bg-secondary: #16141C;
+  --color-bg-tertiary: #121016;
+  --color-bg-card: #1A1820;
 
-  --color-text-primary: #E5E5E5;
-  --color-text-secondary: #B0B0B0;
-  --color-text-tertiary: #909090;
-  --color-text-muted: #777777;
+  --color-text-primary: #ECE8E0;
+  --color-text-secondary: #B5B0A8;
+  --color-text-tertiary: #8F8A82;
+  --color-text-muted: #6E6A64;
 
-  --color-accent-primary: #FFFFFF;
-  --color-accent-secondary: #FFFFFF;
-  --color-accent-tertiary: #FFFFFF;
+  /* Accents — the literal Aatram tokens read great on near-black */
+  --color-accent-primary: #B8A9D4;
+  --color-accent-secondary: #7DBFAB;
+  --color-accent-mint: #7DBFAB;
+  --color-accent-tertiary: #B8A9D4;
+  --color-accent-soft: #B8A9D4;
+  --color-accent-on: #0B0B0E;
 
-  --color-border-default: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.15);
-  --color-surface-hover: rgba(255, 255, 255, 0.05);
+  --color-border-default: rgba(184, 169, 212, 0.12);
+  --color-border-hover: rgba(184, 169, 212, 0.26);
+  --color-surface-hover: rgba(184, 169, 212, 0.06);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
   --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.6);
-  --shadow-button: 0 2px 8px rgba(255, 255, 255, 0.1);
-  --shadow-glow: 0 0 30px rgba(255, 255, 255, 0.05);
+  --shadow-button: 0 2px 8px rgba(184, 169, 212, 0.12);
+  --shadow-glow: 0 0 30px rgba(184, 169, 212, 0.08);
 
   /* Gradients (~50% intensity vs light) */
-  --color-gradient-glow-from: rgba(42, 51, 40, 0.45);
-  --color-gradient-glow-via:  rgba(35, 42, 34, 0.20);
-  --color-gradient-glow-to:   rgba(10, 10, 10, 0);
+  --color-gradient-glow-from: rgba(184, 169, 212, 0.20);
+  --color-gradient-glow-via:  rgba(125, 191, 171, 0.10);
+  --color-gradient-glow-to:   rgba(11, 11, 14, 0);
 
-  --color-gradient-fade-from: rgba(10, 10, 10, 0);
-  --color-gradient-fade-to:   rgba(42, 51, 40, 0.20);
+  --color-gradient-fade-from: rgba(11, 11, 14, 0);
+  --color-gradient-fade-to:   rgba(22, 20, 28, 0.30);
 
-  --color-gradient-accent-from: #A8B5A2;
-  --color-gradient-accent-to:   #E5E5E5;
+  --color-gradient-accent-from: #B8A9D4;
+  --color-gradient-accent-to:   #7DBFAB;
 
-  --color-gradient-card-from: rgba(168, 181, 162, 0.10);
-  --color-gradient-card-to:   rgba(168, 181, 162, 0);
+  --color-gradient-card-from: rgba(184, 169, 212, 0.10);
+  --color-gradient-card-to:   rgba(184, 169, 212, 0);
 }
 
 html {
@@ -116,11 +126,11 @@ body {
 }
 
 ::selection {
-  background-color: rgba(26, 26, 26, 0.2);
+  background-color: rgba(184, 169, 212, 0.35);
 }
 
 .dark ::selection {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(184, 169, 212, 0.3);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -550,4 +560,57 @@ input[type="color"]::-webkit-color-swatch {
 
 .cta-glow:hover {
   box-shadow: 0 0 24px var(--color-gradient-glow-from);
+}
+
+/* ─── Instrument / gauge motif (Aatram MomentumArc DNA) ─────────────────────── */
+
+/* A thin horizontal row of tick marks — section divider */
+.gauge-divider {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-border-hover) 0,
+    var(--color-border-hover) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  opacity: 0.6;
+}
+
+/* Tick-mark rule — replaces a plain top border */
+.tick-rule {
+  position: relative;
+}
+
+.tick-rule::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-border-default) 0,
+    var(--color-border-default) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  pointer-events: none;
+}
+
+/* Single highlighted tick that sweeps — used in the hero gauge accent */
+@keyframes tick-sweep {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+.tick-sweep {
+  animation: tick-sweep 3.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tick-sweep { animation: none !important; }
 }
