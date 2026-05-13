@@ -50,11 +50,11 @@
   --color-gradient-card-from: rgba(184, 169, 212, 0.16);
   --color-gradient-card-to:   rgba(184, 169, 212, 0);
 
-  /* Fonts — Instrument Serif (body italic) + Outfit (sans) + Newsreader (display serif) */
+  /* Fonts — Instrument Serif (body italic) + Outfit (sans) + Cormorant Garamond (hero display italic) */
   --font-sans: var(--font-outfit);
   --font-serif: var(--font-instrument-serif);
   --font-display: var(--font-outfit);
-  --font-display-serif: var(--font-newsreader);
+  --font-display-serif: var(--font-cormorant);
 
   /* Extra Aatram brand tokens used for per-word coloring on the hero punch line */
   --color-accent-rose: #C9929B;
