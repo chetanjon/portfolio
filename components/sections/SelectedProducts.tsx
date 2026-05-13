@@ -65,10 +65,11 @@ const products: Product[] = [
 ];
 
 function PhoneShell({ children, className }: { children: React.ReactNode; className?: string }) {
+  // The screenshots already include the real iOS dynamic island / status chrome,
+  // so the frame is just rounded corners + a hairline border. No fake notch.
   return (
-    <div className={`relative rounded-[2rem] border-[5px] border-text-primary/85 bg-bg-secondary p-1.5 shadow-xl ${className ?? ''}`}>
-      <div className="absolute left-1/2 top-1.5 z-10 h-4 w-20 -translate-x-1/2 rounded-b-xl bg-text-primary/85" />
-      <div className="overflow-hidden rounded-[1.5rem]">{children}</div>
+    <div className={`relative rounded-[2.2rem] border-[5px] border-text-primary/85 bg-text-primary/85 shadow-2xl ${className ?? ''}`}>
+      <div className="overflow-hidden rounded-[1.8rem]">{children}</div>
     </div>
   );
 }
@@ -81,18 +82,18 @@ function PhoneCluster({ shots, name }: { shots: string[]; name: string }) {
       </PhoneShell>
     );
   }
-  // 2–3 shots: staggered trio, middle one forward
+  // 2–3 shots: side phones tilted out, hero phone forward and slightly larger.
   const [left, center, right] = shots.length >= 3 ? shots : [shots[0], shots[0], shots[1]];
   return (
-    <div className="relative flex items-center justify-center h-[420px] md:h-[480px]">
-      <PhoneShell className="absolute left-[8%] top-1/2 w-[40%] max-w-[180px] -translate-y-1/2 -rotate-6 opacity-90">
-        <Image src={left} alt={`${name} screenshot`} width={1290} height={2560} className="w-full h-auto" />
+    <div className="relative flex items-center justify-center h-[440px] md:h-[520px] py-4">
+      <PhoneShell className="absolute left-0 md:left-[2%] top-[14%] w-[36%] max-w-[170px] -rotate-[8deg] origin-bottom-right opacity-90">
+        <Image src={left} alt={`${name} — Crew`} width={1290} height={2560} className="w-full h-auto" />
       </PhoneShell>
-      <PhoneShell className="absolute right-[8%] top-1/2 w-[40%] max-w-[180px] -translate-y-1/2 rotate-6 opacity-90">
-        <Image src={right} alt={`${name} screenshot`} width={1290} height={2560} className="w-full h-auto" />
+      <PhoneShell className="absolute right-0 md:right-[2%] top-[14%] w-[36%] max-w-[170px] rotate-[8deg] origin-bottom-left opacity-90">
+        <Image src={right} alt={`${name} — Insights`} width={1290} height={2560} className="w-full h-auto" />
       </PhoneShell>
-      <PhoneShell className="relative z-10 w-[46%] max-w-[210px]">
-        <Image src={center} alt={`${name} screenshot`} width={1290} height={2560} className="w-full h-auto" priority />
+      <PhoneShell className="relative z-10 w-[44%] max-w-[210px]">
+        <Image src={center} alt={`${name} — Home`} width={1290} height={2560} className="w-full h-auto" priority />
       </PhoneShell>
     </div>
   );
@@ -113,23 +114,12 @@ function BrowserShell({ children, className }: { children: React.ReactNode; clas
 }
 
 function BrowserCluster({ shots, name }: { shots: string[]; name: string }) {
-  if (shots.length === 1) {
-    return (
-      <BrowserShell className="mx-auto w-full">
-        <Image src={shots[0]} alt={`${name} screenshot`} width={1920} height={1080} className="w-full h-auto" priority />
-      </BrowserShell>
-    );
-  }
-  const [front, back] = shots;
+  // One clean browser frame; the wide aspect ratio doesn't stack cleanly.
+  const front = shots[0];
   return (
-    <div className="relative w-full pt-8 pr-6 pb-2 pl-2">
-      <BrowserShell className="absolute right-0 top-0 w-[78%] rotate-[2.5deg] opacity-85">
-        <Image src={back} alt={`${name} secondary screenshot`} width={1920} height={1080} className="w-full h-auto" />
-      </BrowserShell>
-      <BrowserShell className="relative z-10 w-full">
-        <Image src={front} alt={`${name} screenshot`} width={1920} height={1080} className="w-full h-auto" priority />
-      </BrowserShell>
-    </div>
+    <BrowserShell className="mx-auto w-full">
+      <Image src={front} alt={`${name} screenshot`} width={1920} height={1080} className="w-full h-auto" priority />
+    </BrowserShell>
   );
 }
 
