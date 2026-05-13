@@ -17,7 +17,7 @@ const paragraphs = [
   {
     heading: 'How I ship',
     body:
-      "I design the prototype in Figma, build it in code when I have to, and pair with engineers when they need product context inside the editor. V1 of Aatram hit the App Store in seven days because I was unblocked across product, design, and the codebase. I don't run a roadmap I can't operate myself.",
+      "I prototype in Figma when a written spec isn't enough. I work closely with engineers, and my technical background means I'm useful in the room when they need product context. V1 of Aatram hit the App Store in seven days because we were aligned across product, design, and engineering from day one.",
   },
 ];
 
@@ -37,6 +37,19 @@ export function HowIWork() {
             From the editor.
           </h2>
         </motion.div>
+
+        {/* Bio intro — short who-I-am paragraph in CJ's actual voice,
+            not a credential dump. Sets up the testimonial about Aatram's Timer
+            by establishing that CJ dogfoods her own products. */}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="font-display text-text-primary text-lg md:text-xl leading-relaxed mb-10 max-w-2xl"
+        >
+          I&rsquo;m Chetan, a product manager with engineering training and a designer&rsquo;s eye. At <em className="font-serif italic">Aatram</em>, I co-founded and led product on a consumer iOS app now live on the App Store. At <em className="font-serif italic">FrictionLens</em>, I shipped a full-stack AI review intelligence platform with a public marketing site and dashboard. Before either, I ran the vendor side of a B2B handloom marketplace and scaled it 3.75× from 20 to 75 vendors, while doubling GMV. CSPO certified. MS in Management of Technology from Arizona State University. Phoenix is where I sleep. The work is portable.
+        </motion.p>
 
         <div className="space-y-10">
           {paragraphs.map((p, i) => (

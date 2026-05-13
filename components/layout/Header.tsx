@@ -87,7 +87,7 @@ export function Header() {
               size={56}
               className={cn(textStrong, 'transition-transform duration-300 group-hover:scale-110')}
             />
-            <span className={cn('text-[15px] font-medium tracking-[0.2em] uppercase transition-colors whitespace-nowrap', textSubtle)}>
+            <span className={cn('hidden sm:inline text-[15px] font-medium tracking-[0.2em] uppercase transition-colors whitespace-nowrap', textSubtle)}>
               Chetan J.
             </span>
           </Link>
@@ -96,7 +96,7 @@ export function Header() {
               Everything else lives in the Menu overlay. */}
           <nav className="hidden md:flex items-center gap-10 lg:gap-14 text-[15px]">
             {navItems
-              .filter((item) => ['/work', '/casestudies', '/about', '/resume'].includes(item.href))
+              .filter((item) => ['/work', '/casestudies', '/about', '/resume', '/contact'].includes(item.href))
               .map((item) => {
                 const isResume = item.href === '/resume';
 
