@@ -30,9 +30,9 @@ const Wrap = ({ children, style = {} }) => <div style={{ maxWidth:720,margin:"0 
 
 const Head = ({ n, title, sub }) => (
   <div style={{ marginBottom:40 }}>
-    {n && <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:13,letterSpacing:".2em",color:"#8B4513",marginBottom:10,fontWeight:600 }}>{String(n).padStart(2,"0")}</div>}
-    <h2 style={{ fontFamily:"'Playfair Display',serif",fontSize:36,lineHeight:1.15,color:"#1C1410",margin:"0 0 10px",fontWeight:700 }}>{title}</h2>
-    {sub && <p style={{ fontFamily:"'Source Serif 4',serif",fontSize:16,lineHeight:1.6,color:"#8A7E73",margin:0,fontStyle:"italic" }}>{sub}</p>}
+    {n && <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,letterSpacing:".2em",color:"#8B4513",marginBottom:10,fontWeight:600 }}>{String(n).padStart(2,"0")}</div>}
+    <h2 style={{ fontFamily:"'Instrument Serif',serif",fontSize:36,lineHeight:1.15,color:"#1C1410",margin:"0 0 10px",fontWeight:700 }}>{title}</h2>
+    {sub && <p style={{ fontFamily:"'Instrument Serif',serif",fontSize:16,lineHeight:1.6,color:"#8A7E73",margin:0,fontStyle:"italic" }}>{sub}</p>}
   </div>
 );
 
@@ -40,17 +40,17 @@ const Insight = ({ children, type = "insight" }) => {
   const c = { insight:{bg:"#FAF3ED",bdr:"#8B4513",lbl:"PM INSIGHT",lc:"#8B4513"}, takeaway:{bg:"#F2F5EF",bdr:"#5C6B4F",lbl:"KEY TAKEAWAY",lc:"#5C6B4F"}, risk:{bg:"#F9F0EE",bdr:"#A0522D",lbl:"RED FLAG",lc:"#A0522D"}, opp:{bg:"#FBF8F0",bdr:"#B8860B",lbl:"OPPORTUNITY",lc:"#9A7209"} }[type] || { bg:"#FAF3ED",bdr:"#8B4513",lbl:"PM INSIGHT",lc:"#8B4513" };
   return (
     <div style={{ background:c.bg,borderLeft:`3px solid ${c.bdr}`,borderRadius:"0 10px 10px 0",padding:"24px 28px",margin:"32px 0" }}>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".14em",fontWeight:700,color:c.lc,marginBottom:10 }}>{c.lbl}</div>
-      <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:15,lineHeight:1.8,color:"#3D3229" }}>{children}</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:11,letterSpacing:".14em",fontWeight:700,color:c.lc,marginBottom:10 }}>{c.lbl}</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:15,lineHeight:1.8,color:"#3D3229" }}>{children}</div>
     </div>
   );
 };
 
 const Stat = ({ v, l, note, accent = "#8B4513" }) => (
   <div style={{ background:"#fff",borderRadius:12,padding:"26px 20px",border:"1px solid rgba(28,20,16,.05)",textAlign:"center" }}>
-    <div style={{ fontFamily:"'Playfair Display',serif",fontSize:30,fontWeight:700,color:accent,marginBottom:4 }}>{v}</div>
-    <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,fontWeight:500,color:"#1C1410",marginBottom:3 }}>{l}</div>
-    {note && <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".06em",color:"#A89E93",fontWeight:600 }}>{note}</div>}
+    <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:30,fontWeight:700,color:accent,marginBottom:4 }}>{v}</div>
+    <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,fontWeight:500,color:"#1C1410",marginBottom:3 }}>{l}</div>
+    {note && <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".06em",color:"#A89E93",fontWeight:600 }}>{note}</div>}
   </div>
 );
 
@@ -58,15 +58,15 @@ const GMVChart = () => {
   const d = [{y:"2021",v:0.9,l:"$0.9B"},{y:"2022",v:4.4,l:"$4.4B"},{y:"2023",v:11,l:"$11B"},{y:"2024",v:33.2,l:"$33.2B"},{y:"H1'25",v:26.2,l:"$26.2B"},{y:"2025E",v:64,l:"~$64B"},{y:"2026F",v:112,l:"~$112B"}];
   return (
     <div style={{ background:"#1C1410",borderRadius:14,padding:"28px 24px 20px",margin:"28px 0" }}>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".12em",color:"#8A7E73",fontWeight:600,marginBottom:20 }}>TIKTOK SHOP · GLOBAL GMV TRAJECTORY</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:11,letterSpacing:".12em",color:"#8A7E73",fontWeight:600,marginBottom:20 }}>TIKTOK SHOP · GLOBAL GMV TRAJECTORY</div>
       <div style={{ display:"flex",alignItems:"flex-end",gap:6,height:170 }}>
         {d.map((item,i) => {
           const h = (item.v/120)*150; const fc = i >= 5;
           return (
             <div key={i} style={{ flex:1,display:"flex",flexDirection:"column",alignItems:"center" }}>
-              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,fontWeight:700,color:fc?"#B8860B":"#C4956A",marginBottom:5 }}>{item.l}</div>
+              <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,fontWeight:700,color:fc?"#B8860B":"#C4956A",marginBottom:5 }}>{item.l}</div>
               <div style={{ width:"100%",maxWidth:42,height:h,borderRadius:"5px 5px 0 0",background:fc?"repeating-linear-gradient(135deg,rgba(184,134,11,.25),rgba(184,134,11,.25) 3px,rgba(184,134,11,.1) 3px,rgba(184,134,11,.1) 6px)":`linear-gradient(180deg,#C4956A ${i<3?"70%":"30%"},#5C6B4F)` }}/>
-              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,color:"#6B5E52",marginTop:7,fontWeight:600 }}>{item.y}</div>
+              <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:9,color:"#6B5E52",marginTop:7,fontWeight:600 }}>{item.y}</div>
             </div>
           );
         })}
@@ -79,14 +79,14 @@ const Persona = ({ name, age, type, emoji, bg, behaviors, pains }) => (
   <div style={{ background:"#fff",borderRadius:14,overflow:"hidden",border:"1px solid rgba(28,20,16,.05)" }}>
     <div style={{ background:bg,padding:"20px 22px",color:"#fff" }}>
       <div style={{ fontSize:26,marginBottom:4 }}>{emoji}</div>
-      <div style={{ fontFamily:"'Playfair Display',serif",fontSize:16,fontWeight:700 }}>{name}, {age}</div>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".08em",fontWeight:600,opacity:.85,marginTop:3 }}>{type}</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:16,fontWeight:700 }}>{name}, {age}</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".08em",fontWeight:600,opacity:.85,marginTop:3 }}>{type}</div>
     </div>
     <div style={{ padding:"16px 22px" }}>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8A7E73",marginBottom:6 }}>BEHAVIORS</div>
-      <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:12.5,lineHeight:1.65,color:"#3D3229",marginBottom:14 }}>{behaviors}</div>
-      <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#A0522D",marginBottom:6 }}>PAIN POINTS</div>
-      <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:12.5,lineHeight:1.65,color:"#3D3229" }}>{pains}</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8A7E73",marginBottom:6 }}>BEHAVIORS</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:12.5,lineHeight:1.65,color:"#3D3229",marginBottom:14 }}>{behaviors}</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#A0522D",marginBottom:6 }}>PAIN POINTS</div>
+      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:12.5,lineHeight:1.65,color:"#3D3229" }}>{pains}</div>
     </div>
   </div>
 );
@@ -98,26 +98,26 @@ const Phone = ({ title, children }) => (
       <div style={{ padding:9,height:340,overflow:"hidden" }}>{children}</div>
       <div style={{ position:"absolute",bottom:5,left:"50%",transform:"translateX(-50%)",width:70,height:3,borderRadius:2,background:"#ccc" }}/>
     </div>
-    <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:11.5,fontWeight:600,color:"#1C1410",marginTop:12,textAlign:"center" }}>{title}</div>
+    <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:11.5,fontWeight:600,color:"#1C1410",marginTop:12,textAlign:"center" }}>{title}</div>
   </div>
 );
 
 const CStep = ({ letter, title, sub, color, bg, children }) => (
   <div style={{ background:bg,borderRadius:14,padding:"26px 28px",marginBottom:16,border:`1px solid ${color}15` }}>
     <div style={{ display:"flex",alignItems:"center",gap:12,marginBottom:14 }}>
-      <div style={{ width:34,height:34,borderRadius:9,background:color,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Playfair Display',serif",fontSize:15,fontWeight:700,color:"#fff",flexShrink:0 }}>{letter}</div>
+      <div style={{ width:34,height:34,borderRadius:9,background:color,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Instrument Serif',serif",fontSize:15,fontWeight:700,color:"#fff",flexShrink:0 }}>{letter}</div>
       <div>
-        <div style={{ fontFamily:"'Playfair Display',serif",fontSize:16,fontWeight:700,color:"#1C1410" }}>{title}</div>
-        <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:11.5,color:"#8A7E73",fontStyle:"italic" }}>{sub}</div>
+        <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:16,fontWeight:700,color:"#1C1410" }}>{title}</div>
+        <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:11.5,color:"#8A7E73",fontStyle:"italic" }}>{sub}</div>
       </div>
     </div>
-    <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:14.5,lineHeight:1.8,color:"#3D3229" }}>{children}</div>
+    <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:14.5,lineHeight:1.8,color:"#3D3229" }}>{children}</div>
   </div>
 );
 
 export default function TikTokShopCaseStudy() {
-  const body = { fontFamily:"'Source Serif 4',serif",fontSize:15.5,lineHeight:1.85,color:"#3D3229",margin:"0 0 20px" };
-  const h3s = { fontFamily:"'Playfair Display',serif",fontSize:20,fontWeight:700,color:"#1C1410",margin:"36px 0 14px" };
+  const body = { fontFamily:"'Instrument Serif',serif",fontSize:15.5,lineHeight:1.85,color:"#3D3229",margin:"0 0 20px" };
+  const h3s = { fontFamily:"'Instrument Serif',serif",fontSize:20,fontWeight:700,color:"#1C1410",margin:"36px 0 14px" };
 
   const tocTheme = {
     accent: "#8B4513",
@@ -126,9 +126,9 @@ export default function TikTokShopCaseStudy() {
     textDim: "#6B5E52",
     bg: "rgba(248, 244, 239, 0.94)",
     border: "rgba(28,20,16,.05)",
-    fontMono: "'Cormorant Garamond', serif",
-    fontSans: "'Source Serif 4', serif",
-    fontSerif: "'Playfair Display', serif",
+    fontMono: "'Instrument Serif', serif",
+    fontSans: "'Instrument Serif', serif",
+    fontSerif: "'Instrument Serif', serif",
   };
 
   return (
@@ -147,20 +147,20 @@ export default function TikTokShopCaseStudy() {
         <div style={{ position:"absolute",top:-150,right:-100,width:500,height:500,borderRadius:"50%",background:"radial-gradient(circle,rgba(196,149,106,.08) 0%,transparent 70%)" }}/>
         <div style={{ position:"absolute",bottom:-100,left:-80,width:350,height:350,borderRadius:"50%",background:"radial-gradient(circle,rgba(92,107,79,.06) 0%,transparent 70%)" }}/>
         <Wrap>
-          <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:12,letterSpacing:".25em",color:"#C4956A",marginBottom:28,fontWeight:600 }}>PM CASE STUDY · SOCIAL COMMERCE</div>
-          <h1 style={{ fontFamily:"'Playfair Display',serif",fontSize:56,lineHeight:1.05,color:"#F8F4EF",margin:"0 0 20px",fontWeight:700,maxWidth:560 }}>TikTok Shop</h1>
-          <p style={{ fontFamily:"'Source Serif 4',serif",fontSize:20,lineHeight:1.55,color:"rgba(248,244,239,.5)",margin:"0 0 44px",maxWidth:500,fontStyle:"italic" }}>Redesigning trust, discovery & purchase confidence in the world&apos;s fastest-growing social commerce platform.</p>
+          <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:12,letterSpacing:".25em",color:"#C4956A",marginBottom:28,fontWeight:600 }}>PM CASE STUDY · SOCIAL COMMERCE</div>
+          <h1 style={{ fontFamily:"'Instrument Serif',serif",fontSize:56,lineHeight:1.05,color:"#F8F4EF",margin:"0 0 20px",fontWeight:700,maxWidth:560 }}>TikTok Shop</h1>
+          <p style={{ fontFamily:"'Instrument Serif',serif",fontSize:20,lineHeight:1.55,color:"rgba(248,244,239,.5)",margin:"0 0 44px",maxWidth:500,fontStyle:"italic" }}>Redesigning trust, discovery & purchase confidence in the world&apos;s fastest-growing social commerce platform.</p>
           <div style={{ display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:1,borderRadius:12,overflow:"hidden",maxWidth:600 }}>
             {[{v:"~$64B",l:"GMV 2025 (EST.)",c:"#C4956A"},{v:"800K+",l:"US Shops",c:"#5C6B4F"},{v:"15M+",l:"Creators Global",c:"#B8860B"},{v:"1.3/5",l:"Trustpilot",c:"#A0522D"}].map((s,i) => (
               <div key={i} style={{ background:"rgba(248,244,239,.04)",padding:"22px 14px",textAlign:"center",backdropFilter:"blur(8px)" }}>
-                <div style={{ fontFamily:"'Playfair Display',serif",fontSize:22,fontWeight:700,color:s.c,marginBottom:5 }}>{s.v}</div>
-                <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,letterSpacing:".06em",color:"rgba(248,244,239,.35)",fontWeight:600 }}>{s.l}</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:22,fontWeight:700,color:s.c,marginBottom:5 }}>{s.v}</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:9,letterSpacing:".06em",color:"rgba(248,244,239,.35)",fontWeight:600 }}>{s.l}</div>
               </div>
             ))}
           </div>
           <div style={{ marginTop:36,display:"flex",gap:12,flexWrap:"wrap" }}>
             {["CIRCLES Framework","Wireframes","PRD","Fact-Checked Data"].map((t,i) => (
-              <span key={i} style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".08em",fontWeight:600,padding:"7px 14px",borderRadius:5,background:"rgba(248,244,239,.04)",color:"rgba(248,244,239,.4)",border:"1px solid rgba(248,244,239,.06)" }}>{t}</span>
+              <span key={i} style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".08em",fontWeight:600,padding:"7px 14px",borderRadius:5,background:"rgba(248,244,239,.04)",color:"rgba(248,244,239,.4)",border:"1px solid rgba(248,244,239,.06)" }}>{t}</span>
             ))}
           </div>
         </Wrap>
@@ -176,8 +176,8 @@ export default function TikTokShopCaseStudy() {
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12,margin:"28px 0" }}>
             {[{n:"Approach",d:"Product improvement case study using the CIRCLES framework, grounded in verified market data"},{n:"Scope",d:"Trust & discovery UX for impulse buyers, the largest and highest-volume user segment on TikTok Shop"},{n:"Artifacts",d:"CIRCLES analysis, 3 wireframe mockups, full PRD with phased scope, benchmarked success metrics"}].map((x,i) => (
               <div key={i} style={{ background:"#F8F4EF",borderRadius:10,padding:"18px 20px",border:"1px solid rgba(28,20,16,.04)" }}>
-                <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8B4513",marginBottom:8 }}>{x.n.toUpperCase()}</div>
-                <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.65,color:"#3D3229" }}>{x.d}</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8B4513",marginBottom:8 }}>{x.n.toUpperCase()}</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,lineHeight:1.65,color:"#3D3229" }}>{x.d}</div>
               </div>
             ))}
           </div>
@@ -228,8 +228,8 @@ export default function TikTokShopCaseStudy() {
             <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:10,marginTop:8 }}>
               {[{s:"Trust Score",im:"HIGH",ef:"MED",r:"Seller pushback"},{s:"Smart Card",im:"HIGH",ef:"HIGH",r:"Feed clutter"},{s:"Creator Labels",im:"MED",ef:"LOW",r:"Creator resistance"}].map((x,i)=>(
                 <div key={i} style={{ background:"#fff",borderRadius:8,padding:12,border:"1px solid rgba(28,20,16,.04)" }}>
-                  <div style={{ fontFamily:"'Playfair Display',serif",fontSize:12,fontWeight:600,color:"#1C1410",marginBottom:6 }}>{x.s}</div>
-                  <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,lineHeight:1.7,color:"#6B5E52",fontWeight:500 }}>
+                  <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:12,fontWeight:600,color:"#1C1410",marginBottom:6 }}>{x.s}</div>
+                  <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,lineHeight:1.7,color:"#6B5E52",fontWeight:500 }}>
                     Impact: <span style={{ color:x.im==="HIGH"?"#5C6B4F":"#B8860B",fontWeight:700 }}>{x.im}</span><br/>
                     Effort: <span style={{ color:x.ef==="HIGH"?"#A0522D":x.ef==="MED"?"#B8860B":"#5C6B4F",fontWeight:700 }}>{x.ef}</span><br/>
                     Risk: {x.r}
@@ -272,10 +272,10 @@ export default function TikTokShopCaseStudy() {
               <div key={i} style={{ background:"#FDFBF8",borderRadius:12,padding:"22px",border:"1px solid rgba(28,20,16,.04)" }}>
                 <div style={{ display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10 }}>
                   <span style={{ fontSize:22 }}>{p.icon}</span>
-                  <span style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,letterSpacing:".08em",fontWeight:700,padding:"3px 8px",borderRadius:4,background:p.sev==="CRITICAL"?"#F9F0EE":p.sev==="HIGH"?"#FBF8F0":"#F2F5EF",color:p.sev==="CRITICAL"?"#A0522D":p.sev==="HIGH"?"#9A7209":"#5C6B4F" }}>{p.sev}</span>
+                  <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:9,letterSpacing:".08em",fontWeight:700,padding:"3px 8px",borderRadius:4,background:p.sev==="CRITICAL"?"#F9F0EE":p.sev==="HIGH"?"#FBF8F0":"#F2F5EF",color:p.sev==="CRITICAL"?"#A0522D":p.sev==="HIGH"?"#9A7209":"#5C6B4F" }}>{p.sev}</span>
                 </div>
-                <div style={{ fontFamily:"'Playfair Display',serif",fontSize:15,fontWeight:700,color:"#1C1410",marginBottom:8 }}>{p.title}</div>
-                <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.65,color:"#6B5E52" }}>{p.desc}</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:15,fontWeight:700,color:"#1C1410",marginBottom:8 }}>{p.title}</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,lineHeight:1.65,color:"#6B5E52" }}>{p.desc}</div>
               </div>
             ))}
           </div>
@@ -291,8 +291,8 @@ export default function TikTokShopCaseStudy() {
           <h3 style={h3s}>5.1 · Seller Trust Score</h3>
           <p style={body}>A composite reliability metric (0–100) computed from five weighted signals: on-time shipping rate (25%), review authenticity score (25%), return/dispute rate (20%), account age & verification (15%), and video-product match rate (15%). Displayed as a color-coded badge at every purchase touchpoint. Builds on TikTok&apos;s existing Shop Performance Score but makes it buyer-facing.</p>
           <div style={{ background:"#F5F1EC",borderRadius:8,padding:"14px 18px",margin:"0 0 20px",border:"1px solid rgba(28,20,16,.04)" }}>
-            <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,letterSpacing:".1em",fontWeight:700,color:"#6B5E52",marginBottom:6 }}>TECHNICAL FEASIBILITY</div>
-            <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>V1 is low complexity. The signals already exist in TikTok&apos;s seller analytics backend (Shop Performance Score). The work is surfacing an aggregated score client-side and designing the badge component. Eng estimate: 2–3 sprints. V2 (video-product match AI) is high complexity and requires computer vision to compare product listing images against in-video product appearances. I&apos;d propose a 2-week technical spike before committing to this, and would work with the ML team to evaluate whether existing content moderation models can be adapted.</div>
+            <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:9,letterSpacing:".1em",fontWeight:700,color:"#6B5E52",marginBottom:6 }}>TECHNICAL FEASIBILITY</div>
+            <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>V1 is low complexity. The signals already exist in TikTok&apos;s seller analytics backend (Shop Performance Score). The work is surfacing an aggregated score client-side and designing the badge component. Eng estimate: 2–3 sprints. V2 (video-product match AI) is high complexity and requires computer vision to compare product listing images against in-video product appearances. I&apos;d propose a 2-week technical spike before committing to this, and would work with the ML team to evaluate whether existing content moderation models can be adapted.</div>
           </div>
           <h3 style={h3s}>5.2 · Smart Product Card</h3>
           <p style={body}>An enhanced overlay triggered by tapping a product tag in any video. Instead of navigating away, users see a contextual card: price with shipping estimate, trust score badge, top 3 verified-purchase review snippets, &quot;similar from trusted sellers&quot; shortcut, and one-tap add-to-cart. Collapses with a swipe, preserving content flow.</p>
@@ -310,38 +310,38 @@ export default function TikTokShopCaseStudy() {
           <div style={{ display:"flex",gap:20,justifyContent:"center",flexWrap:"wrap" }}>
             <Phone title="Smart Product Card (In-Feed)">
               <div style={{ background:"#1C1410",height:130,borderRadius:7,display:"flex",alignItems:"center",justifyContent:"center",marginBottom:7 }}>
-                <span style={{ color:"#6B5E52",fontFamily:"'Cormorant Garamond',serif",fontSize:10,fontWeight:600,letterSpacing:".06em" }}>▶ CREATOR VIDEO</span>
+                <span style={{ color:"#6B5E52",fontFamily:"'Instrument Serif',serif",fontSize:10,fontWeight:600,letterSpacing:".06em" }}>▶ CREATOR VIDEO</span>
               </div>
               <div style={{ background:"#fff",borderRadius:10,padding:10,border:"1px solid #E8E2DA",boxShadow:"0 4px 16px rgba(28,20,16,.06)" }}>
                 <div style={{ display:"flex",justifyContent:"space-between",marginBottom:5 }}>
-                  <span style={{ fontFamily:"'Playfair Display',serif",fontSize:10.5,fontWeight:700 }}>Glow Serum ✨</span>
-                  <span style={{ fontFamily:"'Playfair Display',serif",fontSize:10.5,fontWeight:700,color:"#8B4513" }}>$24.99</span>
+                  <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:10.5,fontWeight:700 }}>Glow Serum ✨</span>
+                  <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:10.5,fontWeight:700,color:"#8B4513" }}>$24.99</span>
                 </div>
                 <div style={{ display:"flex",gap:4,marginBottom:7,flexWrap:"wrap" }}>
-                  <span style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8,fontWeight:700,background:"#F2F5EF",color:"#5C6B4F",padding:"2px 5px",borderRadius:3 }}>TRUST 92</span>
-                  <span style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8,fontWeight:600,background:"#FBF8F0",color:"#9A7209",padding:"2px 5px",borderRadius:3 }}>⭐ 4.7 (2.1K)</span>
-                  <span style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8,fontWeight:600,background:"#FAF3ED",color:"#8B4513",padding:"2px 5px",borderRadius:3 }}>3-DAY SHIP</span>
+                  <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:8,fontWeight:700,background:"#F2F5EF",color:"#5C6B4F",padding:"2px 5px",borderRadius:3 }}>TRUST 92</span>
+                  <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:8,fontWeight:600,background:"#FBF8F0",color:"#9A7209",padding:"2px 5px",borderRadius:3 }}>⭐ 4.7 (2.1K)</span>
+                  <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:8,fontWeight:600,background:"#FAF3ED",color:"#8B4513",padding:"2px 5px",borderRadius:3 }}>3-DAY SHIP</span>
                 </div>
-                <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:8.5,lineHeight:1.5,color:"#8A7E73",marginBottom:7,fontStyle:"italic" }}>&quot;Skin cleared up in 2 weeks&quot; (verified)</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:8.5,lineHeight:1.5,color:"#8A7E73",marginBottom:7,fontStyle:"italic" }}>&quot;Skin cleared up in 2 weeks&quot; (verified)</div>
                 <div style={{ display:"flex",gap:5 }}>
-                  <div style={{ flex:1,background:"#8B4513",borderRadius:5,padding:"7px 0",textAlign:"center",fontFamily:"'Cormorant Garamond',serif",fontSize:9,fontWeight:700,color:"#fff",letterSpacing:".04em" }}>Add to Cart</div>
+                  <div style={{ flex:1,background:"#8B4513",borderRadius:5,padding:"7px 0",textAlign:"center",fontFamily:"'Instrument Serif',serif",fontSize:9,fontWeight:700,color:"#fff",letterSpacing:".04em" }}>Add to Cart</div>
                   <div style={{ width:30,background:"#F5F1EC",borderRadius:5,display:"flex",alignItems:"center",justifyContent:"center",fontSize:9,color:"#8A7E73" }}>≡</div>
                 </div>
               </div>
             </Phone>
             <Phone title="Seller Trust Score Detail">
               <div style={{ textAlign:"center",marginBottom:10 }}>
-                <div style={{ fontFamily:"'Playfair Display',serif",fontSize:13,fontWeight:700,marginBottom:3 }}>GlowBeauty Official</div>
-                <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,fontWeight:600,color:"#5C6B4F",letterSpacing:".04em" }}>✓ VERIFIED SELLER</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,fontWeight:700,marginBottom:3 }}>GlowBeauty Official</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:9,fontWeight:600,color:"#5C6B4F",letterSpacing:".04em" }}>✓ VERIFIED SELLER</div>
               </div>
               <div style={{ background:"#F2F5EF",borderRadius:50,width:64,height:64,margin:"0 auto 10px",display:"flex",alignItems:"center",justifyContent:"center" }}>
-                <span style={{ fontFamily:"'Playfair Display',serif",fontSize:24,fontWeight:800,color:"#5C6B4F" }}>92</span>
+                <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:24,fontWeight:800,color:"#5C6B4F" }}>92</span>
               </div>
               {[{l:"On-Time Shipping",v:"97%",w:97},{l:"Review Authenticity",v:"94%",w:94},{l:"Return Rate",v:"3.2%",w:87},{l:"Video-Product Match",v:"91%",w:91},{l:"Account Age",v:"2.4 yrs",w:80}].map((m,i)=>(
                 <div key={i} style={{ marginBottom:7 }}>
                   <div style={{ display:"flex",justifyContent:"space-between",marginBottom:2 }}>
-                    <span style={{ fontFamily:"'Source Serif 4',serif",fontSize:8.5,color:"#6B5E52" }}>{m.l}</span>
-                    <span style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:9,fontWeight:700,color:"#1C1410" }}>{m.v}</span>
+                    <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:8.5,color:"#6B5E52" }}>{m.l}</span>
+                    <span style={{ fontFamily:"'Instrument Serif',serif",fontSize:9,fontWeight:700,color:"#1C1410" }}>{m.v}</span>
                   </div>
                   <div style={{ height:4,background:"#E8E2DA",borderRadius:2,overflow:"hidden" }}>
                     <div style={{ height:"100%",width:`${m.w}%`,background:m.w>85?"#5C6B4F":m.w>60?"#B8860B":"#A0522D",borderRadius:2 }}/>
@@ -353,21 +353,21 @@ export default function TikTokShopCaseStudy() {
               <div style={{ display:"flex",alignItems:"center",gap:7,marginBottom:10,paddingBottom:9,borderBottom:"1px solid #E8E2DA" }}>
                 <div style={{ width:32,height:32,borderRadius:16,background:"linear-gradient(135deg,#8B4513,#B8860B)" }}/>
                 <div>
-                  <div style={{ fontFamily:"'Playfair Display',serif",fontSize:11,fontWeight:700 }}>@skincare.sarah</div>
-                  <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8.5,fontWeight:600,color:"#8A7E73" }}>412K followers</div>
+                  <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:11,fontWeight:700 }}>@skincare.sarah</div>
+                  <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:8.5,fontWeight:600,color:"#8A7E73" }}>412K followers</div>
                 </div>
               </div>
               <div style={{ background:"#FBF8F0",borderRadius:8,padding:10,marginBottom:8,border:"1px solid rgba(184,134,11,.12)" }}>
-                <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8.5,letterSpacing:".08em",fontWeight:700,color:"#9A7209",marginBottom:6 }}>AFFILIATE PARTNERSHIP</div>
-                <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:9.5,lineHeight:1.5,color:"#6B5E52" }}>Sarah earns commission on this product ↓</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:8.5,letterSpacing:".08em",fontWeight:700,color:"#9A7209",marginBottom:6 }}>AFFILIATE PARTNERSHIP</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:9.5,lineHeight:1.5,color:"#6B5E52" }}>Sarah earns commission on this product ↓</div>
               </div>
               <div style={{ background:"#F5F1EC",borderRadius:8,padding:10 }}>
-                <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:8.5,letterSpacing:".08em",fontWeight:700,color:"#1C1410",marginBottom:8 }}>CREATOR TRACK RECORD</div>
+                <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:8.5,letterSpacing:".08em",fontWeight:700,color:"#1C1410",marginBottom:8 }}>CREATOR TRACK RECORD</div>
                 <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:6 }}>
                   {[{v:"87%",l:"Keep 4+ ⭐"},{v:"4.2%",l:"Avg return rate"},{v:"143",l:"Products promoted"},{v:"96%",l:"Still available"}].map((s,i)=>(
                     <div key={i} style={{ background:"#fff",borderRadius:5,padding:"7px 8px",textAlign:"center" }}>
-                      <div style={{ fontFamily:"'Playfair Display',serif",fontSize:13,fontWeight:700,color:"#1C1410" }}>{s.v}</div>
-                      <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:7.5,color:"#8A7E73",marginTop:1 }}>{s.l}</div>
+                      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,fontWeight:700,color:"#1C1410" }}>{s.v}</div>
+                      <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:7.5,color:"#8A7E73",marginTop:1 }}>{s.l}</div>
                     </div>
                   ))}
                 </div>
@@ -408,7 +408,7 @@ export default function TikTokShopCaseStudy() {
             <table style={{ width:"100%",borderCollapse:"collapse",fontSize:13 }}>
               <thead><tr style={{ borderBottom:"2px solid #1C1410" }}>
                 {["Dimension","TikTok Shop","Instagram","YouTube","Amazon"].map((h,i) => (
-                  <th key={i} style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".08em",fontWeight:700,color:"#8A7E73",textAlign:"left",padding:"10px" }}>{h}</th>
+                  <th key={i} style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".08em",fontWeight:700,color:"#8A7E73",textAlign:"left",padding:"10px" }}>{h}</th>
                 ))}
               </tr></thead>
               <tbody>
@@ -421,7 +421,7 @@ export default function TikTokShopCaseStudy() {
                 ].map((r,i)=>(
                   <tr key={i} style={{ borderBottom:"1px solid #E8E2DA" }}>
                     {r.map((c,j)=>(
-                      <td key={j} style={{ padding:"10px",fontFamily:j===0?"'Playfair Display',serif":"'Source Serif 4',serif",fontSize:12,fontWeight:j===0?600:400,color:j===0?"#1C1410":"#6B5E52" }}>{c}</td>
+                      <td key={j} style={{ padding:"10px",fontFamily:j===0?"'Instrument Serif',serif":"'Instrument Serif',serif",fontSize:12,fontWeight:j===0?600:400,color:j===0?"#1C1410":"#6B5E52" }}>{c}</td>
                     ))}
                   </tr>
                 ))}
@@ -438,14 +438,14 @@ export default function TikTokShopCaseStudy() {
         <Wrap>
           <Head n={9} title="Product Requirements Document" sub="Trust Layer, Phase 1 & 2 specification" />
           <div style={{ background:"#1C1410",borderRadius:14,padding:"28px 30px",marginBottom:28 }}>
-            <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".12em",fontWeight:700,color:"#C4956A",marginBottom:14 }}>PROBLEM STATEMENT</div>
-            <p style={{ fontFamily:"'Source Serif 4',serif",fontSize:15,lineHeight:1.8,color:"rgba(248,244,239,.65)",margin:0 }}>
+            <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:11,letterSpacing:".12em",fontWeight:700,color:"#C4956A",marginBottom:14 }}>PROBLEM STATEMENT</div>
+            <p style={{ fontFamily:"'Instrument Serif',serif",fontSize:15,lineHeight:1.8,color:"rgba(248,244,239,.65)",margin:0 }}>
               TikTok Shop&apos;s growth ($0.9B → ~$64B+ in 4 years, per Momentum Works/Tabcut) has outpaced its trust infrastructure. Per TikTok&apos;s own Safety Report, tens of millions of listings were rejected and hundreds of thousands of sellers removed in H1 2025. Trustpilot hovers around 1.3/5. More than half of US shops record zero sales. Average transaction prices declined across most categories in 2024. The platform needs a buyer-facing trust system that translates backend enforcement into visible purchase confidence.
             </p>
           </div>
           <h3 style={h3s}>User Stories</h3>
           <div style={{ background:"#F5F1EC",borderRadius:12,padding:"20px 24px",margin:"16px 0" }}>
-            <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13.5,lineHeight:1.85,color:"#3D3229" }}>
+            <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13.5,lineHeight:1.85,color:"#3D3229" }}>
               <strong>US-1:</strong> As an impulse buyer, I want to see a seller&apos;s trust score before purchasing so I can quickly assess reliability.<br/>
               <strong>US-2:</strong> As a video scroller, I want to evaluate products without leaving the video.<br/>
               <strong>US-3:</strong> As a creator-influenced buyer, I want to know if a creator has a financial relationship with the product.<br/>
@@ -456,12 +456,12 @@ export default function TikTokShopCaseStudy() {
           <h3 style={h3s}>Phased Scope</h3>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,margin:"16px 0" }}>
             <div style={{ background:"#F2F5EF",borderRadius:12,padding:20,border:"1px solid rgba(92,107,79,.08)" }}>
-              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#5C6B4F",marginBottom:10 }}>PHASE 1 · Q1</div>
-              <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Trust Score v1 (badge). Creator Transparency Labels (3-tier). Verified Purchase filter. Seller dashboard with score breakdown.</div>
+              <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#5C6B4F",marginBottom:10 }}>PHASE 1 · Q1</div>
+              <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Trust Score v1 (badge). Creator Transparency Labels (3-tier). Verified Purchase filter. Seller dashboard with score breakdown.</div>
             </div>
             <div style={{ background:"#FAF3ED",borderRadius:12,padding:20,border:"1px solid rgba(139,69,19,.06)" }}>
-              <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8B4513",marginBottom:10 }}>PHASE 2 · Q2</div>
-              <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Smart Product Card (in-feed). Creator track records. &quot;Similar from trusted sellers&quot; engine. Trust Score v2 with AI video-match.</div>
+              <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".1em",fontWeight:700,color:"#8B4513",marginBottom:10 }}>PHASE 2 · Q2</div>
+              <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:13,lineHeight:1.7,color:"#3D3229" }}>Smart Product Card (in-feed). Creator track records. &quot;Similar from trusted sellers&quot; engine. Trust Score v2 with AI video-match.</div>
             </div>
           </div>
           <h3 style={h3s}>Metrics & Guardrails</h3>
@@ -469,7 +469,7 @@ export default function TikTokShopCaseStudy() {
             <table style={{ width:"100%",borderCollapse:"collapse",fontSize:13 }}>
               <thead><tr style={{ borderBottom:"2px solid #1C1410" }}>
                 {["Metric","Current","P1 Target","P2 Target","Guardrail"].map((h,i) => (
-                  <th key={i} style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:10,letterSpacing:".08em",fontWeight:700,color:"#8A7E73",textAlign:"left",padding:"10px" }}>{h}</th>
+                  <th key={i} style={{ fontFamily:"'Instrument Serif',serif",fontSize:10,letterSpacing:".08em",fontWeight:700,color:"#8A7E73",textAlign:"left",padding:"10px" }}>{h}</th>
                 ))}
               </tr></thead>
               <tbody>
@@ -481,7 +481,7 @@ export default function TikTokShopCaseStudy() {
                 ].map((r,i)=>(
                   <tr key={i} style={{ borderBottom:"1px solid #E8E2DA" }}>
                     {r.map((c,j)=>(
-                      <td key={j} style={{ padding:"10px",fontFamily:j===0?"'Playfair Display',serif":"'Source Serif 4',serif",fontSize:12,fontWeight:j===0?600:400,color:j===0?"#1C1410":"#6B5E52" }}>{c}</td>
+                      <td key={j} style={{ padding:"10px",fontFamily:j===0?"'Instrument Serif',serif":"'Instrument Serif',serif",fontSize:12,fontWeight:j===0?600:400,color:j===0?"#1C1410":"#6B5E52" }}>{c}</td>
                     ))}
                   </tr>
                 ))}
@@ -509,7 +509,7 @@ export default function TikTokShopCaseStudy() {
       <section id="sources" style={{ padding:"70px 0",background:"#fff" }}>
         <Wrap>
           <Head n={11} title="Sources" sub="All data cross-referenced across multiple sources" />
-          <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:12.5,lineHeight:1.9,color:"#6B5E52" }}>
+          <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:12.5,lineHeight:1.9,color:"#6B5E52" }}>
             {[
               "Momentum Works & Tabcut (Feb 2026): ~$64B global GMV (2025 est.); $26.2B H1 global; ~$15B US full-year; channel mix; seller concentration",
               "DealStreetAsia: $45.6B SEA 2025; channel mix breakdown (Video ~50%, Shop ~36%, Live ~14%)",
@@ -525,7 +525,7 @@ export default function TikTokShopCaseStudy() {
               "Cube Asia: Gross (~$42B) vs Net (~$33B) GMV distinction for 2024; important methodology note",
             ].map((s,i) => (
               <div key={i} style={{ padding:"6px 0",borderBottom:i<11?"1px solid #E8E2DA":"none" }}>
-                <span style={{ fontFamily:"'Cormorant Garamond',serif",fontWeight:700,color:"#8B4513",marginRight:8,fontSize:11 }}>[{i+1}]</span>{s}
+                <span style={{ fontFamily:"'Instrument Serif',serif",fontWeight:700,color:"#8B4513",marginRight:8,fontSize:11 }}>[{i+1}]</span>{s}
               </div>
             ))}
           </div>
@@ -534,8 +534,8 @@ export default function TikTokShopCaseStudy() {
 
       {/* ══ FOOTER ══ */}
       <div style={{ background:"#1C1410",padding:"44px 0",textAlign:"center" }}>
-        <div style={{ fontFamily:"'Cormorant Garamond',serif",fontSize:11,letterSpacing:".18em",color:"rgba(196,149,106,.4)",fontWeight:600 }}>PM CASE STUDY · TIKTOK SHOP TRUST LAYER</div>
-        <div style={{ fontFamily:"'Source Serif 4',serif",fontSize:12,color:"rgba(248,244,239,.2)",marginTop:8,fontStyle:"italic" }}>CIRCLES Framework · Wireframes · PRD · March 2026</div>
+        <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:11,letterSpacing:".18em",color:"rgba(196,149,106,.4)",fontWeight:600 }}>PM CASE STUDY · TIKTOK SHOP TRUST LAYER</div>
+        <div style={{ fontFamily:"'Instrument Serif',serif",fontSize:12,color:"rgba(248,244,239,.2)",marginTop:8,fontStyle:"italic" }}>CIRCLES Framework · Wireframes · PRD · March 2026</div>
       </div>
     </div>
   );

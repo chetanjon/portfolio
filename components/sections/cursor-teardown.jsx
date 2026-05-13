@@ -47,7 +47,7 @@ const c = {
 };
 
 const fonts = {
-  serif: "'Cormorant Garamond', 'Georgia', serif",
+  serif: "'Instrument Serif', 'Georgia', serif",
   sans: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', monospace",
 };

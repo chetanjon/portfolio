@@ -22,7 +22,7 @@ export default function DuolingoCaseStudy() {
     bg: "rgba(248, 246, 241, 0.94)",
     border: "#D6CFC3",
     fontMono: "'IBM Plex Mono', monospace",
-    fontSans: "'Instrument Sans', system-ui, sans-serif",
+    fontSans: "'Outfit', system-ui, sans-serif",
     fontSerif: "'DM Serif Display', serif",
   };
   return (
@@ -38,7 +38,7 @@ export default function DuolingoCaseStudy() {
 --surface:#FFFFFF;--surface2:#F1EDE5;
 }
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:'Instrument Sans',system-ui,sans-serif;background:var(--bg);color:var(--dark);line-height:1.72;-webkit-font-smoothing:antialiased}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--dark);line-height:1.72;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:'DM Serif Display',serif;line-height:1.2;font-weight:400}
 
 /* ---- NAV TOC ---- */
@@ -72,7 +72,7 @@ radial-gradient(ellipse at 50% 50%,rgba(30,41,59,.8) 0%,transparent 80%)}
 .section-dark strong{color:#fff}
 
 /* ---- TYPOGRAPHY ---- */
-.section-label{font-family:'Instrument Sans',sans-serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:.75rem}
+.section-label{font-family:'Outfit',sans-serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:.75rem}
 .section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:1.5rem}
 p{margin-bottom:1.25rem;color:#3D4A5C}
 p.lead{font-size:1.08rem;color:var(--dark);font-weight:400;line-height:1.8}
@@ -139,7 +139,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 .risk-row{display:flex;gap:1rem;margin:1rem 0;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:10px}
 .risk-bar{width:4px;border-radius:4px;flex-shrink:0}
 .risk-bar.high{background:var(--red)}.risk-bar.med{background:var(--accent)}.risk-bar.low{background:var(--green)}
-.risk-content h4{font-size:.9rem;margin-bottom:.3rem;font-family:'Instrument Sans',sans-serif;font-weight:600}
+.risk-content h4{font-size:.9rem;margin-bottom:.3rem;font-family:'Outfit',sans-serif;font-weight:600}
 .risk-content p{font-size:.82rem;margin:0;color:var(--muted)}
 
 /* ---- PERSONAS ---- */
@@ -154,7 +154,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 .comp-card{padding:1.4rem;border-radius:10px;border:1px solid var(--border)}
 .comp-card.before{background:var(--surface)}
 .comp-card.after{background:var(--light);border-color:var(--accent)}
-.comp-card h4{font-size:.88rem;margin-bottom:.6rem;font-family:'Instrument Sans',sans-serif;font-weight:700;display:flex;align-items:center;gap:.4rem}
+.comp-card h4{font-size:.88rem;margin-bottom:.6rem;font-family:'Outfit',sans-serif;font-weight:700;display:flex;align-items:center;gap:.4rem}
 .comp-card ul{list-style:none;font-size:.82rem}
 .comp-card li{padding:.3rem 0 .3rem 1.1rem;position:relative}
 .comp-card.before li::before{content:'✕';position:absolute;left:0;color:var(--red);font-weight:700;font-size:.7rem}
@@ -165,7 +165,7 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 .tl-item{position:relative;padding-bottom:1.8rem}
 .tl-item::before{content:'';position:absolute;left:-1.85rem;top:.3rem;width:10px;height:10px;border-radius:50%;background:var(--teal);border:2px solid var(--bg)}
 .tl-date{font-size:.65rem;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
-.tl-item h4{font-size:.9rem;margin:.2rem 0;font-family:'Instrument Sans',sans-serif;font-weight:600}
+.tl-item h4{font-size:.9rem;margin:.2rem 0;font-family:'Outfit',sans-serif;font-weight:600}
 .tl-item p{font-size:.82rem;color:var(--muted);margin:0}
 
 /* ---- CONTEXT CARDS ---- */
@@ -278,10 +278,10 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 <line x1="60" y1="180" x2="660" y2="180" stroke="#E8E3D9" strokeWidth=".5"/>
 <line x1="60" y1="220" x2="660" y2="220" stroke="#D6CFC3" strokeWidth="1"/>
 {/* Y-axis labels */}
-<text x="50" y="34" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="10" textAnchor="end">55M</text>
-<text x="50" y="84" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="10" textAnchor="end">40M</text>
-<text x="50" y="134" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="10" textAnchor="end">30M</text>
-<text x="50" y="184" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="10" textAnchor="end">20M</text>
+<text x="50" y="34" fill="#6B7A8D" fontFamily="Outfit" fontSize="10" textAnchor="end">55M</text>
+<text x="50" y="84" fill="#6B7A8D" fontFamily="Outfit" fontSize="10" textAnchor="end">40M</text>
+<text x="50" y="134" fill="#6B7A8D" fontFamily="Outfit" fontSize="10" textAnchor="end">30M</text>
+<text x="50" y="184" fill="#6B7A8D" fontFamily="Outfit" fontSize="10" textAnchor="end">20M</text>
 {/* Bars: Q4'22=16.3, Q1'23=20.3, Q2'23=21.4, Q3'23=22.5, Q4'23=26.9, Q1'24=31.4, Q2'24=34.1, Q3'24=37.2, Q4'24=40.5, Q1'25=46.6, Q2'25=47.7, Q3'25=50.5, Q4'25=52.7 */}
 {/* Scale: 55M = y30, 0M = y220. So 1M = (220-30)/55 = 3.45px. y = 220 - (val * 3.45) */}
 <rect x="75" y="164" width="32" height="56" rx="3" fill="#D6CFC3"/>{/* Q4'22 16.3 */}
@@ -298,14 +298,14 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 <rect x="570" y="46" width="32" height="174" rx="3" fill="#1A6B5A" opacity=".9"/>{/* Q3'25 50.5 */}
 <rect x="615" y="38" width="32" height="182" rx="3" fill="#D4790E"/>{/* Q4'25 52.7 */}
 {/* Labels */}
-<text x="91" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4&apos;22</text>
-<text x="271" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4&apos;23</text>
-<text x="451" y="238" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">Q4&apos;24</text>
-<text x="631" y="238" fill="#D4790E" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle" fontWeight="700">Q4&apos;25</text>
+<text x="91" y="238" fill="#6B7A8D" fontFamily="Outfit" fontSize="8" textAnchor="middle">Q4&apos;22</text>
+<text x="271" y="238" fill="#6B7A8D" fontFamily="Outfit" fontSize="8" textAnchor="middle">Q4&apos;23</text>
+<text x="451" y="238" fill="#6B7A8D" fontFamily="Outfit" fontSize="8" textAnchor="middle">Q4&apos;24</text>
+<text x="631" y="238" fill="#D4790E" fontFamily="Outfit" fontSize="8" textAnchor="middle" fontWeight="700">Q4&apos;25</text>
 {/* Growth rate annotations */}
-<text x="271" y="120" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="9" textAnchor="middle">+65% YoY</text>
-<text x="451" y="73" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="9" textAnchor="middle">+51% YoY</text>
-<text x="631" y="30" fill="#D4790E" fontFamily="Instrument Sans" fontSize="9" textAnchor="middle" fontWeight="600">+30% YoY</text>
+<text x="271" y="120" fill="#6B7A8D" fontFamily="Outfit" fontSize="9" textAnchor="middle">+65% YoY</text>
+<text x="451" y="73" fill="#6B7A8D" fontFamily="Outfit" fontSize="9" textAnchor="middle">+51% YoY</text>
+<text x="631" y="30" fill="#D4790E" fontFamily="Outfit" fontSize="9" textAnchor="middle" fontWeight="600">+30% YoY</text>
 </svg>
 </div>
 </div>
@@ -396,41 +396,41 @@ blockquote cite{display:block;margin-top:.75rem;font-size:.78rem;color:var(--mut
 {/* Axes */}
 <line x1="80" y1="280" x2="660" y2="280" stroke="#D6CFC3" strokeWidth="1"/>
 <line x1="80" y1="40" x2="80" y2="280" stroke="#D6CFC3" strokeWidth="1"/>
-<text x="370" y="310" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="10" textAnchor="middle" fontWeight="600">PROFICIENCY CEILING &rarr;</text>
-<text x="30" y="160" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="10" textAnchor="middle" fontWeight="600" transform="rotate(-90 30 160)">PRODUCTION FOCUS &rarr;</text>
+<text x="370" y="310" fill="#6B7A8D" fontFamily="Outfit" fontSize="10" textAnchor="middle" fontWeight="600">PROFICIENCY CEILING &rarr;</text>
+<text x="30" y="160" fill="#6B7A8D" fontFamily="Outfit" fontSize="10" textAnchor="middle" fontWeight="600" transform="rotate(-90 30 160)">PRODUCTION FOCUS &rarr;</text>
 {/* Axis labels */}
-<text x="110" y="296" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8">A1</text>
-<text x="250" y="296" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8">A2</text>
-<text x="390" y="296" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8">B1</text>
-<text x="530" y="296" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8">B2</text>
-<text x="640" y="296" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="8">C1</text>
+<text x="110" y="296" fill="#6B7A8D" fontFamily="Outfit" fontSize="8">A1</text>
+<text x="250" y="296" fill="#6B7A8D" fontFamily="Outfit" fontSize="8">A2</text>
+<text x="390" y="296" fill="#6B7A8D" fontFamily="Outfit" fontSize="8">B1</text>
+<text x="530" y="296" fill="#6B7A8D" fontFamily="Outfit" fontSize="8">B2</text>
+<text x="640" y="296" fill="#6B7A8D" fontFamily="Outfit" fontSize="8">C1</text>
 {/* Duolingo */}
 <circle cx="280" cy="220" r="38" fill="#D4790E" opacity=".12" stroke="#D4790E" strokeWidth="2"/>
-<text x="280" y="216" fill="#D4790E" fontFamily="Instrument Sans" fontSize="11" textAnchor="middle" fontWeight="700">Duolingo</text>
-<text x="280" y="230" fill="#D4790E" fontFamily="Instrument Sans" fontSize="8" textAnchor="middle">52.7M DAU</text>
+<text x="280" y="216" fill="#D4790E" fontFamily="Outfit" fontSize="11" textAnchor="middle" fontWeight="700">Duolingo</text>
+<text x="280" y="230" fill="#D4790E" fontFamily="Outfit" fontSize="8" textAnchor="middle">52.7M DAU</text>
 {/* Babbel */}
 <circle cx="460" cy="170" r="22" fill="#1A6B5A" opacity=".1" stroke="#1A6B5A" strokeWidth="1.5"/>
-<text x="460" y="168" fill="#1A6B5A" fontFamily="Instrument Sans" fontSize="10" textAnchor="middle" fontWeight="600">Babbel</text>
-<text x="460" y="180" fill="#1A6B5A" fontFamily="Instrument Sans" fontSize="7" textAnchor="middle">Grammar + Structure</text>
+<text x="460" y="168" fill="#1A6B5A" fontFamily="Outfit" fontSize="10" textAnchor="middle" fontWeight="600">Babbel</text>
+<text x="460" y="180" fill="#1A6B5A" fontFamily="Outfit" fontSize="7" textAnchor="middle">Grammar + Structure</text>
 {/* Busuu */}
 <circle cx="420" cy="110" r="20" fill="#2563EB" opacity=".1" stroke="#2563EB" strokeWidth="1.5"/>
-<text x="420" y="108" fill="#2563EB" fontFamily="Instrument Sans" fontSize="10" textAnchor="middle" fontWeight="600">Busuu</text>
-<text x="420" y="120" fill="#2563EB" fontFamily="Instrument Sans" fontSize="7" textAnchor="middle">Peer Corrections</text>
+<text x="420" y="108" fill="#2563EB" fontFamily="Outfit" fontSize="10" textAnchor="middle" fontWeight="600">Busuu</text>
+<text x="420" y="120" fill="#2563EB" fontFamily="Outfit" fontSize="7" textAnchor="middle">Peer Corrections</text>
 {/* Speak */}
 <circle cx="340" cy="80" r="18" fill="#7C3AED" opacity=".1" stroke="#7C3AED" strokeWidth="1.5"/>
-<text x="340" y="78" fill="#7C3AED" fontFamily="Instrument Sans" fontSize="10" textAnchor="middle" fontWeight="600">Speak</text>
-<text x="340" y="90" fill="#7C3AED" fontFamily="Instrument Sans" fontSize="7" textAnchor="middle">AI Conversation</text>
+<text x="340" y="78" fill="#7C3AED" fontFamily="Outfit" fontSize="10" textAnchor="middle" fontWeight="600">Speak</text>
+<text x="340" y="90" fill="#7C3AED" fontFamily="Outfit" fontSize="7" textAnchor="middle">AI Conversation</text>
 {/* LingQ */}
 <circle cx="570" cy="130" r="20" fill="#6B7A8D" opacity=".1" stroke="#6B7A8D" strokeWidth="1.5"/>
-<text x="570" y="128" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="10" textAnchor="middle" fontWeight="600">LingQ</text>
-<text x="570" y="140" fill="#6B7A8D" fontFamily="Instrument Sans" fontSize="7" textAnchor="middle">Immersive Content</text>
+<text x="570" y="128" fill="#6B7A8D" fontFamily="Outfit" fontSize="10" textAnchor="middle" fontWeight="600">LingQ</text>
+<text x="570" y="140" fill="#6B7A8D" fontFamily="Outfit" fontSize="7" textAnchor="middle">Immersive Content</text>
 {/* italki */}
 <circle cx="530" cy="70" r="18" fill="#C0392B" opacity=".1" stroke="#C0392B" strokeWidth="1.5"/>
-<text x="530" y="68" fill="#C0392B" fontFamily="Instrument Sans" fontSize="10" textAnchor="middle" fontWeight="600">italki</text>
-<text x="530" y="80" fill="#C0392B" fontFamily="Instrument Sans" fontSize="7" textAnchor="middle">Human Tutors</text>
+<text x="530" y="68" fill="#C0392B" fontFamily="Outfit" fontSize="10" textAnchor="middle" fontWeight="600">italki</text>
+<text x="530" y="80" fill="#C0392B" fontFamily="Outfit" fontSize="7" textAnchor="middle">Human Tutors</text>
 {/* Breakthrough target zone */}
 <rect x="300" y="100" width="200" height="140" rx="12" fill="none" stroke="#D4790E" strokeWidth="1.5" strokeDasharray="6 4"/>
-<text x="400" y="255" fill="#D4790E" fontFamily="Instrument Sans" fontSize="9" textAnchor="middle" fontWeight="700" opacity=".7">&#8599; BREAKTHROUGH MODE TARGET ZONE</text>
+<text x="400" y="255" fill="#D4790E" fontFamily="Outfit" fontSize="9" textAnchor="middle" fontWeight="700" opacity=".7">&#8599; BREAKTHROUGH MODE TARGET ZONE</text>
 </svg>
 </div>
 </div>

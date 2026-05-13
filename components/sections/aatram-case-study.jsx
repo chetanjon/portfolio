@@ -66,7 +66,7 @@ const useTheme = () => useContext(ThemeContext);
 // AATRAM CASE STUDY v3 - Cosmos-inspired cinematic editorial
 // ===============================================================
 
-const SERIF = "'Cormorant Garamond','Georgia',serif";
+const SERIF = "'Instrument Serif','Georgia',serif";
 const SANS = "'Outfit','Helvetica Neue',sans-serif";
 const MONO = "'IBM Plex Mono',monospace";
 

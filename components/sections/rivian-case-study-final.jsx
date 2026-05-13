@@ -38,7 +38,7 @@ const c = {
 };
 
 const fonts = {
-  serif: "'Cormorant Garamond', 'Georgia', serif",
+  serif: "'Instrument Serif', 'Georgia', serif",
   sans: "'Outfit', 'Helvetica Neue', sans-serif",
   mono: "'IBM Plex Mono', monospace",
 };
@@ -239,7 +239,7 @@ export default function RivianCaseStudy() {
               {/* Gen 1 Box */}
               <rect x="0" y="0" width="420" height="280" rx="12" fill={c.redPale} stroke={c.red} strokeWidth="1" strokeOpacity="0.3"/>
               <text x="24" y="32" fontFamily="IBM Plex Mono" fontSize="9" fill={c.red} letterSpacing="2">GEN 1 · BLE ONLY · 2022–2024</text>
-              <text x="24" y="64" fontFamily="Cormorant Garamond" fontSize="20" fill={c.text}>Bluetooth Low Energy</text>
+              <text x="24" y="64" fontFamily="Instrument Serif" fontSize="20" fill={c.text}>Bluetooth Low Energy</text>
               {["1–3m accuracy (signal strength)", "App must run in background", "iOS/Android kill background processes", "2.4GHz interference vulnerable", "No upgrade path to UWB", "~123K total vehicles delivered through 2024"].map((t, i) => (
                 <text key={i} x="24" y={100 + i * 26} fontFamily="Outfit" fontSize="12" fill={c.textSoft}>• {t}</text>
               ))}
@@ -250,7 +250,7 @@ export default function RivianCaseStudy() {
               {/* Gen 2 Box */}
               <rect x="500" y="0" width="400" height="280" rx="12" fill={c.greenPale} stroke={c.green} strokeWidth="1" strokeOpacity="0.3"/>
               <text x="524" y="32" fontFamily="IBM Plex Mono" fontSize="9" fill={c.green} letterSpacing="2">GEN 2 · UWB + BLE + NFC · 2025+</text>
-              <text x="524" y="64" fontFamily="Cormorant Garamond" fontSize="20" fill={c.text}>Ultra-Wideband</text>
+              <text x="524" y="64" fontFamily="Instrument Serif" fontSize="20" fill={c.text}>Ultra-Wideband</text>
               {["Centimeter accuracy (time-of-flight)", "Lives in OS Wallet (Secure Element)", "No app dependency for unlock", "3.1–10.6GHz, relay-resistant", "NFC fallback (5hrs after phone dies)", "CCC Digital Key standard"].map((t, i) => (
                 <text key={i} x="524" y={100 + i * 26} fontFamily="Outfit" fontSize="12" fill={c.textSoft}>• {t}</text>
               ))}
