@@ -230,29 +230,23 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
             </motion.div>
           </div>
 
-          {/* Big metric — accent-colored, counter-parallax drift */}
+          {/* Big metric — accent-colored, counter-parallax drift. No
+              halo, no blob. Sizes dialed back at md so "20 → 75+" and
+              "3 tiers" don't clip in the 3-col gutter. */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
               show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: REVEAL_EASE } },
             }}
-            className="md:col-span-3 md:text-right relative"
+            className="md:col-span-3 md:text-right"
           >
-            {/* Hover halo behind the metric */}
-            <span
-              aria-hidden
-              className="absolute inset-0 -inset-x-6 pointer-events-none opacity-0 group-hover/row:opacity-40 transition-opacity duration-500 blur-2xl"
-              style={{
-                background: 'radial-gradient(closest-side, var(--row-accent) 0%, transparent 70%)',
-              }}
-            />
             <motion.p
-              className="relative font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.95] transition-transform duration-500 group-hover/row:scale-[1.02]"
+              className="font-display font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight leading-[0.95] transition-transform duration-500 group-hover/row:scale-[1.02]"
               style={{ color: 'var(--row-accent)', y: safeMetricY, willChange: 'transform' }}
             >
               {row.metric.value}
             </motion.p>
-            <p className="relative small-caps text-text-muted mt-2">{row.metric.label}</p>
+            <p className="small-caps text-text-muted mt-2">{row.metric.label}</p>
           </motion.div>
         </div>
       </Link>

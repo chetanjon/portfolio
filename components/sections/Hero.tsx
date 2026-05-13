@@ -85,16 +85,16 @@ export function Hero() {
             The receipts
           </div>
           <p className="text-2xl md:text-3xl lg:text-4xl font-display font-medium leading-tight text-text-primary mb-4">
-            Two products live.{' '}
-            <span style={{ color: 'var(--color-accent-soft)' }}>158</span>{' '}
-            commits shipped.{' '}
+            <span style={{ color: 'var(--color-accent-soft)' }}>Two</span>{' '}
+            products live.{' '}
             <span style={{ color: 'var(--color-accent-secondary)' }}>One</span>{' '}
-            PM.
+            marketplace doubled.{' '}
+            <span style={{ color: 'var(--color-accent-rose)' }}>Solo</span> PM.
           </p>
           <p className="font-serif italic text-text-secondary text-base md:text-lg leading-relaxed">
             Co-founded Aatram (live on the App Store). Built FrictionLens end-to-end
-            as a solo founder. Doubled GMV at a seed-stage B2B marketplace with 3.75×
-            vendor growth.
+            as a solo founder. Took an Indian B2B marketplace from 20 to 75+ vendors
+            with 2× GMV at seed stage.
           </p>
         </motion.div>
 
