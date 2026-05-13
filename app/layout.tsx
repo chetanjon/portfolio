@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Instrument_Serif, Outfit, Fraunces } from 'next/font/google';
+import { Instrument_Serif, Outfit, Newsreader } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
@@ -20,13 +20,14 @@ const instrumentSerif = Instrument_Serif({
   style: ['normal', 'italic'],
 });
 
-// Display serif for hero-scale typography. Variable font with optical
-// sizing (opsz) and SOFT axes that give it real character at large sizes.
-const fraunces = Fraunces({
+// Display serif for hero-scale typography. Newsreader is humanist
+// (closest free analog to Apple's New York), with optical sizing
+// that makes it dramatically more expressive at large sizes.
+const newsreader = Newsreader({
   subsets: ['latin'],
-  variable: '--font-fraunces',
+  variable: '--font-newsreader',
   style: ['normal', 'italic'],
-  axes: ['SOFT', 'opsz'],
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
@@ -164,7 +165,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap"
         />
       </head>
-      <body className={`${outfit.variable} ${instrumentSerif.variable} ${fraunces.variable} font-sans antialiased`}>
+      <body className={`${outfit.variable} ${instrumentSerif.variable} ${newsreader.variable} font-sans antialiased`}>
         <a
           href="#main-content"
           className="skip-link fixed left-4 top-4 z-[2000] rounded-md bg-bg-primary px-4 py-2 text-sm font-medium text-text-primary shadow-md"

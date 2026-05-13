@@ -48,7 +48,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="font-display-serif italic font-normal leading-[0.95] tracking-tight"
-          style={{ fontVariationSettings: "'opsz' 144, 'SOFT' 100" }}
+          style={{ fontVariationSettings: "'opsz' 72" }}
         >
           <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] gloss-serif">
             I find the
@@ -71,7 +71,7 @@ export function Hero() {
           <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
             Then
           </span>
-          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] gradient-text-spectrum leading-[0.9]">
+          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] gradient-text-chrome leading-[0.9]">
             ship it end to end.
           </span>
         </motion.div>
