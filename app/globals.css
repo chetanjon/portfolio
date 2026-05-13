@@ -553,6 +553,35 @@ input[type="color"]::-webkit-color-swatch {
   -webkit-text-fill-color: transparent;
 }
 
+/* Animated gradient — slow horizontal sweep so the colors flow across the text.
+   Used on the hero "SHIP THE FIX." line. */
+@keyframes gradient-sweep {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text-accent-animated {
+  background: linear-gradient(
+    100deg,
+    var(--color-gradient-accent-from) 0%,
+    var(--color-gradient-accent-to) 35%,
+    var(--color-accent-soft) 55%,
+    var(--color-gradient-accent-to) 75%,
+    var(--color-gradient-accent-from) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-sweep 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text-accent-animated { animation: none !important; }
+}
+
 /* CTA glow — subtle outer glow on hover */
 .cta-glow {
   transition: box-shadow 250ms ease-out, opacity 200ms ease, border-color 300ms ease, background-color 300ms ease, color 300ms ease;

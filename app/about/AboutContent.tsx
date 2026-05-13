@@ -43,7 +43,7 @@ const timeline = [
   { year: '2025', title: 'Digital Product Management', place: 'University of Virginia (Coursera)' },
   { year: '2026', title: 'Launched FrictionLens', place: 'frictionlens.net · AI review analyzer' },
   { year: '2026', title: 'Co-Founder & Product Manager', place: 'Aatram · iOS app live on the App Store' },
-  { year: '2026', title: 'M.S. Graduation (Expected)', place: 'Arizona State University' },
+  { year: '2026', title: 'M.S. Graduation', place: 'Arizona State University' },
 ];
 
 export function AboutContent() {
@@ -103,52 +103,39 @@ export function AboutContent() {
               </h1>
 
               <p className="text-text-secondary leading-relaxed mb-6">
-                My path from electrical engineering to product management wasn&apos;t a pivot. It was
-                an evolution. Engineering trained me to think in systems: identify inputs, model behaviors,
-                debug failures. Product management just means applying those same mental models to human
-                systems instead of electrical ones.
+                PM by title, designer by instinct. Co-Founder at{' '}
+                <span className="font-serif italic text-text-primary">Aatram</span>, a consumer iOS app
+                live on the App Store. Solo designer + engineer behind{' '}
+                <span className="font-serif italic text-text-primary">FrictionLens</span>, a full-stack
+                AI review analyzer. Before that, grew a seed-stage B2B handloom marketplace from 20 to
+                75+ vendors and doubled GMV. Just graduated with my M.S. in Management of Technology
+                from Arizona State University, 3.7 GPA.
               </p>
 
-              <p className="text-text-secondary leading-relaxed mb-6">
-                Right now I&apos;m Co-Founder &amp; Product Manager at Aatram, a consumer iOS app live on
-                the App Store. With a 3-person founding team we shipped V1 in seven days from first
-                commit, then rewrote V2 as an anti-interruption product after interviews showed our own
-                notifications were pulling avoidance-prone users back out of focus. I co-built the
-                codebase across 158 commits on SwiftUI, SwiftData, Supabase, and Apple Foundation Models,
-                and owned UI, brand voice, an 18-component design system on hex-locked tokens, the
-                logo drawn as 80 SwiftUI Canvas stroke segments, and aatram.com end-to-end. Aatram is
-                the Tamil/Sanskrit word for resolve, or strength of mind. The product is named for the
-                trait it builds.
+              <p className="text-text-secondary leading-relaxed mb-10">
+                The throughline: I find the problem worth solving, then ship the fix. End-to-end.
+                Product, design, brand, and increasingly the code.
               </p>
 
-              <p className="text-text-secondary leading-relaxed mb-6">
-                Every decision sits on behavioral-psychology research: implementation intentions
-                (Gollwitzer), temporal landmarks (Dai/Milkman), commitment devices (Ariely), and CBT
-                avoidance-loop literature. That&apos;s why we chose a stopwatch over a countdown
-                (deadlines increase dread for avoidance-prone users), capped accountability circles at
-                three (trust over performance), and encoded &ldquo;no leaderboards&rdquo; at the schema
-                level so ranking is a compile-time impossibility, not a policy promise.
-              </p>
-
-              <p className="text-text-secondary leading-relaxed mb-6">
-                Before Aatram, I cut my teeth at IKT India, where I took a seed-stage B2B handloom
-                marketplace from 20 vendors to 75+ across multiple states, promoted from intern to PM
-                inside of six months. The unlock was a concurrent A/B test on 50 SKUs with price floors
-                against a matched control; order volume held flat, so I scaled the winner to 500+ SKUs,
-                lifted gross margin from 25% to 40%, and doubled monthly GMV. Along the way I cut seller
-                onboarding from 3 days to 6 hours, built the SQL + Mixpanel seller-health dashboard
-                whose inactivity triggers lifted 60-day retention 20%, and ran weekly standups with a
-                4-engineer team shipping across web, mobile, and ops.
-              </p>
-
-              <p className="text-text-secondary leading-relaxed mb-8">
-                I&apos;m finishing my M.S. in Management of Technology at Arizona State University
-                (a Tech-MBA equivalent with a Product Management focus), graduating May 2026 with a
-                3.7 GPA. Coursework includes a Python pipeline analyzing G20 vs non-G20 innovation
-                across 1,862 records over 13 years, with t-tests and ANOVA surfacing 15 non-G20
-                countries outperforming the G20 average. CSPO (Scrum Alliance) and Digital Product
-                Management (UVA, Coursera) certified.
-              </p>
+              {/* By the numbers */}
+              <div className="mb-10">
+                <p className="small-caps text-text-muted mb-4">By the numbers</p>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6 border-t border-border-default pt-6">
+                  {[
+                    { value: '7 days', label: 'V1 to App Store' },
+                    { value: '158', label: 'SwiftUI commits' },
+                    { value: '20 → 75+', label: 'Vendors at IKT' },
+                    { value: '2x', label: 'Monthly GMV' },
+                    { value: '3.7', label: 'M.S. GPA · ASU' },
+                    { value: '5.0★', label: 'Launch rating' },
+                  ].map((stat) => (
+                    <div key={stat.label}>
+                      <p className="font-display font-bold text-2xl md:text-3xl">{stat.value}</p>
+                      <p className="small-caps text-text-muted mt-1">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <div className="flex gap-4">
                 <Link
@@ -256,32 +243,55 @@ export function AboutContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.7 }}
-            className="max-w-2xl"
           >
             <SectionMarker number="04" label="Personal" className="mb-8" />
 
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-8">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
               Beyond
               <span className="font-serif italic font-normal lowercase"> work</span>
             </h2>
 
-            <p className="text-text-secondary leading-relaxed mb-6">
-              When I&apos;m not rebuilding funnels or writing PRDs, I&apos;m watching cricket
-              (die-hard India fan), exploring every new restaurant that opens in Tempe, or reading
-              about behavioral economics and how people actually make decisions, which turns out
-              to be very useful for a PM. I&apos;m also mildly obsessed with how startups in
-              emerging markets solve problems that Silicon Valley tools weren&apos;t designed for.
-              There&apos;s a whole product design language invented out of necessity, and it&apos;s
-              where I feel most at home.
-            </p>
-
-            <p className="text-text-secondary leading-relaxed">
-              My engineering background keeps me grounded in &ldquo;is this actually buildable?&rdquo;
-              while my business education keeps me asking &ldquo;but does this move the needle?&rdquo;
-              The best product decisions sit at that intersection: technically pragmatic and
-              commercially ambitious at the same time.
+            <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+              The stuff that keeps me sharp outside of product. Heavy on input, heavy on output,
+              and a lot of coffee in between.
             </p>
           </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-border-default border border-border-default">
+            {[
+              { name: 'Books', detail: 'Behavioral econ, founder memoirs, anything about how people actually decide.' },
+              { name: 'Running', detail: 'Long, slow, alone. The best PRD edits happen around mile three.' },
+              { name: 'Coffee', detail: 'Mildly obsessed. Pour-over at home, espresso anywhere worth lining up for.' },
+              { name: 'Gym', detail: 'Five days a week. Hard physical work is the cheapest reset button I know.' },
+              { name: 'Friends & parties', detail: 'Throwing them, hosting them, ending up at them. The best teams I have built started over food.' },
+              { name: 'Cricket', detail: 'Die-hard India fan. The closest I get to letting a result actually ruin my week.' },
+            ].map((hobby, i) => (
+              <motion.div
+                key={hobby.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
+                className="bg-bg-secondary p-6 md:p-8 hover:bg-bg-primary transition-colors"
+              >
+                <p className="font-serif italic text-2xl md:text-3xl mb-3 lowercase">{hobby.name}</p>
+                <p className="text-sm text-text-secondary leading-relaxed">{hobby.detail}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-text-secondary leading-relaxed max-w-2xl mt-12"
+          >
+            Engineering background keeps me grounded in &ldquo;is this actually buildable?&rdquo;
+            Business education keeps me asking &ldquo;but does this move the needle?&rdquo; The best
+            product decisions sit at that intersection.
+          </motion.p>
         </div>
       </section>
     </>

@@ -71,7 +71,7 @@ export const awards: Award[] = [
   {
     id: '10',
     platform: 'Arizona State University',
-    recognition: 'M.S. in Management of Technology (3.7 GPA, expected May 2026)',
+    recognition: 'M.S. in Management of Technology (3.7 GPA, graduated May 2026)',
     year: '2026',
   },
 ];

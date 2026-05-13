@@ -50,12 +50,14 @@ export function Header() {
     pathname.startsWith('/resume') ||
     pathname.startsWith('/contact');
 
-  // On content pages use theme-aware colors (work in light + dark).
-  // On the homepage, the header uses mix-blend-difference and thus requires pure white.
-  const textStrong = isContentPage ? 'text-text-primary' : 'text-white';
-  const textMuted = isContentPage ? 'text-text-muted hover:text-text-primary' : 'text-white/85 hover:text-white';
-  const textSubtle = isContentPage ? 'text-text-secondary group-hover:text-text-primary' : 'text-white/90 group-hover:text-white';
-  const pillBorder = isContentPage
+  // Once the user has scrolled past the hero, the homepage header gets a solid
+  // backdrop and switches to theme-aware text colors — same treatment as content
+  // pages. mix-blend-difference is reserved for the unscrolled homepage hero only.
+  const useSolidChrome = isContentPage || scrolled;
+  const textStrong = useSolidChrome ? 'text-text-primary' : 'text-white';
+  const textMuted = useSolidChrome ? 'text-text-muted hover:text-text-primary' : 'text-white/85 hover:text-white';
+  const textSubtle = useSolidChrome ? 'text-text-secondary group-hover:text-text-primary' : 'text-white/90 group-hover:text-white';
+  const pillBorder = useSolidChrome
     ? 'border-border-default text-text-primary hover:bg-text-primary hover:text-bg-primary'
     : 'border-white/50 text-white hover:bg-white hover:text-black';
 
@@ -69,10 +71,8 @@ export function Header() {
       <motion.header
         className={cn(
           'fixed top-0 left-0 right-0 z-[1000] transition-all duration-500',
-          isContentPage
-            ? scrolled
-              ? 'bg-bg-primary/85 backdrop-blur-md border-b border-border-default'
-              : 'bg-transparent'
+          useSolidChrome
+            ? 'bg-bg-primary/85 backdrop-blur-md border-b border-border-default'
             : 'mix-blend-difference'
         )}
       >

@@ -108,11 +108,15 @@ export function MomentumGauge({
             {label}
           </text>
           {showZoneLabels && (
-            <g fill="currentColor" opacity={0.5} style={{ fontSize: 9, letterSpacing: '0.04em' }}>
-              <text x={56} y={64} textAnchor="middle">Building</text>
-              <text x={184} y={64} textAnchor="middle">Rolling</text>
-              <text x={32} y={138} textAnchor="middle">— Starting</text>
-              <text x={208} y={138} textAnchor="middle">Locked In —</text>
+            <g
+              fill="currentColor"
+              opacity={0.45}
+              style={{ fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase' }}
+            >
+              <text x={70} y={72} textAnchor="middle">Building</text>
+              <text x={170} y={72} textAnchor="middle">Rolling</text>
+              <text x={50} y={196} textAnchor="middle">Starting</text>
+              <text x={190} y={196} textAnchor="middle">Locked In</text>
             </g>
           )}
         </>
