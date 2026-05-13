@@ -641,6 +641,10 @@ input[type="color"]::-webkit-color-swatch {
    for dark mode below. */
 
 .gloss-serif {
+  /* Extend the painted area slightly past the line box so descenders
+     (g, p, y, j, q) stay inside the background-clipped gradient. */
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
   background: linear-gradient(
     180deg,
     var(--gloss-highlight) 0%,
