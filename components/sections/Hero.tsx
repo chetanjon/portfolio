@@ -70,7 +70,7 @@ export function Hero() {
           <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
             Then
           </span>
-          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[9.5rem] gradient-text-accent-animated leading-[0.9]">
+          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[9.5rem] gradient-text-glossy leading-[0.9]">
             ship the fix.
           </span>
         </motion.div>

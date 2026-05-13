@@ -87,13 +87,13 @@ export function Header() {
               size={60}
               className={cn(textStrong, 'transition-transform duration-300 group-hover:scale-110')}
             />
-            <span className={cn('text-[15px] font-medium tracking-[0.3em] uppercase transition-colors', textSubtle)}>
+            <span className={cn('text-[15px] font-medium tracking-[0.3em] uppercase transition-colors whitespace-nowrap', textSubtle)}>
               Chetan J
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-12 text-[15px]">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-12 text-[15px]">
             {navItems.slice(0, 7).map((item) => {
               const isResume = item.href === '/resume';
 
@@ -102,7 +102,7 @@ export function Header() {
                   <button
                     key={item.href}
                     onClick={handleResumeClick}
-                    className={cn('text-[15px] uppercase tracking-widest transition-colors cursor-pointer', textMuted)}
+                    className={cn('text-[15px] uppercase tracking-widest transition-colors cursor-pointer whitespace-nowrap', textMuted)}
                   >
                     {item.label}
                   </button>
@@ -115,7 +115,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'text-[15px] uppercase tracking-widest transition-colors',
+                    'text-[15px] uppercase tracking-widest transition-colors whitespace-nowrap',
                     isActive ? textStrong : textMuted
                   )}
                 >

@@ -582,6 +582,59 @@ input[type="color"]::-webkit-color-swatch {
   .gradient-text-accent-animated { animation: none !important; }
 }
 
+/* Glossy text — used on the "ship the fix." hero punch line.
+   A sharper sweep than gradient-text-accent-animated: deep lavender →
+   bright cream peak → deep mint, on a faster 5s loop. Plus a drop-shadow
+   filter to give the type a wet-glass body. */
+@keyframes gradient-glossy-sweep {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text-glossy {
+  background: linear-gradient(
+    100deg,
+    var(--glossy-lavender) 0%,
+    var(--glossy-lavender) 20%,
+    var(--glossy-cream) 48%,
+    var(--glossy-cream) 52%,
+    var(--glossy-mint) 80%,
+    var(--glossy-lavender) 100%
+  );
+  background-size: 230% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter:
+    drop-shadow(0 -1px 0 var(--glossy-rim))
+    drop-shadow(0 3px 6px var(--glossy-shadow));
+  animation: gradient-glossy-sweep 5s ease-in-out infinite;
+}
+
+/* Light-mode glossy stops — deep lavender → cream paper peak → deep mint */
+:root {
+  --glossy-lavender: #6B5DAD;
+  --glossy-cream:    #F4F1EA;
+  --glossy-mint:     #3F8C73;
+  --glossy-rim:      rgba(255, 255, 255, 0.45);
+  --glossy-shadow:   rgba(107, 93, 173, 0.22);
+}
+
+/* Dark-mode glossy stops — softer lavender → cream highlight → soft mint */
+.dark {
+  --glossy-lavender: #B8A9D4;
+  --glossy-cream:    #ECE8E0;
+  --glossy-mint:     #7DBFAB;
+  --glossy-rim:      rgba(236, 232, 224, 0.20);
+  --glossy-shadow:   rgba(184, 169, 212, 0.30);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text-glossy { animation: none !important; }
+}
+
 /* Gloss serif — applied to the big italic display lines in the hero.
    Vertical background-clip gradient + drop-shadow filter to give the
    type a soft surface that catches the light. CSS variables auto-swap
