@@ -16,11 +16,11 @@ interface Product {
   tagline: string;
   blurb: string;
   frame: 'phone' | 'browser';
-  // Drop real screenshots into /public/products/ then fill these in.
-  screenshot?: string;
+  // Drop real screenshots into /public/products/ then list them here.
+  screenshots?: string[];
   liveUrl: string;
   liveLabel: string;
-  caseStudyUrl: string;
+  caseStudyUrl?: string;
   stack: string[];
   metrics: Metric[];
 }
@@ -31,9 +31,9 @@ const products: Product[] = [
     initials: 'AT',
     tagline: 'Consumer iOS app · Live on the App Store · Free & bootstrapped',
     blurb:
-      'Co-founded with two friends. Shipped V1 in seven days, then rewrote V2 as an anti-interruption product after archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. I co-built the codebase across 158 commits and owned UI, brand voice, an 18-component design system, and the logo drawn as 80 SwiftUI Canvas stroke segments.',
+      'Co-founded with two friends. Shipped V1 in seven days, then rewrote V2 as an anti-interruption product after archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. I co-built the codebase across 158 commits and owned UI, brand voice, an 18-component design system, and the logo drawn as 80 SwiftUI Canvas stroke segments. The momentum gauge, the live-presence crew rooms, the on-device pattern detectors — all of it shipped.',
     frame: 'phone',
-    screenshot: undefined,
+    screenshots: ['/products/aatram-crew.jpg', '/products/aatram-home.jpg', '/products/aatram-insights.jpg'],
     liveUrl: 'https://apps.apple.com/us/app/aatram/id6760587556',
     liveLabel: 'View on the App Store',
     caseStudyUrl: '/work/aatram',
@@ -51,10 +51,10 @@ const products: Product[] = [
     blurb:
       'A full-stack AI review analyzer (Next.js, TypeScript, Supabase, Google Gemini) that ingests App Store, Play Store, Reddit, and CSV reviews into a single Vibe Report. Built a 3-tier rule-based classifier that routes short reviews through keyword rules and only batches long ones to Gemini, plus BYOK with AES-256-GCM per-user key encryption.',
     frame: 'browser',
-    screenshot: undefined,
+    screenshots: undefined,
     liveUrl: 'https://www.frictionlens.net/',
     liveLabel: 'Open frictionlens.net',
-    caseStudyUrl: '/casestudies/notion',
+    caseStudyUrl: undefined,
     stack: ['Next.js', 'TypeScript', 'Supabase', 'Google Gemini', 'Upstash Redis'],
     metrics: [
       { value: 3, label: 'Classifier tiers, AI only when needed' },
@@ -64,11 +64,36 @@ const products: Product[] = [
   },
 ];
 
-function PhoneFrame({ children }: { children: React.ReactNode }) {
+function PhoneShell({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className="relative mx-auto w-full max-w-[280px] rounded-[2.4rem] border-[6px] border-text-primary/85 bg-bg-secondary p-2 shadow-xl">
-      <div className="absolute left-1/2 top-2 z-10 h-5 w-24 -translate-x-1/2 rounded-b-2xl bg-text-primary/85" />
-      <div className="overflow-hidden rounded-[1.8rem]">{children}</div>
+    <div className={`relative rounded-[2rem] border-[5px] border-text-primary/85 bg-bg-secondary p-1.5 shadow-xl ${className ?? ''}`}>
+      <div className="absolute left-1/2 top-1.5 z-10 h-4 w-20 -translate-x-1/2 rounded-b-xl bg-text-primary/85" />
+      <div className="overflow-hidden rounded-[1.5rem]">{children}</div>
+    </div>
+  );
+}
+
+function PhoneCluster({ shots, name }: { shots: string[]; name: string }) {
+  if (shots.length === 1) {
+    return (
+      <PhoneShell className="mx-auto w-full max-w-[260px]">
+        <Image src={shots[0]} alt={`${name} screenshot`} width={1290} height={2560} className="w-full h-auto" />
+      </PhoneShell>
+    );
+  }
+  // 2–3 shots: staggered trio, middle one forward
+  const [left, center, right] = shots.length >= 3 ? shots : [shots[0], shots[0], shots[1]];
+  return (
+    <div className="relative flex items-center justify-center h-[420px] md:h-[480px]">
+      <PhoneShell className="absolute left-[8%] top-1/2 w-[40%] max-w-[180px] -translate-y-1/2 -rotate-6 opacity-90">
+        <Image src={left} alt={`${name} screenshot`} width={1290} height={2560} className="w-full h-auto" />
+      </PhoneShell>
+      <PhoneShell className="absolute right-[8%] top-1/2 w-[40%] max-w-[180px] -translate-y-1/2 rotate-6 opacity-90">
+        <Image src={right} alt={`${name} screenshot`} width={1290} height={2560} className="w-full h-auto" />
+      </PhoneShell>
+      <PhoneShell className="relative z-10 w-[46%] max-w-[210px]">
+        <Image src={center} alt={`${name} screenshot`} width={1290} height={2560} className="w-full h-auto" priority />
+      </PhoneShell>
     </div>
   );
 }
@@ -115,26 +140,28 @@ export function SelectedProducts() {
               className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`}
             >
               {/* Visual */}
-              <div className="lg:col-span-6 p-4">
-                <TiltCard tiltAmount={8} scale={1.015} glareEnabled={p.frame === 'browser'}>
-                  {p.frame === 'phone' ? (
-                    <PhoneFrame>
-                      {p.screenshot ? (
-                        <Image src={p.screenshot} alt={`${p.name} screenshot`} width={540} height={1170} className="w-full h-auto" />
-                      ) : (
-                        <ImagePlaceholder initials={p.initials} aspectRatio="portrait" grayscale={false} />
-                      )}
-                    </PhoneFrame>
+              <div className="lg:col-span-6 p-2 md:p-4">
+                {p.frame === 'phone' ? (
+                  p.screenshots && p.screenshots.length ? (
+                    <PhoneCluster shots={p.screenshots} name={p.name} />
                   ) : (
+                    <TiltCard tiltAmount={8} scale={1.015} glareEnabled={false}>
+                      <PhoneShell className="mx-auto w-full max-w-[260px]">
+                        <ImagePlaceholder initials={p.initials} aspectRatio="portrait" grayscale={false} />
+                      </PhoneShell>
+                    </TiltCard>
+                  )
+                ) : (
+                  <TiltCard tiltAmount={7} scale={1.012} glareEnabled>
                     <BrowserFrame>
-                      {p.screenshot ? (
-                        <Image src={p.screenshot} alt={`${p.name} screenshot`} width={1280} height={800} className="w-full h-auto" />
+                      {p.screenshots && p.screenshots.length ? (
+                        <Image src={p.screenshots[0]} alt={`${p.name} screenshot`} width={1280} height={800} className="w-full h-auto" />
                       ) : (
                         <ImagePlaceholder initials={p.initials} aspectRatio="video" grayscale={false} />
                       )}
                     </BrowserFrame>
-                  )}
-                </TiltCard>
+                  </TiltCard>
+                )}
               </div>
 
               {/* Copy */}
@@ -175,12 +202,14 @@ export function SelectedProducts() {
                     {p.liveLabel}
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
-                  <a
-                    href={p.caseStudyUrl}
-                    className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-border-default text-xs uppercase tracking-widest font-medium hover:border-text-primary transition-colors"
-                  >
-                    Read the story
-                  </a>
+                  {p.caseStudyUrl && (
+                    <a
+                      href={p.caseStudyUrl}
+                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full border border-border-default text-xs uppercase tracking-widest font-medium hover:border-text-primary transition-colors"
+                    >
+                      Read the story
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
