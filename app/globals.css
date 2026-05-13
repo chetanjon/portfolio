@@ -640,6 +640,40 @@ input[type="color"]::-webkit-color-swatch {
   .gradient-text-glossy { animation: none !important; }
 }
 
+/* Spectrum sweep — full 5-color Aatram palette flowing through the text.
+   Used on the hero punch line. Continuous linear flow (not ease) so the
+   colors feel like a current, not a pulse. */
+@keyframes gradient-spectrum-flow {
+  from { background-position: 0% 50%; }
+  to   { background-position: -200% 50%; }
+}
+
+.gradient-text-spectrum {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-primary) 0%,
+    var(--color-accent-rose) 18%,
+    var(--color-accent-sand) 36%,
+    var(--color-accent-secondary) 54%,
+    var(--color-accent-soft) 72%,
+    var(--color-accent-rose) 90%,
+    var(--color-accent-primary) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter:
+    drop-shadow(0 0 14px rgba(184, 169, 212, 0.35))
+    drop-shadow(0 6px 20px rgba(125, 191, 171, 0.18));
+  animation: gradient-spectrum-flow 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text-spectrum { animation: none !important; }
+}
+
 /* Gloss serif — applied to the big italic display lines in the hero.
    Vertical background-clip gradient + drop-shadow filter to give the
    type a soft surface that catches the light. CSS variables auto-swap

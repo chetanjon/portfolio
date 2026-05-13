@@ -71,23 +71,8 @@ export function Hero() {
           <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
             Then
           </span>
-          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] leading-[0.9] inline-flex flex-wrap items-baseline gap-x-[0.25em]">
-            <span style={{ color: 'var(--color-accent-primary)', filter: 'drop-shadow(0 0 24px rgba(184, 169, 212, 0.35))' }}>
-              ship
-            </span>
-            <span style={{ color: 'var(--color-accent-secondary)', filter: 'drop-shadow(0 0 24px rgba(125, 191, 171, 0.35))' }}>
-              it
-            </span>
-            <span style={{ color: 'var(--color-accent-rose)', filter: 'drop-shadow(0 0 24px rgba(201, 146, 155, 0.35))' }}>
-              end
-            </span>
-            <span style={{ color: 'var(--color-accent-sand)', filter: 'drop-shadow(0 0 24px rgba(201, 185, 122, 0.35))' }}>
-              to
-            </span>
-            <span style={{ color: 'var(--color-accent-soft)', filter: 'drop-shadow(0 0 24px rgba(184, 169, 212, 0.35))' }}>
-              end
-              <span style={{ color: 'var(--color-accent-soft)' }}>.</span>
-            </span>
+          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] gradient-text-spectrum leading-[0.9]">
+            ship it end to end.
           </span>
         </motion.div>
 
