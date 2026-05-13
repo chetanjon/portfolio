@@ -3,8 +3,7 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { HeroGlow } from '@/components/sections/HeroGlow';
+import { ArrowRight, CornerDownRight } from 'lucide-react';
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,8 +19,6 @@ export function Hero() {
       ref={ref}
       className="relative w-full min-h-screen overflow-hidden bg-bg-primary flex flex-col"
     >
-      <HeroGlow />
-
       <motion.div
         style={{ y, opacity }}
         className="relative z-10 flex-1 flex flex-col justify-center max-w-[1500px] w-full mx-auto px-6 md:px-10 pt-32 pb-32"
@@ -42,9 +39,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Editorial headline — three specific verbs, each a provable
-            competence (PM finds problems, you draw icons in SwiftUI Canvas,
-            you ship Swift across 158 commits on Aatram). */}
+        {/* Editorial headline — italic serif, three short lines stacked */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,48 +47,62 @@ export function Hero() {
           className="font-display-serif italic font-normal leading-[0.95] tracking-tight"
           style={{ fontVariationSettings: "'opsz' 72" }}
         >
-          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] gloss-serif">
-            I find the problem.
+          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] gloss-serif">
+            I find the
           </span>
-          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] gloss-serif">
-            I draw the icon.
+          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] gloss-serif">
+            problem worth
           </span>
-          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] gloss-serif">
-            I write the code.
+          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] gloss-serif">
+            solving.
           </span>
         </motion.h1>
 
-        {/* Punch line — bold uppercase, prism gradient bakes rose→lavender→
-            mint across the letterforms statically (no animation, no halo). */}
+        {/* Punch line — italic "Then" + bold uppercase prism gradient */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mt-6 md:mt-10"
+          className="mt-6 md:mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2"
         >
-          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8rem] gradient-text-prism leading-[0.9]">
-            I ship it.
+          <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
+            Then
+          </span>
+          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] gradient-text-prism leading-[0.9]">
+            ship it end to end.
           </span>
         </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
+        {/* The receipts — short proof callout + italic blurb */}
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-10 md:mt-14 max-w-2xl text-base md:text-lg text-text-secondary leading-relaxed"
+          className="mt-12 md:mt-16 max-w-2xl"
         >
-          Co-Founder of a live iOS app. Owns product, design, and brand end-to-end:
-          18-component design system, vector logo, brand voice, motion language. Former
-          B2B marketplace PM who scaled vendors 3.75x and doubled GMV at seed stage.
-        </motion.p>
+          <div className="flex items-center gap-2 mb-4 text-[11px] uppercase tracking-[0.28em] text-text-muted">
+            <CornerDownRight className="w-3.5 h-3.5" />
+            The receipts
+          </div>
+          <p className="text-2xl md:text-3xl lg:text-4xl font-display font-medium leading-tight text-text-primary mb-4">
+            Two products live.{' '}
+            <span style={{ color: 'var(--color-accent-soft)' }}>Three</span>{' '}
+            more in flight.{' '}
+            <span style={{ color: 'var(--color-accent-secondary)' }}>One</span>{' '}
+            PM.
+          </p>
+          <p className="font-serif italic text-text-secondary text-base md:text-lg leading-relaxed">
+            Co-founded Aatram (live on the App Store). Doubled GMV at a seed-stage B2B
+            marketplace. 3.75× vendor growth in 18 months.
+          </p>
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-8 flex flex-wrap gap-3"
+          className="mt-10 flex flex-wrap gap-3"
         >
           <Link
             href="/work"
