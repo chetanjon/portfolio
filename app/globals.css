@@ -582,6 +582,44 @@ input[type="color"]::-webkit-color-swatch {
   .gradient-text-accent-animated { animation: none !important; }
 }
 
+/* Gloss serif — applied to the big italic display lines in the hero.
+   Vertical background-clip gradient + drop-shadow filter to give the
+   type a soft surface that catches the light. CSS variables auto-swap
+   for dark mode below. */
+
+.gloss-serif {
+  background: linear-gradient(
+    180deg,
+    var(--gloss-highlight) 0%,
+    var(--color-text-primary) 38%,
+    var(--color-text-primary) 62%,
+    var(--gloss-shadow) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter:
+    drop-shadow(0 1px 0 var(--gloss-rim))
+    drop-shadow(0 2px 1px var(--gloss-depth));
+}
+
+/* Light-mode gloss tokens — warm paper surface */
+:root {
+  --gloss-highlight: color-mix(in oklab, var(--color-text-primary) 84%, var(--color-bg-primary) 16%);
+  --gloss-shadow:    color-mix(in oklab, var(--color-text-primary) 90%, #000 10%);
+  --gloss-rim:       rgba(255, 255, 255, 0.32);
+  --gloss-depth:     rgba(40, 30, 60, 0.10);
+}
+
+/* Dark-mode gloss tokens — near-black surface, lavender-cream highlight */
+.dark {
+  --gloss-highlight: color-mix(in oklab, var(--color-text-primary) 78%, var(--color-accent-soft) 22%);
+  --gloss-shadow:    color-mix(in oklab, var(--color-text-primary) 72%, var(--color-bg-primary) 28%);
+  --gloss-rim:       rgba(236, 232, 224, 0.16);
+  --gloss-depth:     rgba(0, 0, 0, 0.5);
+}
+
 /* CTA glow — subtle outer glow on hover */
 .cta-glow {
   transition: box-shadow 250ms ease-out, opacity 200ms ease, border-color 300ms ease, background-color 300ms ease, color 300ms ease;

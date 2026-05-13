@@ -71,7 +71,7 @@ export function MomentumGauge({
   const fillArc = `M ${bgX1} ${bgY1} A ${r} ${r} 0 ${fillLargeArc} 1 ${fillX2} ${fillY2}`;
 
   return (
-    <svg viewBox="0 0 240 220" className={className}>
+    <svg viewBox="-12 0 264 220" className={className}>
       {!ticksOnly && (
         <path
           d={bgArc}
@@ -113,10 +113,10 @@ export function MomentumGauge({
               opacity={0.45}
               style={{ fontSize: 8, letterSpacing: '0.18em', textTransform: 'uppercase' }}
             >
-              <text x={70} y={72} textAnchor="middle">Building</text>
-              <text x={170} y={72} textAnchor="middle">Rolling</text>
-              <text x={50} y={196} textAnchor="middle">Starting</text>
-              <text x={190} y={196} textAnchor="middle">Locked In</text>
+              <text x={23} y={76} textAnchor="middle">Building</text>
+              <text x={217} y={76} textAnchor="middle">Rolling</text>
+              <text x={23} y={188} textAnchor="middle">Starting</text>
+              <text x={217} y={188} textAnchor="middle">Locked In</text>
             </g>
           )}
         </>
