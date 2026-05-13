@@ -1,4 +1,5 @@
 import { Hero } from '@/components/sections/Hero';
+import { StackMarquee } from '@/components/sections/StackMarquee';
 import { SelectedProducts } from '@/components/sections/SelectedProducts';
 import { CraftTeaser } from '@/components/sections/CraftTeaser';
 import { Works } from '@/components/sections/Works';
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <StackMarquee />
       <SelectedProducts />
       <CraftTeaser />
       <Works />

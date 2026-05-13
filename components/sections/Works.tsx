@@ -137,10 +137,12 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
         href={`/work/${row.slug}`}
         className="relative block py-12 md:py-16 pl-6 md:pl-10 overflow-hidden"
       >
-        {/* Ghost outlined year numeral — drifts with scroll */}
+        {/* Ghost outlined year numeral — drifts with scroll. Lives at z=0
+            so the content (z=10) stacks cleanly above it; opacity dialed
+            back so it reads as ambient atmosphere, not competing text. */}
         <motion.span
           aria-hidden
-          className="pointer-events-none select-none absolute right-[28%] top-1/2 -translate-y-1/2 font-display font-black leading-none tracking-tight text-[7rem] md:text-[11rem] lg:text-[15rem] opacity-25 group-hover/row:opacity-45 transition-opacity duration-500 hidden md:block"
+          className="pointer-events-none select-none absolute right-[6%] top-1/2 -translate-y-1/2 font-display font-black leading-none tracking-tight text-[6rem] md:text-[9rem] lg:text-[12rem] opacity-[0.08] group-hover/row:opacity-[0.16] transition-opacity duration-500 hidden md:block z-0"
           style={{
             color: 'transparent',
             WebkitTextStroke: '1px var(--row-accent)',
@@ -151,7 +153,7 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
           {row.yearShort}
         </motion.span>
 
-        <div className="relative grid grid-cols-1 md:grid-cols-12 gap-y-6 md:gap-x-10 items-start">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-y-6 md:gap-x-10 items-start">
           {/* Index + year */}
           <motion.div
             variants={{
