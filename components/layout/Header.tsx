@@ -96,7 +96,7 @@ export function Header() {
               Everything else lives in the Menu overlay. */}
           <nav className="hidden md:flex items-center gap-10 lg:gap-14 text-[15px]">
             {navItems
-              .filter((item) => ['/work', '/about', '/resume'].includes(item.href))
+              .filter((item) => ['/work', '/casestudies', '/about', '/resume'].includes(item.href))
               .map((item) => {
                 const isResume = item.href === '/resume';
 
