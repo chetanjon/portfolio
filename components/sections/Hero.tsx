@@ -71,7 +71,7 @@ export function Hero() {
           <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
             Then
           </span>
-          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] gradient-text-cycle leading-[0.9]">
+          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] gradient-text-prism leading-[0.9]">
             ship it end to end.
           </span>
         </motion.div>

@@ -640,30 +640,22 @@ input[type="color"]::-webkit-color-swatch {
   .gradient-text-glossy { animation: none !important; }
 }
 
-/* Color cycle — the entire phrase shifts through the Aatram palette
-   in place. No horizontal sweep, no spatial movement. Each color is
-   fully saturated and present across all letters at its moment, then
-   smoothly transitions to the next. ~13s loop, ease-in-out so each
-   color holds for a beat before the next one arrives. */
-@keyframes gradient-color-cycle {
-  0%, 100% { color: var(--color-accent-primary); }   /* lavender */
-  20%      { color: var(--color-accent-secondary); } /* mint */
-  40%      { color: var(--color-accent-rose); }      /* rose */
-  60%      { color: var(--color-accent-sand); }      /* sand */
-  80%      { color: var(--color-accent-soft); }      /* soft lavender */
-}
-
-.gradient-text-cycle {
-  animation: gradient-color-cycle 13s ease-in-out infinite;
-  /* No background-clip, no drop-shadow, no halo — letters render as a
-     solid color that changes over time. Crisp edges throughout. */
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gradient-text-cycle {
-    animation: none !important;
-    color: var(--color-accent-primary);
-  }
+/* Prism — static multi-color gradient baked across the letters.
+   Like Apple's "Liquid Glass / Cracked" treatment: rose on the left,
+   transitioning through lavender in the middle, landing on mint at
+   the right. Colors are fully saturated, visible across all letters
+   at once, and don't animate. Auto-swaps theme via accent tokens. */
+.gradient-text-prism {
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-rose) 0%,
+    var(--color-accent-primary) 50%,
+    var(--color-accent-secondary) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Gloss serif — applied to the big italic display lines in the hero.
