@@ -255,6 +255,119 @@ export const workExperiences: WorkExperience[] = [
     thumbnail: '/work/ikt-india-intern.svg',
     featured: false,
   },
+  {
+    id: '3',
+    slug: 'frictionlens',
+    company: 'FrictionLens',
+    role: 'Solo Designer & Engineer',
+    type: 'project',
+    startDate: '2026-01',
+    endDate: 'Present',
+    location: 'Remote',
+    description:
+      'Full-stack AI review intelligence tool. Live at frictionlens.net. Designed and shipped the marketing site, the dashboard, and the shareable Vibe Report pages end-to-end on Next.js, TypeScript, Supabase, and Google Gemini.',
+    highlights: [
+      'Shipped a full-stack AI review analyzer (Next.js, React, TypeScript, Supabase with Postgres + RLS, Google Gemini AI SDK, Upstash Redis) ingesting App Store, Play Store, Reddit (OAuth), and CSV reviews into a single Vibe Report',
+      'Made cost-efficiency the primary product constraint and benchmarked classifier tiers against Gemini API cost curves to stay within free-tier volume across typical review workloads',
+      'Designed a 3-tier rule-based classifier (not embeddings): short reviews route through star + keyword rules with no AI; medium use keyword sentiment with no AI; long batches go to Gemini with Zod-validated structured outputs and 6.5s inter-batch throttling for free-tier 10-RPM limits',
+      'Built BYOK architecture with AES-256-GCM encrypted per-user key storage, SSE progress streaming, Inngest background-job fallback, and shareable public Vibe Report pages with OG-image generation as a built-in distribution channel',
+      'Designed a freemium model with 2 free analyses on gemini-2.5-flash-lite then BYOK for unlimited usage; designed and built the marketing site (positioning, type, motion) alongside the product so the landing page is the demo',
+    ],
+    metrics: [
+      { value: '3 tiers', label: 'Cost-aware classifier routing', context: 'AI only when needed' },
+      { value: '4', label: 'Review sources unified', context: 'App Store, Play Store, Reddit, CSV' },
+      { value: 'AES-256-GCM', label: 'Per-user key encryption', context: 'BYOK for unlimited analyses' },
+      { value: '$0', label: 'Forever tier', context: 'free for indie devs' },
+    ],
+    skills: [
+      'Product Design',
+      'Full-Stack Engineering',
+      'Next.js',
+      'TypeScript',
+      'Supabase',
+      'Google Gemini',
+      'Cost Engineering',
+      'Brand & Landing Page',
+    ],
+    thumbnail: '/projects/frictionlens.svg',
+    featured: true,
+    caseStudy: {
+      overview:
+        'FrictionLens is a full-stack AI review intelligence tool live at frictionlens.net. Designed and shipped end-to-end — marketing site, dashboard, shareable Vibe Report pages — on Next.js, TypeScript, Supabase (Postgres + RLS + Edge Functions), Google Gemini, and Upstash Redis. The strategic bet: indie developers can\'t read every review, but the patterns that actually predict churn are buried in 2-3 star reviews. The hard part of shipping an AI tool isn\'t the AI. It\'s the unit economics.',
+      challenge:
+        'Two problems made the obvious "summarize reviews with an LLM" pitch hard. First, naively sending every review through Gemini blows past free-tier limits in a single analysis, killing the freemium model the indie audience actually needs. Second, a black-box sentiment score is magical but useless — engineering needs to know what to fix, not how angry users feel.',
+      challengePoints: [
+        'LLM cost curves: routing every review through Gemini collapses the $0 freemium tier',
+        'Generic sentiment scores don\'t tell engineering what to ship',
+        'Indie tools die without a distribution channel; no marketing budget',
+        'Trust: black-box AI feels suspicious to the audience that\'s most cost-sensitive',
+        'Free Gemini API has 10-RPM limits — naive batching fails immediately',
+      ],
+      approach: [
+        {
+          phase: 'Cost-Aware Classifier Design',
+          description:
+            'Made cost-efficiency the primary product constraint before any model selection. Benchmarked classifier tiers against Gemini API cost curves to stay within free-tier volume across typical review workloads. The whole architecture exists to answer "how do we ship this for free?"',
+        },
+        {
+          phase: '3-Tier Routing (Not Embeddings)',
+          description:
+            'Short reviews → keyword + star rules, no AI. Medium → keyword sentiment, no AI. Long batches → Gemini with Zod-validated structured outputs and 6.5s inter-batch throttling for the 10-RPM free-tier limit. Roughly 80% of reviews never touch the AI.',
+        },
+        {
+          phase: 'BYOK Architecture',
+          description:
+            'Built bring-your-own-key with AES-256-GCM encrypted per-user key storage so power users run unlimited analyses on their own Gemini key while the freemium tier serves curious visitors on 2 free runs. Lets the tool stay $0 forever without a paywall.',
+        },
+        {
+          phase: 'Vibe Reports as Distribution',
+          description:
+            'Designed shareable public Vibe Report pages with OG-image generation so every user sharing their report becomes acquisition. No ad budget, no growth team — the product itself is the distribution channel.',
+        },
+        {
+          phase: 'Marketing Site as Proof of Taste',
+          description:
+            'Designed and shipped frictionlens.net (positioning, type pairing, motion, the search-driven hero) alongside the product so the landing page IS the demo. One cohesive thing, not "marketing site eventually."',
+        },
+      ],
+      decisions: [
+        {
+          decision: 'Cost-efficiency as the primary product constraint, not a backlog item',
+          context:
+            'Every "AI review analyzer" pitch deck assumes you can afford the API calls. The freemium model collapses in a week if every analysis costs $0.40. Treating cost as the first design constraint changed every downstream architectural choice.',
+          outcome:
+            'Stayed within Gemini free-tier limits for typical workloads, making the $0 forever tier real. The architecture is the moat, not the model choice.',
+        },
+        {
+          decision: '3-tier rule-based classifier over embeddings or always-AI',
+          context:
+            'Embedding-based clustering is the "smart" move but adds latency, infrastructure, and cost. Always-AI is simpler but kills the freemium economics. Rule-based routing is none of the above but lets ~80% of reviews skip AI entirely.',
+          outcome:
+            'Short reviews resolve instantly with no API call. Long reviews still get the Gemini treatment with Zod-validated structured outputs. Free tier survives a real workload.',
+        },
+        {
+          decision: 'BYOK with AES-256-GCM, not a SaaS subscription',
+          context:
+            'The audience is indie devs — exactly the people who will run from a $29/mo subscription. A BYOK path lets them bring a free Google AI Studio key and run unlimited analyses.',
+          outcome:
+            'Pricing page reads "Free for indie devs. $0 forever." That positioning is only honest because the BYOK path exists.',
+        },
+        {
+          decision: 'Shareable public Vibe Report pages with OG-image generation',
+          context:
+            'Indie tools without a marketing budget need built-in distribution. Every share of a Vibe Report needs to look good as a link preview, not as a generic URL.',
+          outcome:
+            'Each Vibe Report is a public URL with a custom OG image showing the app icon, vibe score, and top friction. Sharing becomes acquisition.',
+        },
+      ],
+      results:
+        'Live at frictionlens.net. Full-stack ship across marketing site, dashboard, and shareable report pages. 3 classifier tiers running. 4 review sources unified (App Store, Play Store, Reddit, CSV). 256-bit AES-GCM per-user key encryption. Freemium tier holds because the architecture earns the right to be free.',
+      learnings:
+        'Cost engineering is the unsung hero of free AI products. The hard part of shipping an AI tool isn\'t the AI — it\'s the unit economics. Routing transparency (showing users which tier their reviews hit) builds more trust than hiding the machinery; users repeatedly cited "I can see why this is free" as the thing that made them try it.',
+      whatWouldChange:
+        'More iteration on classifier accuracy at the medium tier — keyword sentiment is brittle for sarcasm and dual-sentiment reviews. Add automatic cohort comparison across app versions so release impact is computed by default, not by manual diff. And ship a Linear/Jira export earlier; the gap between "here\'s the friction" and "here\'s a ticket" is where the value compounds.',
+    },
+  },
 ];
 
 export function getWorkBySlug(slug: string): WorkExperience | undefined {

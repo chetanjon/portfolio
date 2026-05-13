@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'aatram',
   ];
 
-  const workSlugs = ['aatram', 'ikt-india', 'gangothri-nutrients'];
+  const workSlugs = ['aatram', 'ikt-india', 'frictionlens', 'gangothri-nutrients'];
 
   const staticPages: MetadataRoute.Sitemap = [
     {

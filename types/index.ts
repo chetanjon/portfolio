@@ -31,7 +31,7 @@ export interface WorkExperience {
   slug: string;
   company: string;
   role: string;
-  type: 'full-time' | 'internship' | 'contract';
+  type: 'full-time' | 'internship' | 'contract' | 'project';
   startDate: string;
   endDate: string | 'Present';
   location: string;

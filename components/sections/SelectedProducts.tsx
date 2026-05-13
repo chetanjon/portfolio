@@ -54,7 +54,7 @@ const products: Product[] = [
     screenshots: ['/products/frictionlens-landing.png', '/products/frictionlens-report.png'],
     liveUrl: 'https://www.frictionlens.net/',
     liveLabel: 'Open frictionlens.net',
-    caseStudyUrl: undefined,
+    caseStudyUrl: '/work/frictionlens',
     stack: ['Next.js', 'TypeScript', 'Supabase', 'Google Gemini', 'Upstash Redis'],
     metrics: [
       { value: 3, label: 'Classifier tiers, AI only when needed' },

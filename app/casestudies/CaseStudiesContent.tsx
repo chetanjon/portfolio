@@ -36,6 +36,21 @@ const caseStudies: Array<{
     readMin: 6,
   },
   {
+    slug: 'frictionlens',
+    href: '/work/frictionlens',
+    company: 'FrictionLens',
+    title: 'The Free AI Tool That Earns It',
+    description:
+      'A full-stack AI review intelligence tool live at frictionlens.net. Designed and shipped end-to-end — marketing site, dashboard, shareable Vibe Report pages — on Next.js, TypeScript, Supabase, Google Gemini, and Upstash Redis. Cost-aware 3-tier classifier routes ~80% of reviews through keyword rules so the freemium tier stays free. BYOK with AES-256-GCM lets power users run unlimited analyses on their own key.',
+    tags: ['Full-Stack', 'AI', 'Next.js', 'Cost Engineering', 'Brand & Landing Page'],
+    metric: { value: '$0', label: 'Forever tier · 3 classifier tiers · 4 review sources' },
+    accentColor: '#3F8C73',
+    bgColor: '#E6F2EC',
+    year: '2026',
+    type: 'Shipped',
+    readMin: 6,
+  },
+  {
     slug: 'ikt-india',
     href: '/work/ikt-india',
     company: 'IKT India',

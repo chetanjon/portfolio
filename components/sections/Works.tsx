@@ -58,7 +58,7 @@ export function Works() {
 
         {/* Projects grid - staggered */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24">
-          {workExperiences.map((work, i) => (
+          {workExperiences.filter((w) => w.featured).map((work, i) => (
             <motion.div
               key={work.id}
               initial={{ opacity: 0, y: 50 }}
