@@ -2,16 +2,48 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, ArrowDown, CornerDownRight } from 'lucide-react';
+import { ArrowRight, ArrowDown, ArrowUpRight } from 'lucide-react';
 import { HeroGlow } from '@/components/sections/HeroGlow';
+
+function PhoneShell({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div
+      className={`relative rounded-[2.2rem] border-[5px] border-text-primary/85 bg-text-primary/85 shadow-2xl ${className ?? ''}`}
+    >
+      <div className="overflow-hidden rounded-[1.8rem]">{children}</div>
+    </div>
+  );
+}
+
+function BrowserShell({
+  children,
+  url,
+  className,
+}: {
+  children: React.ReactNode;
+  url: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`overflow-hidden rounded-xl border border-border-hover bg-bg-secondary shadow-2xl ${className ?? ''}`}
+    >
+      <div className="flex items-center gap-1.5 border-b border-border-default px-4 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-accent-soft/60" />
+        <span className="h-2.5 w-2.5 rounded-full bg-accent-soft/40" />
+        <span className="h-2.5 w-2.5 rounded-full bg-accent-soft/25" />
+        <span className="ml-3 text-[10px] font-mono text-text-muted">{url}</span>
+      </div>
+      <div className="overflow-hidden">{children}</div>
+    </div>
+  );
+}
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
@@ -26,15 +58,14 @@ export function Hero() {
         style={{ y, opacity }}
         className="relative z-10 flex-1 flex flex-col max-w-[1500px] w-full mx-auto px-6 md:px-10 pt-32 pb-12"
       >
-        {/* Meta row — Issue / Open to roles */}
+        {/* Top meta — open to roles */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex items-center justify-between text-[11px] md:text-xs uppercase tracking-[0.28em] text-text-muted"
+          className="flex justify-end"
         >
-          <p>Issue 01 — May 2026</p>
-          <p className="flex items-center gap-2">
+          <p className="flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.28em] text-text-muted">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60 animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
@@ -43,78 +74,130 @@ export function Hero() {
           </p>
         </motion.div>
 
-        {/* Editorial headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mt-10 md:mt-14"
-        >
-          {/* Italic lead-in */}
-          <p className="font-serif italic font-normal text-text-primary text-3xl sm:text-4xl md:text-5xl leading-tight">
-            Hi, I&apos;m CJ.
-          </p>
-          <p className="font-serif italic font-normal text-text-primary text-3xl sm:text-4xl md:text-5xl leading-tight mt-1">
-            Most PMs ship{' '}
-            <span className="relative inline-block">
-              decks
-              <span
-                aria-hidden
-                className="absolute left-[-8%] right-[-8%] top-[58%] h-[5px] md:h-[7px] rounded-sm pointer-events-none"
-                style={{
-                  backgroundColor: '#C9929B',
-                  transform: 'rotate(-3deg) translateY(-50%)',
-                  transformOrigin: 'center',
-                }}
-              />
-            </span>
-            .
-          </p>
-
-          {/* Huge punch line — I SHIP / APPS. */}
-          <div className="mt-8 md:mt-10 font-display font-black uppercase tracking-tight leading-[0.86]">
-            <p className="text-6xl sm:text-7xl md:text-[6.5rem] lg:text-[8.5rem] xl:text-[9.5rem] text-text-primary">
-              I Ship
+        {/* Main two-column composition */}
+        <div className="mt-10 md:mt-14 lg:mt-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 xl:gap-16 items-center flex-1">
+          {/* Left: identity */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="lg:col-span-5"
+          >
+            <p className="font-serif italic font-normal text-text-secondary text-xl md:text-2xl mb-4">
+              Chetan Jonnalagadda.
             </p>
-            <p className="text-6xl sm:text-7xl md:text-[6.5rem] lg:text-[8.5rem] xl:text-[9.5rem] text-accent-primary mt-0 md:mt-1 md:pl-8 lg:pl-16 xl:pl-20">
-              Apps.
-            </p>
-          </div>
-        </motion.div>
 
-        {/* The receipts — right-offset block with highlighted callouts */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-12 md:mt-14 md:ml-auto md:max-w-xl"
-        >
-          <div className="flex items-center gap-2 mb-4 text-[11px] md:text-xs uppercase tracking-[0.28em] text-text-muted">
-            <CornerDownRight className="w-3.5 h-3.5" />
-            The receipts
+            <h1 className="leading-[0.95]">
+              <span className="block font-serif italic font-normal text-text-primary text-3xl md:text-4xl lg:text-5xl">
+                Product manager who
+              </span>
+              <span className="block font-display font-black uppercase tracking-tight text-text-primary text-5xl md:text-6xl lg:text-7xl xl:text-8xl mt-1 md:mt-2">
+                ships full apps.
+              </span>
+            </h1>
+
+            <p className="mt-8 md:mt-10 max-w-md text-text-secondary leading-relaxed text-base md:text-lg">
+              Co-founded{' '}
+              <span className="text-text-primary font-medium">Aatram</span>, a consumer iOS app live
+              on the App Store. Built{' '}
+              <span className="text-text-primary font-medium">FrictionLens</span> end-to-end as a
+              solo founder. Took an Indian B2B marketplace from 20 to 75+ vendors and doubled GMV at
+              seed stage.
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                href="/work"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-primary text-accent-on text-xs uppercase tracking-widest font-medium hover:opacity-85 transition-opacity"
+              >
+                View work
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link
+                href="/resume"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border-default text-text-primary text-xs uppercase tracking-widest font-medium hover:border-text-primary transition-colors"
+              >
+                Resume
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Right: product composite */}
+          <div className="lg:col-span-7">
+            {/* Mobile / tablet: stacked */}
+            <div className="lg:hidden flex flex-col items-center gap-6">
+              <PhoneShell className="w-full max-w-[240px]">
+                <Image
+                  src="/products/aatram-home.jpg"
+                  alt="Aatram — live on the App Store"
+                  width={1290}
+                  height={2560}
+                  className="w-full h-auto"
+                  priority
+                />
+              </PhoneShell>
+              <BrowserShell url="frictionlens.net" className="w-full max-w-[440px]">
+                <Image
+                  src="/products/frictionlens-landing.png"
+                  alt="FrictionLens — live at frictionlens.net"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto"
+                />
+              </BrowserShell>
+            </div>
+
+            {/* Desktop: overlapping composite */}
+            <div className="hidden lg:block relative h-[540px] xl:h-[620px]">
+              {/* Browser back-right, slight rotation */}
+              <motion.div
+                initial={{ opacity: 0, x: 40, rotate: 6 }}
+                animate={{ opacity: 1, x: 0, rotate: 3 }}
+                transition={{ duration: 0.9, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="absolute right-0 top-[14%] w-[58%] max-w-[500px] origin-bottom-left"
+              >
+                <BrowserShell url="frictionlens.net">
+                  <Image
+                    src="/products/frictionlens-landing.png"
+                    alt="FrictionLens"
+                    width={1920}
+                    height={1080}
+                    className="w-full h-auto"
+                  />
+                </BrowserShell>
+                <p className="absolute -bottom-7 right-0 text-[10px] uppercase tracking-[0.25em] text-text-muted">
+                  FrictionLens
+                </p>
+              </motion.div>
+
+              {/* Phone front-left, slight counter rotation, hovers on top */}
+              <motion.div
+                initial={{ opacity: 0, x: -24, rotate: -6 }}
+                animate={{ opacity: 1, x: 0, rotate: -2 }}
+                transition={{ duration: 0.9, delay: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="absolute left-[4%] xl:left-[6%] top-1/2 -translate-y-1/2 w-[42%] max-w-[260px] z-10 origin-bottom-right"
+              >
+                <PhoneShell>
+                  <Image
+                    src="/products/aatram-home.jpg"
+                    alt="Aatram"
+                    width={1290}
+                    height={2560}
+                    className="w-full h-auto"
+                    priority
+                  />
+                </PhoneShell>
+                <p className="absolute -bottom-7 left-0 text-[10px] uppercase tracking-[0.25em] text-text-muted">
+                  Aatram
+                </p>
+              </motion.div>
+            </div>
           </div>
-          <p className="font-serif italic text-lg md:text-xl lg:text-2xl text-text-secondary leading-relaxed">
-            Co-founded{' '}
-            <strong className="font-display font-semibold not-italic text-text-primary">
-              Aatram
-            </strong>
-            , live on the App Store. Solo-built{' '}
-            <strong className="font-display font-semibold not-italic text-text-primary">
-              FrictionLens
-            </strong>
-            , an AI review analyzer live at frictionlens.net. Grew an Indian B2B marketplace{' '}
-            <span
-              className="font-display font-bold not-italic"
-              style={{ color: 'var(--color-accent-soft)' }}
-            >
-              3.75× vendors, 2× GMV
-            </span>{' '}
-            at seed stage.
-          </p>
-        </motion.div>
+        </div>
       </motion.div>
 
-      {/* Bottom row — View work · Scroll · Page number */}
+      {/* Bottom rail — product wayfinding */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -122,33 +205,37 @@ export function Hero() {
         style={{ opacity }}
         className="relative z-10 max-w-[1500px] w-full mx-auto px-6 md:px-10 pb-10 md:pb-12"
       >
-        <div className="border-t border-border-default pt-6 grid grid-cols-3 items-center gap-4">
-          <Link
-            href="/work"
-            className="group flex items-center gap-2 text-[11px] md:text-xs uppercase tracking-[0.25em] font-medium text-text-primary justify-self-start"
+        <div className="border-t border-border-default pt-6 grid grid-cols-2 md:grid-cols-3 items-center gap-4">
+          <a
+            href="https://apps.apple.com/us/app/aatram/id6760587556"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.25em] text-text-muted hover:text-text-primary transition-colors justify-self-start"
           >
-            <span className="relative">
-              View work
-              <span className="absolute -bottom-1 left-0 right-0 h-px bg-text-primary transition-transform duration-300 group-hover:scale-x-110 origin-left" />
-            </span>
-            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            Aatram · Live on the App Store
+            <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+          </a>
 
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-10 h-10 rounded-full border border-border-default flex items-center justify-center text-text-muted justify-self-center"
+            className="hidden md:flex w-10 h-10 rounded-full border border-border-default items-center justify-center text-text-muted justify-self-center"
             aria-label="Scroll"
           >
             <ArrowDown className="w-4 h-4" />
           </motion.div>
 
-          <p className="text-[11px] md:text-xs uppercase tracking-[0.25em] text-text-muted justify-self-end text-right">
-            P. 01 —{' '}
-            <span className="text-text-primary normal-case tracking-normal">
-              chetanjonnalagadda.com
-            </span>
-          </p>
+          <a
+            href="https://www.frictionlens.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.25em] text-text-muted hover:text-text-primary transition-colors justify-self-end text-right"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            FrictionLens · frictionlens.net
+            <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+          </a>
         </div>
       </motion.div>
 
