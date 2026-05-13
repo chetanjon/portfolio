@@ -80,49 +80,52 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className={cn('flex items-center gap-3 group', textStrong)}
+            className={cn('flex items-center gap-2 group', textStrong)}
             aria-label="Chetan J · Home"
           >
             <LogoMark
-              size={60}
+              size={56}
               className={cn(textStrong, 'transition-transform duration-300 group-hover:scale-110')}
             />
-            <span className={cn('text-[15px] font-medium tracking-[0.3em] uppercase transition-colors whitespace-nowrap', textSubtle)}>
-              Chetan J
+            <span className={cn('text-[15px] font-medium tracking-[0.2em] uppercase transition-colors whitespace-nowrap', textSubtle)}>
+              Chetan J.
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8 xl:gap-12 text-[15px]">
-            {navItems.slice(0, 7).map((item) => {
-              const isResume = item.href === '/resume';
+          {/* Desktop Navigation — trimmed to magazine-spread essentials.
+              Everything else lives in the Menu overlay. */}
+          <nav className="hidden md:flex items-center gap-10 lg:gap-14 text-[15px]">
+            {navItems
+              .filter((item) => ['/work', '/about', '/resume'].includes(item.href))
+              .map((item) => {
+                const isResume = item.href === '/resume';
 
-              if (isResume) {
+                if (isResume) {
+                  return (
+                    <button
+                      key={item.href}
+                      onClick={handleResumeClick}
+                      className={cn('text-[15px] uppercase tracking-widest transition-colors cursor-pointer whitespace-nowrap', textMuted)}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                }
+
+                const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
                 return (
-                  <button
+                  <Link
                     key={item.href}
-                    onClick={handleResumeClick}
-                    className={cn('text-[15px] uppercase tracking-widest transition-colors cursor-pointer whitespace-nowrap', textMuted)}
+                    href={item.href}
+                    className={cn(
+                      'text-[15px] uppercase tracking-widest transition-colors whitespace-nowrap',
+                      isActive ? textStrong : textMuted
+                    )}
                   >
                     {item.label}
-                  </button>
+                  </Link>
                 );
-              }
-
-              const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    'text-[15px] uppercase tracking-widest transition-colors whitespace-nowrap',
-                    isActive ? textStrong : textMuted
-                  )}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+              })}
           </nav>
 
           {/* Right side controls */}

@@ -48,7 +48,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mt-16 md:mt-24"
+          className="mt-10 md:mt-14"
         >
           {/* Italic lead-in */}
           <p className="font-serif italic font-normal text-text-primary text-3xl sm:text-4xl md:text-5xl leading-tight">
@@ -60,10 +60,10 @@ export function Hero() {
               decks
               <span
                 aria-hidden
-                className="absolute left-[-6%] right-[-6%] top-[58%] h-[4px] md:h-[6px] rounded-sm pointer-events-none"
+                className="absolute left-[-8%] right-[-8%] top-[58%] h-[5px] md:h-[7px] rounded-sm pointer-events-none"
                 style={{
                   backgroundColor: '#C9929B',
-                  transform: 'rotate(-2deg) translateY(-50%)',
+                  transform: 'rotate(-3deg) translateY(-50%)',
                   transformOrigin: 'center',
                 }}
               />
@@ -72,13 +72,11 @@ export function Hero() {
           </p>
 
           {/* Huge punch line — I SHIP / APPS. */}
-          <div className="mt-10 md:mt-14 font-display font-black uppercase tracking-tight leading-[0.88]">
-            <p className="text-7xl sm:text-8xl md:text-[9rem] lg:text-[12rem] xl:text-[14rem] text-text-primary">
+          <div className="mt-8 md:mt-10 font-display font-black uppercase tracking-tight leading-[0.86]">
+            <p className="text-6xl sm:text-7xl md:text-[6.5rem] lg:text-[8.5rem] xl:text-[9.5rem] text-text-primary">
               I Ship
             </p>
-            <p
-              className="text-7xl sm:text-8xl md:text-[9rem] lg:text-[12rem] xl:text-[14rem] gradient-text-glossy mt-1 md:mt-3 md:pl-12 lg:pl-24"
-            >
+            <p className="text-6xl sm:text-7xl md:text-[6.5rem] lg:text-[8.5rem] xl:text-[9.5rem] text-accent-primary mt-0 md:mt-1 md:pl-8 lg:pl-16 xl:pl-20">
               Apps.
             </p>
           </div>
@@ -89,7 +87,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-16 md:mt-20 md:ml-auto md:max-w-xl"
+          className="mt-12 md:mt-14 md:ml-auto md:max-w-xl"
         >
           <div className="flex items-center gap-2 mb-4 text-[11px] md:text-xs uppercase tracking-[0.28em] text-text-muted">
             <CornerDownRight className="w-3.5 h-3.5" />
