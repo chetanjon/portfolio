@@ -1,11 +1,10 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { SectionMarker } from '@/components/ui/SectionMarker';
-import { CountUp } from '@/components/ui/CountUp';
+import { ArrowRight } from 'lucide-react';
 import { HeroGlow } from '@/components/sections/HeroGlow';
-import { MomentumGauge } from '@/components/ui/MomentumGauge';
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,29 +18,20 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 pt-28 pb-20 overflow-hidden bg-bg-primary"
+      className="relative w-full min-h-screen overflow-hidden bg-bg-primary flex flex-col"
     >
       <HeroGlow />
-      {/* Instrument motif — faint MomentumArc ticks behind the headline */}
-      <motion.div
-        style={{ opacity }}
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 z-0 w-[min(900px,120vw)] -translate-x-1/2 -translate-y-[58%]"
-      >
-        <div className="opacity-[0.18] dark:opacity-25">
-          <MomentumGauge ticksOnly sweepTick={27} className="w-full h-auto" />
-        </div>
-      </motion.div>
+
       <motion.div
         style={{ y, opacity }}
-        className="max-w-2xl text-center z-10 flex flex-col items-center"
+        className="relative z-10 flex-1 flex flex-col justify-center max-w-[1500px] w-full mx-auto px-6 md:px-10 pt-32 pb-32"
       >
-        {/* Open to work pill */}
+        {/* Open-to-work pill — left aligned */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-6"
+          className="mb-10 md:mb-14"
         >
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border-default bg-bg-secondary/40 text-[10px] uppercase tracking-widest text-text-muted">
             <span className="relative flex h-2 w-2">
@@ -52,88 +42,112 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Tag */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05 }}
-        >
-          <SectionMarker label="PM who designs" align="center" />
-        </motion.div>
-
-        {/* Headline */}
+        {/* Editorial headline */}
         <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="font-serif italic font-normal leading-[0.95] tracking-tight text-text-primary"
+        >
+          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem]">
+            I find the
+          </span>
+          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem]">
+            problem worth
+          </span>
+          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem]">
+            solving.
+          </span>
+        </motion.h1>
+
+        {/* Punch line — bold uppercase + parenthetical */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="font-serif italic text-4xl md:text-5xl lg:text-6xl leading-[1.15] mt-10 mb-6 font-normal"
+          transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="mt-6 md:mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2"
         >
-          I find the problem worth solving.
-          <br />
-          Then <span className="font-display font-bold uppercase not-italic tracking-tight gradient-text-accent">ship the fix.</span>
-        </motion.h1>
+          <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
+            Then
+          </span>
+          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[9.5rem] gradient-text-accent leading-[0.9]">
+            ship the fix.
+          </span>
+          <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
+            in 7 days.
+          </span>
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-sm md:text-base text-text-secondary leading-relaxed max-w-md mb-10"
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-10 md:mt-14 max-w-2xl text-base md:text-lg text-text-secondary leading-relaxed"
         >
-          Co-Founder of a live iOS app shipped in 7 days. Owns product, design, and brand end-to-end:
-          18-component design system, vector logo, brand voice, motion language. Former B2B
-          marketplace PM who scaled vendors 3.75x and doubled GMV at seed stage.
+          Co-Founder of a live iOS app. Owns product, design, and brand end-to-end:
+          18-component design system, vector logo, brand voice, motion language. Former
+          B2B marketplace PM who scaled vendors 3.75x and doubled GMV at seed stage.
         </motion.p>
 
-        {/* Live badges */}
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
-          className="flex flex-col sm:flex-row gap-4 mb-14"
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="mt-8 flex flex-wrap gap-3"
         >
-          <a
-            href="https://apps.apple.com/us/app/aatram/id6760587556"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-primary text-accent-on text-xs uppercase tracking-widest font-medium hover:opacity-85 transition-opacity"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            Aatram · Live on the App Store
-          </a>
-          <a
-            href="https://www.frictionlens.net/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
+            View work
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href="/craft"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border-default text-text-primary text-xs uppercase tracking-widest font-medium hover:border-text-primary transition-colors"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            FrictionLens · Live at frictionlens.net
-          </a>
+            See the craft
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </motion.div>
+      </motion.div>
 
-        {/* Proof strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-10 md:gap-14"
-        >
-          {[
-            { value: 2, suffix: '', label: 'Products live' },
-            { value: 7, suffix: ' days', label: 'First commit to App Store' },
-            { value: 2, suffix: 'x', label: 'GMV at seed stage' },
-          ].map((item) => (
-            <div key={item.label} className="flex flex-col items-center gap-1">
-              <span className="font-serif text-2xl md:text-3xl tabular-nums">
-                <CountUp to={item.value} suffix={item.suffix} />
-              </span>
-              <span className="text-[9px] md:text-[10px] tracking-widest uppercase text-text-muted">
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+      {/* Bottom rail: live products + a single proof chip */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.85 }}
+        style={{ opacity }}
+        className="relative z-10 max-w-[1500px] w-full mx-auto px-6 md:px-10 pb-16 md:pb-20"
+      >
+        <div className="pt-6 border-t border-border-default flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <a
+              href="https://apps.apple.com/us/app/aatram/id6760587556"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              Aatram · Live on the App Store
+            </a>
+            <a
+              href="https://www.frictionlens.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[10px] md:text-xs tracking-widest uppercase text-text-muted hover:text-text-primary transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              FrictionLens · Live at frictionlens.net
+            </a>
+          </div>
+          <span className="text-[10px] md:text-xs tracking-widest uppercase text-text-muted">
+            <span className="font-serif italic text-text-secondary normal-case text-sm md:text-base mr-2">3.75x</span>
+            vendors · 2x GMV at seed stage
+          </span>
+        </div>
       </motion.div>
 
       {/* Scroll indicator */}
@@ -141,23 +155,16 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
+        style={{ opacity }}
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5"
       >
         <motion.p
           animate={{ y: [0, 4, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="text-[10px] uppercase tracking-widest text-text-muted"
+          className="text-[9px] uppercase tracking-widest text-text-muted"
         >
           Scroll
         </motion.p>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <svg className="w-4 h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </motion.div>
       </motion.div>
 
       <div className="gradient-section-fade" aria-hidden="true" />
