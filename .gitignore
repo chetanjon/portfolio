@@ -40,3 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# local tooling — not part of the site
+.claude/
+_bmad/
+_bmad-output/
+.playwright-mcp/
+
+# local screenshots / scratch images
+mobile-*.png
