@@ -41,7 +41,7 @@ const canonicalLines = [
   'Alright alright.',
   'Yeah we’re cooking.',
   'Procrastination took an L.',
-  'Brain says no. Hands can still move.',
+  'No notes, honestly.',
 ];
 
 export function CraftContent() {
