@@ -49,9 +49,9 @@ const products: Product[] = [
     initials: 'FL',
     tagline: 'AI review intelligence tool · Live at frictionlens.net',
     blurb:
-      'A full-stack AI review analyzer (Next.js, TypeScript, Supabase, Google Gemini) that ingests App Store, Play Store, Reddit, and CSV reviews into a single Vibe Report. Built a 3-tier rule-based classifier that routes short reviews through keyword rules and only batches long ones to Gemini, plus BYOK with AES-256-GCM per-user key encryption.',
+      'A full-stack AI review analyzer (Next.js, TypeScript, Supabase, Google Gemini) that ingests App Store, Play Store, Reddit, and CSV reviews into a single Vibe Report. Designed and built the marketing site, the dashboard, and the shareable report pages end-to-end. Routes short reviews through keyword rules and only batches long ones to Gemini, plus BYOK with AES-256-GCM per-user key encryption.',
     frame: 'browser',
-    screenshots: undefined,
+    screenshots: ['/products/frictionlens-landing.png', '/products/frictionlens-report.png'],
     liveUrl: 'https://www.frictionlens.net/',
     liveLabel: 'Open frictionlens.net',
     caseStudyUrl: undefined,
@@ -98,9 +98,9 @@ function PhoneCluster({ shots, name }: { shots: string[]; name: string }) {
   );
 }
 
-function BrowserFrame({ children }: { children: React.ReactNode }) {
+function BrowserShell({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className="mx-auto w-full overflow-hidden rounded-xl border border-border-hover bg-bg-secondary shadow-xl">
+    <div className={`overflow-hidden rounded-xl border border-border-hover bg-bg-secondary shadow-xl ${className ?? ''}`}>
       <div className="flex items-center gap-1.5 border-b border-border-default px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-accent-soft/60" />
         <span className="h-2.5 w-2.5 rounded-full bg-accent-soft/40" />
@@ -108,6 +108,27 @@ function BrowserFrame({ children }: { children: React.ReactNode }) {
         <span className="ml-3 text-[10px] font-mono text-text-muted">frictionlens.net</span>
       </div>
       <div className="overflow-hidden">{children}</div>
+    </div>
+  );
+}
+
+function BrowserCluster({ shots, name }: { shots: string[]; name: string }) {
+  if (shots.length === 1) {
+    return (
+      <BrowserShell className="mx-auto w-full">
+        <Image src={shots[0]} alt={`${name} screenshot`} width={1920} height={1080} className="w-full h-auto" priority />
+      </BrowserShell>
+    );
+  }
+  const [front, back] = shots;
+  return (
+    <div className="relative w-full pt-8 pr-6 pb-2 pl-2">
+      <BrowserShell className="absolute right-0 top-0 w-[78%] rotate-[2.5deg] opacity-85">
+        <Image src={back} alt={`${name} secondary screenshot`} width={1920} height={1080} className="w-full h-auto" />
+      </BrowserShell>
+      <BrowserShell className="relative z-10 w-full">
+        <Image src={front} alt={`${name} screenshot`} width={1920} height={1080} className="w-full h-auto" priority />
+      </BrowserShell>
     </div>
   );
 }
@@ -151,15 +172,13 @@ export function SelectedProducts() {
                       </PhoneShell>
                     </TiltCard>
                   )
+                ) : p.screenshots && p.screenshots.length ? (
+                  <BrowserCluster shots={p.screenshots} name={p.name} />
                 ) : (
                   <TiltCard tiltAmount={7} scale={1.012} glareEnabled>
-                    <BrowserFrame>
-                      {p.screenshots && p.screenshots.length ? (
-                        <Image src={p.screenshots[0]} alt={`${p.name} screenshot`} width={1280} height={800} className="w-full h-auto" />
-                      ) : (
-                        <ImagePlaceholder initials={p.initials} aspectRatio="video" grayscale={false} />
-                      )}
-                    </BrowserFrame>
+                    <BrowserShell className="mx-auto w-full">
+                      <ImagePlaceholder initials={p.initials} aspectRatio="video" grayscale={false} />
+                    </BrowserShell>
                   </TiltCard>
                 )}
               </div>
