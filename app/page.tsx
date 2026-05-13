@@ -1,22 +1,18 @@
 import { Hero } from '@/components/sections/Hero';
-import { StackMarquee } from '@/components/sections/StackMarquee';
 import { SelectedProducts } from '@/components/sections/SelectedProducts';
-import { CraftTeaser } from '@/components/sections/CraftTeaser';
+import { TheNumber } from '@/components/sections/TheNumber';
 import { Works } from '@/components/sections/Works';
-import { Thinking } from '@/components/sections/Thinking';
-import { Quote } from '@/components/sections/Quote';
+import { HowIWork } from '@/components/sections/HowIWork';
 import { CTA } from '@/components/sections/CTA';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <StackMarquee />
       <SelectedProducts />
-      <CraftTeaser />
+      <TheNumber />
       <Works />
-      <Thinking />
-      <Quote />
+      <HowIWork />
       <CTA />
     </>
   );

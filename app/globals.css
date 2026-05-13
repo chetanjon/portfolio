@@ -660,6 +660,17 @@ input[type="color"]::-webkit-color-swatch {
   -webkit-text-fill-color: transparent;
 }
 
+/* Hero portrait tone — subtle editorial desaturation + warm tint.
+   Slightly more aggressive in dark mode so the photo doesn't fight
+   the near-black background. */
+.hero-portrait-tone {
+  filter: grayscale(0.55) contrast(1.04) saturate(0.85);
+}
+
+.dark .hero-portrait-tone {
+  filter: grayscale(0.7) contrast(1.08) saturate(0.7) brightness(0.95);
+}
+
 /* Gloss serif — applied to the big italic display lines in the hero.
    Vertical background-clip gradient + drop-shadow filter to give the
    type a soft surface that catches the light. CSS variables auto-swap

@@ -8,45 +8,20 @@ import {
   useReducedMotion,
   type MotionValue,
 } from 'framer-motion';
+// useRef is retained because ChapterRow still uses it for scroll-linked metric drift.
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 import { workExperiences } from '@/data/work';
-
-type ChapterTint = {
-  accent: string;
-  wash: string;
-  name: string;
-};
-
-const CHAPTER_TINTS: Record<string, ChapterTint> = {
-  aatram: {
-    accent: '#B8A9D4',
-    wash: 'rgba(184, 169, 212, 0.09)',
-    name: 'lavender',
-  },
-  frictionlens: {
-    accent: '#7DBFAB',
-    wash: 'rgba(125, 191, 171, 0.09)',
-    name: 'mint',
-  },
-  'ikt-india': {
-    accent: '#C9B97A',
-    wash: 'rgba(201, 185, 122, 0.09)',
-    name: 'sand',
-  },
-};
 
 type Row = {
   slug: string;
   company: string;
   role: string;
   year: string;
-  yearShort: string;
   blurb: string;
   metric: { value: string; label: string };
   tags: string[];
-  tint: ChapterTint;
 };
 
 const order = ['aatram', 'frictionlens', 'ikt-india'];
@@ -82,15 +57,10 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
     offset: ['start end', 'end start'],
   });
 
-  // Scroll-linked parallax: ghost year drifts down as row scrolls past, metric drifts up
-  // (counter-direction), and the bottom progress fill walks left → right.
-  const ghostY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  // Keep the metric's counter-direction drift — it's the one motion that
+  // adds wayfinding rather than decoration.
   const metricY = useTransform(scrollYProgress, [0, 1], [-12, 12]);
-  const progressScaleX = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 1]);
-
-  const safeGhostY: MotionValue<number> | number = reduceMotion ? 0 : ghostY;
   const safeMetricY: MotionValue<number> | number = reduceMotion ? 0 : metricY;
-  const safeProgress: MotionValue<number> | number = reduceMotion ? 1 : progressScaleX;
 
   return (
     <motion.li
@@ -105,54 +75,11 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
         },
       }}
       className="border-b border-border-default group/row relative"
-      style={
-        {
-          '--row-accent': row.tint.accent,
-          '--row-wash': row.tint.wash,
-        } as React.CSSProperties
-      }
     >
-      {/* Hover wash */}
-      <span
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover/row:opacity-100 transition-opacity duration-500"
-        style={{ backgroundColor: 'var(--row-wash)' }}
-      />
-
-      {/* Vertical accent bar — short by default, grows on hover */}
-      <span
-        aria-hidden
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-12 group-hover/row:h-full transition-[height] duration-500 ease-out"
-        style={{ backgroundColor: 'var(--row-accent)' }}
-      />
-
-      {/* Bottom-edge progress fill driven by scroll */}
-      <motion.span
-        aria-hidden
-        className="absolute left-0 bottom-0 h-px w-full origin-left"
-        style={{ backgroundColor: 'var(--row-accent)', scaleX: safeProgress, willChange: 'transform' }}
-      />
-
       <Link
         href={`/work/${row.slug}`}
         className="relative block py-12 md:py-16 pl-6 md:pl-10 overflow-hidden"
       >
-        {/* Ghost outlined year numeral — drifts with scroll. Lives at z=0
-            so the content (z=10) stacks cleanly above it; opacity dialed
-            back so it reads as ambient atmosphere, not competing text. */}
-        <motion.span
-          aria-hidden
-          className="pointer-events-none select-none absolute right-[6%] top-1/2 -translate-y-1/2 font-display font-black leading-none tracking-tight text-[6rem] md:text-[9rem] lg:text-[12rem] opacity-[0.08] group-hover/row:opacity-[0.16] transition-opacity duration-500 hidden md:block z-0"
-          style={{
-            color: 'transparent',
-            WebkitTextStroke: '1px var(--row-accent)',
-            y: safeGhostY,
-            willChange: 'transform',
-          }}
-        >
-          {row.yearShort}
-        </motion.span>
-
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-y-6 md:gap-x-10 items-start">
           {/* Index + year */}
           <motion.div
@@ -164,16 +91,6 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
           >
             <p className="small-caps text-text-muted">0{index + 1}</p>
             <p className="small-caps text-text-muted mt-1">{row.year}</p>
-            <span
-              className="inline-flex items-center gap-1.5 mt-3 small-caps"
-              style={{ color: 'var(--row-accent)' }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ backgroundColor: 'var(--row-accent)' }}
-              />
-              {row.tint.name}
-            </span>
           </motion.div>
 
           {/* Company + role + blurb + tags */}
@@ -189,8 +106,7 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
                 {row.company}
               </h3>
               <ArrowUpRight
-                className="hidden md:block w-7 h-7 mt-3 opacity-0 -translate-x-2 transition-all duration-500 group-hover/row:opacity-100 group-hover/row:translate-x-0"
-                style={{ color: 'var(--row-accent)' }}
+                className="hidden md:block w-7 h-7 mt-3 opacity-0 -translate-x-2 transition-all duration-500 group-hover/row:opacity-100 group-hover/row:translate-x-0 text-text-primary"
               />
             </motion.div>
             <motion.p
@@ -221,8 +137,7 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
               {row.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="border rounded-full px-3 py-1 text-[10px] uppercase tracking-widest text-text-muted transition-colors duration-300"
-                  style={{ borderColor: 'var(--color-border-default)' }}
+                  className="border border-border-default rounded-full px-3 py-1 text-[10px] uppercase tracking-widest text-text-muted transition-colors duration-300"
                 >
                   {tag}
                 </span>
@@ -231,8 +146,7 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
           </div>
 
           {/* Big metric — accent-colored, counter-parallax drift. No
-              halo, no blob. Sizes dialed back at md so "20 → 75+" and
-              "3 tiers" don't clip in the 3-col gutter. */}
+              ghost year, no halo, no chapter tint. */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 20 },
@@ -241,8 +155,8 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
             className="md:col-span-3 md:text-right"
           >
             <motion.p
-              className="font-display font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight leading-[0.95] transition-transform duration-500 group-hover/row:scale-[1.02]"
-              style={{ color: 'var(--row-accent)', y: safeMetricY, willChange: 'transform' }}
+              className="font-display font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight leading-[0.95] text-accent-primary transition-transform duration-500 group-hover/row:scale-[1.02]"
+              style={{ y: safeMetricY, willChange: 'transform' }}
             >
               {row.metric.value}
             </motion.p>
@@ -255,10 +169,6 @@ function ChapterRow({ row, index }: { row: Row; index: number }) {
 }
 
 export function Works() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '6%']);
-
   const rows: Row[] = order
     .map((slug) => workExperiences.find((w) => w.slug === slug))
     .filter((w): w is NonNullable<typeof w> => Boolean(w))
@@ -270,20 +180,13 @@ export function Works() {
         w.endDate === 'Present'
           ? `${w.startDate.split('-')[0]} → Now`
           : `${w.startDate.split('-')[0]}–${w.endDate.split('-')[0]}`,
-      yearShort: w.startDate.split('-')[0],
       blurb: shortBlurb(w.slug, w.description),
       metric: { value: w.metrics[0].value, label: w.metrics[0].label },
       tags: tagsFor(w.slug),
-      tint: CHAPTER_TINTS[w.slug] ?? CHAPTER_TINTS.aatram,
     }));
 
   return (
-    <section ref={ref} className="relative py-32 px-6 md:px-12 bg-bg-secondary overflow-hidden">
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 opacity-20 pointer-events-none bg-gradient-to-b from-transparent via-bg-tertiary/20 to-transparent"
-      />
-
+    <section className="relative py-32 px-6 md:px-12 bg-bg-secondary overflow-hidden">
       <div className="container-wide relative z-10">
         <div className="flex justify-between items-start mb-12">
           <motion.div
@@ -318,19 +221,6 @@ export function Works() {
               <h2 className="font-display font-bold text-5xl md:text-6xl lg:text-7xl uppercase tracking-tight leading-[0.95]">
                 Worked
               </h2>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <p className="text-sm text-text-muted">Each chapter has its own color.</p>
-              <div className="flex items-center gap-1.5">
-                {rows.map((row) => (
-                  <span
-                    key={row.slug}
-                    aria-label={`${row.company} ${row.tint.name}`}
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: row.tint.accent }}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </motion.div>
