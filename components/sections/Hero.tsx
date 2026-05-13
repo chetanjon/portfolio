@@ -42,7 +42,9 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Editorial headline */}
+        {/* Editorial headline — three specific verbs, each a provable
+            competence (PM finds problems, you draw icons in SwiftUI Canvas,
+            you ship Swift across 158 commits on Aatram). */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,29 +52,27 @@ export function Hero() {
           className="font-display-serif italic font-normal leading-[0.95] tracking-tight"
           style={{ fontVariationSettings: "'opsz' 72" }}
         >
-          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] gloss-serif">
-            I find the
+          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] gloss-serif">
+            I find the problem.
           </span>
-          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] gloss-serif">
-            problem worth
+          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] gloss-serif">
+            I draw the icon.
           </span>
-          <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[10rem] gloss-serif">
-            solving.
+          <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[6rem] gloss-serif">
+            I write the code.
           </span>
         </motion.h1>
 
-        {/* Punch line — bold uppercase, per-word Aatram-palette colors */}
+        {/* Punch line — bold uppercase, prism gradient bakes rose→lavender→
+            mint across the letterforms statically (no animation, no halo). */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mt-6 md:mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-2"
+          className="mt-6 md:mt-10"
         >
-          <span className="font-serif italic font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-secondary">
-            Then
-          </span>
-          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.5rem] gradient-text-prism leading-[0.9]">
-            ship it end to end.
+          <span className="font-display font-black uppercase tracking-tight text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8rem] gradient-text-prism leading-[0.9]">
+            I ship it.
           </span>
         </motion.div>
 
