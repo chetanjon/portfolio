@@ -640,48 +640,30 @@ input[type="color"]::-webkit-color-swatch {
   .gradient-text-glossy { animation: none !important; }
 }
 
-/* Chrome sheen — Apple-style polished-metal treatment.
-   The line mostly reads in text-primary; a narrow iridescent band
-   (lavender → bright peak → mint) sweeps through every 7s like
-   sunlight catching a wet surface. Tightly contained inside the
-   letter glyphs — no drop-shadow, no halo, no color bleed. */
-@keyframes gradient-chrome-sheen {
-  0%   { background-position: 0% 50%; }
-  100% { background-position: -200% 50%; }
+/* Color cycle — the entire phrase shifts through the Aatram palette
+   in place. No horizontal sweep, no spatial movement. Each color is
+   fully saturated and present across all letters at its moment, then
+   smoothly transitions to the next. ~13s loop, ease-in-out so each
+   color holds for a beat before the next one arrives. */
+@keyframes gradient-color-cycle {
+  0%, 100% { color: var(--color-accent-primary); }   /* lavender */
+  20%      { color: var(--color-accent-secondary); } /* mint */
+  40%      { color: var(--color-accent-rose); }      /* rose */
+  60%      { color: var(--color-accent-sand); }      /* sand */
+  80%      { color: var(--color-accent-soft); }      /* soft lavender */
 }
 
-.gradient-text-chrome {
-  background: linear-gradient(
-    100deg,
-    var(--color-text-primary) 0%,
-    var(--color-text-primary) 38%,
-    var(--color-accent-soft) 46%,
-    var(--chrome-peak) 50%,
-    var(--color-accent-secondary) 54%,
-    var(--color-text-primary) 62%,
-    var(--color-text-primary) 100%
-  );
-  background-size: 200% 100%;
-  background-position: 0% 50%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-chrome-sheen 7s ease-in-out infinite;
-}
-
-:root {
-  /* Light mode peak — near-white with warmth so it doesn't read as paper */
-  --chrome-peak: rgba(255, 255, 255, 0.94);
-}
-
-.dark {
-  /* Dark mode peak — pure white for max contrast against near-black */
-  --chrome-peak: #FFFFFF;
+.gradient-text-cycle {
+  animation: gradient-color-cycle 13s ease-in-out infinite;
+  /* No background-clip, no drop-shadow, no halo — letters render as a
+     solid color that changes over time. Crisp edges throughout. */
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gradient-text-chrome { animation: none !important; }
+  .gradient-text-cycle {
+    animation: none !important;
+    color: var(--color-accent-primary);
+  }
 }
 
 /* Gloss serif — applied to the big italic display lines in the hero.
