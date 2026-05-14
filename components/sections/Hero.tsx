@@ -192,11 +192,11 @@ export function Hero() {
                 Each number is one user story, one decision, one shipped build.
               </p>
               <a
-                href="mailto:jonnalagadda8800@gmail.com?subject=PM%20phone%20screen"
-                aria-label="Email Chetan to start a PM phone screen"
+                href="mailto:jonnalagadda8800@gmail.com?subject=Product%20role%20%E2%80%94%20intro"
+                aria-label="Email Chetan about a product or design role"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-primary text-accent-on text-xs uppercase tracking-widest font-medium hover:opacity-85 transition-opacity"
               >
-                Phone screen me
+                Email me
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </motion.div>
