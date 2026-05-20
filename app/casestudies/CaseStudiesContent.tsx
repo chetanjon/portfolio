@@ -26,9 +26,9 @@ const caseStudies: Array<{
     company: 'Aatram',
     title: 'Start Starting',
     description:
-      'Co-founded with two friends. Shipped V1 to the App Store in seven days from first commit, then rewrote V2 as an anti-interruption product after archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. Co-built the codebase across 158 commits and owned UI, brand voice, an 18-component design system, the logo drawn as 80 SwiftUI Canvas stroke segments, and aatram.com end-to-end. Drove a 22-finding pre-submission audit through App Review.',
+      'Co-led product on a 3-person team. Led the V2 anti-interruption rewrite after 16 archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. Owned UI, brand voice, an 18-component design system, the logo drawn as 80 SwiftUI Canvas stroke segments, and aatram.com end-to-end. Drove a 22-finding pre-submission audit through App Review.',
     tags: ['0-to-1', 'iOS', 'Apple Foundation Models', 'Brand & Design', 'Anti-Interruption'],
-    metric: { value: '7 days', label: 'First commit → App Store · 158 commits' },
+    metric: { value: '5.0★', label: 'App Store launch rating · 158 commits' },
     accentColor: '#6B5DAD',
     bgColor: '#EEEBF8',
     year: '2026',
@@ -41,7 +41,7 @@ const caseStudies: Array<{
     company: 'FrictionLens',
     title: 'The Free AI Tool That Earns It',
     description:
-      'A full-stack AI review intelligence tool live at frictionlens.net. Designed and shipped end-to-end — marketing site, dashboard, shareable Vibe Report pages — on Next.js, TypeScript, Supabase, Google Gemini, and Upstash Redis. Cost-aware 3-tier classifier routes ~80% of reviews through keyword rules so the freemium tier stays free. BYOK with AES-256-GCM lets power users run unlimited analyses on their own key.',
+      'A full-stack AI review intelligence tool live at frictionlens.net. Owned product and design across the marketing site, dashboard, and shareable Vibe Report pages on Next.js, TypeScript, Supabase, Google Gemini, and Upstash Redis. Cost-aware 3-tier classifier routes ~80% of reviews through keyword rules so the freemium tier stays free. BYOK with AES-256-GCM lets power users run unlimited analyses on their own key.',
     tags: ['Full-Stack', 'AI', 'Next.js', 'Cost Engineering', 'Brand & Landing Page'],
     metric: { value: '$0', label: 'Forever tier · 3 classifier tiers · 4 review sources' },
     accentColor: '#3F8C73',
@@ -56,7 +56,7 @@ const caseStudies: Array<{
     company: 'IKT India',
     title: "Margins, Vendors, and a Marketplace That Worked",
     description:
-      "Seed-stage curated B2B marketplace for handloom and sustainable clothing brands across 15 Indian states. Promoted from Product Operations Intern to PM in six months as the company's first dedicated PM. Designed and ran a concurrent A/B test on 50 SKUs with price floors against a matched control, scaled the winner to 500+ SKUs, lifted gross margin from 25% to 40%, doubled monthly GMV. Cut seller onboarding from 3 days to 6 hours and grew the vendor base 20 → 75+.",
+      "Seed-stage curated B2B marketplace for handloom and sustainable clothing brands across 15 Indian states. Owned vendor-side product with a four-engineer team as the company's first dedicated PM. Designed and ran a concurrent A/B test on 50 SKUs with price floors against a matched control, scaled the winner to 500+ SKUs, lifted gross margin from 25% to 40%, and doubled monthly GMV. Cut seller onboarding from 3 days to 6 hours and grew the vendor base 20 → 75+.",
     tags: ['B2B Marketplace', 'A/B Testing', 'SQL', 'Pricing Strategy', 'Vendor Growth'],
     metric: { value: '3.75x', label: 'Vendor growth · 2x GMV · 25→40% margin' },
     accentColor: '#3F8C73',

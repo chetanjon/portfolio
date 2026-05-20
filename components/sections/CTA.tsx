@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Calendar, FileText, Mail } from 'lucide-react';
+import { ArrowUpRight, FileText } from 'lucide-react';
 import ResumeModal from '@/components/ui/ResumeModal';
 
 export function CTA() {
@@ -22,7 +21,7 @@ export function CTA() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border-default text-[10px] tracking-widest uppercase text-text-muted">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              Open to full-time PM roles · May 2026
+              Open to full-time PM roles
             </div>
 
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight">
@@ -32,27 +31,19 @@ export function CTA() {
             </h2>
 
             <p className="text-sm md:text-base text-text-secondary max-w-md mx-auto">
-              PM who designs end-to-end. B2B marketplaces, AI products, 0-to-1, consumer iOS.
-              Based in Phoenix, AZ. Open to relocation. CSPO certified.
+              Product manager. B2B marketplaces, AI products, 0-to-1, consumer iOS.
+              Based in Phoenix, AZ. Open to relocation.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
               <a
-                href="https://calendly.com/jonnalagadda8800/15-min-intro"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:jonnalagadda8800@gmail.com?subject=Product%20role%20%E2%80%94%20intro"
+                aria-label="Email Chetan about a PM role"
                 className="cta-glow inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-bg-primary rounded-full text-xs uppercase tracking-widest font-medium hover:opacity-80"
               >
-                <Calendar className="w-3.5 h-3.5" />
-                Book a 15-min intro
+                Email me
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
-              <Link
-                href="/contact"
-                className="cta-glow inline-flex items-center gap-2 px-6 py-3 border border-border-default rounded-full text-xs uppercase tracking-widest font-medium hover:border-text-primary"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                Get in touch
-              </Link>
               <button
                 onClick={() => setResumeOpen(true)}
                 className="cta-glow inline-flex items-center gap-2 px-6 py-3 border border-border-default rounded-full text-xs uppercase tracking-widest font-medium hover:border-text-primary cursor-pointer"
@@ -61,10 +52,6 @@ export function CTA() {
                 View resume
               </button>
             </div>
-
-            <p className="text-[10px] tracking-widest uppercase text-text-muted pt-2">
-              jonnalagadda8800@gmail.com · (602) 807-9130
-            </p>
           </motion.div>
         </div>
       </section>

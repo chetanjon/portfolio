@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     url: 'https://chetanjonnalagadda.com',
     title: 'Chetan Jonnalagadda | Product Manager',
     description:
-      'Product Manager who ships 0→live. Co-founded a consumer iOS app live on the App Store (5.0 launch rating, 7-day V1), built FrictionLens, and scaled a B2B marketplace 20 → 75+ vendors with 2x GMV.',
+      'Product Manager who ships 0→live. Scaled a B2B marketplace 20 → 75+ vendors and 2× GMV, shipped a consumer iOS app live on the App Store (5.0 launch rating), and built FrictionLens, an AI review intelligence tool.',
     siteName: 'Chetan Jonnalagadda',
   },
   twitter: {

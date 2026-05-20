@@ -17,7 +17,7 @@ const paragraphs = [
   {
     heading: 'How I ship',
     body:
-      "I prototype in Figma when a written spec isn't enough. I work closely with engineers, and my technical background means I'm useful in the room when they need product context. V1 of Aatram hit the App Store in seven days because we were aligned across product, design, and engineering from day one.",
+      "I prototype in Figma when a written spec isn't enough. I work closely with engineers, and my technical background means I'm useful in the room when they need product context. V1 of Aatram launched on the App Store because product, design, and engineering scopes were locked from day one.",
   },
 ];
 
@@ -34,7 +34,7 @@ export function HowIWork() {
         >
           <SectionMarker number="02" label="How I Work" />
           <h2 className="font-display font-bold text-3xl md:text-4xl lg:text-5xl mt-4 leading-[1.05] tracking-tight uppercase">
-            From the editor.
+            About me.
           </h2>
         </motion.div>
 
@@ -66,15 +66,6 @@ export function HowIWork() {
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-display-serif italic text-xl md:text-2xl text-text-secondary mt-14 text-right"
-        >
-          — Chetan
-        </motion.p>
       </div>
     </section>
   );

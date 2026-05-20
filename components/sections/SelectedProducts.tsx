@@ -29,9 +29,9 @@ const products: Product[] = [
   {
     name: 'Aatram',
     initials: 'AT',
-    tagline: 'Consumer iOS app · Live on the App Store · Free & bootstrapped',
+    tagline: 'Consumer iOS app · Live on the App Store',
     blurb:
-      'Co-founded with two friends. Shipped V1 in seven days, then rewrote V2 as an anti-interruption product after archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. I co-built the codebase across 158 commits and owned UI, brand voice, an 18-component design system, and the logo drawn as 80 SwiftUI Canvas stroke segments. The momentum gauge, the live-presence crew rooms, the on-device pattern detectors — all of it shipped.',
+      'Co-led product on a 3-person team. Led the V2 anti-interruption rewrite after 16 archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. Owned the product spec, UI, brand voice, and 18-component design system. The momentum gauge, the live-presence crew rooms, the on-device pattern detectors. All shipped.',
     frame: 'phone',
     screenshots: ['/products/aatram-crew.jpg', '/products/aatram-home.jpg', '/products/aatram-insights.jpg'],
     liveUrl: 'https://apps.apple.com/us/app/aatram/id6760587556',
@@ -39,7 +39,7 @@ const products: Product[] = [
     caseStudyUrl: '/work/aatram',
     stack: ['SwiftUI', 'SwiftData', 'Supabase', 'Apple Foundation Models'],
     metrics: [
-      { value: 7, suffix: ' days', label: 'First commit → App Store' },
+      { value: 18, label: 'Component design system' },
       { value: 158, label: 'Commits, 3-person team' },
       { value: 16, label: 'Archetype interviews' },
     ],
@@ -49,7 +49,7 @@ const products: Product[] = [
     initials: 'FL',
     tagline: 'AI review intelligence tool · Live at frictionlens.net',
     blurb:
-      'A full-stack AI review analyzer (Next.js, TypeScript, Supabase, Google Gemini) that ingests App Store, Play Store, Reddit, and CSV reviews into a single Vibe Report. Designed and built the marketing site, the dashboard, and the shareable report pages end-to-end. Routes short reviews through keyword rules and only batches long ones to Gemini, plus BYOK with AES-256-GCM per-user key encryption.',
+      'A full-stack AI review analyzer (Next.js, TypeScript, Supabase, Google Gemini) that ingests App Store, Play Store, Reddit, and CSV reviews into a single Vibe Report. Owned product and design across the marketing site, dashboard, and shareable report pages. Routes short reviews through keyword rules and only batches long ones to Gemini, plus BYOK with AES-256-GCM per-user key encryption.',
     frame: 'browser',
     screenshots: ['/products/frictionlens-landing.png', '/products/frictionlens-report.png'],
     liveUrl: 'https://www.frictionlens.net/',

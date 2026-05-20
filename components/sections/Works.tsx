@@ -28,20 +28,20 @@ const order = ['aatram', 'frictionlens', 'ikt-india'];
 
 function shortBlurb(slug: string, description: string): string {
   if (slug === 'aatram') {
-    return 'Consumer iOS app live on the App Store. 3-person founding team. V1 to App Store in 7 days, V2 anti-interruption rewrite, on-device AI nudge engine on Apple Foundation Models.';
+    return 'Consumer iOS app live on the App Store. Co-led product on a 3-person team. V2 anti-interruption rewrite after 16 archetype interviews killed the original notification model. On-device AI nudges on Apple Foundation Models.';
   }
   if (slug === 'frictionlens') {
-    return 'Full-stack AI review analyzer. Designed and shipped the marketing site, dashboard, and shareable Vibe Reports end-to-end. 3-tier rule-based classifier routes only the hard cases to Gemini.';
+    return 'AI review intelligence tool. Owned product and design across the marketing site, dashboard, and shareable Vibe Reports. 3-tier classifier routes only the hard cases to Gemini.';
   }
   if (slug === 'ikt-india') {
-    return 'Seed-stage B2B handloom marketplace. Promoted intern → PM in six months. Owned vendor-side product with a 4-engineer team; SQL + Mixpanel seller-health dashboard lifted 60-day retention 20%.';
+    return 'Seed-stage B2B handloom marketplace. Owned vendor-side product with a 4-engineer team. Drove vendor base 20 → 75 and GMV 2× via a SQL + Mixpanel seller-health dashboard that lifted 60-day retention 20%.';
   }
   return description;
 }
 
 function tagsFor(slug: string): string[] {
   if (slug === 'aatram') return ['SwiftUI', 'Apple Foundation Models', 'Brand', 'Design System'];
-  if (slug === 'frictionlens') return ['Next.js', 'Gemini', 'Supabase', 'Solo Build'];
+  if (slug === 'frictionlens') return ['Next.js', 'Gemini', 'Supabase', 'Product + Design'];
   if (slug === 'ikt-india') return ['A/B Testing', 'SQL', 'Mixpanel', 'B2B Marketplace'];
   return [];
 }

@@ -74,9 +74,9 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </div>
 
               <p className="text-text-secondary text-sm leading-relaxed mb-8">
-                Co-founder PM who designs end-to-end. Shipped a consumer iOS app in seven days,
-                rewrote V2 as an anti-interruption product, and scaled a seed-stage B2B marketplace
-                3.75x with 2x GMV. Three ways in:
+                Product manager. Scaled a seed-stage B2B marketplace 3.75× with 2× GMV,
+                then co-led product on a consumer iOS app that launched at a 5.0 rating.
+                Three ways in:
               </p>
 
               <div className="space-y-3">

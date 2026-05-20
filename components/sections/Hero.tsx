@@ -22,15 +22,15 @@ type LiveRow = {
 
 const liveRows: LiveRow[] = [
   {
-    count: '7 days',
+    count: 'Live',
     platform: 'Aatram',
-    recognition: 'Consumer iOS app · Live on the App Store',
+    recognition: 'Consumer iOS app on the App Store',
     year: '2026',
     href: 'https://apps.apple.com/us/app/aatram/id6760587556',
     external: true,
   },
   {
-    count: '1 wknd',
+    count: 'Solo',
     platform: 'FrictionLens',
     recognition: 'AI review intelligence · Live at frictionlens.net',
     year: '2026',
@@ -81,11 +81,8 @@ export function Hero() {
           initial={reduceMotion ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-wrap items-center justify-between gap-y-4 gap-x-6 pb-8 md:pb-10 border-b border-border-default"
+          className="flex flex-wrap items-center justify-end gap-y-4 gap-x-6 pb-8 md:pb-10 border-b border-border-default"
         >
-          <span className="small-caps text-text-muted">
-            Issue 03 · 2026
-          </span>
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent-primary/40 bg-accent-primary/10 text-[11px] md:text-xs uppercase tracking-[0.22em] font-medium text-accent-primary max-w-full whitespace-normal">
             <span className="relative flex h-2 w-2 flex-shrink-0">
               {!reduceMotion && (
@@ -94,7 +91,7 @@ export function Hero() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
               <span className="sr-only">Status: available</span>
             </span>
-            Open to product + design roles · Anywhere
+            Open to full-time PM roles · Phoenix, AZ · Open to relocation
           </span>
         </motion.div>
 
@@ -126,7 +123,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xs uppercase tracking-widest text-right max-w-xs ml-auto mb-10 text-text-muted"
             >
-              Three live builds. Two B2B marketplaces. One hire-me window.
+              Three live builds. Two B2B marketplaces.
             </motion.p>
 
             <motion.div
@@ -193,7 +190,7 @@ export function Hero() {
               </p>
               <a
                 href="mailto:jonnalagadda8800@gmail.com?subject=Product%20role%20%E2%80%94%20intro"
-                aria-label="Email Chetan about a product or design role"
+                aria-label="Email Chetan about a PM role"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent-primary text-accent-on text-xs uppercase tracking-widest font-medium hover:opacity-85 transition-opacity"
               >
                 Email me

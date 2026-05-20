@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Chetan Jonnalagadda · Product Manager who ships 0→live. iOS app shipped in 7 days at a 5.0 App Store rating.';
+export const alt = 'Chetan Jonnalagadda · Product Manager who ships 0→live. B2B marketplace scaled 3.75× with 2× GMV. Consumer iOS app live on the App Store at a 5.0 launch rating.';
 export const size = {
   width: 1200,
   height: 630,
@@ -125,10 +125,10 @@ export default function OGImage() {
               maxWidth: 1000,
             }}
           >
-            <span>Shipped a live iOS app in&nbsp;</span>
-            <span style={{ color: '#E07A5F' }}>7 days at a 5.0 rating.&nbsp;</span>
             <span>Scaled a B2B marketplace&nbsp;</span>
-            <span style={{ color: '#E07A5F' }}>3.75x.</span>
+            <span style={{ color: '#E07A5F' }}>3.75× with 2× GMV.&nbsp;</span>
+            <span>Shipped a consumer iOS app at a&nbsp;</span>
+            <span style={{ color: '#E07A5F' }}>5.0 launch rating.</span>
           </div>
         </div>
 

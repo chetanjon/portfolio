@@ -34,9 +34,10 @@ export function ResumeContent() {
                   <span className="font-serif italic font-normal lowercase"> picture</span>
                 </h1>
                 <p className="text-lg text-text-secondary max-w-xl">
-                  Co-Founder &amp; PM who shipped V1 to the App Store in 7 days with a 5.0 launch rating,
-                  scaled a seed-stage B2B marketplace 3.75x, and doubled its GMV. CSPO certified, MS in
-                  Management of Technology at ASU. Here&apos;s everything in one place.
+                  PM who scaled a seed-stage B2B marketplace 3.75× and doubled its GMV,
+                  then co-led product on a consumer iOS app that launched at a 5.0 rating.
+                  CSPO certified, MS in Management of Technology at ASU. Here&apos;s everything
+                  in one place.
                 </p>
               </div>
 

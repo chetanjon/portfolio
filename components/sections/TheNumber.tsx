@@ -19,18 +19,18 @@ export function TheNumber() {
           <p className="small-caps text-text-muted mb-6">[ The number that earns the call ]</p>
 
           <h2 className="font-display font-black tracking-tight leading-[0.9] tabular-nums text-accent-primary text-[clamp(7rem,22vw,20rem)] min-w-0">
-            <CountUp to={7} />
+            <CountUp to={2} suffix="×" />
           </h2>
 
           <p className="mt-8 font-display text-xl md:text-2xl lg:text-3xl text-text-primary leading-tight max-w-2xl mx-auto">
-            Days. First commit to App Store.
+            GMV. Doubled at IKT India.
             <br />
-            <span className="text-text-secondary">Aatram V1, three-person founding team.</span>
+            <span className="text-text-secondary">Vendor base 20 → 75, four-engineer team.</span>
           </p>
 
           <p className="mt-10 font-display text-base md:text-lg text-text-tertiary max-w-2xl mx-auto leading-relaxed">
-            158 commits. 16 archetype interviews. SwiftUI Canvas logo drawn in code.
-            On-device AI nudge engine on Apple Foundation Models.
+            A SQL + Mixpanel seller-health dashboard lifted 60-day retention 20%.
+            Owned the vendor-side product end-to-end.
           </p>
         </motion.div>
       </div>
