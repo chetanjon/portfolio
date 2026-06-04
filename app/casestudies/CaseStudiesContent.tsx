@@ -22,6 +22,21 @@ const caseStudies: Array<{
   readMin: number;
 }> = [
   {
+    slug: 'waymo',
+    href: '/waymo-teardown',
+    company: 'Waymo',
+    title: 'Stranded by Design',
+    description:
+      'A rider-experience teardown built from one real Waymo ride across Phoenix on a 106° day, one twelve-minute support call, and everything the public record revealed after. Two of Waymo\'s most common complaints (long routes and long re-pickup waits) trace to a single choice: optimize for fleet utilization over rider time. Three buildable concepts (Hold My Ride, Heat-Aware Pickups, Route Honesty) with the dispatch, pricing, and business case behind each.',
+    tags: ['Product Teardown', 'Rider Experience', 'Robotaxis', 'Dispatch & Pricing', 'Competitive Analysis'],
+    metric: { value: '20 min', label: 'Wait, on a 106° Phoenix curb' },
+    accentColor: '#1A73E8',
+    bgColor: '#E8F0FE',
+    year: '2026',
+    type: 'Thinking',
+    readMin: 12,
+  },
+  {
     slug: 'aatram',
     company: 'Aatram',
     title: 'Start Starting',

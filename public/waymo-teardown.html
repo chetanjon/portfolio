@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stranded by Design / A Waymo Rider-Experience Teardown</title>
+<meta name="description" content="An independent product teardown of Waymo's rider experience. A mid-trip stop on a 106 degree Phoenix day revealed how the fleet optimizes for the machine over the rider, plus three buildable fixes and the business case behind them.">
+<meta name="author" content="Chetan Jonnalagadda">
+<!-- Social preview (LinkedIn, X). Update the two URLs below to your real hosted paths before posting. -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stranded by Design: A Waymo Rider-Experience Teardown">
+<meta property="og:description" content="One real ride, one root cause, two of Waymo's most common complaints, and three product fixes with the business case behind them. A PM case study by Chetan Jonnalagadda.">
+<meta property="og:site_name" content="Chetan Jonnalagadda">
+<meta property="og:url" content="https://chetanjonnalagadda.com/waymo-teardown">
+<meta property="og:image" content="https://chetanjonnalagadda.com/waymo-teardown-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stranded by Design: A Waymo Rider-Experience Teardown">
+<meta name="twitter:description" content="One real ride, one root cause, and three product fixes with the business case behind them.">
+<meta name="twitter:image" content="https://chetanjonnalagadda.com/waymo-teardown-preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F7FC;
+    --surface:#FFFFFF;
+    --surface-2:#EDF1F9;
+    --blue-ctr:#E8F0FE;
+    --blue:#1A73E8;
+    --blue-strong:#0B57D0;
+    --blue-press:#0842A0;
+    --ink-deep:#041E49;
+    --ink-deep-2:#08306B;
+    --on-deep:#A8C7FA;
+    --ink:#1B1C1E;
+    --ink-2:#43474E;
+    --ink-3:#71757C;
+    --line:#E3E8F0;
+    --line-2:#CAD1DD;
+    --green:#1E8E3E;
+    --green-ctr:#C7EED2;
+    --amber:#F29900;
+    --amber-strong:#E37400;
+    --red:#EA4335;
+    --red-strong:#C5221F;
+    --r-xl:32px;
+    --r-lg:28px;
+    --r:20px;
+    --r-sm:12px;
+    --maxw:1080px;
+    --e1:0 1px 2px rgba(60,64,67,.06), 0 1px 3px 1px rgba(60,64,67,.09);
+    --e2:0 1px 3px rgba(60,64,67,.10), 0 6px 14px 2px rgba(60,64,67,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Roboto',sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  ::selection{background:var(--blue-ctr);color:var(--blue-press)}
+
+  /* progress */
+  .progress-wrap{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:200}
+  #progress{height:100%;width:0;background:var(--blue);transition:width .08s linear}
+
+  /* top bar */
+  .topbar{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Figtree';font-weight:600;font-size:15px;color:var(--ink)}
+  .brand .dot{width:22px;height:22px;border-radius:50%;background:var(--blue);position:relative;flex:none}
+  .brand .dot::after{content:"";position:absolute;inset:6px;border-radius:50%;background:#fff}
+  .brand .muted{color:var(--ink-3);font-weight:500}
+  .topbar .by{font-family:'Figtree';font-size:13.5px;color:var(--ink-3);font-weight:500}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{padding:84px 0}
+  @media(max-width:760px){section{padding:60px 0}}
+
+  /* type */
+  h1,h2,h3,h4{font-family:'Figtree';color:var(--ink);letter-spacing:-.02em;line-height:1.08;font-weight:700}
+  h1{font-size:clamp(40px,7vw,68px);font-weight:800}
+  h2{font-size:clamp(28px,4.4vw,42px)}
+  h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+  h4{font-size:16px;font-weight:600}
+  p{color:var(--ink-2)}
+  .read p{max-width:680px;margin-bottom:20px;font-size:18px}
+  .lede{font-size:clamp(19px,2.3vw,23px);line-height:1.5;color:var(--ink);font-family:'Figtree');font-weight:500;letter-spacing:-.01em}
+  b,strong{color:var(--ink);font-weight:700}
+
+  /* section header */
+  .sec-head{display:flex;gap:20px;align-items:flex-start;margin-bottom:40px}
+  .sec-num{
+    flex:none;width:44px;height:44px;border-radius:50%;
+    background:var(--blue-ctr);color:var(--blue-strong);
+    font-family:'Figtree';font-weight:700;font-size:16px;
+    display:flex;align-items:center;justify-content:center;margin-top:4px;
+  }
+  .kicker{font-family:'Figtree';font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+
+  /* cards */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--e1);padding:30px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--e1);padding:26px}
+  .panel svg{display:block;width:100%;height:auto}
+
+  .figcap{font-family:'Roboto Mono',monospace;font-size:11.5px;color:var(--ink-3);margin-top:14px;letter-spacing:.01em;line-height:1.5}
+
+  /* note / callout */
+  .note{background:var(--blue-ctr);border-radius:var(--r);padding:20px 22px;border-left:4px solid var(--blue);margin-top:24px}
+  .note .lab{font-family:'Figtree';font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue-strong);margin-bottom:7px}
+  .note p{color:var(--ink-2);font-size:15.5px;margin:0}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line-2);border-radius:100px;padding:9px 16px;font-family:'Figtree';font-weight:500;font-size:14px;color:var(--ink-2);box-shadow:var(--e1)}
+  .chip b{color:var(--blue-strong)}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Figtree';font-weight:600;font-size:15px;border-radius:100px;padding:13px 26px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.18s}
+  .btn.fill{background:var(--blue);color:#fff;box-shadow:var(--e1)}
+  .btn.fill:hover{background:var(--blue-strong);box-shadow:var(--e2)}
+  .btn.tonal{background:var(--blue-ctr);color:var(--blue-press)}
+  .btn.tonal:hover{background:#D6E4FD}
+  .btn.outline{border-color:var(--line-2);color:var(--blue-strong);background:transparent}
+  .btn.outline:hover{background:var(--surface-2)}
+
+  /* grid helpers */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .two.wide-left{grid-template-columns:1.15fr .85fr}
+  @media(max-width:860px){.two,.two.wide-left{grid-template-columns:1fr;gap:28px}}
+
+  /* hero */
+  .hero{padding:64px 0 72px}
+  .hero .eyebrow{font-family:'Figtree';font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .hero .eyebrow::before{content:none}
+  .hero h1{max-width:14ch;margin-bottom:22px}
+  .hero .sub{font-size:clamp(18px,2.2vw,21px);color:var(--ink-2);max-width:62ch;line-height:1.55;font-family:'Figtree';font-weight:400;margin-bottom:26px}
+  .hero .meta-line{font-family:'Figtree';font-size:14px;color:var(--ink-3);margin-bottom:30px;font-weight:500}
+  .hero .meta-line b{color:var(--ink)}
+  .statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+  @media(max-width:760px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--e1)}
+  .stat .n{font-family:'Figtree';font-weight:700;font-size:26px;color:var(--blue-strong);letter-spacing:-.02em}
+  .stat .n.amber{color:var(--amber-strong)}
+  .stat .l{font-size:12.5px;color:var(--ink-3);margin-top:4px;font-family:'Roboto Mono',monospace;letter-spacing:.02em}
+  .hero-card{margin-top:40px;background:linear-gradient(160deg,#EAF1FE,#E8F0FE 60%,#E4F4EA);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--e1);padding:14px;overflow:hidden}
+  .hero-card svg{display:block;width:100%;height:auto;border-radius:20px}
+
+  /* tldr */
+  .tldr{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.tldr{grid-template-columns:1fr}}
+  .tldr .card{padding:26px}
+  .tag{display:inline-flex;align-items:center;gap:7px;font-family:'Figtree';font-weight:600;font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;padding:6px 13px;border-radius:100px;margin-bottom:16px}
+  .tag::before{content:"";width:8px;height:8px;border-radius:50%}
+  .t-friction{background:#FCE8E6;color:var(--red-strong)}.t-friction::before{background:var(--red)}
+  .t-insight{background:var(--blue-ctr);color:var(--blue-press)}.t-insight::before{background:var(--blue)}
+  .t-opp{background:var(--green-ctr);color:#0B5323}.t-opp::before{background:var(--green)}
+  .tldr p{font-size:15.5px;color:var(--ink-2)}
+
+  /* story */
+  .story-grid{max-width:720px}
+  .story-grid p:first-of-type::first-letter{font-family:'Figtree';font-weight:800;font-size:64px;line-height:.8;float:left;margin:6px 14px 0 0;color:var(--blue)}
+  blockquote{margin:34px 0;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--amber);border-radius:var(--r);padding:28px 30px;box-shadow:var(--e1)}
+  blockquote .q{font-family:'Figtree';font-weight:500;font-size:22px;line-height:1.4;color:var(--ink);letter-spacing:-.01em}
+  blockquote .src{font-family:'Roboto Mono',monospace;font-size:12px;color:var(--ink-3);margin-top:16px;letter-spacing:.02em}
+
+  .photo-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+  @media(max-width:760px){.photo-row{grid-template-columns:1fr}}
+  .photoslot{border:2px dashed var(--line-2);border-radius:var(--r-lg);background:var(--surface-2);min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px}
+  .photoslot .pin{font-family:'Figtree';font-weight:600;font-size:14px;color:var(--blue-strong);margin-bottom:10px}
+  .photoslot .gd{font-size:13px;color:var(--ink-3);max-width:30ch;line-height:1.5}
+
+  /* feature (deep blue) */
+  .feature{background:var(--ink-deep);color:rgba(255,255,255,.84)}
+  .feature h1,.feature h2,.feature h3,.feature h4{color:#fff}
+  .feature .kicker{color:var(--on-deep)}
+  .feature .sec-num{background:rgba(168,199,250,.16);color:var(--on-deep)}
+  .feature .lede{color:#fff}
+  .feature p{color:rgba(255,255,255,.82)}
+  .feature .panel{background:var(--ink-deep-2);border-color:rgba(168,199,250,.18);box-shadow:none}
+  .feature .figcap{color:rgba(255,255,255,.55)}
+  .feature .note{background:rgba(168,199,250,.12);border-left-color:var(--on-deep)}
+  .feature .note .lab{color:var(--on-deep)}
+  .feature .note p{color:rgba(255,255,255,.85)}
+  .feature .src-quote{border-left:3px solid var(--on-deep);padding-left:20px;margin:8px 0 24px;font-family:'Figtree';font-style:italic;font-weight:500;font-size:21px;line-height:1.42;color:#fff}
+  .feature .src-quote .who{display:block;font-style:normal;font-family:'Roboto Mono',monospace;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:12px}
+
+  /* cracks */
+  .cracks{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.cracks{grid-template-columns:1fr}}
+  .crk{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--e1)}
+  .crk .mtag{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+  .crk h4{margin-bottom:8px;font-size:18px}
+  .crk p{font-size:14.5px;color:var(--ink-2);margin:0}
+
+  /* risk list */
+  .risklist{border-top:1px solid var(--line)}
+  .riskrow{display:grid;grid-template-columns:104px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+  @media(max-width:560px){.riskrow{grid-template-columns:1fr;gap:6px}}
+  .riskrow .rt{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding-top:4px}
+  .riskrow.safety .rt{color:var(--red-strong)}
+  .riskrow.soft .rt{color:var(--blue)}
+  .riskrow h4{font-size:18px;margin-bottom:5px}
+  .riskrow p{font-size:14.5px;color:var(--ink-2);margin:0}
+
+  /* solutions */
+  .sols{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.sols{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+  .sol{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--e1);display:flex;flex-direction:column}
+  .sol .screen{background:linear-gradient(160deg,#EAF1FE,#E8F0FE);padding:22px;display:flex;justify-content:center}
+  .sol .screen svg{width:170px;height:auto}
+  .sol .body{padding:24px}
+  .sol .idx{font-family:'Roboto Mono',monospace;font-size:11px;color:var(--blue);letter-spacing:.05em;margin-bottom:8px}
+  .sol h3{margin-bottom:10px}
+  .sol .body>p{font-size:14.5px;color:var(--ink-2);margin-bottom:16px}
+  .meta{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:9px}
+  .meta .row{display:flex;gap:12px;font-size:13px}
+  .meta .k{font-family:'Roboto Mono',monospace;color:var(--ink-3);min-width:64px;text-transform:uppercase;font-size:11px;letter-spacing:.04em;padding-top:2px}
+  .meta .v{color:var(--ink-2)}
+
+  /* metrics */
+  .metrics{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.metrics{grid-template-columns:1fr}}
+  .mcol{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;box-shadow:var(--e1)}
+  .mcol.ns{border-top:4px solid var(--blue)}
+  .mcol.gr{border-top:4px solid var(--green)}
+  .mcol h4{font-size:18px;margin-bottom:4px}
+  .mcol .sub{font-family:'Roboto Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);margin-bottom:18px}
+  .mcol ul{list-style:none}
+  .mcol li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
+  .mcol li:first-child{border-top:none}
+  .mcol .m{flex:none;font-family:'Roboto Mono',monospace;font-weight:500}
+  .mcol.ns .m{color:var(--blue)}
+  .mcol.gr .m{color:var(--green)}
+
+  /* competitor cards */
+  .compe{display:flex;flex-direction:column;gap:12px}
+  .compe .c{background:var(--ink-deep-2);border:1px solid rgba(168,199,250,.18);border-radius:var(--r);padding:18px 20px}
+  .compe .nm{font-family:'Figtree';font-weight:700;color:#fff;font-size:16px;margin-bottom:5px}
+  .compe .ds{font-size:14px;color:rgba(255,255,255,.75);line-height:1.5}
+
+  /* data table */
+  table{width:100%;border-collapse:collapse}
+  .dt th{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500;text-align:left;padding:0 14px 12px 0}
+  .dt td{padding:14px 14px 14px 0;border-top:1px solid var(--line);vertical-align:top;color:var(--ink-2);font-size:14.5px}
+
+  /* footer */
+  .foot{background:var(--ink-deep);color:rgba(255,255,255,.84);padding:84px 0 56px}
+  .foot h2{color:#fff;max-width:18ch;margin-bottom:18px}
+  .foot .eyebrow{font-family:'Figtree';font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-deep);margin-bottom:20px}
+  .foot .cta-sub{font-size:18px;color:rgba(255,255,255,.8);max-width:60ch;line-height:1.55;margin-bottom:30px;font-family:'Figtree';font-weight:400}
+  .links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:54px}
+  .foot .btn.fill{background:#fff;color:var(--blue-press)}
+  .foot .btn.fill:hover{background:#EAF1FE}
+  .foot .btn.outline{border-color:rgba(168,199,250,.4);color:#fff}
+  .foot .btn.outline:hover{background:rgba(168,199,250,.12)}
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding-top:42px;border-top:1px solid rgba(168,199,250,.2)}
+  @media(max-width:760px){.about{grid-template-columns:1fr;gap:28px}}
+  .about .lab{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--on-deep);margin-bottom:12px}
+  .about p{font-size:14.5px;color:rgba(255,255,255,.78);line-height:1.6}
+  .sources{display:flex;flex-direction:column;gap:9px}
+  .sources a{color:rgba(255,255,255,.82);text-decoration:none;font-size:13.5px;border-bottom:1px solid transparent;width:fit-content;transition:.15s}
+  .sources a:hover{color:#fff;border-bottom-color:var(--on-deep)}
+  .legal{margin-top:46px;padding-top:24px;border-top:1px solid rgba(168,199,250,.2);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;max-width:80ch}
+
+  /* reveal motion */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  /* ---------- polish: readability, aesthetics, motion, responsive ---------- */
+  html{overflow-x:clip}
+  .read p{line-height:1.74;margin-bottom:22px}
+
+  /* depth */
+  .feature{background:radial-gradient(1100px 560px at 84% -12%, #0c3e8a 0%, transparent 58%), var(--ink-deep)}
+  .foot{background:radial-gradient(900px 460px at 88% -10%, #0c3e8a 0%, transparent 55%), var(--ink-deep)}
+  .hero{position:relative}
+  .hero::before{content:"";position:absolute;top:-30px;right:-60px;width:520px;height:440px;background:radial-gradient(circle at 70% 30%, rgba(26,115,232,.12), transparent 64%);pointer-events:none;z-index:0}
+  .hero .wrap{position:relative;z-index:1}
+
+  /* hover lift */
+  .card,.crk,.sol,.mcol,.stat,.figcard{transition:transform .22s ease, box-shadow .22s ease}
+  .card:hover,.crk:hover,.sol:hover,.mcol:hover,.stat:hover,.figcard:hover{transform:translateY(-3px);box-shadow:var(--e2)}
+
+  /* hero load */
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .hero .eyebrow,.hero h1,.hero .sub,.hero .meta-line{opacity:0;animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero .eyebrow{animation-delay:.05s}.hero h1{animation-delay:.14s}.hero .sub{animation-delay:.26s}.hero .meta-line{animation-delay:.38s}
+
+  /* animated route (the car, in motion) */
+  @keyframes march{to{stroke-dashoffset:-180}}
+  .route-anim{animation:march 5.5s linear infinite}
+
+  /* staggered grid reveals */
+  .tldr>.rv:nth-child(2),.cracks>.rv:nth-child(2),.sols>.rv:nth-child(2),.statgrid>.rv:nth-child(2),.metrics>.rv:nth-child(2){transition-delay:.09s}
+  .tldr>.rv:nth-child(3),.cracks>.rv:nth-child(3),.sols>.rv:nth-child(3),.statgrid>.rv:nth-child(3){transition-delay:.18s}
+  .cracks>.rv:nth-child(4),.statgrid>.rv:nth-child(4){transition-delay:.27s}
+
+  /* the moment / diptych */
+  .moment{background:linear-gradient(180deg,#FEF3DC 0%, #F4F7FC 62%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cap-lead{text-align:center;max-width:640px;margin:0 auto 40px}
+  .cap-lead .k{font-family:'Roboto Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-strong);margin-bottom:14px}
+  .cap-lead .q{font-family:'Figtree';font-weight:700;font-size:clamp(23px,3.2vw,32px);line-height:1.22;letter-spacing:-.02em;color:var(--ink);max-width:20ch;margin:0 auto}
+  .diptych{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:0 auto}
+  @media(max-width:760px){.diptych{grid-template-columns:1fr;max-width:440px}}
+  .figcard{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--e1);overflow:hidden;display:flex;flex-direction:column}
+  .figcard .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:#E7E2D8}
+  .figcard .ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.05);transition:transform 1.3s ease}
+  .figcard.in .ph img{transform:scale(1)}
+  .figcard .ph .ov{position:absolute;left:0;right:0;bottom:0;padding:30px 16px 14px;background:linear-gradient(transparent,rgba(15,20,30,.62));color:#fff;font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:.06em}
+  .figcard .appwrap{aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#EAF1FE,#E8F0FE)}
+  .figcard .appwrap svg{width:64%;max-width:188px;height:auto}
+  .figcard .lbl{padding:15px 18px;font-family:'Roboto Mono',monospace;font-size:11px;color:var(--ink-3);border-top:1px solid var(--line);line-height:1.5}
+
+  /* responsive tables */
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .table-scroll table{min-width:540px}
+
+  /* responsive tightening */
+  @media(max-width:760px){
+    .sec-head{gap:14px;margin-bottom:30px}
+    .sec-num{width:38px;height:38px;font-size:14px}
+    .hero{padding:44px 0 56px}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 18px}
+    .topbar .inner{padding:12px 18px}
+    .topbar .by{display:none}
+    .brand{font-size:13px}
+    .statgrid{gap:10px}
+    .stat{padding:15px 16px}
+    .stat .n{font-size:22px}
+    blockquote .q{font-size:18px}
+    .story-grid p:first-of-type::first-letter{font-size:52px}
+  }
+
+  /* reduced motion */
+  @media(prefers-reduced-motion:reduce){
+    .route-anim{animation:none}
+    .hero .eyebrow,.hero h1,.hero .sub,.hero .meta-line{opacity:1;animation:none}
+    .figcard .ph img{transform:none;transition:none}
+    .card:hover,.crk:hover,.sol:hover,.mcol:hover,.stat:hover,.figcard:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-wrap"><div id="progress"></div></div>
+
+<!-- top bar -->
+<div class="topbar">
+  <div class="inner">
+    <div class="brand"><span class="dot"></span>Rider&nbsp;Experience&nbsp;Teardown <span class="muted">&#183;&nbsp;Waymo</span></div>
+    <div class="by">by Chetan Jonnalagadda</div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Independent product teardown</div>
+    <h1>Stranded by design.</h1>
+    <p class="sub">A rider-experience teardown of Waymo, built from one real ride across Phoenix on a 106 degree day, one twelve-minute support call, and everything the public record revealed afterward.</p>
+    <div class="meta-line">A case study by <b>Chetan Jonnalagadda</b> &#183; not affiliated with, endorsed by, or commissioned by Waymo or Alphabet</div>
+
+    <div class="hero-card rv">
+      <svg viewBox="0 0 720 320" role="img" aria-label="Illustration of a Waymo on a curving route under a hot sun">
+        <rect x="0" y="0" width="720" height="320" rx="20" fill="#EAF1FE"/>
+        <!-- faint map grid -->
+        <g stroke="#CFE0FB" stroke-width="2">
+          <line x1="0" y1="80" x2="720" y2="80"/><line x1="0" y1="160" x2="720" y2="160"/><line x1="0" y1="240" x2="720" y2="240"/>
+          <line x1="150" y1="0" x2="150" y2="320"/><line x1="340" y1="0" x2="340" y2="320"/><line x1="540" y1="0" x2="540" y2="320"/>
+        </g>
+        <!-- sun -->
+        <circle cx="620" cy="78" r="46" fill="#FEEFC3"/>
+        <circle cx="620" cy="78" r="26" fill="#F29900"/>
+        <g stroke="#F29900" stroke-width="4" stroke-linecap="round">
+          <line x1="620" y1="14" x2="620" y2="2"/><line x1="678" y1="36" x2="688" y2="28"/><line x1="562" y1="36" x2="552" y2="28"/>
+        </g>
+        <!-- the route -->
+        <path class="route-anim" d="M70 250 C 200 250, 230 120, 360 120 S 520 210, 650 150" fill="none" stroke="#1A73E8" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 16"/>
+        <!-- pickup pin -->
+        <g transform="translate(70,250)">
+          <circle r="13" fill="#fff" stroke="#1A73E8" stroke-width="4"/><circle r="4.5" fill="#1A73E8"/>
+        </g>
+        <!-- waymo car -->
+        <g transform="translate(330,108)">
+          <rect x="-44" y="-20" width="88" height="40" rx="18" fill="#1A73E8"/>
+          <rect x="-30" y="-15" width="60" height="20" rx="9" fill="#BBD3FB"/>
+          <rect x="-10" y="-34" width="20" height="14" rx="5" fill="#0B57D0"/>
+          <circle cx="0" cy="-37" r="4" fill="#A8C7FA"/>
+          <circle cx="-26" cy="22" r="9" fill="#0B1B33"/><circle cx="26" cy="22" r="9" fill="#0B1B33"/>
+        </g>
+        <text x="38" y="300" font-family="Roboto Mono, monospace" font-size="13" fill="#5F6F86" letter-spacing="1">PHOENIX &#183; 106&#176;F &#183; MID-TRIP STOP</text>
+      </svg>
+    </div>
+
+    <div class="statgrid">
+      <div class="stat rv"><div class="n amber">106&#176;F</div><div class="l">ON THE CURB</div></div>
+      <div class="stat rv"><div class="n">20 &rarr; 6</div><div class="l">MIN WAIT, MID-CALL</div></div>
+      <div class="stat rv"><div class="n">12 min</div><div class="l">CALL TO SUPPORT</div></div>
+      <div class="stat rv"><div class="n">n = 1</div><div class="l">RIDE, READ WIDELY</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 01 TLDR ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">01</span>
+      <div>
+        <div class="kicker">The short version</div>
+        <h2>One root cause, two of<br>Waymo&rsquo;s most common complaints.</h2>
+      </div>
+    </div>
+    <div class="tldr">
+      <div class="card rv">
+        <div class="tag t-friction">The friction</div>
+        <p>A mid-trip stop quietly dropped me back into the dispatch queue. In triple-digit heat, a two-minute errand turned into a long, sweaty wait on a curb. <b>The product worked exactly as built. That is the problem.</b></p>
+      </div>
+      <div class="card rv">
+        <div class="tag t-insight">The insight</div>
+        <p>Pressing &ldquo;I&rsquo;m ready&rdquo; does not call your car back. Your car left to keep earning, so you rejoin the line for whatever car is free. <b>Routing comes from the same instinct: the car takes the route that suits the system, not the one that gets you there fastest.</b></p>
+      </div>
+      <div class="card rv">
+        <div class="tag t-opp">The opportunity</div>
+        <p>Both complaints trace to a single choice: <b>optimize for fleet utilization over rider time.</b> As the robotaxi market gets crowded, closing that experience gap stops being a nicety and becomes the next place the category is won or lost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 THE RIDE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">02</span>
+      <div>
+        <div class="kicker">What actually happened</div>
+        <h2>A drink, a heatwave,<br>and a vanishing car.</h2>
+      </div>
+    </div>
+
+    <div class="read story-grid rv">
+      <p>We took a Waymo across Phoenix and, partway through, I added a stop. Nothing dramatic, just a quick run into a smoke shop for a cold Diet Coke. We got out, the doors closed, and the car slipped back into traffic without us. That part felt normal. I assumed it would loop the block and wait.</p>
+      <p>When we came back out, I pressed the big blue <b>&ldquo;I&rsquo;m ready&rdquo;</b> button. The app thought for a second and returned a number I was not expecting: <b>a twenty-minute wait.</b> It was 106 degrees. The can was already getting warm. There was no shade worth standing in, and twenty minutes in that heat is a long time to be standing on a curb.</p>
+      <p>So I did the thing most people do not do. I called customer care. A support agent picked up, and I just told her the situation plainly. She checked and said there were <b>no cars available nearby.</b> Then, while we were still talking, the estimate quietly dropped from twenty minutes to six, and a car was suddenly on its way. I stayed on the line the whole ride home.</p>
+      <p>Somewhere in those twelve minutes I asked her two things I could not help asking. First, how do you get a job at Waymo. Second, and more useful, what are the real product problems the team is wrestling with right now, because I wanted to study them properly.</p>
+      <p>What I heard on that call is the reason this teardown exists.</p>
+    </div>
+
+    <blockquote class="rv">
+      <div class="q">What I took away from that call: the cars sometimes take longer routes than they need to, it is a known issue the team is still working through, and I did not get a clear answer on when it gets fixed.</div>
+      <div class="src">My recollection of a 12-minute call with Waymo support, paraphrased in my own words</div>
+    </blockquote>
+
+    <div class="read story-grid rv">
+      <p>It stuck with me, not because it was some dramatic admission, but because it matched what I had just felt on the ride. So I went looking. I rode again, I called support again, and I read everything I could find. Two patterns kept showing up, and they turned out to be two versions of the same problem.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ MOMENT ============ -->
+<section class="moment">
+  <div class="wrap">
+    <div class="two" style="align-items:center;gap:48px">
+      <div class="rv">
+        <div style="font-family:'Roboto Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber-strong);margin-bottom:14px">The moment</div>
+        <div style="font-family:'Figtree';font-weight:700;font-size:clamp(24px,3.4vw,34px);line-height:1.2;letter-spacing:-.02em;color:var(--ink)">It was 106 degrees, there was no shade, and the app came back with a twenty-minute wait for a car that had already driven off.</div>
+      </div>
+      <div class="rv" style="display:flex;justify-content:center">
+        <div class="figcard" style="max-width:280px;width:100%">
+          <div class="appwrap">
+            <svg viewBox="0 0 200 320" role="img" aria-label="Illustrative recreation of the Waymo app showing a twenty minute wait after pressing I am ready">
+              <rect x="8" y="6" width="184" height="308" rx="28" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
+              <rect x="78" y="20" width="44" height="6" rx="3" fill="#DADCE0"/>
+              <rect x="20" y="38" width="160" height="118" rx="14" fill="#EAF1FE"/>
+              <path d="M40 138 C 80 96, 110 110, 132 84 S 165 64, 170 66" fill="none" stroke="#1A73E8" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round"/>
+              <circle cx="40" cy="138" r="7" fill="#fff" stroke="#1A73E8" stroke-width="3"/><circle cx="40" cy="138" r="2.4" fill="#1A73E8"/>
+              <g transform="translate(160,62)"><rect x="-10" y="-5" width="20" height="10" rx="4" fill="#1A73E8"/><circle cx="-5" cy="6" r="2.3" fill="#0B1B33"/><circle cx="5" cy="6" r="2.3" fill="#0B1B33"/></g>
+              <rect x="20" y="168" width="160" height="132" rx="16" fill="#F4F7FC" stroke="#E3E8F0"/>
+              <text x="36" y="192" font-family="Roboto Mono, monospace" font-size="8" fill="#1A73E8" letter-spacing="1">RESUMING YOUR TRIP</text>
+              <text x="36" y="228" font-family="Figtree, sans-serif" font-size="33" font-weight="700" fill="#1B1C1E">20 min</text>
+              <text x="36" y="246" font-family="Roboto, sans-serif" font-size="9.5" fill="#71757C">estimated wait for a car</text>
+              <line x1="36" y1="258" x2="164" y2="258" stroke="#E3E8F0"/>
+              <circle cx="40" cy="278" r="3.4" fill="#EA4335"/>
+              <text x="50" y="281" font-family="Roboto, sans-serif" font-size="9.5" fill="#43474E">No cars available nearby</text>
+            </svg>
+          </div>
+          <div class="lbl">Fig. A &middot; The twenty-minute screen (illustrative recreation, not a real screenshot).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 REVEAL (feature) ============ -->
+<section class="feature">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">03</span>
+      <div>
+        <div class="kicker">The reframe</div>
+        <h2>It is not a bug.<br>The car is supposed to leave.</h2>
+      </div>
+    </div>
+    <div class="two wide-left">
+      <div class="rv">
+        <p class="lede" style="margin-bottom:18px">Here is the part that reframed it for me. When you add a stop and step out, Waymo holds your itinerary for up to thirty minutes, but the car itself drives away to serve other passengers. When you tap &ldquo;I&rsquo;m ready,&rdquo; a <b style="color:var(--on-deep)">different car</b> is dispatched to come get you.</p>
+        <div class="src-quote">&ldquo;We can&rsquo;t keep the same car for you, so during a stop, please take your stuff with you. A different car will arrive for the next part of your trip.&rdquo;<span class="who">Waymo Help Center, in its own words</span></div>
+        <p style="margin-bottom:18px">So that button is not a recall. It is a fresh request. You are not waiting for your car, you are back in line for whatever car is free. On a hot, busy afternoon with a thin local fleet, that line was twenty minutes long.</p>
+        <p>An Uber driver waits at the curb because a human is already being paid to sit there. A robotaxi has no one to pay, and an idle car earns nothing, so the economically rational move is to send it off to its next fare. So the wait was the system working as intended, not breaking down.</p>
+        <div class="note">
+          <div class="lab">The honest tension</div>
+          <p>This is a genuinely hard tradeoff, not a lazy oversight. Holding cars for riders torches the unit economics that make robotaxis viable in the first place. The interesting product question is not &ldquo;why does it leave,&rdquo; it is &ldquo;how do you give the rider continuity without giving up the economics.&rdquo;</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="panel">
+          <svg viewBox="0 0 420 360" role="img" aria-label="Diagram comparing how Uber holds your driver versus how Waymo releases your car and dispatches a different one">
+            <text x="16" y="28" font-family="Roboto Mono, monospace" font-size="11" fill="#A8C7FA" letter-spacing="2">RIDESHARE / UBER</text>
+            <line x1="16" y1="40" x2="404" y2="40" stroke="rgba(168,199,250,.25)"/>
+            <circle cx="46" cy="86" r="14" fill="none" stroke="#fff" stroke-width="2"/>
+            <text x="46" y="120" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="rgba(255,255,255,.65)">YOU</text>
+            <rect x="148" y="72" width="46" height="28" rx="9" fill="#A8C7FA"/>
+            <circle cx="160" cy="100" r="5" fill="#041E49"/><circle cx="182" cy="100" r="5" fill="#041E49"/>
+            <text x="171" y="120" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="rgba(255,255,255,.65)">WAITS</text>
+            <path d="M72 86 L140 86" stroke="#fff" stroke-width="1.6" stroke-dasharray="3 4"/>
+            <text x="300" y="82" font-family="Figtree, sans-serif" font-size="14" fill="rgba(255,255,255,.9)">Same car.</text>
+            <text x="300" y="102" font-family="Figtree, sans-serif" font-size="14" fill="rgba(255,255,255,.9)">You resume.</text>
+            <line x1="16" y1="156" x2="404" y2="156" stroke="rgba(168,199,250,.15)"/>
+            <text x="16" y="190" font-family="Roboto Mono, monospace" font-size="11" fill="#A8C7FA" letter-spacing="2">ROBOTAXI / WAYMO</text>
+            <line x1="16" y1="202" x2="404" y2="202" stroke="rgba(168,199,250,.25)"/>
+            <circle cx="46" cy="250" r="14" fill="none" stroke="#fff" stroke-width="2"/>
+            <text x="46" y="284" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="rgba(255,255,255,.65)">YOU</text>
+            <rect x="148" y="236" width="46" height="28" rx="9" fill="#5E97F6"/>
+            <circle cx="160" cy="264" r="5" fill="#041E49"/><circle cx="182" cy="264" r="5" fill="#041E49"/>
+            <path d="M196 250 L300 232" stroke="#F6AE2D" stroke-width="2" stroke-dasharray="4 4"/>
+            <text x="300" y="230" font-family="Figtree, sans-serif" font-size="13" fill="#F6AE2D">drives away</text>
+            <circle cx="360" cy="300" r="13" fill="none" stroke="#34A853" stroke-width="2"/>
+            <text x="360" y="334" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="9.5" fill="#81C995">NEW CAR</text>
+            <path d="M250 300 L344 300" stroke="#34A853" stroke-width="1.6" stroke-dasharray="3 4"/>
+            <text x="150" y="304" font-family="Figtree, sans-serif" font-size="13" fill="rgba(255,255,255,.9)">You rejoin</text>
+            <text x="150" y="322" font-family="Figtree, sans-serif" font-size="13" fill="rgba(255,255,255,.9)">the queue.</text>
+          </svg>
+          <div class="figcap">The same stop, two dispatch philosophies.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 THESIS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">04</span>
+      <div>
+        <div class="kicker">The root cause</div>
+        <h2>The same decision,<br>expressed twice.</h2>
+      </div>
+    </div>
+    <div class="two wide-left">
+      <div class="rv">
+        <p style="margin-bottom:18px">Strip away the symptoms and a single principle is doing the work. Waymo, still young and supply-constrained, optimizes for the things a fleet operator must optimize for: utilization, safety margins, and the logic of its own maps. Those are the right priorities for survival. They are not always the right priorities for the person in the back seat with a melting drink.</p>
+        <p style="margin-bottom:18px">The re-pickup gap and the long routes are not two separate failures. They are the same decision, expressed twice. Once in <b>how the fleet is dispatched</b>, and once in <b>how a single car drives</b>. Name the root cause and everything else falls into place.</p>
+        <p>And the pressure behind that decision keeps rising. Since May 2024, Waymo&rsquo;s paid rides have grown roughly tenfold, while the fleet has stayed near three thousand vehicles. When demand climbs an order of magnitude and the cars do not, every one of them has to be squeezed harder, and a rider&rsquo;s spare minutes are the cheapest thing to spend.</p>
+        <div class="note">
+          <div class="lab">Why this framing matters</div>
+          <p>A list of complaints gets you a list of patches. The root cause is what gives you a strategy, and that is what the rest of this teardown is after.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="panel">
+          <svg viewBox="0 0 440 330" role="img" aria-label="Root cause diagram: one root cause branches into two symptoms">
+            <rect x="70" y="20" width="300" height="62" rx="16" fill="#0B57D0"/>
+            <text x="220" y="47" text-anchor="middle" font-family="Figtree, sans-serif" font-size="15" fill="#fff" font-weight="600">Optimize for the fleet,</text>
+            <text x="220" y="68" text-anchor="middle" font-family="Figtree, sans-serif" font-size="15" fill="#A8C7FA" font-weight="600">not the rider&rsquo;s time</text>
+            <path d="M220 82 L220 108 M120 138 L120 108 L320 108 L320 138" fill="none" stroke="#CAD1DD" stroke-width="1.6"/>
+            <rect x="22" y="138" width="196" height="58" rx="14" fill="#fff" stroke="#1A73E8" stroke-width="1.6"/>
+            <text x="120" y="164" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="#1A73E8" letter-spacing="1">DISPATCH LOGIC</text>
+            <text x="120" y="184" text-anchor="middle" font-family="Figtree, sans-serif" font-size="14" fill="#1B1C1E" font-weight="600">Re-pickup gap</text>
+            <rect x="222" y="138" width="196" height="58" rx="14" fill="#fff" stroke="#1A73E8" stroke-width="1.6"/>
+            <text x="320" y="164" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="#1A73E8" letter-spacing="1">DRIVING LOGIC</text>
+            <text x="320" y="184" text-anchor="middle" font-family="Figtree, sans-serif" font-size="14" fill="#1B1C1E" font-weight="600">Indirect routes</text>
+            <path d="M120 196 L120 220 M320 196 L320 220" stroke="#CAD1DD" stroke-width="1.4"/>
+            <text x="120" y="242" text-anchor="middle" font-family="Roboto, sans-serif" font-size="12" fill="#71757C">Idle cars don&rsquo;t earn,</text>
+            <text x="120" y="260" text-anchor="middle" font-family="Roboto, sans-serif" font-size="12" fill="#71757C">so yours is sent away</text>
+            <text x="320" y="242" text-anchor="middle" font-family="Roboto, sans-serif" font-size="12" fill="#71757C">Drives for its maps</text>
+            <text x="320" y="260" text-anchor="middle" font-family="Roboto, sans-serif" font-size="12" fill="#71757C">&amp; safety, not speed</text>
+            <line x1="40" y1="288" x2="400" y2="288" stroke="#E3E8F0"/>
+            <text x="220" y="314" text-anchor="middle" font-family="Figtree, sans-serif" font-style="italic" font-size="15" fill="#1B1C1E">Felt by the rider as: lost time.</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel rv" style="margin-top:30px">
+      <div style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px">The proof, in one chart</div>
+      <svg viewBox="0 0 1080 300" role="img" aria-label="Bar chart of Waymo paid rides per week growing roughly tenfold from 2024 to 2026 while the fleet stayed near three thousand vehicles">
+        <line x1="90" y1="40" x2="90" y2="250" stroke="#CAD1DD" stroke-width="1.4"/>
+        <line x1="90" y1="250" x2="1010" y2="250" stroke="#CAD1DD" stroke-width="1.4"/>
+        <text x="90" y="28" font-family="Roboto Mono, monospace" font-size="11" fill="#71757C" letter-spacing="1">RIDES / WEEK</text>
+        <rect x="165" y="230" width="110" height="20" rx="4" fill="#1A73E8"/>
+        <rect x="465" y="150" width="110" height="100" rx="4" fill="#1A73E8"/>
+        <rect x="765" y="50" width="110" height="200" rx="4" fill="#1A73E8"/>
+        <text x="220" y="222" text-anchor="middle" font-family="Figtree, sans-serif" font-size="20" font-weight="700" fill="#1B1C1E">50K</text>
+        <text x="520" y="142" text-anchor="middle" font-family="Figtree, sans-serif" font-size="20" font-weight="700" fill="#1B1C1E">~250K</text>
+        <text x="820" y="42" text-anchor="middle" font-family="Figtree, sans-serif" font-size="22" font-weight="700" fill="#0B57D0">500K+</text>
+        <text x="220" y="272" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="#71757C">MAY 2024</text>
+        <text x="520" y="272" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="#71757C">MID 2025</text>
+        <text x="820" y="272" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="#71757C">EARLY 2026</text>
+        <path d="M120 240 L990 230" fill="none" stroke="#5F6368" stroke-width="2.2" stroke-dasharray="3 6"/>
+        <circle cx="120" cy="240" r="4" fill="#5F6368"/><circle cx="555" cy="235" r="4" fill="#5F6368"/><circle cx="990" cy="230" r="4" fill="#5F6368"/>
+        <text x="905" y="222" font-family="Roboto Mono, monospace" font-size="11" fill="#5F6368">FLEET ~3,000</text>
+        <path d="M235 214 C 360 110, 560 70, 760 55" fill="none" stroke="#F29900" stroke-width="1.6" stroke-dasharray="2 5"/>
+        <text x="470" y="94" text-anchor="middle" font-family="Figtree, sans-serif" font-style="italic" font-weight="600" font-size="18" fill="#E37400">&asymp; 10&times; the demand</text>
+      </svg>
+      <div class="figcap">Fig. B &nbsp;/&nbsp; Paid rides per week grew roughly tenfold while the fleet stayed near 3,000 cars. Sources: Waymo, TechCrunch (2024 to 2026). Fleet is shown on a separate scale to make the divergence legible.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 SYMPTOM 1 ROUTING ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">05</span>
+      <div>
+        <div class="kicker">Symptom one &#183; driving logic</div>
+        <h2>The long way around.</h2>
+      </div>
+    </div>
+    <div class="two wide-left">
+      <div class="rv">
+        <p style="margin-bottom:18px">This is not just my read on one bad ride. Waymo says it plainly: it bases your price on the most direct route, and in its own words, &ldquo;even if the car needs to re-route or adapt a route in an unexpected way, the cost to you won&rsquo;t change.&rdquo; The company already knows the route you ride and the route you pay for are often two different things.</p>
+        <p>The usual culprits are a deeply conservative driving style and a long aversion to freeways that pushes cars onto slower surface streets. Waymo finally began offering freeway trips to riders in late 2025, the obvious fix for cross-town detours. Then, in May 2026, it <b>suspended freeway service entirely</b> while it reworked how the cars handle construction zones and flooded roads. So as I write this, riders are back on surface streets, and the slow-route problem is very much live. The car is not lost. It is optimizing for its own maps and its own safety thresholds, not for your fastest arrival.</p>
+        <div class="note">
+          <div class="lab">To be fair</div>
+          <p>That same caution is a big part of why Waymo&rsquo;s safety story is so strong. The fix here is not &ldquo;drive recklessly.&rdquo; It is honesty and choice: tell riders the tradeoff, and let them opt in when minutes matter.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="panel">
+          <svg viewBox="0 0 420 300" role="img" aria-label="Bar chart: a Los Angeles comparison found Waymo trips took more than twice as long and cost about 9.50 dollars more">
+            <text x="0" y="22" font-family="Roboto Mono, monospace" font-size="11" fill="#71757C" letter-spacing="1.5">LOS ANGELES &#183; 50 MATCHED RIDES</text>
+            <text x="0" y="60" font-family="Figtree, sans-serif" font-size="13" fill="#1B1C1E" font-weight="600">Trip duration</text>
+            <rect x="0" y="74" width="120" height="26" rx="6" fill="#DADCE0"/>
+            <text x="128" y="92" font-family="Roboto Mono, monospace" font-size="12" fill="#71757C">Uber baseline</text>
+            <rect x="0" y="108" width="270" height="26" rx="6" fill="#1A73E8"/>
+            <text x="278" y="126" font-family="Roboto Mono, monospace" font-size="12" fill="#0B57D0" font-weight="500">Waymo &#183; 2&times;+</text>
+            <text x="0" y="178" font-family="Figtree, sans-serif" font-size="13" fill="#1B1C1E" font-weight="600">Fare</text>
+            <rect x="0" y="192" width="150" height="26" rx="6" fill="#DADCE0"/>
+            <text x="158" y="210" font-family="Roboto Mono, monospace" font-size="12" fill="#71757C">Uber baseline</text>
+            <rect x="0" y="226" width="240" height="26" rx="6" fill="#1A73E8"/>
+            <text x="248" y="244" font-family="Roboto Mono, monospace" font-size="12" fill="#0B57D0" font-weight="500">+ $9.50</text>
+            <text x="0" y="288" font-family="Roboto, sans-serif" font-style="italic" font-size="12.5" fill="#71757C">Source: Obi, June 2025 (pre-freeway). Via TechCrunch &amp; Forbes.</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="chips rv" style="margin-top:30px">
+      <div class="chip"><b>~30 min</b> a rider&rsquo;s 2-mile SF trip, sent the long way</div>
+      <div class="chip"><b>29 &rarr; 60+ min</b> a 29-min Uber trip, past an hour by Waymo</div>
+      <div class="chip"><b>$0 saved</b> you pay the direct fare, you spend the indirect time</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 SYMPTOM 2 RE-PICKUP ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">06</span>
+      <div>
+        <div class="kicker">Symptom two &#183; dispatch logic</div>
+        <h2>The gap between rides.</h2>
+      </div>
+    </div>
+
+    <p class="read rv" style="max-width:760px">My twenty-minute wait was not a fluke of one bad afternoon. Across nearly 95,000 rides studied in late 2025, Waymo averaged a <b>5.7-minute wait, against 3.2 for Uber</b>, and the gap widens at the worst possible time: a late-afternoon capacity crunch between roughly 4 and 6pm, when demand outruns the fleet. Most of the time it is fine. But a routine stop drops you back into that same queue, and in triple-digit heat the wait stops being an inconvenience and becomes a welfare issue. And recall Waymo&rsquo;s own wording: it &ldquo;can&rsquo;t keep the same car for you.&rdquo; Here is exactly how my own wait played out.</p>
+
+    <div class="panel rv" style="margin-top:8px">
+      <svg viewBox="0 0 1080 230" role="img" aria-label="Timeline of the wait: dropped at the stop, pressed ready showing twenty minutes, called support, estimate dropped to six minutes, car arrived">
+        <rect x="300" y="56" width="500" height="120" rx="14" fill="#FEF7E0"/>
+        <text x="550" y="46" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="11" fill="#E37400" letter-spacing="1.2">THE FRICTION WINDOW &#183; 106&#176;F ON THE CURB</text>
+        <line x1="60" y1="120" x2="1020" y2="120" stroke="#CAD1DD" stroke-width="2"/>
+        <!-- nodes -->
+        <circle cx="110" cy="120" r="9" fill="#1A73E8"/>
+        <text x="110" y="156" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="#1B1C1E">Stop added</text>
+        <text x="110" y="174" text-anchor="middle" font-family="Roboto, sans-serif" font-size="11.5" fill="#71757C">car drives off</text>
+
+        <circle cx="360" cy="120" r="11" fill="#F29900"/>
+        <text x="360" y="96" text-anchor="middle" font-family="Figtree, sans-serif" font-size="15" font-weight="700" fill="#E37400">20 min</text>
+        <text x="360" y="156" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="#1B1C1E">Pressed &ldquo;I&rsquo;m ready&rdquo;</text>
+
+        <circle cx="560" cy="120" r="9" fill="#1A73E8"/>
+        <text x="560" y="156" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="#1B1C1E">Called support</text>
+        <text x="560" y="174" text-anchor="middle" font-family="Roboto, sans-serif" font-size="11.5" fill="#71757C">&ldquo;no cars nearby&rdquo;</text>
+
+        <circle cx="760" cy="120" r="11" fill="#34A853"/>
+        <text x="760" y="96" text-anchor="middle" font-family="Figtree, sans-serif" font-size="15" font-weight="700" fill="#1E8E3E">6 min</text>
+        <text x="760" y="156" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="#1B1C1E">Estimate drops</text>
+
+        <circle cx="1000" cy="120" r="9" fill="#1A73E8"/>
+        <text x="1000" y="156" text-anchor="middle" font-family="Figtree, sans-serif" font-size="13" font-weight="600" fill="#1B1C1E">Car arrives</text>
+        <path d="M372 108 Q 560 70 748 108" fill="none" stroke="#5F6368" stroke-width="1.4" stroke-dasharray="2 5"/>
+        <text x="560" y="206" text-anchor="middle" font-family="Roboto, sans-serif" font-style="italic" font-size="12.5" fill="#71757C">The wait collapsed only after a human got involved, which is a fragile thing to count on.</text>
+      </svg>
+    </div>
+    <div class="note rv">
+      <div class="lab">The quietly damning part</div>
+      <p>The number did not improve because the system self-corrected. It improved because I called, waited on the line, and a person intervened. Most riders will not do that. They will just stand in the heat, or stop adding stops at all.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 DEEPER CRACKS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">07</span>
+      <div>
+        <div class="kicker">The deeper cut</div>
+        <h2>Four more cracks in the glass.</h2>
+      </div>
+    </div>
+    <p class="read rv" style="max-width:740px;margin-bottom:32px">Routing and re-pickup are the headline. But pull the thread and a few more rider-experience gaps show up in the public record. None are fatal. Together they sketch the edge of where a still-maturing product frays.</p>
+    <div class="cracks">
+      <div class="crk rv"><div class="mtag">Last 50 feet</div><h4>Dropoff precision</h4><p>The car often cannot stop exactly where you asked, leaving riders with a surprise walk at the end. The journey is autonomous, the final approach is still a negotiation.</p></div>
+      <div class="crk rv"><div class="mtag">When it breaks</div><h4>Reaching a human</h4><p>Riders report slow, hard-to-find support. I got lucky with a helpful agent, but luck is not a support strategy, especially in the moments that scare people.</p></div>
+      <div class="crk rv"><div class="mtag">The long tail</div><h4>The 4-to-6 squeeze</h4><p>Waymo&rsquo;s longest waits cluster in the late afternoon, when ride demand outruns a roughly fixed fleet. The product is most fragile exactly when people most need it.</p></div>
+      <div class="crk rv"><div class="mtag">The premium</div><h4>Costs more, gap closing</h4><p>Waymo still prices above Uber, but the premium fell from 30 to 40% in mid-2025 to about 13% by early 2026. When riders who have tried it choose, Waymo is the most preferred robotaxi brand (around 40%). Goodwill is real, but it is a shrinking moat, which makes experience matter more, not less.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 RISKS & TRUST ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">08</span>
+      <div>
+        <div class="kicker">The wider picture</div>
+        <h2>The risks that dwarf<br>a long, hot wait.</h2>
+      </div>
+    </div>
+    <p class="read rv" style="max-width:760px;margin-bottom:34px">A rider-experience teardown that stops at convenience would be missing the bigger story. The last year handed Waymo a string of harder problems, the kind that decide whether a city lets you keep operating at all. A serious product manager has to hold these in view, because they shape the same rider trust that my twenty-minute wait chipped at.</p>
+
+    <div class="two">
+      <div class="rv">
+        <div class="risklist">
+          <div class="riskrow safety"><div class="rt">Safety</div><div><h4>Regulators are watching now</h4><p>After Waymos were recorded passing stopped school buses (one Austin district logged 19 instances), Waymo issued a voluntary software recall of 3,067 vehicles and NHTSA opened a probe. A separate January 2026 case, where a Waymo struck a child with minor injuries near a Santa Monica school, triggered another federal investigation.</p></div></div>
+          <div class="riskrow safety"><div class="rt">Crisis ops</div><div><h4>No power, no plan</h4><p>In San Francisco&rsquo;s December 2025 blackout, Waymos stalled in intersections more than 1,500 times and one delayed an ambulance by roughly 40 minutes. The city later learned Waymo had only about 75 staff able to intervene across a fleet of thousands.</p></div></div>
+          <div class="riskrow safety"><div class="rt">Weather</div><div><h4>Into the flood</h4><p>Waymo recalled 3,791 vehicles in May 2026 after cars drove into flooded roads they could not cross. The same week, it paused freeway service to rework construction-zone and flood handling. Robustness in bad conditions is still being built.</p></div></div>
+          <div class="riskrow soft"><div class="rt">Equity</div><div><h4>No ride for wheelchairs</h4><p>There is still no autonomous wheelchair-accessible Waymo, and under Senate questioning in early 2026 the company offered no timeline. Accessible rides are handled by human-driven partner cars. For a product that markets itself as the future of mobility, that is a real gap.</p></div></div>
+          <div class="riskrow soft"><div class="rt">Trust</div><div><h4>Politics and the camera question</h4><p>Driverless cars have been torched in protests, and labor groups are pushing human-driver mandates city by city. Police have sought Waymo footage, raising surveillance concerns. Public goodwill is not guaranteed, and it shapes where Waymo is allowed to grow.</p></div></div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="panel">
+          <svg viewBox="0 0 440 360" role="img" aria-label="Risk matrix plotting Waymo issues by severity and frequency">
+            <line x1="60" y1="40" x2="60" y2="310" stroke="#CAD1DD" stroke-width="1.5"/>
+            <line x1="60" y1="310" x2="410" y2="310" stroke="#CAD1DD" stroke-width="1.5"/>
+            <text x="60" y="28" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="#71757C">HIGH SEVERITY</text>
+            <text x="50" y="328" text-anchor="end" font-family="Roboto Mono, monospace" font-size="10" fill="#71757C">RARE</text>
+            <text x="410" y="328" text-anchor="end" font-family="Roboto Mono, monospace" font-size="10" fill="#71757C">RECURRING</text>
+            <line x1="60" y1="175" x2="410" y2="175" stroke="#E3E8F0" stroke-dasharray="3 5"/>
+            <line x1="235" y1="40" x2="235" y2="310" stroke="#E3E8F0" stroke-dasharray="3 5"/>
+            <text x="400" y="60" text-anchor="end" font-family="Roboto Mono, monospace" font-size="9.5" fill="#C5221F">WATCH CLOSELY</text>
+            <g font-family="Figtree, sans-serif" font-size="12" font-weight="600">
+              <circle cx="305" cy="92" r="9" fill="#EA4335"/><text x="318" y="89" fill="#1B1C1E">School buses</text>
+              <circle cx="120" cy="74" r="8" fill="#EA4335"/><text x="92" y="60" fill="#43474E" font-weight="500">Child struck</text>
+              <circle cx="150" cy="108" r="8" fill="#EA4335"/><text x="164" y="111" fill="#43474E" font-weight="500">Blackout</text>
+              <circle cx="112" cy="140" r="8" fill="#EA4335"/><text x="126" y="143" fill="#43474E" font-weight="500">Flooding</text>
+              <circle cx="330" cy="200" r="8" fill="#1A73E8"/><text x="196" y="204" fill="#43474E" font-weight="500">Accessibility gap</text>
+              <circle cx="225" cy="240" r="8" fill="#1A73E8"/><text x="239" y="243" fill="#43474E" font-weight="500">Vandalism / politics</text>
+            </g>
+          </svg>
+          <div class="figcap">Fig. C &nbsp;/&nbsp; My read on where each risk sits. Safety-critical items in red.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <div class="lab">In fairness, and this matters</div>
+      <p>None of this is a safety indictment. By Waymo&rsquo;s own analyses its cars are in far fewer injury crashes than human drivers, and an independent Swiss Re insurance study found roughly 88% fewer property-damage claims and 92% fewer injury claims per mile. The point is narrower and, I think, more interesting: a product can be statistically safe and still strand you in the heat, skip the people who most need a ride, and lose a city&rsquo;s trust in a crisis. Those are experience and operations problems, and a rider-focused PM owns them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 PRIORITIZATION ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">09</span>
+      <div>
+        <div class="kicker">Where I&rsquo;d start</div>
+        <h2>Impact against effort.</h2>
+      </div>
+    </div>
+    <div class="two">
+      <div class="rv">
+        <p style="margin-bottom:18px">A teardown that only diagnoses is half a teardown. The job is to choose. Plotted against rider impact and build effort, the picture is clear: the <b>re-pickup gap</b> and <b>routing honesty</b> sit in the high-impact band and are addressable without re-architecting the autonomy stack. They are mostly dispatch, pricing, and interface problems, which is exactly the territory a product team can move on quickly.</p>
+        <p>Dropoff precision and crisis-grade reliability matter, but they are heavier lifts tied to perception, mapping, and operations. They belong on the roadmap, not at the front of it.</p>
+        <div class="note">
+          <div class="lab">My call</div>
+          <p>Ship rider-facing fixes for the two headline symptoms first. They are the cheapest path to the biggest felt improvement, and they directly answer the complaint a frontline agent already admitted to.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="panel">
+          <svg viewBox="0 0 440 340" role="img" aria-label="Impact versus effort matrix">
+            <line x1="58" y1="30" x2="58" y2="300" stroke="#CAD1DD" stroke-width="1.5"/>
+            <line x1="58" y1="300" x2="410" y2="300" stroke="#CAD1DD" stroke-width="1.5"/>
+            <text x="58" y="20" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="10" fill="#71757C">HIGH IMPACT</text>
+            <text x="48" y="318" text-anchor="end" font-family="Roboto Mono, monospace" font-size="10" fill="#71757C">LOW EFFORT</text>
+            <text x="410" y="318" text-anchor="end" font-family="Roboto Mono, monospace" font-size="10" fill="#71757C">HIGH EFFORT</text>
+            <line x1="58" y1="165" x2="410" y2="165" stroke="#E3E8F0" stroke-dasharray="3 5"/>
+            <line x1="234" y1="30" x2="234" y2="300" stroke="#E3E8F0" stroke-dasharray="3 5"/>
+            <rect x="62" y="34" width="168" height="127" rx="10" fill="#E8F0FE" opacity=".6"/>
+            <text x="74" y="52" font-family="Roboto Mono, monospace" font-size="9.5" fill="#0B57D0">DO FIRST</text>
+            <g font-family="Figtree, sans-serif" font-size="12" font-weight="600">
+              <circle cx="115" cy="78" r="10" fill="#1A73E8"/><text x="132" y="82" fill="#1B1C1E">Re-pickup gap</text>
+              <circle cx="160" cy="120" r="10" fill="#1A73E8"/><text x="177" y="124" fill="#1B1C1E">Route honesty</text>
+              <circle cx="140" cy="152" r="8" fill="#5E97F6"/><text x="156" y="156" fill="#43474E" font-weight="500">Heat-aware</text>
+              <circle cx="300" cy="92" r="8" fill="#9AA0A6"/><text x="316" y="96" fill="#43474E" font-weight="500">Crisis ops</text>
+              <circle cx="330" cy="225" r="8" fill="#9AA0A6"/><text x="314" y="229" text-anchor="end" fill="#43474E" font-weight="500">Dropoff precision</text>
+            </g>
+          </svg>
+          <div class="figcap">Bigger dot, higher confidence it is worth doing now.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 SOLUTIONS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">10</span>
+      <div>
+        <div class="kicker">What I&rsquo;d build</div>
+        <h2>Three concepts that close the gap<br>without breaking the economics.</h2>
+      </div>
+    </div>
+
+    <div class="sols">
+      <!-- Concept 1 -->
+      <div class="sol rv">
+        <div class="screen">
+          <svg viewBox="0 0 180 300" aria-label="App concept: Hold my ride after a stop">
+            <rect x="6" y="6" width="168" height="288" rx="26" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
+            <rect x="68" y="18" width="44" height="6" rx="3" fill="#DADCE0"/>
+            <rect x="18" y="34" width="144" height="92" rx="12" fill="#EAF1FE"/>
+            <path d="M30 110 C 70 70, 100 90, 150 60" stroke="#1A73E8" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="30" cy="110" r="6" fill="#fff" stroke="#1A73E8" stroke-width="3"/>
+            <g transform="translate(150,60)"><rect x="-9" y="-5" width="18" height="10" rx="4" fill="#1A73E8"/></g>
+            <rect x="18" y="138" width="144" height="142" rx="14" fill="#F4F7FC" stroke="#E3E8F0"/>
+            <text x="32" y="160" font-family="Roboto Mono, monospace" font-size="8" fill="#1A73E8" letter-spacing="1">YOU ADDED A STOP</text>
+            <text x="32" y="180" font-family="Figtree, sans-serif" font-size="12" font-weight="700" fill="#1B1C1E">Keep this car?</text>
+            <text x="32" y="197" font-family="Roboto, sans-serif" font-size="8.5" fill="#71757C">Hold it nearby for your</text>
+            <text x="32" y="208" font-family="Roboto, sans-serif" font-size="8.5" fill="#71757C">return. +$3, &lt;3 min wait.</text>
+            <rect x="32" y="220" width="116" height="28" rx="14" fill="#1A73E8"/>
+            <text x="90" y="238" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" font-weight="700" fill="#fff">Hold my ride</text>
+            <text x="90" y="266" text-anchor="middle" font-family="Roboto, sans-serif" font-size="9" fill="#1A73E8">No thanks, re-request later</text>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="idx">CONCEPT 01</div>
+          <h3>Hold My Ride</h3>
+          <p>An opt-in toggle on any stop. For a small fee, the rider keeps priority on a nearby car instead of rejoining the queue. The fee is the point: it prices the utilization you are asking the fleet to give up, so continuity pays for itself. Today Waymo does the exact opposite (&ldquo;we can&rsquo;t keep the same car for you&rdquo;), so this is open territory, not a feature that already exists.</p>
+          <div class="meta">
+            <div class="row"><span class="k">Solves</span><span class="v">The 20-minute re-pickup gap</span></div>
+            <div class="row"><span class="k">Tradeoff</span><span class="v">Idle cost, recovered by the surcharge</span></div>
+            <div class="row"><span class="k">Metric</span><span class="v">Re-pickup p90, attach rate, margin</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 2 -->
+      <div class="sol rv">
+        <div class="screen">
+          <svg viewBox="0 0 180 300" aria-label="App concept: heat-aware pickup that lets you wait indoors">
+            <rect x="6" y="6" width="168" height="288" rx="26" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
+            <rect x="68" y="18" width="44" height="6" rx="3" fill="#DADCE0"/>
+            <circle cx="90" cy="72" r="30" fill="#FEEFC3"/><circle cx="90" cy="72" r="16" fill="#F29900"/>
+            <text x="90" y="77" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="9" fill="#fff" font-weight="600">106&#176;</text>
+            <rect x="18" y="120" width="144" height="160" rx="14" fill="#F4F7FC" stroke="#E3E8F0"/>
+            <text x="32" y="144" font-family="Roboto Mono, monospace" font-size="8" fill="#E37400" letter-spacing="1">EXTREME HEAT MODE</text>
+            <text x="32" y="164" font-family="Figtree, sans-serif" font-size="12" font-weight="700" fill="#1B1C1E">Wait inside.</text>
+            <text x="32" y="182" font-family="Roboto, sans-serif" font-size="8.5" fill="#71757C">We&rsquo;ll ping you 3 min out</text>
+            <text x="32" y="193" font-family="Roboto, sans-serif" font-size="8.5" fill="#71757C">and pre-cool the cabin.</text>
+            <rect x="32" y="204" width="116" height="22" rx="11" fill="#E6F4EA"/>
+            <text x="90" y="219" text-anchor="middle" font-family="Roboto Mono, monospace" font-size="8.5" fill="#1E8E3E">CABIN COOLING &#183; 68&#176;</text>
+            <rect x="32" y="232" width="116" height="28" rx="14" fill="#1A73E8"/>
+            <text x="90" y="250" text-anchor="middle" font-family="Figtree, sans-serif" font-size="11" font-weight="700" fill="#fff">Notify me at arrival</text>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="idx">CONCEPT 02</div>
+          <h3>Heat-Aware Pickups</h3>
+          <p>Above a temperature threshold, the app flips to a comfort-first flow: wait indoors, get pinged three minutes out, and step into a pre-cooled cabin. In a market like Phoenix, this is not a luxury, it is the difference between a delightful product and a punishing one.</p>
+          <div class="meta">
+            <div class="row"><span class="k">Solves</span><span class="v">Heat exposure during any wait</span></div>
+            <div class="row"><span class="k">Tradeoff</span><span class="v">Pre-cooling energy, modest and bounded</span></div>
+            <div class="row"><span class="k">Metric</span><span class="v">Heat-day CSAT, wait abandonment</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 3 -->
+      <div class="sol rv">
+        <div class="screen">
+          <svg viewBox="0 0 180 300" aria-label="App concept: route honesty showing your ETA versus the fastest possible">
+            <rect x="6" y="6" width="168" height="288" rx="26" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
+            <rect x="68" y="18" width="44" height="6" rx="3" fill="#DADCE0"/>
+            <rect x="18" y="34" width="144" height="82" rx="12" fill="#EAF1FE"/>
+            <path d="M30 96 Q70 52 100 70 T150 52" stroke="#1A73E8" stroke-width="3" fill="none"/>
+            <path d="M30 96 Q90 96 150 58" stroke="#9AA0A6" stroke-width="2" fill="none" stroke-dasharray="3 4"/>
+            <rect x="18" y="128" width="144" height="152" rx="14" fill="#F4F7FC" stroke="#E3E8F0"/>
+            <text x="32" y="150" font-family="Roboto Mono, monospace" font-size="8" fill="#1A73E8" letter-spacing="1">YOUR ETA</text>
+            <text x="32" y="172" font-family="Figtree, sans-serif" font-size="17" font-weight="700" fill="#1B1C1E">31 min</text>
+            <text x="98" y="172" font-family="Roboto, sans-serif" font-size="9" fill="#71757C">fastest: 22 min</text>
+            <line x1="32" y1="184" x2="148" y2="184" stroke="#E3E8F0"/>
+            <text x="32" y="204" font-family="Figtree, sans-serif" font-size="9.5" font-weight="700" fill="#1B1C1E">Prefer speed today?</text>
+            <text x="32" y="217" font-family="Roboto, sans-serif" font-size="8.5" fill="#71757C">Allow freeways (when restored).</text>
+            <rect x="32" y="228" width="92" height="26" rx="13" fill="#1A73E8"/>
+            <text x="78" y="245" text-anchor="middle" font-family="Figtree, sans-serif" font-size="10" font-weight="700" fill="#fff">Use fast lane</text>
+            <circle cx="140" cy="241" r="8" fill="#34A853"/>
+            <text x="32" y="270" font-family="Roboto Mono, monospace" font-size="7.5" fill="#71757C">SAME PRICE. YOUR CHOICE.</text>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="idx">CONCEPT 03</div>
+          <h3>Route Honesty + Fast Lane</h3>
+          <p>Start with pure transparency: show the rider their ETA next to the fastest possible one, since Waymo already knows both. Then, as freeway service returns after its May 2026 pause, let riders opt into it with clear safety guardrails. The opt-in data also reveals exactly which segments are worth the engineering to speed up.</p>
+          <div class="meta">
+            <div class="row"><span class="k">Solves</span><span class="v">Indirect routes &amp; lost trust</span></div>
+            <div class="row"><span class="k">Tradeoff</span><span class="v">Caution vs choice, made transparent</span></div>
+            <div class="row"><span class="k">Metric</span><span class="v">% over baseline, route complaints, CSAT</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel rv" style="margin-top:30px">
+      <div style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px">What already exists, and what I&rsquo;d add</div>
+      <div class="table-scroll">
+      <table class="dt">
+        <thead>
+          <tr>
+            <th style="width:18%">Area</th>
+            <th style="width:41%;color:var(--blue)">Waymo ships today</th>
+            <th style="width:41%;color:var(--green)">What I&rsquo;d add</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--ink)">Multi-stop</td>
+            <td>Saves your itinerary for 30 min, but a different car returns</td>
+            <td style="color:var(--ink)"><b>Hold My Ride:</b> keep priority on a nearby car</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--ink)">Routing</td>
+            <td>Direct-route pricing; freeways paused May 2026</td>
+            <td style="color:var(--ink)"><b>Route honesty:</b> ETA vs fastest upfront, guardrailed freeway opt-in</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--ink)">Comfort</td>
+            <td>Minimize-walking pickup; cabin temperature control</td>
+            <td style="color:var(--ink)"><b>Heat mode:</b> wait indoors, pre-cool, ping 3 min out</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 BUSINESS CASE ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">11</span>
+      <div>
+        <div class="kicker">Viable and feasible</div>
+        <h2>Do these pay for themselves,<br>and can a team actually ship them?</h2>
+      </div>
+    </div>
+
+    <p class="read rv" style="max-width:760px;margin-bottom:30px">Coming up with ideas is the easy part. What turns three concepts into a product plan is two questions a leader will ask in the first five minutes: does it make money, or at least protect it, and can we build it without a multi-year detour. Here is the honest answer for each.</p>
+
+    <div class="note rv" style="margin-top:0;margin-bottom:34px">
+      <div class="lab">The feasibility unlock</div>
+      <p>All three concepts live in <b>dispatch, pricing, and the app</b>, not in the self-driving stack, which is deliberate. They never ask the AV team to change how the car perceives or drives, which is the slow, expensive, safety-critical work. A product team can ship these in quarters, not years.</p>
+    </div>
+
+    <div class="panel rv">
+      <div style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px">The math &#183; does Hold My Ride pay for itself?</div>
+      <div style="border-top:1px solid var(--line)">
+        <div style="display:grid;grid-template-columns:96px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)">
+          <span style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);padding-top:3px">The cost</span>
+          <span style="font-size:15px;color:var(--ink-2)">Holding a car during a stop only costs Waymo when a nearby rider is waiting for it. Off-peak, that chance is low, so the cost is close to zero. During the 4 to 6pm crunch, it is real: a few dollars of forgone fares.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:96px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)">
+          <span style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);padding-top:3px">The design</span>
+          <span style="font-size:15px;color:var(--ink-2)">So price the hold to track that cost. Cheap or free off-peak (almost pure goodwill), scaling up at the crunch so the fee always covers the forgone fare, and never offered when the local fleet truly cannot spare a car. Utilization stays protected.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:96px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)">
+          <span style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);padding-top:3px">The size</span>
+          <span style="font-size:15px;color:var(--ink-2)">Illustratively: at roughly 500K rides a week, if about 7% add a stop and 30% of those attach the hold at an average of $2.50, that is near $1.3M a year. Modest. The real prize is retention, since multi-stop riders who do not get stranded come back.</span>
+        </div>
+      </div>
+      <div class="figcap">The percentages here are my assumptions, not Waymo figures. The point is the shape of the model, which a real team would calibrate with one experiment.</div>
+    </div>
+
+    <div class="panel rv" style="margin-top:22px">
+      <div style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px">How I&rsquo;d rank the bets</div>
+      <div class="table-scroll">
+      <table class="dt">
+        <thead>
+          <tr>
+            <th style="width:30%">Bet</th>
+            <th>Reach</th>
+            <th>Impact</th>
+            <th>Confidence</th>
+            <th>Effort</th>
+            <th>Call</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--ink)">Route honesty (ETA vs fastest)</td>
+            <td>High</td><td>Med</td><td>High</td><td>Low</td>
+            <td style="color:var(--green);font-weight:700">Ship now</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--ink)">Hold My Ride</td>
+            <td>Med</td><td>High</td><td>Med</td><td>Med</td>
+            <td style="color:var(--green);font-weight:700">Ship now (MVP)</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--ink)">Heat-Aware Pickups</td>
+            <td>Med</td><td>High</td><td>Med</td><td>Low</td>
+            <td style="color:var(--blue);font-weight:700">Fast follow</td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:var(--ink)">Fast Lane (freeway opt-in)</td>
+            <td>High</td><td>High</td><td>Low</td><td>High</td>
+            <td style="color:var(--ink-3);font-weight:700">Later</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="tldr rv" style="margin-top:22px">
+      <div class="card">
+        <div style="font-family:'Figtree';font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--green);margin-bottom:12px">Now</div>
+        <h4 style="margin-bottom:8px">Quick wins, low risk</h4>
+        <p>Route transparency (the data already exists) and a Hold My Ride MVP that runs only off-peak, where holding a car is essentially free. Cheap to build, fast to learn from.</p>
+      </div>
+      <div class="card">
+        <div style="font-family:'Figtree';font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);margin-bottom:12px">Next</div>
+        <h4 style="margin-bottom:8px">Earn the harder cases</h4>
+        <p>Heat-Aware Pickups in the hot markets (Phoenix, Vegas, Miami), and dynamic peak pricing for Hold My Ride once the off-peak version proves the demand.</p>
+      </div>
+      <div class="card">
+        <div style="font-family:'Figtree';font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--amber-strong);margin-bottom:12px">Later</div>
+        <h4 style="margin-bottom:8px">Gated on the world</h4>
+        <p>Fast Lane, the freeway opt-in, which only makes sense once freeway service returns from its May 2026 pause and clears safety review. High value, but not in our hands yet.</p>
+      </div>
+    </div>
+
+    <div class="note rv">
+      <div class="lab">The objections I&rsquo;d expect, and my answers</div>
+      <p>That a premium product should not nickel-and-dime: keep the hold optional and cheap or free off-peak, never the default. That it could cannibalize utilization: it is priced and gated by local supply, so it never starves other riders. That showing the fastest ETA might just make people angrier: only surface it when the gap is real, pair it with a way to act on it, and test the wording. And the honest one, that all of this rests on a single ride and public reporting: exactly right, so none of it ships on faith. Each gets a geo holdout experiment with a clear success bar before any full rollout.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 METRICS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">12</span>
+      <div>
+        <div class="kicker">How I&rsquo;d know it worked</div>
+        <h2>Chase the right numbers,<br>guard the ones that pay the bills.</h2>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="mcol ns rv">
+        <h4>North-star signals</h4>
+        <div class="sub">push these up</div>
+        <ul>
+          <li><span class="m">&rarr;</span><span>Re-pickup ETA after a stop, tracked at the p50 and the painful p90</span></li>
+          <li><span class="m">&rarr;</span><span>Multi-stop completion rate: trips that resume within target, with no support call</span></li>
+          <li><span class="m">&rarr;</span><span>Share of trips at or under the fastest-route time baseline</span></li>
+          <li><span class="m">&rarr;</span><span>Rider CSAT on multi-stop and extreme-heat trips specifically</span></li>
+          <li><span class="m">&rarr;</span><span>Repeat-ride rate among riders who hit a long wait once</span></li>
+        </ul>
+      </div>
+      <div class="mcol gr rv">
+        <h4>Guardrails</h4>
+        <div class="sub">do not break these</div>
+        <ul>
+          <li><span class="m">&middot;</span><span>Fleet utilization and idle-time percentage stay healthy</span></li>
+          <li><span class="m">&middot;</span><span>Contribution margin per trip holds, the surcharge truly funds the hold</span></li>
+          <li><span class="m">&middot;</span><span>Pickup ETA for ordinary riders does not quietly get worse</span></li>
+          <li><span class="m">&middot;</span><span>Remote-assist response time during outages stays within a hard SLA</span></li>
+          <li><span class="m">&middot;</span><span>Accessible (WAV) ride availability and ETA move toward parity, not further behind</span></li>
+          <li><span class="m">&middot;</span><span>Safety metrics are untouched, a fast lane never means an unsafe one</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 WHY NOW (feature) ============ -->
+<section class="feature">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">13</span>
+      <div>
+        <div class="kicker">Why this matters now</div>
+        <h2>The next race is not autonomy.<br>It is experience.</h2>
+      </div>
+    </div>
+    <div class="two">
+      <div class="rv">
+        <p class="lede" style="margin-bottom:18px">Waymo has already won the hardest argument: it runs a real, fully driverless service at meaningful scale, across more than ten cities, with a strong safety story. That lead is enormous. It is also, increasingly, table stakes.</p>
+        <p style="margin-bottom:18px">The moat is shifting. Waymo&rsquo;s premium over Uber has already fallen from 30 to 40% down to about 13%, and its new lower-cost vehicle shows the team understands the economics half of the equation. The experience half, the rider&rsquo;s time and continuity, is the part still left on the table. And the window to own it is closing, because the field is filling up fast.</p>
+        <p>When a rider has a genuine choice between robotaxis, they will not pick the one with the best lidar. They will pick the one that does not strand them in the heat.</p>
+      </div>
+      <div class="rv">
+        <div class="compe">
+          <div class="c"><div class="nm">Tesla</div><div class="ds">Robotaxi live in Austin, Dallas and Houston. By far the cheapest rides (around $8), but the longest waits, and still using safety monitors.</div></div>
+          <div class="c"><div class="nm">Amazon Zoox</div><div class="ds">Purpose-built, steering-wheel-free pods now carry the public in Las Vegas, with San Francisco next.</div></div>
+          <div class="c"><div class="nm">Lyft + May Mobility</div><div class="ds">An Atlanta pilot is live, and Waymo itself is launching with Lyft in Nashville. The distribution war runs on both apps.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel rv" style="margin-top:34px">
+      <div style="font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:16px">The gap is closing &#183; ~95,000 rides, late 2025</div>
+      <div class="table-scroll">
+      <table style="width:100%;border-collapse:collapse">
+        <thead>
+          <tr>
+            <th style="text-align:left;font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:400;padding:0 12px 14px 0"></th>
+            <th style="text-align:right;font-family:'Roboto Mono',monospace;font-size:11px;color:#A8C7FA;font-weight:500;padding:0 12px 14px">Waymo</th>
+            <th style="text-align:right;font-family:'Roboto Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);font-weight:400;padding:0 12px 14px">Uber</th>
+            <th style="text-align:right;font-family:'Roboto Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);font-weight:400;padding:0 12px 14px">Lyft</th>
+            <th style="text-align:right;font-family:'Roboto Mono',monospace;font-size:11px;color:rgba(255,255,255,.7);font-weight:400;padding:0 0 14px 12px">Tesla</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:15px 12px 15px 0;border-top:1px solid rgba(168,199,250,.2);color:rgba(255,255,255,.7);font-size:14px">Avg fare</td>
+            <td style="padding:15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#A8C7FA;font-family:'Figtree',sans-serif;font-weight:700;font-size:19px">$19.69</td>
+            <td style="padding:15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#fff;font-family:'Figtree',sans-serif;font-weight:600;font-size:19px">$17.47</td>
+            <td style="padding:15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#fff;font-family:'Figtree',sans-serif;font-weight:600;font-size:19px">$15.47</td>
+            <td style="padding:15px 0 15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#fff;font-family:'Figtree',sans-serif;font-weight:600;font-size:19px">$8.17</td>
+          </tr>
+          <tr>
+            <td style="padding:15px 12px 15px 0;border-top:1px solid rgba(168,199,250,.2);color:rgba(255,255,255,.7);font-size:14px">Avg wait</td>
+            <td style="padding:15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#A8C7FA;font-family:'Figtree',sans-serif;font-weight:700;font-size:19px">5.7 min</td>
+            <td style="padding:15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#fff;font-family:'Figtree',sans-serif;font-weight:600;font-size:19px">3.2 min</td>
+            <td style="padding:15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#fff;font-family:'Figtree',sans-serif;font-weight:600;font-size:19px">5.1 min</td>
+            <td style="padding:15px 0 15px 12px;border-top:1px solid rgba(168,199,250,.2);text-align:right;color:#fff;font-family:'Figtree',sans-serif;font-weight:600;font-size:19px">15.3 min</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="figcap">Fig. D &nbsp;/&nbsp; Source: Obi, ~95,000 rides, late 2025. Waymo still costs the most and waits the longest of the established players, but its premium over Uber has fallen sharply in a year.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 LIMITATIONS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">14</span>
+      <div>
+        <div class="kicker">Reading this honestly</div>
+        <h2>What this is, and what it isn&rsquo;t.</h2>
+      </div>
+    </div>
+    <div class="read rv" style="max-width:760px">
+      <p>This started as one ride and one phone call, on one very hot day, in one city. That is a sample size of one, and I will not pretend otherwise. To check whether my experience generalized, I read widely across public reporting, rider accounts, and Waymo&rsquo;s own documentation, and the same patterns kept reappearing. That gives me confidence in the diagnosis, not certainty.</p>
+      <p>I do not have Waymo&rsquo;s internal data. A real product manager on the team could confirm or kill these ideas in an afternoon with the dashboards I cannot see. So treat the concepts here as <b>well-formed hypotheses, ready for the data to judge them</b>, which is exactly how I would bring them into a room. The point was never to be right on the first pass. It was to show how I find a problem, frame it, and turn it into something a team can actually act on.</p>
+      <p>A word on the numbers, since honesty cuts both ways. The price and wait comparisons come from Obi, a commercial ride-price aggregator, so read them as directional rather than gospel. Most of the safety statistics are Waymo&rsquo;s own analyses, with the independent Swiss Re insurance study as the strongest outside check. I found no solid evidence that Phoenix heat reduces car availability, so I have treated heat as a comfort problem, not an availability one. And the freeway pause is current as of mid-2026, exactly the kind of fact that can shift between when I write this and when you read it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="eyebrow">Let&rsquo;s build the rider&rsquo;s half</div>
+    <h2>If you&rsquo;re at Waymo, I&rsquo;d love to pressure-test these against your data.</h2>
+    <p class="cta-sub">And if you&rsquo;re hiring product people who ride the product, call support to learn from it, and turn a sweaty curb into a roadmap, that is the entire job and I am very much in.</p>
+    <div class="links">
+      <a class="btn fill" href="https://chetanjonnalagadda.com">Read more of my work</a>
+    </div>
+    <div style="margin-top:18px;font-family:'Roboto Mono',monospace;font-size:13px;color:rgba(255,255,255,.7)">Reach me directly at <a href="mailto:jonnalagadda8800@gmail.com" style="color:#A8C7FA;text-decoration:none;border-bottom:1px solid rgba(168,199,250,.45)">jonnalagadda8800@gmail.com</a></div>
+
+    <div class="about">
+      <div>
+        <div class="lab">About the author</div>
+        <p>Chetan Jonnalagadda is a product manager who leads with user experience. He has taken a consumer product from a rough idea to something people actually use, works across product, design, and research, and is happiest turning a real human frustration into a better experience. He took the Waymo, made the call, and wrote this in the days after.</p>
+      </div>
+      <div>
+        <div class="lab">Sources &amp; further reading</div>
+        <div class="sources">
+          <a href="https://support.google.com/waymo/answer/10367962?hl=en" target="_blank" rel="noopener">Waymo Help &#183; How adding stops works</a>
+          <a href="https://support.google.com/waymo/answer/9796072?hl=en" target="_blank" rel="noopener">Waymo Help &#183; Routing &amp; pricing</a>
+          <a href="https://techcrunch.com/2026/01/27/the-price-gap-between-waymo-and-uber-is-narrowing/" target="_blank" rel="noopener">TechCrunch &#183; The Waymo vs Uber price gap is narrowing (Obi)</a>
+          <a href="https://www.npr.org/2025/12/06/nx-s1-5635614/waymo-school-buses-recall" target="_blank" rel="noopener">NPR &#183; Software recall after passing school buses</a>
+          <a href="https://www.cnbc.com/2026/01/29/waymo-nhtsa-crash-child-school.html" target="_blank" rel="noopener">CNBC &#183; Federal probe after a Waymo struck a child</a>
+          <a href="https://sfstandard.com/2026/03/03/waymo-san-francisco-december-blackout-stalled-cars-hearing/" target="_blank" rel="noopener">SF Standard &#183; Cars stalled in the December blackout</a>
+          <a href="https://sfstandard.com/2026/05/21/waymo-suspends-all-freeway-rides-safety-issues/" target="_blank" rel="noopener">SF Standard &#183; Freeway service suspended</a>
+          <a href="https://waymo.com/blog/2025/12/2025-year-in-review/" target="_blank" rel="noopener">Waymo &#183; 2025 year in review (scale figures)</a>
+          <a href="https://waymo.com/safety/impact/" target="_blank" rel="noopener">Waymo Safety Impact &#183; crash &amp; Swiss Re data</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal">
+      An independent product teardown for portfolio purposes. Not affiliated with, endorsed by, or commissioned by Waymo or Alphabet. Visual styling references a Google Material design language as an exercise and does not represent official Waymo branding. Any account of the support call is the author&rsquo;s good-faith recollection and paraphrase, not a verbatim quote or an official Waymo statement. Figures are drawn from public reporting and are cited above. All diagrams and illustrations are original.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // reading progress
+  var bar = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop || document.body.scrollTop);
+    var height = (h.scrollHeight - h.clientHeight);
+    bar.style.width = (height > 0 ? (scrolled/height*100) : 0) + '%';
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // staggered reveal
+  var els = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
