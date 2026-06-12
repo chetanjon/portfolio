@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/waymo-teardown`,
-      lastModified: new Date('2026-06-04T00:00:00.000Z'),
+      lastModified: new Date('2026-06-12T00:00:00.000Z'),
       changeFrequency: 'monthly',
       priority: 0.85,
     },

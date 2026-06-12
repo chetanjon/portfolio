@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stranded by Design / A Waymo Rider-Experience Teardown</title>
-<meta name="description" content="An independent product teardown of Waymo's rider experience. A mid-trip stop on a 106 degree Phoenix day revealed how the fleet optimizes for the machine over the rider, plus three buildable fixes and the business case behind them.">
+<meta name="description" content="Three buildable fixes for Waymo's rider experience: Hold My Ride, Heat-Aware Pickups, and Route Honesty. Traced from one real ride on a 106 degree Phoenix day to a single root cause, with the business case behind each.">
 <meta name="author" content="Chetan Jonnalagadda">
 <!-- Social preview (LinkedIn, X). Update the two URLs below to your real hosted paths before posting. -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stranded by Design: A Waymo Rider-Experience Teardown">
-<meta property="og:description" content="One real ride, one root cause, two of Waymo's most common complaints, and three product fixes with the business case behind them. A PM case study by Chetan Jonnalagadda.">
+<meta property="og:description" content="Three product fixes, Hold My Ride, Heat-Aware Pickups, and Route Honesty, traced from one real ride to one root cause, with the business case behind each. A PM case study by Chetan Jonnalagadda.">
 <meta property="og:site_name" content="Chetan Jonnalagadda">
 <meta property="og:url" content="https://chetanjonnalagadda.com/waymo-teardown">
 <meta property="og:image" content="https://chetanjonnalagadda.com/waymo-teardown-preview.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Stranded by Design: A Waymo Rider-Experience Teardown">
-<meta name="twitter:description" content="One real ride, one root cause, and three product fixes with the business case behind them.">
+<meta name="twitter:description" content="Three product fixes for the Waymo rider experience: Hold My Ride, Heat-Aware Pickups, and Route Honesty. One real ride, one root cause, full business case.">
 <meta name="twitter:image" content="https://chetanjonnalagadda.com/waymo-teardown-preview.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,7 +97,7 @@
   h4{font-size:16px;font-weight:600}
   p{color:var(--ink-2)}
   .read p{max-width:680px;margin-bottom:20px;font-size:18px}
-  .lede{font-size:clamp(19px,2.3vw,23px);line-height:1.5;color:var(--ink);font-family:'Figtree');font-weight:500;letter-spacing:-.01em}
+  .lede{font-size:clamp(19px,2.3vw,23px);line-height:1.5;color:var(--ink);font-family:'Figtree';font-weight:500;letter-spacing:-.01em}
   b,strong{color:var(--ink);font-weight:700}
 
   /* section header */
@@ -157,6 +157,21 @@
   .stat .l{font-size:12.5px;color:var(--ink-3);margin-top:4px;font-family:'Roboto Mono',monospace;letter-spacing:.02em}
   .hero-card{margin-top:40px;background:linear-gradient(160deg,#EAF1FE,#E8F0FE 60%,#E4F4EA);border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--e1);padding:14px;overflow:hidden}
   .hero-card svg{display:block;width:100%;height:auto;border-radius:20px}
+
+  /* concepts peek (the tease for section 10) */
+  .peek{margin-top:34px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--e1);padding:20px 22px}
+  .peek-top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px}
+  .peek .lab{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .btn.sm{padding:8px 18px;font-size:13.5px}
+  .peek-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:860px){.peek-grid{grid-template-columns:1fr}}
+  .pk{display:block;text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+  .pk:hover{transform:translateY(-2px);border-color:#BBD3FB;box-shadow:var(--e1)}
+  .pk .no{font-family:'Roboto Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:var(--blue-strong);margin-bottom:7px}
+  .pk .nm{font-family:'Figtree';font-weight:700;font-size:16.5px;letter-spacing:-.01em;color:var(--ink);margin-bottom:5px}
+  .pk p{font-size:13.5px;color:var(--ink-3);line-height:1.5;margin:0}
+  .pk .go{display:inline-block;margin-top:10px;font-family:'Figtree';font-weight:600;font-size:13px;color:var(--blue-strong)}
+  #concepts,#concept-hold,#concept-heat,#concept-route{scroll-margin-top:76px}
 
   /* tldr */
   .tldr{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -352,7 +367,7 @@
     .route-anim{animation:none}
     .hero .eyebrow,.hero h1,.hero .sub,.hero .meta-line{opacity:1;animation:none}
     .figcard .ph img{transform:none;transition:none}
-    .card:hover,.crk:hover,.sol:hover,.mcol:hover,.stat:hover,.figcard:hover{transform:none}
+    .card:hover,.crk:hover,.sol:hover,.mcol:hover,.stat:hover,.figcard:hover,.pk:hover{transform:none}
   }
 </style>
 </head>
@@ -373,8 +388,35 @@
   <div class="wrap">
     <div class="eyebrow">Independent product teardown</div>
     <h1>Stranded by design.</h1>
-    <p class="sub">A rider-experience teardown of Waymo, built from one real ride across Phoenix on a 106 degree day, one twelve-minute support call, and everything the public record revealed afterward.</p>
+    <p class="sub">A rider-experience teardown of Waymo, built from one real ride across Phoenix on a 106 degree day, one twelve-minute support call, and everything the public record revealed afterward. It builds to three concepts a team could actually ship, so they come first.</p>
     <div class="meta-line">A case study by <b>Chetan Jonnalagadda</b> &#183; not affiliated with, endorsed by, or commissioned by Waymo or Alphabet</div>
+
+    <div class="peek rv">
+      <div class="peek-top">
+        <div class="lab">What I&rsquo;d build &#183; the headline first</div>
+        <a class="btn tonal sm" href="#concepts">Full concepts &amp; business case &darr;</a>
+      </div>
+      <div class="peek-grid">
+        <a class="pk" href="#concept-hold">
+          <div class="no">CONCEPT 01</div>
+          <div class="nm">Hold My Ride</div>
+          <p>An opt-in fee that keeps your priority on a nearby car after a stop, instead of dropping you back into the queue. The fee prices the utilization the fleet gives up, so continuity pays for itself.</p>
+          <span class="go">See the concept &rarr;</span>
+        </a>
+        <a class="pk" href="#concept-heat">
+          <div class="no">CONCEPT 02</div>
+          <div class="nm">Heat-Aware Pickups</div>
+          <p>Above a temperature threshold, the app flips to comfort-first: wait indoors, get pinged three minutes out, step into a pre-cooled cabin.</p>
+          <span class="go">See the concept &rarr;</span>
+        </a>
+        <a class="pk" href="#concept-route">
+          <div class="no">CONCEPT 03</div>
+          <div class="nm">Route Honesty + Fast Lane</div>
+          <p>Show riders their ETA next to the fastest possible one, then let them opt into freeways with guardrails as service returns.</p>
+          <span class="go">See the concept &rarr;</span>
+        </a>
+      </div>
+    </div>
 
     <div class="hero-card rv">
       <svg viewBox="0 0 720 320" role="img" aria-label="Illustration of a Waymo on a curving route under a hot sun">
@@ -852,7 +894,7 @@
 </section>
 
 <!-- ============ 10 SOLUTIONS ============ -->
-<section>
+<section id="concepts">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="sec-num">10</span>
@@ -864,7 +906,7 @@
 
     <div class="sols">
       <!-- Concept 1 -->
-      <div class="sol rv">
+      <div class="sol rv" id="concept-hold">
         <div class="screen">
           <svg viewBox="0 0 180 300" aria-label="App concept: Hold my ride after a stop">
             <rect x="6" y="6" width="168" height="288" rx="26" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
@@ -896,7 +938,7 @@
       </div>
 
       <!-- Concept 2 -->
-      <div class="sol rv">
+      <div class="sol rv" id="concept-heat">
         <div class="screen">
           <svg viewBox="0 0 180 300" aria-label="App concept: heat-aware pickup that lets you wait indoors">
             <rect x="6" y="6" width="168" height="288" rx="26" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
@@ -927,7 +969,7 @@
       </div>
 
       <!-- Concept 3 -->
-      <div class="sol rv">
+      <div class="sol rv" id="concept-route">
         <div class="screen">
           <svg viewBox="0 0 180 300" aria-label="App concept: route honesty showing your ETA versus the fastest possible">
             <rect x="6" y="6" width="168" height="288" rx="26" fill="#fff" stroke="#E3E8F0" stroke-width="2"/>
