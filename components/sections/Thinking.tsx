@@ -8,6 +8,7 @@ import { CountUp } from '@/components/ui/CountUp';
 interface ThinkingPiece {
   slug: string;
   company: string;
+  category: 'Teardown' | 'Thinking';
   headline: string;
   problem: string;
   metric: { value: number; prefix?: string; suffix?: string; decimals?: number };
@@ -18,6 +19,7 @@ const pieces: ThinkingPiece[] = [
   {
     slug: 'notion',
     company: 'Notion',
+    category: 'Thinking',
     headline: 'Found the $600M activation paradox',
     problem:
       "8 of 10 interviewees learned Notion's value from YouTube, not the product. The flexibility that makes it powerful makes it overwhelming. Mapped the AARRR funnel, proposed 5 RICE-scored fixes.",
@@ -27,6 +29,7 @@ const pieces: ThinkingPiece[] = [
   {
     slug: 'cursor',
     company: 'Cursor (Anysphere)',
+    category: 'Teardown',
     headline: 'Reverse-engineered the $2B/yr SaaS play',
     problem:
       'Four students forked VS Code and grew with almost no traditional marketing, while every model provider funds them and competes with them. Mapped the moat and the crisis pivot.',
@@ -36,6 +39,7 @@ const pieces: ThinkingPiece[] = [
   {
     slug: 'spotify',
     company: 'Spotify',
+    category: 'Teardown',
     headline: 'Why Wrapped beats every retention playbook',
     problem:
       'Discover Weekly (pull) and Wrapped (push) run on different reward functions. Wrapped works because it treats listening data as identity, not a stats page. Broke down all three ML systems underneath.',
@@ -55,10 +59,10 @@ export function Thinking() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5 }}
           >
-            <SectionMarker number="04" label="Thinking" />
-            <h2 className="font-serif text-2xl md:text-3xl mt-4">Product thinking</h2>
+            <SectionMarker number="04" label="Teardowns & Thinking" />
+            <h2 className="font-serif text-2xl md:text-3xl mt-4">Teardowns &amp; thinking</h2>
             <p className="text-sm text-text-tertiary mt-2 max-w-md">
-              Exercises in how I&apos;d approach products I don&apos;t own.
+              How I take live products apart, and how I&apos;d build the fixes.
             </p>
           </motion.div>
           <motion.div
@@ -95,7 +99,7 @@ export function Thinking() {
                   <div className="flex items-center justify-between mb-4 gap-3">
                     <span className="text-[10px] tracking-widest uppercase text-text-muted truncate">{piece.company}</span>
                     <span className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-border-default text-text-muted font-medium flex-shrink-0">
-                      Thinking exercise
+                      {piece.category === 'Teardown' ? 'Teardown' : 'Thinking exercise'}
                     </span>
                   </div>
 

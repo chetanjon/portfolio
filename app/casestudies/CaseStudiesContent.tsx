@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
 
-type CaseStudyType = 'Shipped' | 'Thinking';
+type Category = 'Shipped' | 'Teardown' | 'Thinking';
 
-const caseStudies: Array<{
+type Study = {
   slug: string;
   href?: string;
   company: string;
@@ -18,9 +18,11 @@ const caseStudies: Array<{
   accentColor: string;
   bgColor: string;
   year: string;
-  type: CaseStudyType;
+  category: Category;
   readMin: number;
-}> = [
+};
+
+const caseStudies: Study[] = [
   {
     slug: 'waymo',
     href: '/waymo-teardown',
@@ -33,7 +35,7 @@ const caseStudies: Array<{
     accentColor: '#1A73E8',
     bgColor: '#E8F0FE',
     year: '2026',
-    type: 'Thinking',
+    category: 'Teardown',
     readMin: 12,
   },
   {
@@ -48,7 +50,7 @@ const caseStudies: Array<{
     accentColor: '#1A73E8',
     bgColor: '#E8F0FE',
     year: '2026',
-    type: 'Thinking',
+    category: 'Teardown',
     readMin: 9,
   },
   {
@@ -62,7 +64,7 @@ const caseStudies: Array<{
     accentColor: '#6B5DAD',
     bgColor: '#EEEBF8',
     year: '2026',
-    type: 'Shipped',
+    category: 'Shipped',
     readMin: 6,
   },
   {
@@ -77,7 +79,7 @@ const caseStudies: Array<{
     accentColor: '#3F8C73',
     bgColor: '#E6F2EC',
     year: '2026',
-    type: 'Shipped',
+    category: 'Shipped',
     readMin: 6,
   },
   {
@@ -92,7 +94,7 @@ const caseStudies: Array<{
     accentColor: '#3F8C73',
     bgColor: '#E6F2EC',
     year: '2024',
-    type: 'Shipped',
+    category: 'Shipped',
     readMin: 7,
   },
   {
@@ -106,7 +108,7 @@ const caseStudies: Array<{
     accentColor: '#0E7C6B',
     bgColor: '#E6F5F1',
     year: '2026',
-    type: 'Thinking',
+    category: 'Teardown',
     readMin: 9,
   },
   {
@@ -120,7 +122,7 @@ const caseStudies: Array<{
     accentColor: '#D4790E',
     bgColor: '#FFF8ED',
     year: '2026',
-    type: 'Thinking',
+    category: 'Thinking',
     readMin: 10,
   },
   {
@@ -134,7 +136,7 @@ const caseStudies: Array<{
     accentColor: '#5B3DC8',
     bgColor: '#EEEBF8',
     year: '2026',
-    type: 'Thinking',
+    category: 'Thinking',
     readMin: 8,
   },
   {
@@ -148,7 +150,7 @@ const caseStudies: Array<{
     accentColor: '#0071e3',
     bgColor: '#f5f5f7',
     year: '2026',
-    type: 'Thinking',
+    category: 'Thinking',
     readMin: 10,
   },
   {
@@ -162,7 +164,7 @@ const caseStudies: Array<{
     accentColor: '#2383E2',
     bgColor: '#EBF4FD',
     year: '2026',
-    type: 'Thinking',
+    category: 'Thinking',
     readMin: 12,
   },
   {
@@ -176,7 +178,7 @@ const caseStudies: Array<{
     accentColor: '#2D5A3D',
     bgColor: '#E8F0EA',
     year: '2026',
-    type: 'Thinking',
+    category: 'Thinking',
     readMin: 7,
   },
   {
@@ -190,7 +192,7 @@ const caseStudies: Array<{
     accentColor: '#6C5CE7',
     bgColor: '#f0eeff',
     year: '2026',
-    type: 'Thinking',
+    category: 'Teardown',
     readMin: 7,
   },
   {
@@ -204,7 +206,7 @@ const caseStudies: Array<{
     accentColor: '#E8590C',
     bgColor: '#FFF3ED',
     year: '2026',
-    type: 'Thinking',
+    category: 'Thinking',
     readMin: 8,
   },
   {
@@ -218,7 +220,7 @@ const caseStudies: Array<{
     accentColor: '#8B4513',
     bgColor: '#FAF3ED',
     year: '2026',
-    type: 'Thinking',
+    category: 'Thinking',
     readMin: 8,
   },
   {
@@ -232,14 +234,169 @@ const caseStudies: Array<{
     accentColor: '#1DB954',
     bgColor: '#E8F8EE',
     year: '2026',
-    type: 'Thinking',
+    category: 'Teardown',
     readMin: 7,
   },
 ];
 
-type Filter = 'All' | 'Shipped' | 'Thinking';
+type Filter = 'All' | Category;
 
-const FILTERS: Filter[] = ['All', 'Shipped', 'Thinking'];
+const FILTERS: Filter[] = ['All', 'Shipped', 'Teardown', 'Thinking'];
+
+const CATEGORY_ORDER: Category[] = ['Shipped', 'Teardown', 'Thinking'];
+
+const CATEGORY_META: Record<
+  Category,
+  { chip: string; plural: string; intro: string; cta: string }
+> = {
+  Shipped: {
+    chip: 'Shipped',
+    plural: 'Shipped',
+    intro: 'Products I designed, built, and launched.',
+    cta: 'Read the story',
+  },
+  Teardown: {
+    chip: 'Teardown',
+    plural: 'Teardowns',
+    intro: 'Deep dives into a live product, taken apart to find the one decision behind the friction.',
+    cta: 'Read the teardown',
+  },
+  Thinking: {
+    chip: 'Thinking',
+    plural: 'Thinking exercises',
+    intro: 'Full PM process — research, framework, PRD — applied to a company I don’t work for.',
+    cta: 'Read the breakdown',
+  },
+};
+
+function CategoryBadge({ study }: { study: Study }) {
+  if (study.category === 'Shipped') {
+    return (
+      <span
+        className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-semibold inline-flex items-center gap-1.5"
+        style={{ background: study.accentColor, color: '#fff' }}
+      >
+        <span className="w-1.5 h-1.5 rounded-full bg-white" aria-hidden />
+        Shipped
+      </span>
+    );
+  }
+  if (study.category === 'Teardown') {
+    return (
+      <span
+        className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-semibold inline-flex items-center gap-1.5 border"
+        style={{ background: study.bgColor, color: study.accentColor, borderColor: study.accentColor }}
+      >
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: study.accentColor }} aria-hidden />
+        Teardown
+      </span>
+    );
+  }
+  return (
+    <span className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-border-default text-text-muted font-medium">
+      Thinking exercise
+    </span>
+  );
+}
+
+function StudyCard({ study, index }: { study: Study; index: number }) {
+  const meta = CATEGORY_META[study.category];
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5, delay: index * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+    >
+      <Link href={study.href ?? `/casestudies/${study.slug}`} className="block group">
+        <motion.div
+          whileHover={{ y: -6 }}
+          whileTap={{ y: -3 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="relative border border-border-default rounded-sm overflow-hidden transition-[box-shadow,border-color] duration-500 group-hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.22)] dark:group-hover:shadow-[0_18px_50px_-15px_rgba(0,0,0,0.6)] group-hover:border-border-hover"
+        >
+          {/* Accent bar — scales vertically on hover for a subtle "lift" cue */}
+          <div
+            className="w-full origin-top transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-y-[1.75]"
+            style={{ height: 4, background: study.accentColor }}
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0">
+            {/* Left: content */}
+            <div className="p-8 md:p-10">
+              <div className="flex items-center flex-wrap gap-3 mb-5">
+                <CategoryBadge study={study} />
+                <span className="text-[10px] uppercase tracking-widest text-text-muted">
+                  {study.company}
+                </span>
+                <span className="text-[10px] text-text-muted opacity-40">/</span>
+                <span className="text-[10px] uppercase tracking-widest text-text-muted">
+                  {study.year}
+                </span>
+                <span className="text-[10px] text-text-muted opacity-40">/</span>
+                <span className="text-[10px] uppercase tracking-widest text-text-muted">
+                  {study.readMin} min read
+                </span>
+              </div>
+
+              <h3 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] mb-4 group-hover:text-text-secondary transition-colors">
+                {study.title}
+              </h3>
+
+              <p className="text-text-secondary text-base leading-relaxed max-w-2xl mb-6">
+                {study.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-8">
+                {study.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-border-default rounded-full px-3 py-1 text-[9px] uppercase tracking-widest text-text-muted"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <span
+                className="inline-flex items-center gap-2 text-sm font-medium tracking-wide transition-colors"
+                style={{ color: study.accentColor }}
+              >
+                {meta.cta}
+                <span
+                  aria-hidden
+                  className="inline-block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1.5"
+                >
+                  →
+                </span>
+              </span>
+            </div>
+
+            {/* Right: metric */}
+            <div
+              className="hidden md:flex flex-col items-center justify-center px-12 py-10 min-w-[200px]"
+              style={{ background: study.bgColor }}
+            >
+              <span
+                className="font-display font-bold text-4xl leading-none mb-2"
+                style={{ color: study.accentColor }}
+              >
+                {study.metric.value}
+              </span>
+              <span
+                className="text-[10px] uppercase tracking-widest text-center"
+                style={{ color: study.accentColor, opacity: 0.7 }}
+              >
+                {study.metric.label}
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </Link>
+    </motion.div>
+  );
+}
 
 export function CaseStudiesContent() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -247,19 +404,26 @@ export function CaseStudiesContent() {
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
   const [filter, setFilter] = useState<Filter>('All');
 
-  const filteredStudies = useMemo(() => {
-    if (filter === 'All') return caseStudies;
-    return caseStudies.filter((s) => s.type === filter);
-  }, [filter]);
-
   const counts = useMemo(
     () => ({
       All: caseStudies.length,
-      Shipped: caseStudies.filter((s) => s.type === 'Shipped').length,
-      Thinking: caseStudies.filter((s) => s.type === 'Thinking').length,
+      Shipped: caseStudies.filter((s) => s.category === 'Shipped').length,
+      Teardown: caseStudies.filter((s) => s.category === 'Teardown').length,
+      Thinking: caseStudies.filter((s) => s.category === 'Thinking').length,
     }),
     []
   );
+
+  // When "All" is selected, show every category as its own labeled group, in order.
+  // When a category is selected, show just that group.
+  const visibleGroups = useMemo(() => {
+    const cats = filter === 'All' ? CATEGORY_ORDER : [filter];
+    return cats.map((cat) => ({
+      cat,
+      meta: CATEGORY_META[cat],
+      items: caseStudies.filter((s) => s.category === cat),
+    }));
+  }, [filter]);
 
   return (
     <>
@@ -275,27 +439,29 @@ export function CaseStudiesContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <SectionMarker label="Work & Thinking" className="mb-8" />
+            <SectionMarker label="Work · Teardowns · Thinking" className="mb-8" />
 
             <h1 className="font-display font-bold text-5xl md:text-7xl uppercase tracking-tight leading-[0.9] mb-6">
               Selected
-              <span className="font-serif italic font-normal normal-case text-4xl md:text-6xl"> work &amp; thinking</span>
+              <span className="font-serif italic font-normal normal-case text-4xl md:text-6xl"> work</span>
             </h1>
 
-            <p className="text-lg text-text-secondary max-w-xl">
-              Shipped products I co-built and owned, plus product-thinking exercises on companies I
-              don&apos;t work for. The first set is what I&apos;ve done. The second is how I think.
+            <p className="text-lg text-text-secondary max-w-2xl">
+              Three kinds of work, in one place: products I <strong className="text-text-primary font-semibold">shipped</strong>,
+              {' '}<strong className="text-text-primary font-semibold">teardowns</strong> of products I actually use, and
+              {' '}<strong className="text-text-primary font-semibold">thinking exercises</strong> on companies I don&apos;t work for.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Filter chips */}
-      <section className="pt-4 pb-2">
+      {/* Filter chips — sticky so they stay reachable while scrolling */}
+      <section className="sticky top-28 md:top-32 z-30 bg-bg-primary/85 backdrop-blur-md border-y border-border-default/60 py-3">
         <div className="container-wide">
           <div className="flex flex-wrap items-center gap-2 md:gap-3">
             {FILTERS.map((f) => {
               const active = filter === f;
+              const label = f === 'All' ? 'All' : CATEGORY_META[f].chip;
               return (
                 <button
                   key={f}
@@ -307,7 +473,7 @@ export function CaseStudiesContent() {
                       : 'border-border-default text-text-muted hover:text-text-primary hover:border-border-hover'
                   }`}
                 >
-                  <span>{f}</span>
+                  <span>{label}</span>
                   <span className={`text-[10px] ${active ? 'opacity-70' : 'opacity-60'}`}>
                     {counts[f]}
                   </span>
@@ -318,128 +484,34 @@ export function CaseStudiesContent() {
         </div>
       </section>
 
-      {/* Case Study Cards */}
+      {/* Grouped, labeled sections */}
       <section className="py-12">
-        <div className="container-wide">
-          <motion.div layout className="flex flex-col gap-8">
-            <AnimatePresence mode="popLayout">
-            {filteredStudies.map((study, i) => (
-              <motion.div
-                key={study.slug}
-                layout
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <Link href={study.href ?? `/casestudies/${study.slug}`} className="block group">
-                  <motion.div
-                    whileHover={{ y: -6 }}
-                    whileTap={{ y: -3 }}
-                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative border border-border-default rounded-sm overflow-hidden transition-[box-shadow,border-color] duration-500 group-hover:shadow-[0_18px_50px_-20px_rgba(0,0,0,0.22)] dark:group-hover:shadow-[0_18px_50px_-15px_rgba(0,0,0,0.6)] group-hover:border-border-hover"
-                  >
-                    {/* Accent bar — scales vertically on hover for a subtle "lift" cue */}
-                    <div
-                      className="w-full origin-top transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-y-[1.75]"
-                      style={{ height: 4, background: study.accentColor }}
-                    />
+        <div className="container-wide flex flex-col gap-16">
+          {visibleGroups.map((group) => (
+            <div key={group.cat} id={group.cat.toLowerCase()} className="scroll-mt-32">
+              {/* Section header */}
+              <div className="mb-7 pb-4 border-b border-border-default/70">
+                <div className="flex items-baseline gap-3">
+                  <h2 className="font-display font-bold text-2xl md:text-3xl uppercase tracking-tight leading-none">
+                    {group.meta.plural}
+                  </h2>
+                  <span className="text-xs text-text-muted tracking-widest">
+                    {String(group.items.length).padStart(2, '0')}
+                  </span>
+                </div>
+                <p className="text-sm text-text-muted mt-2 max-w-xl">{group.meta.intro}</p>
+              </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0">
-                      {/* Left: content */}
-                      <div className="p-8 md:p-10">
-                        <div className="flex items-center flex-wrap gap-3 mb-5">
-                          {study.type === 'Shipped' ? (
-                            <span
-                              className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full font-semibold inline-flex items-center gap-1.5"
-                              style={{ background: study.accentColor, color: '#fff' }}
-                            >
-                              <span
-                                className="w-1.5 h-1.5 rounded-full bg-white"
-                                aria-hidden
-                              />
-                              Shipped
-                            </span>
-                          ) : (
-                            <span className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border border-border-default text-text-muted font-medium">
-                              Thinking exercise
-                            </span>
-                          )}
-                          <span className="text-[10px] uppercase tracking-widest text-text-muted">
-                            {study.company}
-                          </span>
-                          <span className="text-[10px] text-text-muted opacity-40">/</span>
-                          <span className="text-[10px] uppercase tracking-widest text-text-muted">
-                            {study.year}
-                          </span>
-                          <span className="text-[10px] text-text-muted opacity-40">/</span>
-                          <span className="text-[10px] uppercase tracking-widest text-text-muted">
-                            {study.readMin} min read
-                          </span>
-                        </div>
-
-                        <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] mb-4 group-hover:text-text-secondary transition-colors">
-                          {study.title}
-                        </h2>
-
-                        <p className="text-text-secondary text-base leading-relaxed max-w-2xl mb-6">
-                          {study.description}
-                        </p>
-
-                        <div className="flex flex-wrap gap-2 mb-8">
-                          {study.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="border border-border-default rounded-full px-3 py-1 text-[9px] uppercase tracking-widest text-text-muted"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-
-                        <span
-                          className="inline-flex items-center gap-2 text-sm font-medium tracking-wide transition-colors"
-                          style={{ color: study.accentColor }}
-                        >
-                          {study.type === 'Shipped' ? 'Read the story' : 'Read the breakdown'}
-                          <span
-                            aria-hidden
-                            className="inline-block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:translate-x-1.5"
-                          >
-                            →
-                          </span>
-                        </span>
-                      </div>
-
-                      {/* Right: metric */}
-                      <div
-                        className="hidden md:flex flex-col items-center justify-center px-12 py-10 min-w-[200px]"
-                        style={{ background: study.bgColor }}
-                      >
-                        <span
-                          className="font-display font-bold text-4xl leading-none mb-2"
-                          style={{ color: study.accentColor }}
-                        >
-                          {study.metric.value}
-                        </span>
-                        <span className="text-[10px] uppercase tracking-widest text-center"
-                          style={{ color: study.accentColor, opacity: 0.7 }}>
-                          {study.metric.label}
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </Link>
+              {/* Cards */}
+              <motion.div layout className="flex flex-col gap-8">
+                <AnimatePresence mode="popLayout">
+                  {group.items.map((study, i) => (
+                    <StudyCard key={study.slug} study={study} index={i} />
+                  ))}
+                </AnimatePresence>
               </motion.div>
-            ))}
-            </AnimatePresence>
-          </motion.div>
-
-          {filteredStudies.length === 0 && (
-            <p className="text-center text-text-muted text-sm py-12">
-              No studies match this filter yet.
-            </p>
-          )}
+            </div>
+          ))}
         </div>
       </section>
 
