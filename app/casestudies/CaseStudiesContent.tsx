@@ -37,6 +37,21 @@ const caseStudies: Array<{
     readMin: 12,
   },
   {
+    slug: 'waymo-pickup',
+    href: '/waymo-pickup',
+    company: 'Waymo',
+    title: 'Pickup Unreachable',
+    description:
+      'A field study of a single Waymo error screen. Booking from inside a gated Tempe complex returns a Pickup Unreachable error and a blank search box, even though dragging the pin 373 ft to the gate books instantly. Traces the failure to three handling gaps (it dead-ends, never explains, never learns), then scopes an app-layer fix Waymo already holds the patents for, plus the wait-versus-walk math and a case for route honesty.',
+    tags: ['Product Teardown', 'Rider Experience', 'Robotaxis', 'Error States', 'App Design'],
+    metric: { value: '373 ft', label: 'From my pin to a spot the app accepts' },
+    accentColor: '#1A73E8',
+    bgColor: '#E8F0FE',
+    year: '2026',
+    type: 'Thinking',
+    readMin: 9,
+  },
+  {
     slug: 'aatram',
     company: 'Aatram',
     title: 'Start Starting',

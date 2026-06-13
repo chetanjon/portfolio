@@ -34,6 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/waymo-pickup`,
+      lastModified: new Date('2026-06-13T00:00:00.000Z'),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/about`,
       lastModified: defaultLastModified,
       changeFrequency: 'monthly',
