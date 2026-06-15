@@ -498,7 +498,11 @@ export function CaseStudiesContent() {
           .filter((s) => s.category === cat && (!startupLens || s.startup))
           .sort(byDateDesc),
       }))
-      .filter((g) => g.items.length > 0);
+      .filter((g) => g.items.length > 0)
+      // Lead with the group that holds the most recently published piece, so
+      // the newest work is always at the top of the page (items are already
+      // sorted newest-first, so items[0] is each group's freshest date).
+      .sort((a, b) => (DATES[b.items[0].slug] ?? '').localeCompare(DATES[a.items[0].slug] ?? ''));
   }, [filter]);
 
   return (
