@@ -293,23 +293,25 @@ const CATEGORY_META: Record<
 };
 
 // Single source of truth for chronological order + the date shown on each card.
-// Recent teardowns are exact; earlier pieces are approximate to the month.
+// Dates are when each piece was first published to the repo (from git history).
+// ikt-india is the one exception: it reflects the real-world work (2024), not
+// the later portfolio writeup.
 const DATES: Record<string, string> = {
   ditto: '2026-06-14',
   'waymo-pickup': '2026-06-13',
   waymo: '2026-06-04',
-  aatram: '2026-05-15',
-  frictionlens: '2026-05-01',
-  notion: '2026-04-15',
-  cursor: '2026-04-10',
-  'liquid-glass': '2026-04-01',
-  perplexity: '2026-03-20',
-  figma: '2026-03-10',
-  duolingo: '2026-02-20',
-  spotify: '2026-02-15',
-  sonos: '2026-02-01',
-  rivian: '2026-01-20',
-  'tiktok-shop': '2026-01-10',
+  frictionlens: '2026-03-29',
+  aatram: '2026-03-20',
+  cursor: '2026-03-20',
+  spotify: '2026-03-20',
+  figma: '2026-03-17',
+  notion: '2026-03-17',
+  perplexity: '2026-03-17',
+  sonos: '2026-03-17',
+  'tiktok-shop': '2026-03-17',
+  duolingo: '2026-03-14',
+  'liquid-glass': '2026-03-14',
+  rivian: '2026-03-14',
   'ikt-india': '2024-08-01',
 };
 
