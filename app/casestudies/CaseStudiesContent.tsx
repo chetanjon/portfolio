@@ -583,7 +583,7 @@ export function CaseStudiesContent() {
         </div>
       </section>
 
-      {/* Footer callout */}
+      {/* Closing CTA */}
       <section className="py-24 bg-bg-secondary">
         <div className="container-wide">
           <motion.div
@@ -591,13 +591,27 @@ export function CaseStudiesContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 md:gap-16 text-[10px] uppercase tracking-widest font-medium"
+            className="max-w-2xl"
           >
-            <span>/ 0-to-1 Shipping</span>
-            <span>/ User Research</span>
-            <span>/ A/B Testing</span>
-            <span>/ RICE Prioritization</span>
-            <span>/ Competitive Analysis</span>
+            <h2 className="font-display font-bold text-3xl md:text-4xl uppercase tracking-tight leading-[0.95] mb-4">
+              That&apos;s the work.
+            </h2>
+            <p className="text-lg text-text-secondary mb-8">
+              Products I shipped, teardowns of things I use, and thinking on companies I don&apos;t
+              work for. If a problem like these is on your desk, I&apos;d like to hear about it.
+            </p>
+            <Link
+              href="/contact"
+              className="group/cta inline-flex items-center gap-2 text-sm font-medium tracking-wide text-text-primary"
+            >
+              Start a conversation
+              <span
+                aria-hidden
+                className="inline-block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover/cta:translate-x-1.5"
+              >
+                →
+              </span>
+            </Link>
           </motion.div>
         </div>
       </section>
