@@ -7,23 +7,24 @@ export const workExperiences: WorkExperience[] = [
     company: 'Aatram',
     role: 'Co-Founder & Product Manager',
     type: 'full-time',
-    startDate: '2026-02',
+    startDate: '2025-11',
     endDate: 'Present',
     location: 'Phoenix, AZ',
     description:
       'Consumer iOS app live on the App Store, bootstrapped. 3-person founding team. Stack: SwiftUI, SwiftData, Supabase, Apple Foundation Models. Owned product, design, and brand.',
     highlights: [
       'Co-founded Aatram with two friends; shipped V1 to App Store in 7 days of intensive build, followed by a V2 anti-interruption rewrite now live, free, bootstrapped, and built without ad spend',
+      'Drove the organic launch to 240 first-time downloads at an 18% App Store conversion rate in the first four months, roughly 4–5× the platform average, entirely through LinkedIn, Instagram, and X content with zero ad spend',
       'Co-built the codebase across 158 commits with a 3-person team on SwiftUI, SwiftData, Supabase, and Apple Foundation Models while owning UI/UX, brand voice, an 18-component design system with hex-locked tokens, motion language, and aatram.com end-to-end',
       'Ran a 25-user closed beta and 16 archetype interviews that drove V2 priorities: killed Plan Mode after Google Calendar overlap surfaced, encoded "no leaderboards" at the schema level so ranking is a compile-time impossibility, and chose stopwatch over countdown because deadlines increase dread for avoidance-prone users',
       'Specced an on-device AI nudge engine on Apple Foundation Models with the Intelligent Notification Engine (5 escalating touches per task), PredictiveEngine (abandonment-risk detection above 0.7), and UrgencyScorer; task content never leaves the device by structural type constraint',
       'Drove the pre-submission audit closing 22 findings; shepherded build 3 through App Review with screen-recording proof for guideline 5.1.1(v); owned PostHog instrumentation across session, drop-off, retention, and onboarding funnel surfaces',
     ],
     metrics: [
-      { value: '7 days', label: 'From First Commit to App Store', context: '3-person founding team' },
+      { value: '18%', label: 'App Store Conversion', context: '240 organic downloads in the first 4 months, zero ad spend' },
+      { value: '7 days', label: 'First Commit → App Store', context: '3-person founding team' },
+      { value: '25', label: 'Closed-Beta Users', context: '16 archetype interviews sourced V2 priorities' },
       { value: '5.0', label: 'App Store Rating at Launch' },
-      { value: '25', label: 'Closed-Beta Users', context: 'V1 validation cohort' },
-      { value: '16', label: 'Archetype Interviews', context: 'sourced V2 feature priorities' },
     ],
     skills: [
       'Product Strategy',
@@ -116,7 +117,7 @@ export const workExperiences: WorkExperience[] = [
         },
       ],
       results:
-        'Shipped V1 to the App Store in seven days from first commit with a 3-person founding team. Validated the emotion-regulation thesis through 16 segmented archetype interviews and a 25-user closed beta, then shipped V2 as an anti-interruption rewrite that killed 11+ surfaces (going-live pushes, in-app crew banners, the Mirror tab, em-dashes in copy, and the Profile tab among them) and restructured 5 tabs to 3 visible. Drove a 22-finding pre-submission audit and shepherded build 3 through App Review with screen-recording proof for guideline 5.1.1(v). Owned product, design, brand, App Store submission, and launch marketing end-to-end. The app is live today at aatram.com.',
+        'Shipped V1 to the App Store in seven days from first commit with a 3-person founding team. Validated the emotion-regulation thesis through 16 segmented archetype interviews and a 25-user closed beta, then shipped V2 as an anti-interruption rewrite that killed 11+ surfaces (going-live pushes, in-app crew banners, the Mirror tab, em-dashes in copy, and the Profile tab among them) and restructured 5 tabs to 3 visible. Drove a 22-finding pre-submission audit and shepherded build 3 through App Review with screen-recording proof for guideline 5.1.1(v). Owned product, design, brand, App Store submission, and launch marketing end-to-end. The organic launch drew 240 first-time downloads at an 18% App Store conversion rate in its first four months, roughly 4–5× the platform average, with zero ad spend. The app is live today at aatram.com.',
       learnings:
         'Framing wins. Reframing procrastination from a discipline problem to an emotion-regulation problem was the highest-leverage decision of the entire build. It determined every feature priority that followed and made the V2 pivot obvious in retrospect. Ship-to-learn beats spec-to-perfect on a 3-person team: what we learned from users with V1 in their hands was worth more than seven weeks of spec.',
       whatWouldChange:

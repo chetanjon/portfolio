@@ -15,6 +15,13 @@ export const awards: Award[] = [
     year: '2026',
   },
   {
+    id: '2b',
+    count: '18% CVR',
+    platform: 'Aatram',
+    recognition: '240 organic downloads · first 4 months · zero ad spend',
+    year: '2026',
+  },
+  {
     id: '2',
     count: '5.0★',
     platform: 'Aatram',

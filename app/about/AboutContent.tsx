@@ -122,11 +122,11 @@ export function AboutContent() {
                 <p className="small-caps text-text-muted mb-4">By the numbers</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-6 border-t border-border-default pt-6">
                   {[
+                    { value: '18%', label: 'Aatram App Store CVR' },
+                    { value: '240', label: 'Organic downloads' },
                     { value: '2×', label: 'Monthly GMV at IKT' },
                     { value: '20 → 75+', label: 'Vendors at IKT' },
                     { value: '25 → 40%', label: 'Gross margin at IKT' },
-                    { value: '5.0★', label: 'Aatram launch rating' },
-                    { value: '158', label: 'SwiftUI commits' },
                     { value: '3.7', label: 'M.S. GPA · ASU' },
                   ].map((stat) => (
                     <div key={stat.label}>
