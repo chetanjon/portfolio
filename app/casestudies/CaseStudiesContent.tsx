@@ -292,6 +292,38 @@ const CATEGORY_META: Record<
   },
 };
 
+// Single source of truth for chronological order + the date shown on each card.
+// Recent teardowns are exact; earlier pieces are approximate to the month.
+const DATES: Record<string, string> = {
+  ditto: '2026-06-14',
+  'waymo-pickup': '2026-06-13',
+  waymo: '2026-06-04',
+  aatram: '2026-05-15',
+  frictionlens: '2026-05-01',
+  notion: '2026-04-15',
+  cursor: '2026-04-10',
+  'liquid-glass': '2026-04-01',
+  perplexity: '2026-03-20',
+  figma: '2026-03-10',
+  duolingo: '2026-02-20',
+  spotify: '2026-02-15',
+  sonos: '2026-02-01',
+  rivian: '2026-01-20',
+  'tiktok-shop': '2026-01-10',
+  'ikt-india': '2024-08-01',
+};
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function formatDate(slug: string) {
+  const iso = DATES[slug];
+  if (!iso) return '';
+  const [y, m] = iso.split('-');
+  return `${MONTHS[Number(m) - 1]} ${y}`;
+}
+
+const byDateDesc = (a: Study, b: Study) => (DATES[b.slug] ?? '').localeCompare(DATES[a.slug] ?? '');
+
 function CategoryBadge({ study }: { study: Study }) {
   if (study.category === 'Shipped') {
     return (
@@ -366,7 +398,7 @@ function StudyCard({ study, index }: { study: Study; index: number }) {
                 </span>
                 <span className="text-[10px] text-text-muted opacity-40">/</span>
                 <span className="text-[10px] uppercase tracking-widest text-text-muted">
-                  {study.year}
+                  {formatDate(study.slug)}
                 </span>
                 <span className="text-[10px] text-text-muted opacity-40">/</span>
                 <span className="text-[10px] uppercase tracking-widest text-text-muted">
@@ -460,7 +492,9 @@ export function CaseStudiesContent() {
       .map((cat) => ({
         cat,
         meta: CATEGORY_META[cat],
-        items: caseStudies.filter((s) => s.category === cat && (!startupLens || s.startup)),
+        items: caseStudies
+          .filter((s) => s.category === cat && (!startupLens || s.startup))
+          .sort(byDateDesc),
       }))
       .filter((g) => g.items.length > 0);
   }, [filter]);
