@@ -24,6 +24,21 @@ type Study = {
 
 const caseStudies: Study[] = [
   {
+    slug: 'wispr-flow',
+    href: '/wispr-flow-teardown',
+    company: 'Wispr Flow',
+    title: 'Never Rewrite a Single Word',
+    description:
+      'An outside-in teardown of Wispr Flow, the voice dictation tool whose whole brand is one promise: you never rewrite a word. The transcription is best-in-class, but the promise breaks three ways after it. Words vanish in the last six inches to the cursor, the AI cleanup quietly rewrites your meaning, and accuracy decays right after you pay. Traces the 4.8-versus-2.7 ratings split to trust draining out once the trial ends, then stages a positioning fix from parts Wispr already shipped but buried in troubleshooting.',
+    tags: ['Product Teardown', 'Voice / AI Dictation', 'Trust', 'Retention', 'Positioning'],
+    metric: { value: '4.8 → 2.7', label: 'App Store vs Trustpilot · the trust gap' },
+    accentColor: '#2A37E0',
+    bgColor: '#E9EBFB',
+    category: 'Teardown',
+    readMin: 7,
+    startup: true,
+  },
+  {
     slug: 'ditto',
     href: '/ditto-teardown',
     company: 'Ditto',
@@ -280,6 +295,7 @@ const CATEGORY_META: Record<
 // ikt-india is the one exception: it reflects the real-world work (2024), not
 // the later portfolio writeup.
 const DATES: Record<string, string> = {
+  'wispr-flow': '2026-06-15',
   ditto: '2026-06-14',
   'waymo-pickup': '2026-06-13',
   waymo: '2026-06-04',

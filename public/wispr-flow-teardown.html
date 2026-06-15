@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Never Rewrite a Single Word · A Wispr Flow Teardown</title>
+<meta name="description" content="Wispr Flow's whole brand is a promise: you never rewrite a word. An outside-in teardown of how it breaks three ways after transcription, and the 4.8-versus-2.7 ratings split that is trust draining out after the trial ends.">
+<meta name="author" content="Chetan Jonnalagadda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Never Rewrite a Single Word: A Wispr Flow Teardown">
+<meta property="og:description" content="The transcription is best-in-class. The promise breaks after it: words vanish before they reach the cursor, the AI cleanup rewrites your meaning, and accuracy decays right after you pay. A positioning fix from parts Wispr already shipped.">
+<meta property="og:site_name" content="Chetan Jonnalagadda">
+<meta property="og:url" content="https://chetanjonnalagadda.com/wispr-flow-teardown">
+<meta property="og:image" content="https://chetanjonnalagadda.com/wispr-flow-teardown-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Never Rewrite a Single Word: A Wispr Flow Teardown">
+<meta name="twitter:description" content="Best-in-class transcription, a promise that breaks three ways after it. An outside-in Wispr Flow teardown about trust, the 4.8-vs-2.7 ratings split, and the fix.">
+<meta name="twitter:image" content="https://chetanjonnalagadda.com/wispr-flow-teardown-preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEEF1;
+    --raised:#F8F9FB;
+    --ink:#15171B;
+    --ink-soft:#3C4046;
+    --ink-mute:#6B6F77;
+    --ghost:#A6A9B0;
+    --line:#DADCE2;
+    --accent:#2A37E0;
+    --accent-deep:#1C26A8;
+    --accent-tint:rgba(42,55,224,0.07);
+    --maxw:1120px;
+    --prose-w:680px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    font-size:17px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#fff}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(42,55,224,0.35);transition:border-color .2s,color .2s}
+  a:hover{color:var(--accent-deep);border-color:var(--accent-deep)}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);font-weight:500}
+
+  /* top bar */
+  .topbar{border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:18px 28px;max-width:var(--maxw);margin:0 auto}
+  .topbar .mono{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:500}
+  .topbar .mark{color:var(--ink);font-weight:600}
+  .dot{color:var(--accent)}
+
+  /* hero */
+  .hero{padding:clamp(3.4rem,9vw,7rem) 0 clamp(2.6rem,6vw,4.4rem)}
+  .hero .eyebrow{margin-bottom:30px}
+  .h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(2.5rem,7vw,5rem);line-height:1.0;letter-spacing:-.025em;max-width:19ch}
+  .h1 .em{color:var(--accent)}
+  .hero .lede{margin-top:30px;max-width:60ch;font-size:clamp(1.05rem,2vw,1.27rem);color:var(--ink-soft);line-height:1.55}
+
+  /* signature demo */
+  .demo{margin-top:clamp(2.6rem,6vw,4.2rem);border:1px solid var(--line);background:linear-gradient(180deg,var(--raised),#fff);border-radius:14px;padding:clamp(26px,4vw,44px) clamp(22px,4vw,44px);position:relative;overflow:hidden}
+  .demo .demo-label{position:absolute;top:16px;left:20px;font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ghost)}
+  .demo .demo-label .live{color:var(--accent)}
+  .stream{display:flex;flex-wrap:wrap;align-items:baseline;gap:.16em .42em;font-family:"JetBrains Mono",monospace;font-size:clamp(1.1rem,3.1vw,1.9rem);font-weight:500;line-height:1.5;letter-spacing:-.01em;min-height:3.4em;margin-top:16px}
+  .stream .w{color:var(--ink);opacity:1}
+  .stream .lost{color:var(--ghost);opacity:.34}
+  .caret{display:inline-block;width:2px;height:1.05em;background:var(--accent);transform:translateY(.16em);margin-left:.06em}
+  .demo-note{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);font-size:.92rem;color:var(--ink-mute);display:flex;gap:.55em;align-items:baseline}
+  .demo-note .mono{color:var(--ghost);font-size:.8rem}
+
+  @media (prefers-reduced-motion: no-preference){
+    .stream .w{animation:land 6s cubic-bezier(.22,.61,.36,1) infinite}
+    .stream .lost{animation:dissolve 6s cubic-bezier(.4,0,.2,1) infinite}
+    .caret{animation:blink 1.05s steps(2,start) infinite}
+    @keyframes land{0%{opacity:0;transform:translateY(9px)}9%{opacity:1;transform:translateY(0)}86%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-3px)}}
+    @keyframes dissolve{0%{opacity:0;transform:translateY(9px);filter:blur(0)}9%{opacity:.85;transform:translateY(0)}20%{opacity:.55;transform:translateY(-5px);filter:blur(.4px)}34%{opacity:0;transform:translateY(-20px);filter:blur(4px)}100%{opacity:0;transform:translateY(-20px);filter:blur(4px)}}
+    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+  }
+
+  section{padding:clamp(3.4rem,8vw,6.4rem) 0}
+  .divide{border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:clamp(1.8rem,4vw,2.8rem)}
+  .sec-head .eyebrow{margin-bottom:18px;display:block}
+  .h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.05;letter-spacing:-.02em;max-width:22ch}
+  .prose{max-width:var(--prose-w)}
+  .prose p{margin-bottom:1.1em;color:var(--ink-soft);font-size:1.08rem}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong,.lift{color:var(--ink);font-weight:600}
+
+  /* the split */
+  .split-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+  .stat{border:1px solid var(--line);border-radius:13px;background:var(--raised);padding:26px 24px}
+  .stat .statnum{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(2.6rem,6vw,3.7rem);line-height:1;letter-spacing:-.03em;color:var(--ink-soft)}
+  .stat .statplat{margin-top:10px;font-weight:600;font-size:1.02rem;color:var(--ink)}
+  .stat .statchar{margin-top:4px;font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase}
+  .stat.bad{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset, 0 16px 44px -24px var(--accent);background:#fff}
+  .stat.bad .statnum{color:var(--accent)}
+  .stat.bad .statchar{color:var(--accent-deep)}
+  .split-cap{margin-top:24px;max-width:60ch;font-size:1.08rem;color:var(--ink-soft)}
+  .split-cap strong{color:var(--ink);font-weight:600}
+
+  /* movements */
+  .movement{padding:clamp(2.6rem,5vw,3.8rem) 0;border-top:1px solid var(--line)}
+  .movement:first-of-type{border-top:none;padding-top:0}
+  .mv-top{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
+  .mv-num{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent);font-weight:600;letter-spacing:.06em;flex-shrink:0}
+  .mv-head{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(1.5rem,3.5vw,2.25rem);line-height:1.06;letter-spacing:-.02em}
+  .mv-head .em{color:var(--accent)}
+  .mv-body{max-width:var(--prose-w);margin-left:0}
+  .mv-body p{color:var(--ink-soft);font-size:1.07rem;margin-bottom:1em}
+  .mv-body p:last-child{margin-bottom:0}
+  .mv-body strong{color:var(--ink);font-weight:600}
+
+  /* motif card */
+  .motif{margin:22px 0;border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:22px 24px;max-width:560px;font-family:"JetBrains Mono",monospace}
+  .motif .ml{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ghost);margin-bottom:6px}
+  .motif .line{font-size:1.02rem;line-height:1.7;color:var(--ink-soft)}
+  .motif del{color:var(--ink);text-decoration-thickness:2px;text-decoration-color:var(--ink-mute)}
+  .motif ins{color:var(--accent);text-decoration:none;font-weight:600}
+  .motif .strong{color:var(--ink);font-weight:600}
+  .decline{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace}
+  .decline .d{display:flex;flex-direction:column;gap:3px}
+  .decline .dk{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ghost)}
+  .decline .dv{font-size:1.5rem;font-weight:600;color:var(--ink-soft)}
+  .decline .dv.bad{color:var(--accent)}
+  .decline .arr{color:var(--ghost);font-size:1.2rem}
+
+  /* evidence band */
+  .ev{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .voice{border-left:2px solid var(--accent);padding:4px 0 4px 16px}
+  .voice .vt{font-size:1rem;color:var(--ink);line-height:1.42}
+  .voice .vs{margin-top:8px;font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.04em;color:var(--ink-mute)}
+  .docline{grid-column:1 / -1;margin-top:6px;font-size:.96rem;color:var(--ink-mute);line-height:1.5}
+  .docline a.doc{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--ink-soft);border-bottom:1px solid transparent;display:inline-block}
+  .docline a.doc:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+  /* the wound */
+  .pull{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(1.8rem,4.6vw,3.05rem);line-height:1.07;letter-spacing:-.022em;max-width:19ch}
+  .pull .em{color:var(--accent)}
+  .wound-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:start;margin-top:6px}
+  .wound-body p{color:var(--ink-soft);font-size:1.07rem;margin-bottom:1em}
+  .wound-body p:last-child{margin-bottom:0}
+  .wound-body strong{color:var(--ink);font-weight:600}
+
+  /* the fix */
+  .fix{background:var(--ink);color:#E8E9EE}
+  .fix .eyebrow{color:#8B8FA0}
+  .fix .h2{color:#fff}
+  .fix .promise{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(2.1rem,6vw,4.2rem);line-height:1.0;letter-spacing:-.025em;margin:8px 0 0;color:#fff}
+  .fix .promise .em{color:#8E99FF}
+  .fix .sub{margin-top:22px;max-width:60ch;color:#B7BAC6;font-size:1.08rem;line-height:1.55}
+  .fix .sub strong{color:#fff;font-weight:600}
+  .moves{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:clamp(2.4rem,5vw,3.4rem)}
+  .move{border:1px solid #2B2E36;border-radius:13px;padding:26px 24px;background:#1B1D22}
+  .move .mn{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:#8E99FF;letter-spacing:.1em}
+  .move h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.18rem;color:#fff;margin:12px 0 8px;letter-spacing:-.01em;line-height:1.14}
+  .move p{font-size:.94rem;color:#A9ACB8;line-height:1.55}
+  .move p em{color:#C9CCD8;font-style:normal;font-weight:500}
+  .fix .payoff{margin-top:clamp(2.4rem,5vw,3.2rem);max-width:62ch;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(1.25rem,2.8vw,1.7rem);line-height:1.2;letter-spacing:-.01em;color:#fff}
+  .fix .payoff .em{color:#8E99FF}
+
+  /* closer */
+  .closer{padding:clamp(3.4rem,8vw,5.6rem) 0 clamp(2.4rem,5vw,3.2rem)}
+  .closer .prose{margin-top:24px}
+  .sign{margin-top:clamp(2.2rem,5vw,3rem);padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:baseline}
+  .sign .name{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.01em}
+  .sign .mono{font-size:.78rem;color:var(--ink-mute);letter-spacing:.06em}
+
+  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--ghost)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  footer .mono{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+  footer .fine{font-family:"Hanken Grotesk",sans-serif;font-size:.74rem;color:var(--ghost);max-width:62ch;margin-top:14px;letter-spacing:0;text-transform:none}
+
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+    .reveal.in{opacity:1;transform:none}
+  }
+
+  @media (max-width:860px){
+    .split-row{grid-template-columns:1fr}
+    .moves{grid-template-columns:1fr}
+    .wound-grid{grid-template-columns:1fr}
+    .ev{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .topbar{padding:14px 20px}
+    .mv-top{flex-direction:column;gap:6px}
+    .demo .demo-label{position:static;display:block;margin-bottom:6px}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span class="mono"><span class="mark">Wispr Flow</span> <span class="dot">/</span> Product Teardown</span>
+    <span class="mono">CJ Jonnalagadda</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Wispr Flow · a teardown about trust</span>
+      <h1 class="h1">The promise is you never rewrite a word. Flow breaks it <span class="em">three ways.</span></h1>
+      <p class="lede">Flow's transcription is the best in the category. That isn't the problem. The problem is what happens to your words after they're transcribed. Some vanish, some get quietly rewritten, and all of it gets less reliable the moment you start paying. Three cracks, one promise, and they're already showing up in your ratings.</p>
+
+      <div class="demo" aria-label="Demonstration: dictated words landing at the cursor, with the last word dissolving before it arrives.">
+        <span class="demo-label">dictating <span class="live">●</span> live</span>
+        <p class="stream" aria-hidden="true">
+          <span class="w" style="animation-delay:0s">just</span>
+          <span class="w" style="animation-delay:.16s">talk</span>
+          <span class="w" style="animation-delay:.32s">and</span>
+          <span class="w" style="animation-delay:.48s">it</span>
+          <span class="w" style="animation-delay:.64s">writes</span>
+          <span class="w" style="animation-delay:.80s">it</span>
+          <span class="w" style="animation-delay:.96s">down</span>
+          <span class="w" style="animation-delay:1.12s">perfectly</span>
+          <span class="caret"></span>
+          <span class="lost" style="animation-delay:1.28s">except</span>
+          <span class="lost" style="animation-delay:1.44s">that</span>
+          <span class="lost" style="animation-delay:1.60s">last</span>
+          <span class="lost" style="animation-delay:1.76s">word</span>
+        </p>
+        <p class="demo-note"><span class="mono">↳</span> Eight words land. The ninth never reaches the cursor. No error, no undo, no trace. Just gone.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- THE SPLIT -->
+  <section class="divide">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">The number that matters</span>
+        <h2 class="h2">Three scores. One of them is telling the truth.</h2>
+      </div>
+      <div class="split-row">
+        <div class="stat reveal">
+          <div class="statnum">4.8</div>
+          <div class="statplat">App Store</div>
+          <div class="statchar">lifetime · ~10k ratings</div>
+        </div>
+        <div class="stat reveal">
+          <div class="statnum">4.5</div>
+          <div class="statplat">G2</div>
+          <div class="statchar">curated · tiny sample</div>
+        </div>
+        <div class="stat bad reveal">
+          <div class="statnum">2.7</div>
+          <div class="statplat">Trustpilot</div>
+          <div class="statchar">organic · recent · honest</div>
+        </div>
+      </div>
+      <p class="split-cap reveal">Curated and early reviews love you. Organic, recent ones don't. <strong>That gap is the sound of trust draining out after the trial ends</strong>, and it's widening: a sample of recent App Store reviews already averages closer to 4.1. The rest of this is why.</p>
+    </div>
+  </section>
+
+  <!-- MOVEMENTS -->
+  <section class="divide">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">One promise, broken three ways</span>
+        <h2 class="h2">Your job is to deliver my words. You lose them, change them, and get worse at both.</h2>
+      </div>
+
+      <!-- Movement 1 -->
+      <div class="movement reveal">
+        <div class="mv-top"><span class="mv-num">01 / lose</span><h3 class="mv-head">The words that <span class="em">vanish.</span></h3></div>
+        <div class="mv-body">
+          <p>Transcription lands. Delivery doesn't. Words get lost in the last six inches between the model and your cursor, and the tell is that you've engineered an entire recovery layer for it. You don't build a Scratchpad that pops up when pasting fails, or a shortcut called "paste my last transcript," unless words go missing often.</p>
+          <div class="motif">
+            <div class="ml">the highest-stakes fields, per your own docs</div>
+            <div class="line">banking apps · password managers · corporate apps<br><span class="strong">official fix:</span> dictate into Notes, then copy-paste it yourself</div>
+          </div>
+          <div class="ev">
+            <div class="voice"><div class="vt">A paying user: whole phrases just go missing, sentence ends get truncated, words get swapped.</div><div class="vs">r/ProductivityApps · this week</div></div>
+            <div class="voice"><div class="vt">A Windows user: Flow and the target app both freeze, and the clipboard gets corrupted.</div><div class="vs">r/ProductivityApps · corroborated by VS Code freeze reports</div></div>
+            <p class="docline">Your help center, in its own words: there's an article titled "How to Fix Accidentally Using Your Password as Your Name." When delivery lands in the wrong field, Flow doesn't just lose text, it leaks it. <a class="doc" href="https://docs.wisprflow.ai/articles/7971211038-fix-text-not-pasting-after-dictation" target="_blank" rel="noopener">↳ docs: fix-text-not-pasting</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Movement 2 -->
+      <div class="movement reveal">
+        <div class="mv-top"><span class="mv-num">02 / change</span><h3 class="mv-head">The words that <span class="em">change.</span></h3></div>
+        <div class="mv-body">
+          <p>This is the sharp one, because it's your flagship feature. The AI cleanup doesn't just remove the ums. Sometimes it edits you. Better grammar, softer meaning. For Slack it's fine. For an exec email or a product doc, where the exact wording <strong>is</strong> the artifact, a tool that rewrites your intent isn't polishing, it's distorting.</p>
+          <div class="motif">
+            <div class="ml">what a daily user of 18 months reported</div>
+            <div class="line"><span style="color:var(--ghost)">you say &nbsp;→&nbsp;</span> we should <del>not</del> ship this<br><span style="color:var(--ghost)">flow writes →</span> we should <ins>reconsider shipping</ins> this</div>
+          </div>
+          <div class="ev">
+            <div class="voice"><div class="vt">A competing founder: it doesn't fix the ums, it edits you, and softens the meaning.</div><div class="vs">r/ProductManagement · 18-month user</div></div>
+            <div class="voice"><div class="vt">A PM drafting SOPs: spent as long fixing the tone as just typing it would have taken.</div><div class="vs">r/ProductManagement</div></div>
+            <p class="docline">The nuance that makes it worse: for LLM prompts the polish is wasted (models handle fragments fine), and for high-stakes writing it's harmful. The one feature is either pointless or dangerous depending on context, and the user gets no control over which.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Movement 3 -->
+      <div class="movement reveal">
+        <div class="mv-top"><span class="mv-num">03 / decay</span><h3 class="mv-head">The words that get worse <span class="em">after you pay.</span></h3></div>
+        <div class="mv-body">
+          <p>The trial is flawless. Then a month in, accuracy dips, "taking longer than usual" starts appearing, dictations hang. This is the pattern that craters the organic reviews, and it lands at the worst possible moment: right after someone has committed to a year.</p>
+          <div class="motif">
+            <div class="decline">
+              <div class="d"><span class="dk">during trial</span><span class="dv">flawless</span></div>
+              <span class="arr">→</span>
+              <div class="d"><span class="dk">month two</span><span class="dv bad">"works ~60%"</span></div>
+            </div>
+          </div>
+          <div class="ev">
+            <div class="voice"><div class="vt">Flawless trial, bought the annual, then hangs every fourth dictation. Locked in eight months. "Feels dishonest."</div><div class="vs">r/ProductivityApps · this week</div></div>
+            <div class="voice"><div class="vt">Support sent a bot reply about checking their internet, then never replied again.</div><div class="vs">r/ProductivityApps · same thread</div></div>
+            <p class="docline">It already has a name. A Medium piece months back called it "the Wispr Flow trust gap," and public status trackers logged repeated dictation-latency incidents this spring, including multi-day runs in late May and early June. The bot telling a paying customer to check their wifi is its own trust event.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE WOUND -->
+  <section class="divide">
+    <div class="wrap">
+      <div class="wound-grid">
+        <div class="reveal">
+          <span class="eyebrow" style="display:block;margin-bottom:22px">Why all three matter at once</span>
+          <p class="pull">Trust is the whole product. The magic is not <span class="em">having to check.</span></p>
+        </div>
+        <div class="wound-body reveal">
+          <p>A "just talk" tool only works the second a user stops re-reading what it wrote. That's the entire value. Every word that vanishes, every meaning that gets softened, every slow day after they paid teaches them to start checking again, and once they're checking, the magic is dead.</p>
+          <p>That's the mechanism behind the 2.7. By month two, enough small betrayals have stacked up that the user no longer trusts Flow with anything that matters, exactly when they're locked into a year of it.</p>
+          <p><strong>And the model won't save you.</strong> The same open transcription models are already free and local in a dozen competitors. The only durable moat is being the tool people trust with their precise words. Right now, that's the thing slipping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FIX -->
+  <section class="fix">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">The fix</span>
+        <h2 class="h2">Make faithfulness the promise. You've already built most of it.</h2>
+        <p class="promise reveal">Your words. Exactly.<br>Every time. <span class="em">For as long as you pay.</span></p>
+        <p class="sub reveal">The Scratchpad, "paste last transcript," the before-and-after compare in Polish settings, Android's auto-copy on failure. <strong>The components already exist.</strong> They're just buried in troubleshooting and framed as "here's how to recover when we fail." Surface them, default them, guarantee them, name them.</p>
+      </div>
+
+      <div class="moves">
+        <div class="move reveal">
+          <span class="mn">fix 01 · lose</span>
+          <h3>Never lose a word.</h3>
+          <p>Make the safety net the default on every platform, not a help article. Verify the text actually landed instead of firing and forgetting. <em>You already do exactly this on Android. Make it universal.</em></p>
+        </div>
+        <div class="move reveal">
+          <span class="mn">fix 02 · change</span>
+          <h3>Never change a word without consent.</h3>
+          <p>Promote the before/after you already built, and add a faithful mode so users pick fidelity by context. <em>"We should not ship this" stays exactly that.</em></p>
+        </div>
+        <div class="move reveal">
+          <span class="mn">fix 03 · decay</span>
+          <h3>Never get worse after the sale.</h3>
+          <p>Close the trial-to-paid gap so paid never feels slower than the trial. Be transparent about incidents, and put a human on the support loop. <em>Reliability is a promise, not a setting.</em></p>
+        </div>
+      </div>
+
+      <p class="payoff reveal">"The dictation tool that never loses your words, never changes your meaning, and never gets worse" is the most ownable claim in a category racing on model quality. <span class="em">It's also the only thing that pulls the 4.8 and the 2.7 back together.</span></p>
+    </div>
+  </section>
+
+  <!-- CLOSER -->
+  <section class="closer">
+    <div class="wrap">
+      <div class="sec-head reveal" style="margin-bottom:0">
+        <span class="eyebrow">Who made this</span>
+        <h2 class="h2">I see the gap between what a product does and what it promises. Then I close it.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>I'm CJ. I use Flow every single day, and I co-founded a consumer iOS app that went from idea to a live App Store launch in a 7-day build sprint, owning product and design end to end. Your whole brand is a promise, so I went and pressure-tested it against your docs, your ratings, and your users. This isn't a bug list. It's a positioning bet you can ship.</p>
+        <p>This is the kind of problem I'd want to be in the room for. So I built the room a starting point.</p>
+      </div>
+      <div class="sign reveal">
+        <span class="name">CJ Jonnalagadda</span>
+        <span class="mono">Built by hand · receipts link to your own docs</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span class="mono">Wispr Flow / Never Rewrite a Single Word</span>
+      <span class="mono">chetanjonnalagadda.com</span>
+    </div>
+    <div class="wrap"><p class="fine">Sources: Wispr Flow Help Center; public ratings on Trustpilot, the iOS App Store, and G2; user reports from r/ProductivityApps and r/ProductManagement. User quotes are paraphrased.</p></div>
+  </footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce || !('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in')}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{threshold:0.1, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
