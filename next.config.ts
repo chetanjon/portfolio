@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     return [
       { source: '/waymo-teardown', destination: '/waymo-teardown.html' },
       { source: '/waymo-pickup', destination: '/waymo-pickup.html' },
+      { source: '/ditto-teardown', destination: '/ditto-teardown.html' },
     ];
   },
 };

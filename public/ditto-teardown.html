@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>signed up, never matched — a Ditto teardown · Chetan Jonnalagadda</title>
+<meta name="description" content="Ditto flaunts 143,670 signups while its own users across r/UCSD and r/SJSU keep saying they signed up and never got matched. An outside-in teardown tracing the real leak to match liquidity, not the match-to-date gap everyone watches.">
+<meta name="author" content="Chetan Jonnalagadda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Signed Up, Never Matched: A Ditto Teardown">
+<meta property="og:description" content="143,670 signed up. How many actually matched? An outside-in teardown of the campus dating app's real leak: match liquidity, and a growth engine working against it.">
+<meta property="og:site_name" content="Chetan Jonnalagadda">
+<meta property="og:url" content="https://chetanjonnalagadda.com/ditto-teardown">
+<meta property="og:image" content="https://chetanjonnalagadda.com/ditto-teardown-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Signed Up, Never Matched: A Ditto Teardown">
+<meta name="twitter:description" content="143,670 signed up. How many matched? An outside-in Ditto teardown about match liquidity.">
+<meta name="twitter:image" content="https://chetanjonnalagadda.com/ditto-teardown-preview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0B93F6; --green:#34C759; --coral:#FF4C3B;
+    --ink:#1C1C1E; --muted:#6E6E73; --faint:#9A9AA0;
+    --line:#E5E5EA; --bubble:#E9E9EB; --bg:#FFFFFF; --gray-bg:#F5F5F7;
+    --display:"Poppins",-apple-system,system-ui,sans-serif;
+    --sys:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sys);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  main{max-width:680px;margin:0 auto;padding:0 22px 96px}
+  @media (max-width:640px){ main{padding:0 18px 72px} }
+
+  .imsg-header{display:flex;flex-direction:column;align-items:center;gap:6px;
+    padding:24px 0 18px;margin-bottom:30px;border-bottom:1px solid var(--line)}
+  .avatar{width:52px;height:52px;border-radius:50%;background:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--display);font-weight:700;font-size:24px;color:#fff}
+  .imsg-header .name{font-family:var(--display);font-weight:600;font-size:17px;margin:0}
+  .imsg-header .sub{font-size:12px;color:var(--faint);margin:0}
+
+  .eyebrow{font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--blue);font-weight:600;margin:0 0 16px}
+  h1{font-family:var(--display);font-weight:700;line-height:1.0;
+    font-size:clamp(2.5rem,9vw,3.8rem);letter-spacing:-.02em;margin:0 0 20px;text-transform:lowercase}
+  .dek{font-size:1.18rem;line-height:1.5;color:var(--muted);margin:0 0 26px;max-width:38ch}
+
+  .bubble{max-width:82%;padding:11px 16px;font-size:16px;line-height:1.4;width:fit-content}
+  .bubble.them{background:var(--bubble);color:var(--ink);border-radius:20px 20px 20px 5px;margin:0 0 28px}
+  .bubble.me{background:var(--blue);color:#fff;border-radius:20px 20px 5px 20px;margin-left:auto}
+  .thread{margin:24px 0;padding:18px 16px;background:var(--gray-bg);border-radius:18px;display:flex;flex-direction:column;gap:9px}
+  .thread .bubble{margin:0}
+  .thread .who{font-size:12px;color:var(--faint);text-align:center;margin-bottom:2px;font-family:var(--display);font-weight:600}
+  .thread .cap{font-size:13px;color:var(--muted);text-align:center;margin-top:8px;line-height:1.45}
+  .whycard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 15px;font-size:14.5px;max-width:82%;line-height:1.4}
+  .whycard b{font-family:var(--display);font-weight:600;display:block;margin-bottom:3px;font-size:12.5px;color:var(--blue)}
+
+  .stat-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:15px}
+  .stat-row .pill{font-family:var(--display);font-weight:600}
+  .stat-row .pill.win{color:var(--green)}
+  .stat-row .pill.leak{color:var(--coral)}
+  .stat-row .arrow{color:var(--faint)}
+
+  .thesis{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.35;
+    letter-spacing:-.01em;margin:26px 0 0;color:var(--ink)}
+  .method{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12.5px;line-height:1.55;color:var(--faint)}
+
+  h2{font-family:var(--display);font-weight:600;font-size:1.6rem;text-transform:lowercase;
+    letter-spacing:-.01em;line-height:1.15;margin:54px 0 14px}
+  p{margin:0 0 17px}
+  .lead-stat{color:var(--coral);font-weight:500}
+
+  figure{margin:32px 0;padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--bg)}
+  figure svg{display:block;width:100%;height:auto}
+  figcaption{font-size:12.5px;color:var(--faint);margin-top:13px;text-align:center}
+
+  .quote{margin:24px 0;padding:18px 20px;background:var(--gray-bg);
+    border-left:3px solid var(--coral);border-radius:0 14px 14px 0}
+  .quote p{font-family:var(--display);font-weight:500;font-size:1.18rem;
+    line-height:1.4;color:var(--ink);margin:0 0 8px}
+  .quote .attr{font-size:13px;color:var(--muted)}
+
+  .stage-row{display:flex;gap:16px;margin:22px 0;align-items:baseline}
+  .stage-row .num{width:30px;height:30px;flex:none;border-radius:50%;background:var(--blue);color:#fff;
+    font-family:var(--display);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center}
+  .stage-row .body h3{font-family:var(--display);font-weight:600;font-size:1.08rem;margin:0 0 6px;line-height:1.3}
+  .stage-row .body p{margin:0;color:var(--muted)}
+
+  .notes .note{padding:15px 0;border-top:1px solid var(--line)}
+  .notes .note:last-child{border-bottom:1px solid var(--line)}
+  .notes .note .lbl{font-family:var(--display);font-size:12.5px;font-weight:600;color:var(--ink);display:block;margin-bottom:3px}
+  .notes .note p{margin:0;color:var(--muted);font-size:.97rem}
+
+  .about{margin-top:60px;padding-top:26px;border-top:2px solid var(--ink)}
+  .about p{color:var(--muted);font-size:1rem}
+  .who-line{font-family:var(--display);font-weight:600;color:var(--ink)}
+  .links{font-size:13.5px;margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+  .links a{color:#fff;background:var(--blue);text-decoration:none;
+    padding:7px 14px;border-radius:16px;font-weight:500;transition:opacity .15s}
+  .links a:hover{opacity:.85}
+  a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+  @media (prefers-reduced-motion:no-preference){
+    main>*{opacity:0;transform:translateY(7px);animation:rise .55s ease forwards}
+    main>:nth-child(2){animation-delay:.04s} main>:nth-child(3){animation-delay:.08s}
+    main>:nth-child(4){animation-delay:.12s} main>:nth-child(n+5){animation-delay:.16s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="imsg-header">
+    <div class="avatar">D</div>
+    <p class="name">Ditto</p>
+    <p class="sub">a friend that texts you dates</p>
+  </header>
+
+  <p class="eyebrow">Outside-in product teardown · by Chetan Jonnalagadda</p>
+  <h1>143,670 joined.</h1>
+  <p class="dek">How many actually got matched? Across UCSD and SJSU, Ditto's own users keep saying the same thing, and it points to a leak that sits above the one everyone is watching.</p>
+
+  <div class="bubble them">tell me your type, and i text you one ready-to-go date every wednesday at 7</div>
+
+  <div class="stat-row">
+    <span class="pill">143,670 joined</span>
+    <span class="arrow">&rarr;</span>
+    <span class="pill leak">??? matched</span>
+    <span class="arrow">&rarr;</span>
+    <span class="pill win">~20% dated</span>
+  </div>
+
+  <p class="thesis">The one-line version: you're paying to acquire signups when your real constraint is match liquidity, and your growth playbook is making the leak worse.</p>
+
+  <h2>the leak isn't where you think</h2>
+  <p>I started this on a different thesis. Allen has said roughly 20% of matches become real dates, so I assumed the problem was the gap between a match and the date. Then I read what your users actually say on two campus subreddits, and the evidence moved me one step earlier. The bigger leak is the one before the date is ever planned: <span class="lead-stat">people sign up and never get matched.</span></p>
+
+  <figure>
+    <svg viewBox="0 0 680 300" role="img" aria-labelledby="fnl-t fnl-d">
+      <title id="fnl-t">Ditto funnel: signed up, matched, dated</title>
+      <desc id="fnl-d">A funnel narrowing from 143,670 signups to an undisclosed number matched to about twenty percent of matches dated, with the matching step flagged as the main leak.</desc>
+      <line x1="125" y1="108" x2="178" y2="134" stroke="#D2D2D7" stroke-width="1" fill="none"/>
+      <line x1="425" y1="108" x2="372" y2="134" stroke="#D2D2D7" stroke-width="1" fill="none"/>
+      <line x1="178" y1="184" x2="195" y2="210" stroke="#D2D2D7" stroke-width="1" fill="none"/>
+      <line x1="372" y1="184" x2="355" y2="210" stroke="#D2D2D7" stroke-width="1" fill="none"/>
+
+      <rect x="125" y="58" width="300" height="50" rx="14" fill="#F2F2F7" stroke="#D2D2D7"/>
+      <text x="275" y="78" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="600" font-size="15" fill="#3A3A3C">signed up</text>
+      <text x="275" y="97" text-anchor="middle" font-family="-apple-system,system-ui,sans-serif" font-size="12.5" fill="#6E6E73">143,670 (their number)</text>
+
+      <rect x="178" y="134" width="194" height="50" rx="14" fill="#FFE9E6" stroke="#FF8A7A"/>
+      <text x="275" y="154" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="600" font-size="15" fill="#C0392B">matched</text>
+      <text x="275" y="173" text-anchor="middle" font-family="-apple-system,system-ui,sans-serif" font-size="12.5" fill="#C0392B">not disclosed</text>
+
+      <rect x="195" y="210" width="160" height="50" rx="14" fill="#E3F9E9" stroke="#6BD68A"/>
+      <text x="275" y="230" text-anchor="middle" font-family="Poppins,sans-serif" font-weight="600" font-size="15" fill="#1E7E34">went on a date</text>
+      <text x="275" y="249" text-anchor="middle" font-family="-apple-system,system-ui,sans-serif" font-size="12.5" fill="#1E7E34">~20% of matches</text>
+
+      <line x1="372" y1="159" x2="446" y2="150" stroke="#D2D2D7" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+
+      <rect x="448" y="96" width="192" height="128" rx="14" fill="#FFFFFF" stroke="#E5E5EA"/>
+      <text x="462" y="119" font-family="Poppins,sans-serif" font-weight="600" font-size="14" fill="#1C1C1E">where they fall out</text>
+      <text x="462" y="145" font-family="-apple-system,system-ui,sans-serif" font-size="12.5" fill="#6E6E73">signed up, never matched</text>
+      <text x="462" y="166" font-family="-apple-system,system-ui,sans-serif" font-size="12.5" fill="#6E6E73">no match most weeks</text>
+      <text x="462" y="187" font-family="-apple-system,system-ui,sans-serif" font-size="12.5" fill="#6E6E73">matched, but texted blind</text>
+      <text x="462" y="208" font-family="-apple-system,system-ui,sans-serif" font-size="12.5" fill="#6E6E73">don't trust the AI</text>
+    </svg>
+    <figcaption>Signups and the match-to-date rate are Ditto's own numbers. The match rate in the middle is undisclosed, which is the tell.</figcaption>
+  </figure>
+
+  <h2>what users actually say</h2>
+  <p>The same complaint repeats across UCSD and SJSU, from different people: they signed up and never got matched. One UCSD commenter tried twice and heard nothing either time. Another said they signed up a couple of times and never got a date. On SJSU, one user does not get a match most weeks, another signed up months ago with the same story, and a third kept checking back with no match before one finally came. The matching step, not the date, is where most people fall out.</p>
+
+  <div class="quote">
+    <p>Across two campuses, different people, the same sentence: I signed up, and I never got matched.</p>
+    <span class="attr">The recurring report in r/UCSD and r/SJSU</span>
+  </div>
+
+  <p>When a match does come, it can arrive broken. One SJSU user got matched but the text had no names, no poster, and no reason why, just an instruction to check back in, leaving them to schedule a date blind. They were on a non-iMessage number and suspected that degraded it. So the poster experience your marketing promises does not always ship.</p>
+
+  <p>And trust is a wall even when the product works. A comment with 22 upvotes shrugged that it functions, but they would not trust an AI to run their dating life. Around it, louder voices call the whole thing a scam or a grift, reacting to the flyers as much as to the product.</p>
+
+  <p>It is not all bad, and the honest version says so. One SJSU user has been on two dates that went decently and prefers the demographic to other apps. This is not broken. It is leaky and inconsistent, and the leak is concentrated at the matching step.</p>
+
+  <h2>the part that should worry you</h2>
+  <p>Put the pieces together. You are flaunting 143,670 signups and spending venture money on flyers to farm more, while your users cannot reliably get matched. Run the math on your own counter: if even half of those people never got a workable match, that is seventy thousand students who experienced Ditto as a thing that took their type and went quiet, and they are the authors of your scam threads. Your binding constraint is not awareness, it is match liquidity, meaning enough compatible, active, verified people in each campus pool on drop day. Pouring acquisition onto a thin pool does not fix that. It manufactures more of exactly the experience that is already hurting you. Your growth engine and your core problem are working against each other.</p>
+
+  <h2>the metric you're not watching</h2>
+  <p>Your homepage counts signups. Signups are the number that feels like growth and quietly causes the problem. The number that actually predicts whether Ditto works is match rate per signup: of the people who join, how many get a real match inside their first couple of drops. You don't publish that one, which usually means you don't love it. Put it on the wall above the signup counter, and every liquidity call after that gets obvious.</p>
+
+  <h2>the fix, staged</h2>
+  <div class="stage-row">
+    <span class="num">1</span>
+    <div class="body">
+      <h3>fix liquidity before you spend another dollar on reach</h3>
+      <p>Don't open matching on a campus until its pool can actually produce good matches, meaning enough verified, active people with a workable spread of preferences. Below that line nobody matches well and you mint another disappointed signup. So flip the model: hold pre-threshold campuses on a visible waitlist, and make referrals the way in. Every invite a student sends to skip the line adds a real person to the pool, so it is acquisition that builds liquidity instead of flyers that only inflate the counter. iMessage-only makes this harder on the bigger public campuses where more students are on Android, which is one more reason to concentrate the pool rather than spread it thin.</p>
+    </div>
+  </div>
+  <div class="stage-row">
+    <span class="num">2</span>
+    <div class="body">
+      <h3>make the match itself land</h3>
+      <p>Always ship the poster and the why-you-two, and fix the non-iMessage degradation so a match never arrives as a blank "check back in." The moment a match drops is your highest-intent moment in the whole product. Do not waste it on a context-free text.</p>
+    </div>
+  </div>
+  <div class="stage-row">
+    <span class="num">3</span>
+    <div class="body">
+      <h3>then close the match-to-date gap, without becoming a texting app</h3>
+      <p>For the people who do get matched, add one commitment beat between match and date: a single confirmation and one opener, not a chat. That is the anti-flake mechanic, and it is the line that keeps Ditto from turning back into Hinge.</p>
+    </div>
+  </div>
+
+  <h2>the fix, designed</h2>
+  <p>The fastest way to show what I mean is to build the most important fix in your own UI. Here is the campus unlock, the way Ditto would actually text it.</p>
+
+  <div class="thread">
+    <span class="who">Ditto</span>
+    <div class="bubble them">you're #340 in line at UCSD</div>
+    <div class="bubble them">we don't turn matching on until a campus has enough people to actually find you someone good. UCSD's at 68%</div>
+    <div class="bubble them">want to jump the line? bring 2 friends and you're in the next drop</div>
+    <div class="bubble me">send it</div>
+    <div class="bubble them">done, you're at the front. and every friend you pull in makes everyone's matches better, yours included</div>
+    <p class="cap">A dead signup becomes a status and a mission. Invites build the pool instead of flyers inflating a counter, so growth and liquidity finally point the same way.</p>
+  </div>
+
+  <h2>one more thing</h2>
+  <div class="notes">
+    <div class="note">
+      <span class="lbl">the success paradox</span>
+      <p>A product that works loses its best users, the ones who found someone. Worth a point of view on what keeps a successful user around, which is also where the "beyond dating" expansion gets interesting.</p>
+    </div>
+  </div>
+
+  <div class="about">
+    <p><span class="who-line">why i wrote this.</span> I build consumer products around getting people to do the thing they keep avoiding. I shipped Aatram, an iOS app on exactly that problem, with a social layer built to be anti-performative on purpose, no leaderboards and no ranking, because pressure makes anxious people freeze. Same instinct that made Ditto kill swiping. I also build LLM eval pipelines (FrictionLens scores model output against a hand-labeled golden set), and Aatram's on-device nudge engine is an agentic system that decides when and how to intervene. Liquidity, trust, and the behavioral last mile are the exact problems I have spent the last year shipping against.</p>
+    <div class="links">
+      <a href="https://chetanjonnalagadda.com">portfolio</a>
+      <a href="https://linkedin.com/in/cjonn">linkedin</a>
+      <a href="https://aatram.com">aatram</a>
+      <a href="https://frictionlens.net">frictionlens</a>
+    </div>
+  </div>
+
+  <p class="method">Built from Ditto's public statements, its live product, and what students say across r/UCSD and r/SJSU. Those reports are anonymous, self-selected, and a few months old, so this is directional evidence and a set of hypotheses to confirm against your own numbers, not internal data.</p>
+</main>
+</body>
+</html>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { Fragment, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
@@ -20,9 +20,26 @@ type Study = {
   year: string;
   category: Category;
   readMin: number;
+  startup?: boolean;
 };
 
 const caseStudies: Study[] = [
+  {
+    slug: 'ditto',
+    href: '/ditto-teardown',
+    company: 'Ditto',
+    title: 'Signed Up, Never Matched',
+    description:
+      'An outside-in teardown of Ditto, the campus app that texts you one ready-to-go date a week. Ditto flaunts 143,670 signups while its own users across r/UCSD and r/SJSU keep saying the same thing: they signed up and never got matched. Traces the real leak to match liquidity (not the match-to-date gap everyone watches), shows how a flyer-driven growth engine makes it worse, and stages a referral-gated fix that builds the campus pool instead of inflating the counter.',
+    tags: ['Product Teardown', 'Consumer / Dating', 'Marketplace Liquidity', 'Growth Loops', 'Trust'],
+    metric: { value: '143,670', label: 'Signed up · how many matched?' },
+    accentColor: '#0B93F6',
+    bgColor: '#E8F2FE',
+    year: '2026',
+    category: 'Teardown',
+    readMin: 7,
+    startup: true,
+  },
   {
     slug: 'waymo',
     href: '/waymo-teardown',
@@ -66,6 +83,7 @@ const caseStudies: Study[] = [
     year: '2026',
     category: 'Shipped',
     readMin: 6,
+    startup: true,
   },
   {
     slug: 'frictionlens',
@@ -96,6 +114,7 @@ const caseStudies: Study[] = [
     year: '2024',
     category: 'Shipped',
     readMin: 7,
+    startup: true,
   },
   {
     slug: 'cursor',
@@ -110,6 +129,7 @@ const caseStudies: Study[] = [
     year: '2026',
     category: 'Teardown',
     readMin: 9,
+    startup: true,
   },
   {
     slug: 'duolingo',
@@ -194,6 +214,7 @@ const caseStudies: Study[] = [
     year: '2026',
     category: 'Teardown',
     readMin: 7,
+    startup: true,
   },
   {
     slug: 'sonos',
@@ -239,9 +260,11 @@ const caseStudies: Study[] = [
   },
 ];
 
-type Filter = 'All' | Category;
+// 'Startup' is a cross-cutting lens, not a category: it re-slices the same
+// grouped view to the early-stage pieces, which still live in their type bucket.
+type Filter = 'All' | Category | 'Startup';
 
-const FILTERS: Filter[] = ['All', 'Shipped', 'Teardown', 'Thinking'];
+const FILTERS: Filter[] = ['All', 'Shipped', 'Teardown', 'Thinking', 'Startup'];
 
 const CATEGORY_ORDER: Category[] = ['Shipped', 'Teardown', 'Thinking'];
 
@@ -299,6 +322,16 @@ function CategoryBadge({ study }: { study: Study }) {
   );
 }
 
+// Cross-cutting lens marker — appears on early-stage pieces in any category.
+function StartupChip() {
+  return (
+    <span className="text-[9px] uppercase tracking-[0.18em] px-2.5 py-1 rounded-full bg-bg-secondary text-text-secondary font-medium inline-flex items-center gap-1.5">
+      <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#34C759' }} aria-hidden />
+      Startup
+    </span>
+  );
+}
+
 function StudyCard({ study, index }: { study: Study; index: number }) {
   const meta = CATEGORY_META[study.category];
   return (
@@ -327,6 +360,7 @@ function StudyCard({ study, index }: { study: Study; index: number }) {
             <div className="p-8 md:p-10">
               <div className="flex items-center flex-wrap gap-3 mb-5">
                 <CategoryBadge study={study} />
+                {study.startup && <StartupChip />}
                 <span className="text-[10px] uppercase tracking-widest text-text-muted">
                   {study.company}
                 </span>
@@ -410,19 +444,25 @@ export function CaseStudiesContent() {
       Shipped: caseStudies.filter((s) => s.category === 'Shipped').length,
       Teardown: caseStudies.filter((s) => s.category === 'Teardown').length,
       Thinking: caseStudies.filter((s) => s.category === 'Thinking').length,
+      Startup: caseStudies.filter((s) => s.startup).length,
     }),
     []
   );
 
-  // When "All" is selected, show every category as its own labeled group, in order.
-  // When a category is selected, show just that group.
+  // "All" shows every category as its own labeled group, in order.
+  // A category filter shows just that group.
+  // "Startup" is a lens: it keeps the same groups but slices each to the
+  // early-stage pieces, dropping any group that ends up empty.
   const visibleGroups = useMemo(() => {
-    const cats = filter === 'All' ? CATEGORY_ORDER : [filter];
-    return cats.map((cat) => ({
-      cat,
-      meta: CATEGORY_META[cat],
-      items: caseStudies.filter((s) => s.category === cat),
-    }));
+    const startupLens = filter === 'Startup';
+    const cats = filter === 'All' || startupLens ? CATEGORY_ORDER : [filter];
+    return cats
+      .map((cat) => ({
+        cat,
+        meta: CATEGORY_META[cat],
+        items: caseStudies.filter((s) => s.category === cat && (!startupLens || s.startup)),
+      }))
+      .filter((g) => g.items.length > 0);
   }, [filter]);
 
   return (
@@ -461,23 +501,28 @@ export function CaseStudiesContent() {
           <div className="flex flex-wrap items-center gap-2 md:gap-3">
             {FILTERS.map((f) => {
               const active = filter === f;
-              const label = f === 'All' ? 'All' : CATEGORY_META[f].chip;
+              const label = f === 'All' || f === 'Startup' ? f : CATEGORY_META[f].chip;
               return (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  aria-pressed={active}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-widest border transition-colors cursor-pointer ${
-                    active
-                      ? 'bg-text-primary text-bg-primary border-text-primary'
-                      : 'border-border-default text-text-muted hover:text-text-primary hover:border-border-hover'
-                  }`}
-                >
-                  <span>{label}</span>
-                  <span className={`text-[10px] ${active ? 'opacity-70' : 'opacity-60'}`}>
-                    {counts[f]}
-                  </span>
-                </button>
+                <Fragment key={f}>
+                  {/* divider: Startup is a cross-cutting lens, not a category */}
+                  {f === 'Startup' && (
+                    <span className="hidden sm:block w-px h-5 bg-border-default self-center mx-1" aria-hidden />
+                  )}
+                  <button
+                    onClick={() => setFilter(f)}
+                    aria-pressed={active}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] uppercase tracking-widest border transition-colors cursor-pointer ${
+                      active
+                        ? 'bg-text-primary text-bg-primary border-text-primary'
+                        : 'border-border-default text-text-muted hover:text-text-primary hover:border-border-hover'
+                    }`}
+                  >
+                    <span>{label}</span>
+                    <span className={`text-[10px] ${active ? 'opacity-70' : 'opacity-60'}`}>
+                      {counts[f]}
+                    </span>
+                  </button>
+                </Fragment>
               );
             })}
           </div>

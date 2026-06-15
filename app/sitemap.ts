@@ -40,6 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/ditto-teardown`,
+      lastModified: new Date('2026-06-14T00:00:00.000Z'),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/about`,
       lastModified: defaultLastModified,
       changeFrequency: 'monthly',
