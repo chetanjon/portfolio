@@ -18,12 +18,14 @@ export function TheNumber() {
         >
           <p className="small-caps text-text-muted mb-6">[ The number that earns the call ]</p>
 
+          <div className="gauge-divider w-44 mx-auto mb-7" aria-hidden />
+
           <h2 className="font-display font-black tracking-tight leading-[0.9] tabular-nums text-accent-primary text-[clamp(7rem,22vw,20rem)] min-w-0">
             <CountUp to={2} suffix="×" />
           </h2>
 
           <p className="mt-8 font-display text-xl md:text-2xl lg:text-3xl text-text-primary leading-tight max-w-2xl mx-auto">
-            GMV. Doubled at IKT India.
+            GMV. <span className="gradient-text-accent">Doubled</span> at IKT India.
             <br />
             <span className="text-text-secondary">Vendor base 20 → 75, four-engineer team.</span>
           </p>

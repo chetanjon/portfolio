@@ -51,7 +51,8 @@ export function HowIWork() {
           I&rsquo;m Chetan, a product manager with engineering training and a designer&rsquo;s eye. At <em className="font-serif italic">Aatram</em>, I co-founded and led product on a consumer iOS app now live on the App Store. At <em className="font-serif italic">FrictionLens</em>, I shipped a full-stack AI review intelligence platform with a public marketing site and dashboard. Before either, I ran the vendor side of a B2B handloom marketplace and scaled it 3.75× from 20 to 75 vendors, while doubling GMV. CSPO certified. MS in Management of Technology from Arizona State University. Phoenix is where I sleep. The work is portable.
         </motion.p>
 
-        <div className="space-y-10">
+        {/* Numbered tick-rail: each principle reads as a row on an instrument. */}
+        <div>
           {paragraphs.map((p, i) => (
             <motion.div
               key={p.heading}
@@ -59,9 +60,17 @@ export function HowIWork() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.55, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="tick-rule grid grid-cols-1 md:grid-cols-[6rem_1fr] gap-x-8 gap-y-3 py-8"
             >
-              <h3 className="small-caps text-text-muted mb-3">{p.heading}</h3>
-              <p className="text-text-secondary text-base md:text-lg leading-relaxed">{p.body}</p>
+              <div className="pt-1 text-[11px] uppercase tracking-[0.22em] tabular-nums text-accent-primary font-medium">
+                {String(i + 1).padStart(2, '0')} / 03
+              </div>
+              <div>
+                <h3 className="font-display font-bold text-xl md:text-2xl tracking-tight mb-3">
+                  {p.heading}
+                </h3>
+                <p className="text-text-secondary text-base md:text-lg leading-relaxed">{p.body}</p>
+              </div>
             </motion.div>
           ))}
         </div>

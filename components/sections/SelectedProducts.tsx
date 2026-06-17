@@ -136,7 +136,8 @@ export function SelectedProducts() {
         >
           <SectionMarker number="01" label="Shipped" />
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mt-4 leading-[1.05]">
-            Things I&apos;ve <span className="italic">designed, built, and shipped.</span>
+            Things I&apos;ve{' '}
+            <span className="font-display-serif italic gloss-serif">designed, built, and shipped.</span>
           </h2>
         </motion.div>
 

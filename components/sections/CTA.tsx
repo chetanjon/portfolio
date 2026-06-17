@@ -27,7 +27,7 @@ export function CTA() {
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight">
               Hiring a PM who ships?
               <br />
-              <span className="italic text-text-secondary">Let&apos;s talk.</span>
+              <span className="font-display-serif italic gloss-serif">Let&apos;s talk.</span>
             </h2>
 
             <p className="text-sm md:text-base text-text-secondary max-w-md mx-auto">
