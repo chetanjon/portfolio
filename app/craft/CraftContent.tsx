@@ -62,7 +62,7 @@ export function CraftContent() {
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-[1.05]">
               How the work
-              <span className="font-serif italic font-normal lowercase"> gets made.</span>
+              <span className="font-display-serif italic font-normal lowercase gloss-serif"> gets made.</span>
             </h1>
             <p className="text-lg text-text-secondary max-w-2xl">
               Most PM portfolios show what shipped. This page shows how. Design tokens, vector logo
@@ -248,8 +248,9 @@ export function CraftContent() {
         </div>
       </section>
 
-      {/* Voice Ruleset */}
-      <section className="py-16 border-t border-border-default">
+      {/* Voice Ruleset — the page's dark-contrast band */}
+      <div className="dark">
+      <section className="py-16 bg-bg-primary text-text-primary">
         <div className="container-wide">
           <SectionMarker label="Voice Ruleset" number="05/05" className="mb-8" />
 
@@ -325,6 +326,7 @@ export function CraftContent() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* CTA */}
       <section className="py-24 border-t border-border-default">

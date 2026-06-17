@@ -97,7 +97,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="border-t border-border-default pt-4 mt-4 space-y-4">
+              <div className="tick-rule pt-5 mt-4 space-y-4">
                 {/* Highlights */}
                 <div>
                   <h4 className="small-caps text-text-muted mb-2">Highlights</h4>
@@ -174,7 +174,7 @@ export function ProjectsContent() {
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
               Things I&apos;ve
-              <span className="font-serif italic font-normal lowercase"> built</span>
+              <span className="font-display-serif italic font-normal lowercase gloss-serif"> built</span>
             </h1>
 
             <p className="text-lg text-text-secondary max-w-2xl">
@@ -214,25 +214,41 @@ export function ProjectsContent() {
             transition={{ delay: 0.3, duration: 0.4 }}
             className="space-y-4"
           >
-            {/* Type filters */}
-            <div className="flex items-center gap-2 flex-wrap">
-              {typeFilters.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={cn(
-                    'px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest transition-all duration-200 cursor-pointer',
-                    activeFilter === filter
-                      ? 'bg-text-primary text-bg-primary'
-                      : 'border border-border-default hover:border-text-primary'
-                  )}
-                >
-                  {filter === 'all' ? 'All' : filter.replace('-', ' ')}
-                  <span className="ml-1 opacity-60">
-                    ({projectCount[filter as keyof typeof projectCount]})
-                  </span>
-                </button>
-              ))}
+            {/* Type filters + live result meter (filter-as-instrument) */}
+            <div className="flex items-center justify-between gap-4 flex-wrap">
+              <div className="flex items-center gap-2 flex-wrap">
+                {typeFilters.map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setActiveFilter(filter)}
+                    className={cn(
+                      'px-4 py-1.5 rounded-full text-[10px] uppercase tracking-widest transition-all duration-200 cursor-pointer',
+                      activeFilter === filter
+                        ? 'bg-text-primary text-bg-primary'
+                        : 'border border-border-default hover:border-text-primary'
+                    )}
+                  >
+                    {filter === 'all' ? 'All' : filter.replace('-', ' ')}
+                    <span className="ml-1 opacity-60">
+                      ({projectCount[filter as keyof typeof projectCount]})
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Result meter — needle moves with the filter */}
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[11px] text-text-muted tabular-nums whitespace-nowrap">
+                  {String(filtered.length).padStart(2, '0')} / {String(projects.length).padStart(2, '0')} shown
+                </span>
+                <div className="relative h-1.5 w-24 rounded-full bg-border-default overflow-hidden" aria-hidden>
+                  <motion.div
+                    className="absolute inset-y-0 left-0 rounded-full bg-accent-primary"
+                    animate={{ width: `${projects.length ? (filtered.length / projects.length) * 100 : 0}%` }}
+                    transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Skill filters */}
