@@ -4,6 +4,8 @@ export const workExperiences: WorkExperience[] = [
   {
     id: '0',
     slug: 'aatram',
+    tagline:
+      'Co-founded a consumer iOS app and shipped it to the App Store. Owned product, design, and brand on a 3-person team.',
     company: 'Aatram',
     role: 'Co-Founder & Product Manager',
     type: 'full-time',
@@ -127,6 +129,8 @@ export const workExperiences: WorkExperience[] = [
   {
     id: '1',
     slug: 'ikt-india',
+    tagline:
+      'First dedicated PM at a seed-stage B2B marketplace. Owned vendor-side product and scaled the seller base with a 4-engineer team.',
     company: 'IKT India',
     role: 'Product Manager',
     type: 'full-time',
@@ -233,6 +237,8 @@ export const workExperiences: WorkExperience[] = [
   {
     id: '2',
     slug: 'gangothri-nutrients',
+    tagline:
+      'Built the monthly sales reporting model regional leadership now runs their reviews on.',
     company: 'Gangothri Nutrients',
     role: 'Product Operations Intern',
     type: 'internship',
@@ -259,6 +265,8 @@ export const workExperiences: WorkExperience[] = [
   {
     id: '3',
     slug: 'frictionlens',
+    tagline:
+      'Designed and shipped a full-stack AI review tool end to end, from landing page to classifier.',
     company: 'FrictionLens',
     role: 'Solo Designer & Engineer',
     type: 'project',

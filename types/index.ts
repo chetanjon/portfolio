@@ -36,6 +36,7 @@ export interface WorkExperience {
   endDate: string | 'Present';
   location: string;
   description: string;
+  tagline?: string;
   highlights: string[];
   metrics: Metric[];
   skills: string[];

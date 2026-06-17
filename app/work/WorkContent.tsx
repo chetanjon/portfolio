@@ -100,23 +100,17 @@ export function WorkContent() {
                   </div>
                 </div>
 
-                {/* Narrative */}
+                {/* Narrative — kept short on purpose. The depth lives in the
+                    case study; this page is for scanning. */}
                 <div className="min-w-0 lg:pt-1">
-                  <p className="text-text-secondary leading-relaxed">{work.description}</p>
-
-                  <ul className="mt-6 space-y-3">
-                    {work.highlights.slice(0, 3).map((h) => (
-                      <li key={h} className="text-sm text-text-secondary leading-relaxed flex gap-3">
-                        <span className="mt-2 w-1 h-1 rounded-full bg-accent-primary/70 shrink-0" aria-hidden />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-base md:text-lg text-text-secondary leading-relaxed max-w-prose">
+                    {work.tagline ?? work.description}
+                  </p>
 
                   {work.caseStudy && (
                     <Link
                       href={`/work/${work.slug}`}
-                      className="group mt-7 inline-flex items-center gap-2 text-sm font-medium text-accent-primary hover:opacity-80 transition-opacity"
+                      className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent-primary hover:opacity-80 transition-opacity"
                     >
                       View case study
                       <span className="transition-transform duration-300 group-hover:translate-x-1">
