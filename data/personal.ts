@@ -26,7 +26,7 @@ export const personalInfo = {
     'Certified Scrum Product Owner (CSPO) · Scrum Alliance',
     'Digital Product Management · University of Virginia (Coursera)',
   ],
-  visaStatus: 'Requires H1B Sponsorship',
+  visaStatus: 'US work-authorized · no sponsorship needed for 3 years (OPT + STEM OPT)',
   openTo: ['Full-time', 'Remote', 'Hybrid', 'Relocation'],
   summary:
     'Co-founder PM who designs. Shipped a consumer iOS app to the App Store in 7 days with a 3-person founding team, rewrote V2 as an anti-interruption product after archetype interviews, and owned UI, brand voice, an 18-component design system, and the logo drawn in SwiftUI Canvas. Previously scaled a seed-stage B2B marketplace from 20 to 75+ vendors with 2x monthly GMV. CSPO + UVA Digital Product Management certified. M.S. Management of Technology (Tech-MBA equivalent, PM focus) at ASU, May 2026, 3.7 GPA.',
