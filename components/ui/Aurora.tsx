@@ -93,62 +93,75 @@ export default function Aurora({
     const ctn = ctnRef.current;
     if (!ctn) return;
 
-    const renderer = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: true });
-    const gl = renderer.gl;
-    gl.clearColor(0, 0, 0, 0);
-    gl.enable(gl.BLEND);
-    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
-    (gl.canvas as HTMLCanvasElement).style.backgroundColor = 'transparent';
-
-    const geometry = new Triangle(gl);
-    if ((geometry.attributes as Record<string, unknown>).uv) delete (geometry.attributes as Record<string, unknown>).uv;
-
-    const colorStopsArray = colorStops.map((hex) => {
-      const c = new Color(hex);
-      return [c.r, c.g, c.b];
-    });
-
-    const program = new Program(gl, {
-      vertex: VERT,
-      fragment: FRAG,
-      uniforms: {
-        uTime: { value: 0 },
-        uAmplitude: { value: amplitude },
-        uColorStops: { value: colorStopsArray },
-        uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
-        uBlend: { value: blend },
-      },
-    });
-
-    const mesh = new Mesh(gl, { geometry, program });
-    ctn.appendChild(gl.canvas as HTMLCanvasElement);
-
-    function resize() {
-      if (!ctn) return;
-      const w = ctn.offsetWidth;
-      const h = ctn.offsetHeight;
-      renderer.setSize(w, h);
-      program.uniforms.uResolution.value = [w, h];
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-
     let raf = 0;
-    const loop = (t: number) => {
+    let renderer: Renderer | null = null;
+    let onResize: (() => void) | null = null;
+
+    // WebGL can fail at any stage (no GPU, blocked, lost context, shader
+    // compile). Wrap the whole setup so a failure degrades to no aurora
+    // instead of throwing and taking the page down with a client-side error.
+    try {
+      const r = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: true });
+      renderer = r;
+      const gl = r.gl;
+      if (!gl) return;
+      gl.clearColor(0, 0, 0, 0);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      (gl.canvas as HTMLCanvasElement).style.backgroundColor = 'transparent';
+
+      const geometry = new Triangle(gl);
+      if ((geometry.attributes as Record<string, unknown>).uv) delete (geometry.attributes as Record<string, unknown>).uv;
+
+      const colorStopsArray = colorStops.map((hex) => {
+        const c = new Color(hex);
+        return [c.r, c.g, c.b];
+      });
+
+      const program = new Program(gl, {
+        vertex: VERT,
+        fragment: FRAG,
+        uniforms: {
+          uTime: { value: 0 },
+          uAmplitude: { value: amplitude },
+          uColorStops: { value: colorStopsArray },
+          uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
+          uBlend: { value: blend },
+        },
+      });
+
+      const mesh = new Mesh(gl, { geometry, program });
+      ctn.appendChild(gl.canvas as HTMLCanvasElement);
+
+      onResize = () => {
+        const w = ctn.offsetWidth;
+        const h = ctn.offsetHeight;
+        r.setSize(w, h);
+        program.uniforms.uResolution.value = [w, h];
+      };
+      window.addEventListener('resize', onResize);
+      onResize();
+
+      const loop = (t: number) => {
+        raf = requestAnimationFrame(loop);
+        program.uniforms.uTime.value = t * 0.001 * speedRef.current * 0.1;
+        r.render({ scene: mesh });
+      };
       raf = requestAnimationFrame(loop);
-      program.uniforms.uTime.value = t * 0.001 * speedRef.current * 0.1;
-      renderer.render({ scene: mesh });
-    };
-    raf = requestAnimationFrame(loop);
+    } catch {
+      cancelAnimationFrame(raf);
+      if (onResize) window.removeEventListener('resize', onResize);
+      return;
+    }
 
     return () => {
       cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
+      if (onResize) window.removeEventListener('resize', onResize);
+      const gl = renderer?.gl;
       try {
-        ctn?.removeChild(gl.canvas as HTMLCanvasElement);
+        if (gl) ctn?.removeChild(gl.canvas as HTMLCanvasElement);
       } catch {}
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      gl?.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, [colorStops, amplitude, blend]);
 
