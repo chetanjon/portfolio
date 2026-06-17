@@ -31,13 +31,13 @@ export function ResumeContent() {
               <div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">
                   The Full
-                  <span className="font-serif italic font-normal lowercase"> picture</span>
+                  <span className="font-display-serif italic font-normal lowercase gloss-serif"> picture</span>
                 </h1>
                 <p className="text-lg text-text-secondary max-w-xl">
                   PM who scaled a seed-stage B2B marketplace 3.75× and doubled its GMV,
-                  then co-led product on a consumer iOS app that launched at a 5.0 rating.
-                  CSPO certified, MS in Management of Technology at ASU. Here&apos;s everything
-                  in one place.
+                  then co-led product on a consumer iOS app that drew 240 organic downloads at an
+                  18% App Store conversion rate. CSPO certified, MS in Management of Technology at
+                  ASU. Here&apos;s everything in one place.
                 </p>
               </div>
 
@@ -63,8 +63,38 @@ export function ResumeContent() {
         </div>
       </section>
 
+      {/* Stat masthead — a dark gauge-cluster instrument panel (the page's dark band) */}
+      <div className="dark">
+        <section className="py-12 bg-bg-primary text-text-primary">
+          <div className="container-wide">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border-default border border-border-default rounded-lg overflow-hidden">
+              {[
+                { v: '3.75×', l: 'Vendor growth · IKT' },
+                { v: '2×', l: 'Monthly GMV · IKT' },
+                { v: '18%', l: 'Aatram App Store CVR' },
+                { v: '240', l: 'Organic downloads' },
+              ].map((s, i) => (
+                <motion.div
+                  key={s.l}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.5, delay: i * 0.07 }}
+                  className="bg-bg-primary p-6 md:p-7"
+                >
+                  <p className="font-display font-black text-3xl md:text-4xl tabular-nums text-accent-primary leading-none">
+                    {s.v}
+                  </p>
+                  <p className="small-caps text-text-muted mt-2">{s.l}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+
       {/* Experience Section */}
-      <section className="py-16 border-t border-border-default">
+      <section className="py-16 tick-rule">
         <div className="container-wide">
           <SectionMarker label="Experience" number="01/05" className="mb-8" />
 
@@ -86,7 +116,7 @@ export function ResumeContent() {
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-sm text-text-muted whitespace-nowrap">
+                    <span className="font-mono text-xs text-text-muted whitespace-nowrap tracking-tight">
                       {formatDate(work.startDate)} – {work.endDate === 'Present' ? 'Present' : formatDate(work.endDate)}
                     </span>
                     <span className="px-3 py-1 rounded-full border border-border-default text-[9px] uppercase tracking-wider">
@@ -120,7 +150,7 @@ export function ResumeContent() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-16 border-t border-border-default">
+      <section className="py-16 tick-rule">
         <div className="container-wide">
           <SectionMarker label="Projects" number="02/05" className="mb-8" />
 
@@ -202,7 +232,7 @@ export function ResumeContent() {
       </section>
 
       {/* Education Section */}
-      <section className="py-16 border-t border-border-default">
+      <section className="py-16 tick-rule">
         <div className="container-wide">
           <SectionMarker label="Education" number="03/05" className="mb-8" />
 
@@ -243,7 +273,7 @@ export function ResumeContent() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-16 border-t border-border-default">
+      <section className="py-16 tick-rule">
         <div className="container-wide">
           <SectionMarker label="Skills" number="04/05" className="mb-8" />
 
@@ -299,7 +329,7 @@ export function ResumeContent() {
       </section>
 
       {/* Certifications Section */}
-      <section className="py-16 border-t border-border-default">
+      <section className="py-16 tick-rule">
         <div className="container-wide">
           <SectionMarker label="Certifications" number="05/05" className="mb-8" />
 
@@ -324,7 +354,7 @@ export function ResumeContent() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 border-t border-border-default">
+      <section className="py-24 tick-rule">
         <div className="container-wide text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -334,7 +364,7 @@ export function ResumeContent() {
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
               Want the PM who ships
-              <span className="font-serif italic font-normal lowercase"> and measures?</span>
+              <span className="font-display-serif italic font-normal lowercase gloss-serif"> and measures?</span>
             </h2>
             <p className="text-text-secondary mb-8 max-w-md mx-auto">
               I&apos;m actively looking for PM roles. Let&apos;s talk about what you&apos;re building
