@@ -6,10 +6,12 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatDate(date: string): string {
-  return new Date(date).toLocaleDateString('en-US', {
-    month: 'short',
-    year: 'numeric',
-  });
+  // Parse 'YYYY-MM' / 'YYYY-MM-DD' as a LOCAL date. Passing the raw string to
+  // `new Date()` parses it as UTC midnight, which renders as the previous month
+  // in negative-offset timezones (e.g. '2025-11' -> "Oct 2025" in Phoenix).
+  const [y, m, d] = date.split('-').map(Number);
+  const local = new Date(y, (m || 1) - 1, d || 1);
+  return local.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
 
 export function calculateDuration(start: string, end: string | 'Present'): string {
