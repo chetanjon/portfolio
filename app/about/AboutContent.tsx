@@ -1,8 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { SectionMarker } from '@/components/ui/SectionMarker';
+import SpotlightCard from '@/components/ui/SpotlightCard';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -47,9 +48,20 @@ const timeline = [
 ];
 
 export function AboutContent() {
+  const reduceMotion = useReducedMotion();
+
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+
+  // The timeline's signature scroll-linked motion: a spine that fills as the
+  // section scrolls through the viewport.
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: tlProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 75%', 'end 60%'],
+  });
+  const tlFill = useTransform(tlProgress, [0, 1], ['0%', '100%']);
 
   return (
     <>
@@ -99,7 +111,7 @@ export function AboutContent() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 leading-[0.95]">
                 About
                 <br />
-                <span className="font-serif italic font-normal lowercase">me</span>
+                <span className="font-display-serif italic font-normal lowercase gloss-serif">me</span>
               </h1>
 
               <p className="text-text-secondary leading-relaxed mb-6">
@@ -156,7 +168,7 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Values Section — spotlight cards */}
       <section className="py-24 bg-bg-secondary">
         <div className="container-wide">
           <motion.div
@@ -169,7 +181,7 @@ export function AboutContent() {
 
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-16">
               What I
-              <span className="font-serif italic font-normal lowercase"> believe in</span>
+              <span className="font-display-serif italic font-normal lowercase gloss-serif"> believe in</span>
             </h2>
           </motion.div>
 
@@ -182,22 +194,26 @@ export function AboutContent() {
                 viewport={{ once: false, amount: 0.2 }}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-6 border border-border-default rounded-lg hover:border-border-hover transition-colors"
               >
-                <span className="text-4xl font-display font-bold text-text-muted/30 mb-4 block">
-                  {v.number}
-                </span>
-                <p className="text-lg font-display font-semibold mb-2">
-                  &ldquo;{v.quote}&rdquo;
-                </p>
-                <p className="text-sm text-text-secondary leading-relaxed">{v.description}</p>
+                <SpotlightCard
+                  spotlightColor="rgba(107, 93, 173, 0.13)"
+                  className="h-full p-6 border border-border-default rounded-lg hover:border-border-hover transition-colors"
+                >
+                  <span className="text-4xl font-display font-bold text-text-muted/30 mb-4 block">
+                    {v.number}
+                  </span>
+                  <p className="text-lg font-display font-semibold mb-2">
+                    &ldquo;{v.quote}&rdquo;
+                  </p>
+                  <p className="text-sm text-text-secondary leading-relaxed">{v.description}</p>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Timeline Section */}
+      {/* Timeline Section — animated spine (the page's signature device) */}
       <section className="py-24">
         <div className="container-wide">
           <motion.div
@@ -210,24 +226,40 @@ export function AboutContent() {
 
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-16">
               My
-              <span className="font-serif italic font-normal lowercase"> path</span>
+              <span className="font-display-serif italic font-normal lowercase gloss-serif"> path</span>
             </h2>
           </motion.div>
 
-          <div className="max-w-2xl border-t border-border-default">
+          <div ref={timelineRef} className="relative max-w-2xl">
+            {/* Spine track + scroll-progress fill */}
+            <div className="absolute left-[7px] top-3 bottom-3 w-px bg-border-default" aria-hidden />
+            <motion.div
+              aria-hidden
+              style={{ height: reduceMotion ? '100%' : tlFill }}
+              className="absolute left-[7px] top-3 w-px bg-accent-primary origin-top"
+            />
+
             {timeline.map((item, i) => (
               <motion.div
-                key={item.title}
-                initial={{ opacity: 0, x: -30 }}
+                key={`${item.year}-${item.title}`}
+                initial={{ opacity: 0, x: -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="flex gap-8 py-6 border-b border-border-default"
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ duration: 0.5, delay: (i % 4) * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="relative grid grid-cols-[auto_1fr] gap-6 py-5"
               >
-                <span className="text-text-muted small-caps w-16 shrink-0">{item.year}</span>
-                <div>
-                  <h3 className="font-display font-semibold">{item.title}</h3>
-                  <p className="text-sm text-text-muted">{item.place}</p>
+                {/* Node on the spine */}
+                <div className="relative w-4 flex justify-center">
+                  <span className="mt-[7px] w-[15px] h-[15px] rounded-full border-2 border-accent-primary bg-bg-primary z-10" />
+                </div>
+                <div className="flex flex-col sm:flex-row sm:gap-6">
+                  <span className="small-caps text-text-muted sm:w-24 shrink-0 mb-1 sm:mb-0">
+                    {item.year}
+                  </span>
+                  <div>
+                    <h3 className="font-display font-semibold">{item.title}</h3>
+                    <p className="text-sm text-text-muted">{item.place}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -235,65 +267,67 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* Beyond Work Section */}
-      <section className="py-24 bg-bg-secondary">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-          >
-            <SectionMarker number="04" label="Personal" className="mb-8" />
+      {/* Beyond Work Section — the page's one dark-contrast band */}
+      <div className="dark">
+        <section className="py-24 bg-bg-secondary text-text-primary">
+          <div className="container-wide">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.7 }}
+            >
+              <SectionMarker number="04" label="Personal" className="mb-8" />
 
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-              Beyond
-              <span className="font-serif italic font-normal lowercase"> work</span>
-            </h2>
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                Beyond
+                <span className="font-display-serif italic font-normal lowercase gloss-serif"> work</span>
+              </h2>
 
-            <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-              The stuff that keeps me sharp outside of product. Heavy on input, heavy on output,
-              and a lot of coffee in between.
-            </p>
-          </motion.div>
+              <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+                The stuff that keeps me sharp outside of product. Heavy on input, heavy on output,
+                and a lot of coffee in between.
+              </p>
+            </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-border-default border border-border-default">
-            {[
-              { name: 'Books', detail: 'Behavioral econ, founder memoirs, anything about how people actually decide.' },
-              { name: 'Running', detail: 'Long, slow, alone. The best PRD edits happen around mile three.' },
-              { name: 'Coffee', detail: 'Mildly obsessed. Pour-over at home, espresso anywhere worth lining up for.' },
-              { name: 'Gym', detail: 'Five days a week. Hard physical work is the cheapest reset button I know.' },
-              { name: 'Friends & parties', detail: 'Throwing them, hosting them, ending up at them. The best teams I have built started over food.' },
-              { name: 'Cricket', detail: 'Die-hard India fan. The closest I get to letting a result actually ruin my week.' },
-            ].map((hobby, i) => (
-              <motion.div
-                key={hobby.name}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
-                className="bg-bg-secondary p-6 md:p-8 hover:bg-bg-primary transition-colors"
-              >
-                <p className="font-serif italic text-2xl md:text-3xl mb-3 lowercase">{hobby.name}</p>
-                <p className="text-sm text-text-secondary leading-relaxed">{hobby.detail}</p>
-              </motion.div>
-            ))}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-border-default border border-border-default">
+              {[
+                { name: 'Books', detail: 'Behavioral econ, founder memoirs, anything about how people actually decide.' },
+                { name: 'Running', detail: 'Long, slow, alone. The best PRD edits happen around mile three.' },
+                { name: 'Coffee', detail: 'Mildly obsessed. Pour-over at home, espresso anywhere worth lining up for.' },
+                { name: 'Gym', detail: 'Five days a week. Hard physical work is the cheapest reset button I know.' },
+                { name: 'Friends & parties', detail: 'Throwing them, hosting them, ending up at them. The best teams I have built started over food.' },
+                { name: 'Cricket', detail: 'Die-hard India fan. The closest I get to letting a result actually ruin my week.' },
+              ].map((hobby, i) => (
+                <motion.div
+                  key={hobby.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.45, delay: (i % 3) * 0.08 }}
+                  className="bg-bg-secondary p-6 md:p-8 hover:bg-bg-primary transition-colors"
+                >
+                  <p className="font-serif italic text-2xl md:text-3xl mb-3 lowercase">{hobby.name}</p>
+                  <p className="text-sm text-text-secondary leading-relaxed">{hobby.detail}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-text-secondary leading-relaxed max-w-2xl mt-12"
+            >
+              Engineering background keeps me grounded in &ldquo;is this actually buildable?&rdquo;
+              Business education keeps me asking &ldquo;but does this move the needle?&rdquo; The best
+              product decisions sit at that intersection.
+            </motion.p>
           </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-text-secondary leading-relaxed max-w-2xl mt-12"
-          >
-            Engineering background keeps me grounded in &ldquo;is this actually buildable?&rdquo;
-            Business education keeps me asking &ldquo;but does this move the needle?&rdquo; The best
-            product decisions sit at that intersection.
-          </motion.p>
-        </div>
-      </section>
+        </section>
+      </div>
     </>
   );
 }
