@@ -10,6 +10,10 @@ import {
   type MotionValue,
 } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+// WebGL underlay — client-only, lazy. Skipped under reduced motion (below).
+const Aurora = dynamic(() => import('@/components/ui/Aurora'), { ssr: false });
 
 type LiveRow = {
   count: string;
@@ -64,11 +68,21 @@ export function Hero() {
       ref={sectionRef}
       className="relative w-full overflow-hidden bg-bg-primary"
     >
-      {/* Giant parallax background numeral — anchors the "three live builds" claim. */}
+      {/* Aurora underlay — animated brand-color wash, masked away from the text
+          column and opacity-capped so the copy stays legible. Skipped entirely
+          under reduced motion. */}
+      {!reduceMotion && (
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.16] dark:opacity-[0.30] [mask-image:linear-gradient(to_bottom,black,transparent_72%)]">
+          <Aurora colorStops={['#6B5DAD', '#3F8C73', '#B8A9D4']} amplitude={0.8} speed={0.3} blend={0.6} />
+        </div>
+      )}
+
+      {/* Giant parallax numeral — now iridescent prism, the hero's one prism
+          moment. Anchors the "three live builds" claim. */}
       <motion.div
         aria-hidden
         style={{ y: safeBgNumY }}
-        className="pointer-events-none select-none absolute top-0 right-0 font-display font-bold leading-none text-[18rem] sm:text-[24rem] md:text-[32rem] lg:text-[40rem] text-bg-secondary opacity-60 -mt-12 -mr-12 md:-mr-20"
+        className="gradient-text-prism pointer-events-none select-none absolute top-0 right-0 z-0 font-display font-bold leading-none text-[18rem] sm:text-[24rem] md:text-[32rem] lg:text-[40rem] opacity-50 -mt-12 -mr-12 md:-mr-20"
       >
         3
       </motion.div>
@@ -105,9 +119,11 @@ export function Hero() {
             className="lg:col-span-5"
           >
             <h1 className="font-display font-bold tracking-tight leading-[0.95] text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem]">
-              Shipped &amp;
+              <span className="gradient-text-glossy">Shipped</span> &amp;
               <br />
-              <span className="font-serif italic font-normal lowercase">available.</span>
+              <span className="font-display-serif italic font-normal lowercase gloss-serif">
+                available.
+              </span>
             </h1>
 
             <p className="small-caps text-text-muted leading-relaxed mt-8 md:mt-10 max-w-md">
