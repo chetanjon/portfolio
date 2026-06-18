@@ -35,10 +35,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://chetanjonnalagadda.com'),
   title: {
     default: 'Chetan Jonnalagadda | Product Manager',
-    template: '%s | CJ',
+    template: '%s | Chetan Jonnalagadda',
   },
   description:
-    'Product Manager who ships 0→live: a consumer iOS app live on the App Store, an AI review analyzer (FrictionLens), and a B2B marketplace grown 20 → 75+ vendors with 2x GMV. Owns product, design, and brand. CSPO certified. MS in Management of Technology at ASU.',
+    'Product manager who designs, builds, and ships consumer and AI products. Shipped Aatram (consumer iOS app, 240 organic downloads at 18% App Store conversion) and FrictionLens (an AI review tool), and scaled a B2B marketplace 20 → 75+ vendors with 2× GMV. CSPO certified. MS in Management of Technology at ASU.',
   keywords: [
     'Chetan Jonnalagadda',
     'Product Manager',
@@ -64,14 +64,14 @@ export const metadata: Metadata = {
     url: 'https://chetanjonnalagadda.com',
     title: 'Chetan Jonnalagadda | Product Manager',
     description:
-      'Product Manager who ships 0→live. Scaled a B2B marketplace 20 → 75+ vendors and 2× GMV, shipped a consumer iOS app live on the App Store (5.0 launch rating), and built FrictionLens, an AI review intelligence tool.',
+      'Product manager who designs, builds, and ships. Two consumer and AI products live (Aatram at 240 organic downloads, 18% App Store conversion) plus a B2B marketplace scaled 3.75× with 2× GMV.',
     siteName: 'Chetan Jonnalagadda',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Chetan Jonnalagadda | Product Manager',
     description:
-      'Product Manager who ships 0→live. Consumer iOS app on the App Store, FrictionLens AI review analyzer, and a B2B marketplace scaled 3.75x with 2x GMV.',
+      'Product manager who designs and ships. Consumer iOS app + an AI review tool live, plus a B2B marketplace scaled 3.75× with 2× GMV.',
   },
   robots: {
     index: true,

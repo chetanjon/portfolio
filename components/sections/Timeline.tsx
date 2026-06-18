@@ -10,7 +10,7 @@ const timelineData: TimelineItem[] = [
     year: '2026',
     title: 'Co-Founder & Product Manager',
     subtitle: 'Aatram (iOS App · Live on App Store)',
-    description: 'Co-led product on a 3-person team across SwiftUI, SwiftData, WidgetKit, and FamilyControls. 5.0 launch rating, 25-user closed beta, 16 archetype interviews. Owned UI/UX, brand, and aatram.com end-to-end.',
+    description: 'Co-led product on a 3-person team across SwiftUI, SwiftData, WidgetKit, and FamilyControls. 240 organic downloads at an 18% App Store conversion rate, 25-user closed beta, 16 archetype interviews. Owned UI/UX, brand, and aatram.com end-to-end.',
     type: 'work',
   },
   {

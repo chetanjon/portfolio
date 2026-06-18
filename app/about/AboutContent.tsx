@@ -38,13 +38,13 @@ const timeline = [
   { year: '2019–2023', title: 'B.Tech in Electrical & Electronics Engineering', place: 'JNTU Hyderabad' },
   { year: '2023', title: 'Product Ops Intern', place: 'Gangothri Nutrients · Excel sales model, FAQ authoring' },
   { year: '2023', title: 'PM Intern → Product Manager', place: 'IKT India · B2B handloom marketplace (20 → 75+ vendors)' },
-  { year: '2024', title: 'M.S. in Management of Technology', place: 'Arizona State University' },
+  { year: '2024', title: 'Began M.S. in Management of Technology', place: 'Arizona State University' },
   { year: '2025', title: 'Innovation Index Analysis', place: 'ASU MOT · G20 vs non-G20 (1,862 records)' },
   { year: '2025', title: 'CSPO Certified', place: 'Scrum Alliance' },
   { year: '2025', title: 'Digital Product Management', place: 'University of Virginia (Coursera)' },
   { year: '2026', title: 'Launched FrictionLens', place: 'frictionlens.net · AI review analyzer' },
   { year: '2026', title: 'Co-Founder & Product Manager', place: 'Aatram · iOS app live on the App Store' },
-  { year: '2026', title: 'M.S. Graduation', place: 'Arizona State University' },
+  { year: '2026', title: 'Graduated M.S., Management of Technology', place: 'Arizona State University · 3.7 GPA' },
 ];
 
 export function AboutContent() {

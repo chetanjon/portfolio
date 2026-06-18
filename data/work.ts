@@ -19,7 +19,7 @@ export const workExperiences: WorkExperience[] = [
       'Drove the organic launch to 240 first-time downloads at an 18% App Store conversion rate in the first four months, roughly 4–5× the platform average, entirely through LinkedIn, Instagram, and X content with zero ad spend',
       'Co-built the codebase across 158 commits with a 3-person team on SwiftUI, SwiftData, Supabase, and Apple Foundation Models while owning UI/UX, brand voice, an 18-component design system with hex-locked tokens, motion language, and aatram.com end-to-end',
       'Ran a 25-user closed beta and 16 archetype interviews that drove V2 priorities: killed Plan Mode after Google Calendar overlap surfaced, encoded "no leaderboards" at the schema level so ranking is a compile-time impossibility, and chose stopwatch over countdown because deadlines increase dread for avoidance-prone users',
-      'Specced an on-device AI nudge engine on Apple Foundation Models with the Intelligent Notification Engine (5 escalating touches per task), PredictiveEngine (abandonment-risk detection above 0.7), and UrgencyScorer; task content never leaves the device by structural type constraint',
+      'Specced an on-device AI nudge engine on Apple Foundation Models with the Intelligent Notification Engine (up to 5 escalating touches per task, tuned in a 25-user beta), PredictiveEngine (abandonment-risk detection above 0.7), and UrgencyScorer; task content never leaves the device by structural type constraint',
       'Drove the pre-submission audit closing 22 findings; shepherded build 3 through App Review with screen-recording proof for guideline 5.1.1(v); owned PostHog instrumentation across session, drop-off, retention, and onboarding funnel surfaces',
     ],
     metrics: [

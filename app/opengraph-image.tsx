@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'Chetan Jonnalagadda · Product Manager who ships 0→live. B2B marketplace scaled 3.75× with 2× GMV. Consumer iOS app live on the App Store at a 5.0 launch rating.';
+export const alt = 'Chetan Jonnalagadda · Product manager who designs, builds, and ships consumer and AI products. 240 organic downloads at 18% App Store conversion, plus a B2B marketplace scaled 3.75× with 2× GMV.';
 export const size = {
   width: 1200,
   height: 630,
@@ -46,7 +46,7 @@ export default function OGImage() {
                 width: 56,
                 height: 56,
                 borderRadius: 14,
-                backgroundColor: '#E07A5F',
+                backgroundColor: '#B8A9D4',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -104,7 +104,7 @@ export default function OGImage() {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div
             style={{
-              color: '#E07A5F',
+              color: '#B8A9D4',
               fontSize: 16,
               letterSpacing: '0.28em',
               textTransform: 'uppercase',
@@ -125,10 +125,10 @@ export default function OGImage() {
               maxWidth: 1000,
             }}
           >
-            <span>Scaled a B2B marketplace&nbsp;</span>
-            <span style={{ color: '#E07A5F' }}>3.75× with 2× GMV.&nbsp;</span>
-            <span>Shipped a consumer iOS app at a&nbsp;</span>
-            <span style={{ color: '#E07A5F' }}>5.0 launch rating.</span>
+            <span>Designs, builds, and ships consumer &amp; AI products.&nbsp;</span>
+            <span style={{ color: '#B8A9D4' }}>Live on the App Store.&nbsp;</span>
+            <span>Plus a B2B marketplace scaled&nbsp;</span>
+            <span style={{ color: '#B8A9D4' }}>3.75× with 2× GMV.</span>
           </div>
         </div>
 
@@ -143,9 +143,9 @@ export default function OGImage() {
         >
           <div style={{ display: 'flex', gap: 48 }}>
             {[
-              { v: '5.0★', l: 'App Store launch' },
-              { v: '20→75+', l: 'Vendor growth' },
-              { v: '25→40%', l: 'Gross margin' },
+              { v: '18%', l: 'App Store CVR' },
+              { v: '240', l: 'Organic downloads' },
+              { v: '3.75×', l: 'Vendor growth' },
             ].map((m) => (
               <div key={m.l} style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ color: '#F5F5F5', fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>
