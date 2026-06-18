@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'figma',
     'liquid-glass',
     'notion',
-    'perplexity',
     'rivian',
     'sonos',
     'spotify',

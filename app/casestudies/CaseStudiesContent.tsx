@@ -204,20 +204,6 @@ const caseStudies: Study[] = [
     readMin: 7,
   },
   {
-    slug: 'perplexity',
-    company: 'Perplexity AI',
-    title: 'The $20 Billion Subscription Gamble',
-    description:
-      'Perplexity built the fastest-growing AI subscription business, then silently gutted its Pro plan, swapped premium models for cheaper ones, and pushed users toward a 10× more expensive tier.',
-    tags: ['Product Teardown', 'Pricing Strategy', 'AARRR', 'Competitive Analysis', 'Trust'],
-    metric: { value: '$20B', label: 'Valuation' },
-    accentColor: '#6C5CE7',
-    bgColor: '#f0eeff',
-    category: 'Teardown',
-    readMin: 7,
-    startup: true,
-  },
-  {
     slug: 'sonos',
     company: 'Sonos',
     title: 'When the Music Stopped',
@@ -305,7 +291,6 @@ const DATES: Record<string, string> = {
   spotify: '2026-03-20',
   figma: '2026-03-17',
   notion: '2026-03-17',
-  perplexity: '2026-03-17',
   sonos: '2026-03-17',
   'tiktok-shop': '2026-03-17',
   duolingo: '2026-03-14',
