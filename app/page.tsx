@@ -3,6 +3,7 @@ import { SelectedProducts } from '@/components/sections/SelectedProducts';
 import { TheNumber } from '@/components/sections/TheNumber';
 import { Works } from '@/components/sections/Works';
 import { HowIWork } from '@/components/sections/HowIWork';
+import { Thinking } from '@/components/sections/Thinking';
 import { DreadCheck } from '@/components/sections/DreadCheck';
 import { CTA } from '@/components/sections/CTA';
 
@@ -14,6 +15,7 @@ export default function Home() {
       <TheNumber />
       <Works />
       <HowIWork />
+      <Thinking />
       <DreadCheck />
       <CTA />
     </>

@@ -7,6 +7,7 @@ import { CountUp } from '@/components/ui/CountUp';
 
 interface ThinkingPiece {
   slug: string;
+  href: string;
   company: string;
   category: 'Teardown' | 'Thinking';
   headline: string;
@@ -15,36 +16,41 @@ interface ThinkingPiece {
   metricLabel: string;
 }
 
+// The hand-built teardowns: firsthand research, custom-designed pages. The
+// rarest, most differentiated work, so it leads the homepage teaser.
 const pieces: ThinkingPiece[] = [
   {
-    slug: 'notion',
-    company: 'Notion',
-    category: 'Thinking',
-    headline: 'Found the $600M activation paradox',
+    slug: 'waymo',
+    href: '/waymo-teardown',
+    company: 'Waymo',
+    category: 'Teardown',
+    headline: 'Took apart one real robotaxi ride',
     problem:
-      "8 of 10 interviewees learned Notion's value from YouTube, not the product. The flexibility that makes it powerful makes it overwhelming. Mapped the AARRR funnel, proposed 5 RICE-scored fixes.",
-    metric: { value: 50, prefix: '$40–', suffix: 'M' },
-    metricLabel: 'Est. incremental ARR',
+      'One 106° Phoenix ride and a 12-minute support call traced two of Waymo’s most common complaints to a single choice: optimize fleet utilization over rider time. Three buildable fixes, with the dispatch and pricing math behind each.',
+    metric: { value: 20, suffix: ' min' },
+    metricLabel: 'Wait on a 106° curb',
   },
   {
-    slug: 'cursor',
-    company: 'Cursor (Anysphere)',
+    slug: 'ditto',
+    href: '/ditto-teardown',
+    company: 'Ditto',
     category: 'Teardown',
-    headline: 'Reverse-engineered the $2B/yr SaaS play',
+    headline: 'Found the leak the counter hides',
     problem:
-      'Four students forked VS Code and grew with almost no traditional marketing, while every model provider funds them and competes with them. Mapped the moat and the crisis pivot.',
-    metric: { value: 2, suffix: 'B' },
-    metricLabel: 'Annualized revenue',
+      'Ditto flaunts 143,670 signups while its own users keep saying they never got matched. Traced the real leak to match liquidity, and showed how a flyer-driven growth engine makes it worse.',
+    metric: { value: 143670 },
+    metricLabel: 'Signed up. How many matched?',
   },
   {
-    slug: 'spotify',
-    company: 'Spotify',
+    slug: 'wispr-flow',
+    href: '/wispr-flow-teardown',
+    company: 'Wispr Flow',
     category: 'Teardown',
-    headline: 'Why Wrapped beats every retention playbook',
+    headline: 'Pressure-tested a one-line promise',
     problem:
-      'Discover Weekly (pull) and Wrapped (push) run on different reward functions. Wrapped works because it treats listening data as identity, not a stats page. Broke down all three ML systems underneath.',
-    metric: { value: 751, suffix: 'M' },
-    metricLabel: 'Monthly active users analyzed',
+      'Best-in-class dictation, but the promise (never rewrite a word) breaks three ways after transcription. The 4.8-vs-2.7 ratings split is trust draining out the moment the trial ends.',
+    metric: { value: 2.7, decimals: 1 },
+    metricLabel: 'Trustpilot, vs 4.8 on the App Store',
   },
 ];
 
@@ -59,10 +65,11 @@ export function Thinking() {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5 }}
           >
-            <SectionMarker number="04" label="Teardowns & Thinking" />
-            <h2 className="font-serif text-2xl md:text-3xl mt-4">Teardowns &amp; thinking</h2>
+            <SectionMarker number="04" label="Teardowns" />
+            <h2 className="font-serif text-2xl md:text-3xl mt-4">Products, taken apart.</h2>
             <p className="text-sm text-text-tertiary mt-2 max-w-md">
-              How I take live products apart, and how I&apos;d build the fixes.
+              I tear down products I actually use, from the outside in, then build the fix.
+              Firsthand research, not hot takes.
             </p>
           </motion.div>
           <motion.div
@@ -89,7 +96,7 @@ export function Thinking() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <Link href={`/casestudies/${piece.slug}`} className="block group h-full">
+              <Link href={piece.href} className="block group h-full">
                 <motion.div
                   whileHover={{ y: -4 }}
                   whileTap={{ y: -2 }}

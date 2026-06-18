@@ -126,8 +126,9 @@ export function Hero() {
               </span>
             </h1>
 
-            <p className="small-caps text-text-muted leading-relaxed mt-8 md:mt-10 max-w-md">
-              Product manager. Engineering training, designer&rsquo;s eye.
+            <p className="text-base md:text-lg text-text-secondary leading-relaxed mt-8 md:mt-10 max-w-md">
+              A product manager who designs and ships. Two consumer and AI products live, plus a
+              B2B marketplace I scaled <span className="text-text-primary font-medium">3.75×</span>.
             </p>
           </motion.div>
 
@@ -139,7 +140,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xs uppercase tracking-widest text-right max-w-xs ml-auto mb-10 text-text-muted"
             >
-              Three live builds. Two B2B marketplaces.
+              Three builds. Two mine, one I scaled 3.75&times;.
             </motion.p>
 
             <motion.div
