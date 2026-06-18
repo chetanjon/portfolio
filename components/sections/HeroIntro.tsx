@@ -1,18 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { motion, useAnimationControls, useReducedMotion } from 'framer-motion';
 import { CafeRacer } from '@/components/ui/CafeRacer';
 import { RecordPlayer } from '@/components/ui/RecordPlayer';
 import { createEngine, type Engine } from '@/lib/engineAudio';
 
-const SESSION_KEY = 'hero-bike-shown';
-const BIKE_W = 150;
-const BIKE_H = (132 / 240) * BIKE_W; // ~82.5, preserves the SVG aspect
+const BIKE_W = 215;
+const BIKE_H = (160 / 340) * BIKE_W; // ~101, preserves the SVG aspect
+const WHEEL_BOTTOM = 155.5 / 160; // where the tires sit within the SVG box
 
-// The bike parks in the left band of the hero, clear of the top-right pill and
-// the prism numeral. Horizontal position is section-relative.
-const PARK_LEFT = 'clamp(20px, 20vw, 320px)';
+// Parks in the left band of the hero, clear of the top-right pill + prism numeral.
+const PARK_LEFT = 'clamp(28px, 26vw, 420px)';
 
 export function HeroIntro({
   sectionRef,
@@ -22,13 +21,13 @@ export function HeroIntro({
   anchorRef: React.RefObject<HTMLDivElement | null>;
 }) {
   const reduceMotion = useReducedMotion();
+  const controls = useAnimationControls();
   const [roadY, setRoadY] = useState<number | null>(null);
   const [driving, setDriving] = useState(false);
   const [audioOn, setAudioOn] = useState(false);
   const engineRef = useRef<Engine | null>(null);
 
-  // Measure the divider line (the masthead's bottom border) so the bike's wheels
-  // sit exactly on it.
+  // Measure the divider line (the masthead's bottom border) so the tires sit on it.
   useEffect(() => {
     const measure = () => {
       const sec = sectionRef.current;
@@ -41,25 +40,32 @@ export function HeroIntro({
     return () => window.removeEventListener('resize', measure);
   }, [sectionRef, anchorRef]);
 
-  // Silent drive-in, once per session (skipped under reduced motion).
-  useEffect(() => {
-    if (reduceMotion) return;
-    let shown = false;
-    try {
-      shown = sessionStorage.getItem(SESSION_KEY) === '1';
-    } catch {
-      /* private mode — just play it */
+  // Drive in from off-screen left and decelerate to a stop on the line.
+  const driveIn = useCallback(async () => {
+    if (reduceMotion) {
+      controls.set({ x: 0 });
+      return;
     }
-    if (shown) return;
     setDriving(true);
+    controls.set({ x: -1400 });
     try {
-      sessionStorage.setItem(SESSION_KEY, '1');
+      await controls.start({ x: 0, transition: { duration: 2.0, ease: [0.33, 1, 0.68, 1] } });
     } catch {
-      /* noop */
+      /* interrupted */
     }
-    const t = setTimeout(() => setDriving(false), 2600);
+    setDriving(false);
+  }, [controls, reduceMotion]);
+
+  // Run the drive-in on every load, once the line is measured. A short delay
+  // lets the page settle first so the entrance is actually seen (not finished
+  // during hydration).
+  const drivenRef = useRef(false);
+  useEffect(() => {
+    if (roadY === null || drivenRef.current) return;
+    drivenRef.current = true;
+    const t = setTimeout(() => void driveIn(), 550);
     return () => clearTimeout(t);
-  }, [reduceMotion]);
+  }, [roadY, driveIn]);
 
   // Tear down audio on unmount.
   useEffect(() => {
@@ -69,7 +75,7 @@ export function HeroIntro({
     };
   }, []);
 
-  // Cut the engine if the tab goes to the background.
+  // Cut the engine when the tab goes to the background.
   useEffect(() => {
     const onVis = () => {
       if (document.hidden && audioOn) {
@@ -94,22 +100,16 @@ export function HeroIntro({
     } catch {
       /* visuals still work without audio */
     }
-    setAudioOn(true);
-    if (!reduceMotion) {
-      // brief visual rev: spin the wheels + smoke for a beat
-      setDriving(true);
-      setTimeout(() => setDriving(false), 1100);
-    }
+    setAudioOn(true); // engine running -> wheels keep spinning + smoke (idle)
   };
 
+  // Wheels spin + smoke whenever the bike is "running": during the drive-in,
+  // or while the engine SFX is on.
   const active = driving || audioOn;
   const spinning = active && !reduceMotion;
   const rpLeft = `calc(${PARK_LEFT} + ${BIKE_W + 18}px)`;
 
-  if (roadY === null) {
-    // Render nothing until measured; placement is otherwise a guess.
-    return <div className="hidden" />;
-  }
+  if (roadY === null) return <div className="hidden" />;
 
   return (
     <div className="hidden sm:block">
@@ -118,16 +118,15 @@ export function HeroIntro({
         <motion.div
           aria-hidden
           className="absolute"
-          style={{ top: roadY - BIKE_H * 0.92, left: PARK_LEFT, width: BIKE_W, height: BIKE_H }}
-          initial={reduceMotion ? false : { x: -1400 }}
-          animate={{ x: 0 }}
-          transition={reduceMotion ? { duration: 0 } : { duration: 2.4, ease: [0.16, 1, 0.3, 1] }}
+          style={{ top: roadY - BIKE_H * WHEEL_BOTTOM, left: PARK_LEFT, width: BIKE_W, height: BIKE_H }}
+          initial={reduceMotion ? { x: 0 } : { x: -1400 }}
+          animate={controls}
         >
           <div className="relative h-full w-full">
             <CafeRacer spinning={spinning} className="h-full w-full text-text-primary" />
             {active && !reduceMotion && (
-              <div className="absolute" style={{ left: BIKE_W * 0.1, top: BIKE_H * 0.72 }}>
-                {[14, 18, 15, 20, 16].map((size, i) => (
+              <div className="absolute" style={{ left: BIKE_W * 0.09, top: BIKE_H * 0.72 }}>
+                {[16, 20, 17, 22, 18].map((size, i) => (
                   <span
                     key={i}
                     className="cr-smoke absolute block rounded-full"
@@ -137,7 +136,7 @@ export function HeroIntro({
                       marginLeft: -size / 2,
                       marginTop: -size / 2,
                       background:
-                        'radial-gradient(circle, rgba(120,120,132,0.7), rgba(120,120,132,0.18) 55%, rgba(120,120,132,0))',
+                        'radial-gradient(circle, rgba(120,120,132,0.72), rgba(120,120,132,0.18) 55%, rgba(120,120,132,0))',
                       animationDelay: `${i * 0.3}s`,
                     }}
                   />
