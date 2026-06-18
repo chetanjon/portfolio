@@ -11,6 +11,7 @@ import {
 } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import { HeroIntro } from '@/components/sections/HeroIntro';
 
 // WebGL underlay — client-only, lazy. Skipped under reduced motion (below).
 const Aurora = dynamic(() => import('@/components/ui/Aurora'), { ssr: false });
@@ -56,6 +57,7 @@ const REVEAL_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 export function Hero() {
   const reduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
+  const mastheadRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -92,6 +94,7 @@ export function Hero() {
             The global header already carries the wordmark, so a second
             "Chetan Jonnalagadda" here was redundant. */}
         <motion.div
+          ref={mastheadRef}
           initial={reduceMotion ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -217,6 +220,10 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Cinematic café-racer intro — drives in on first load, the record
+          player replays it with engine SFX. Hidden on mobile + reduced motion. */}
+      <HeroIntro sectionRef={sectionRef} anchorRef={mastheadRef} />
     </section>
   );
 }
