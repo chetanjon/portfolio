@@ -777,6 +777,19 @@ input[type="color"]::-webkit-color-swatch {
   .tick-sweep { animation: none !important; }
 }
 
+/* ─── Now-playing equalizer bars ────────────────────────────────────────────── */
+@keyframes eq-bounce {
+  0%, 100% { transform: scaleY(0.28); }
+  50% { transform: scaleY(1); }
+}
+.eq-bar {
+  transform-origin: bottom;
+  animation: eq-bounce 0.9s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .eq-bar { animation: none; transform: scaleY(0.6); }
+}
+
 /* ─── Aurora WebGL underlay ─────────────────────────────────────────────────
    Fills its (positioned) parent. Mounted only on the hero, behind the content
    layer, masked + opacity-capped at the call site so text stays legible. */

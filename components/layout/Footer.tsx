@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { personalInfo } from '@/data/personal';
 import { navItems } from '@/lib/constants';
+import { NowPlaying } from '@/components/ui/NowPlaying';
 
 export function Footer() {
   const pathname = usePathname();
@@ -55,13 +56,18 @@ export function Footer() {
         </div>
 
         {/* Email highlight */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <a
             href={`mailto:${personalInfo.email}`}
             className="text-xs font-bold tracking-wider uppercase border-b-2 border-current pb-0.5 hover:opacity-70 transition-opacity"
           >
             {personalInfo.email.toUpperCase()}
           </a>
+        </div>
+
+        {/* Now playing — self-hides until Spotify is connected */}
+        <div className="flex justify-center mb-16">
+          <NowPlaying />
         </div>
 
         {/* Large typography */}
