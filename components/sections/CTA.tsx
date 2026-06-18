@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, FileText } from 'lucide-react';
+import { ArrowUpRight, FileText, Linkedin } from 'lucide-react';
 import ResumeModal from '@/components/ui/ResumeModal';
+import { personalInfo } from '@/data/personal';
 
 export function CTA() {
   const [resumeOpen, setResumeOpen] = useState(false);
@@ -31,18 +32,28 @@ export function CTA() {
             </h2>
 
             <p className="text-sm md:text-base text-text-secondary max-w-md mx-auto">
-              Product manager. B2B marketplaces, AI products, 0-to-1, consumer iOS.
-              Based in Phoenix, AZ. Open to relocation.
+              A product manager who designs and ships consumer and AI products, with a B2B
+              growth track record. Based in Phoenix, AZ. Open to relocation.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-3 pt-2">
               <a
-                href="mailto:jonnalagadda8800@gmail.com?subject=Product%20role%20%E2%80%94%20intro"
+                href="mailto:jonnalagadda8800@gmail.com?subject=PM%20role%20intro"
                 aria-label="Email Chetan about a PM role"
                 className="cta-glow inline-flex items-center gap-2 px-6 py-3 bg-text-primary text-bg-primary rounded-full text-xs uppercase tracking-widest font-medium hover:opacity-80"
               >
-                Email me
+                Email me about the role
                 <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chetan on LinkedIn"
+                className="cta-glow inline-flex items-center gap-2 px-6 py-3 border border-border-default rounded-full text-xs uppercase tracking-widest font-medium hover:border-text-primary"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+                LinkedIn
               </a>
               <button
                 onClick={() => setResumeOpen(true)}
