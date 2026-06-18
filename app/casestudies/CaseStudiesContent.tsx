@@ -242,6 +242,20 @@ const caseStudies: Study[] = [
     category: 'Teardown',
     readMin: 7,
   },
+  {
+    slug: 'innovation-index',
+    href: '/casestudies/innovation-index',
+    company: 'ASU · Research',
+    title: 'Innovation Index Analysis',
+    description:
+      'A Python analysis on a 1,862-record innovation dataset (130 countries, 13 years, merged from WIPO, World Bank, and UNESCO). t-tests and ANOVA surfaced 15 non-G20 countries scoring above the G20 average, and a regression found education explains only 7.3% of innovation variance, a counter-finding to the dominant policy narrative.',
+    tags: ['Python', 'Statistical Analysis', 'ANOVA', 'Regression', 'Policy'],
+    metric: { value: '1,862', label: 'Records · 130 countries · 13 years' },
+    accentColor: '#0E7C6B',
+    bgColor: '#E6F5F1',
+    category: 'Thinking',
+    readMin: 6,
+  },
 ];
 
 // 'Startup' is a cross-cutting lens, not a category: it re-slices the same
@@ -296,6 +310,7 @@ const DATES: Record<string, string> = {
   duolingo: '2026-03-14',
   'liquid-glass': '2026-03-14',
   rivian: '2026-03-14',
+  'innovation-index': '2025-11-15',
   'ikt-india': '2024-08-01',
 };
 

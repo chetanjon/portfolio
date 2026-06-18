@@ -20,7 +20,7 @@ export const projects: Project[] = [
     type: 'personal',
     year: '2026',
     status: 'completed',
-    link: '/notion-teardown',
+    link: '/casestudies/notion',
     metrics: [
       { value: '10', label: 'Qualitative Interviews', context: 'across 5 user segments' },
       { value: '8 / 10', label: 'Learned Value From YouTube', context: 'not in-product onboarding' },

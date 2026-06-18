@@ -223,7 +223,7 @@ export function Header() {
                 className="mt-16 text-center"
               >
                 <p className="small-caps text-text-muted">
-                  B2B Marketplaces / CSPO / ASU
+                  Ships consumer &amp; AI products / CSPO / ASU
                 </p>
               </motion.div>
             </div>

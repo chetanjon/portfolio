@@ -5,7 +5,6 @@ export const navItems: NavItem[] = [
   { href: '/work', label: 'Work' },
   { href: '/casestudies', label: 'Case Studies' },
   { href: '/craft', label: 'Craft' },
-  { href: '/projects', label: 'Projects' },
   { href: '/about', label: 'About' },
   { href: '/resume', label: 'Resume' },
   { href: '/contact', label: 'Contact' },
@@ -13,9 +12,9 @@ export const navItems: NavItem[] = [
 
 export const siteConfig = {
   name: 'CJ',
-  title: 'CJ | Product Manager',
+  title: 'Chetan Jonnalagadda | Product Manager',
   description:
-    'Product Manager focused on B2B marketplace growth, seller experience, and data-driven product development. CSPO certified, MS in Management of Technology at ASU.',
+    'Product manager who designs, builds, and ships consumer and AI products, and scaled a B2B marketplace 3.75x. CSPO certified, MS in Management of Technology at ASU.',
   url: 'https://chetanjonnalagadda.com',
   ogImage: '/og-image.png',
 };
