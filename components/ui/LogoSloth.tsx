@@ -80,18 +80,22 @@ export function LogoSloth({ className, style }: { className?: string; style?: Re
 
       {/* head */}
       <ellipse cx="30" cy="62" rx="13" ry="12" fill="url(#ls-face)" />
-      {/* signature dark stripes sweeping up-and-back from the eyes */}
-      <path d="M19 50 C 16 55 18 62 22 66 C 25 62 26 57 25 53 C 23 51 21 50 19 50 Z" fill={MASK} />
-      <path d="M41 50 C 44 55 42 62 38 66 C 35 62 34 57 35 53 C 37 51 39 50 41 50 Z" fill={MASK} />
-      {/* small eyes */}
-      <circle cx="25" cy="63" r="2.1" fill={EYE} />
-      <circle cx="35" cy="63" r="2.1" fill={EYE} />
-      <circle cx="25.7" cy="62.3" r="0.6" fill="#fff" opacity={0.85} />
-      <circle cx="35.7" cy="62.3" r="0.6" fill="#fff" opacity={0.85} />
-      {/* dark muzzle, nose + permanent smile */}
-      <ellipse cx="30" cy="70" rx="6.5" ry="4.6" fill={MUZZLE} opacity={0.7} />
-      <ellipse cx="30" cy="68" rx="3.3" ry="2.1" fill={NOSE} />
-      <path d="M25.5 73 Q30 77 34.5 73" fill="none" stroke={NOSE} strokeWidth={1.3} strokeLinecap="round" />
+      {/* pale muzzle the dark nose sits on */}
+      <ellipse cx="30" cy="66" rx="8.5" ry="7" fill={FACE} opacity={0.5} />
+      {/* the sloth mask — soft dark eye-patches angling gently back from the eyes */}
+      <ellipse cx="21" cy="56" rx="5.6" ry="2.7" fill={MASK} transform="rotate(-30 21 56)" />
+      <ellipse cx="39" cy="56" rx="5.6" ry="2.7" fill={MASK} transform="rotate(30 39 56)" />
+      {/* wide-set calm eyes */}
+      <circle cx="23.2" cy="58.6" r="1.9" fill={EYE} />
+      <circle cx="36.8" cy="58.6" r="1.9" fill={EYE} />
+      <circle cx="23.9" cy="57.9" r="0.55" fill="#fff" opacity={0.85} />
+      <circle cx="37.5" cy="57.9" r="0.55" fill="#fff" opacity={0.85} />
+      {/* broad flat dark nose, set low on the muzzle */}
+      <path d="M25.6 64.5 Q30 63.3 34.4 64.5 Q33.4 68.8 30 70.4 Q26.6 68.8 25.6 64.5 Z" fill={NOSE} />
+      <circle cx="28.1" cy="66" r="0.65" fill={MUZZLE} opacity={0.7} />
+      <circle cx="31.9" cy="66" r="0.65" fill={MUZZLE} opacity={0.7} />
+      {/* wide gentle smile */}
+      <path d="M25.5 70 Q30 74 34.5 70" fill="none" stroke={NOSE} strokeWidth={1.2} strokeLinecap="round" />
     </svg>
   );
 }
