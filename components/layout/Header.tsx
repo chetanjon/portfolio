@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,7 +10,6 @@ import { navItems } from '@/lib/constants';
 import ResumeModal from '@/components/ui/ResumeModal';
 import { DarkModeToggle } from '@/components/ui/DarkModeToggle';
 import { LogoMark } from '@/components/ui/LogoMark';
-import { LogoSloth } from '@/components/ui/LogoSloth';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,8 +17,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [prevPathname, setPrevPathname] = useState('');
   const pathname = usePathname();
-  const logoRef = useRef<HTMLSpanElement>(null);
-  const [slothPos, setSlothPos] = useState<{ left: number; top: number } | null>(null);
 
   // React 19 idiom: reset state when a prop changes by comparing during render.
   // Handles browser back/forward and programmatic navigation; explicit Link onClicks still close too.
@@ -41,22 +38,6 @@ export function Header() {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // The header uses mix-blend-difference on the unscrolled hero, which would
-  // invert the sloth's fur. So the sloth lives in its own fixed overlay (a
-  // sibling of the header) and is positioned onto the C of the logo. The grip
-  // hand sits just left of and below the logo's top-left.
-  useEffect(() => {
-    const measure = () => {
-      const el = logoRef.current;
-      if (!el) return;
-      const b = el.getBoundingClientRect();
-      setSlothPos({ left: b.left - 8, top: b.top - 5 });
-    };
-    measure();
-    window.addEventListener('resize', measure);
-    return () => window.removeEventListener('resize', measure);
   }, []);
   // Any /casestudies page (index + sub-pages): avoid mix-blend-difference.
   // Also treat /projects, /work, /about, /resume, /contact as "content pages"
@@ -102,12 +83,10 @@ export function Header() {
             className={cn('flex items-center gap-2 group', textStrong)}
             aria-label="Chetan J · Home"
           >
-            <span ref={logoRef} className="inline-flex">
-              <LogoMark
-                size={56}
-                className={cn(textStrong, 'transition-transform duration-300 group-hover:scale-110')}
-              />
-            </span>
+            <LogoMark
+              size={56}
+              className={cn(textStrong, 'transition-transform duration-300 group-hover:scale-110')}
+            />
             <span className={cn('hidden sm:inline text-[15px] font-medium tracking-[0.2em] uppercase transition-colors whitespace-nowrap', textSubtle)}>
               Chetan J.
             </span>
@@ -169,19 +148,6 @@ export function Header() {
           </div>
         </div>
       </motion.header>
-
-      {/* The sloth — a fixed overlay so it keeps its real colors regardless of
-          the header's blend mode. Hangs by one hand off the C; gently sways
-          (static under reduced motion via .sloth-sway). */}
-      {slothPos && (
-        <div
-          aria-hidden
-          className="pointer-events-none fixed z-[1000]"
-          style={{ left: slothPos.left, top: slothPos.top }}
-        >
-          <LogoSloth className="sloth-sway" />
-        </div>
-      )}
 
       {/* Fullscreen menu overlay */}
       <AnimatePresence>
