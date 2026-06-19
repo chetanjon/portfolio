@@ -111,10 +111,9 @@ export function HeroSloth({
       const s = sec.getBoundingClientRect();
       const b = br.getBoundingClientRect();
       const left = b.left - s.left;
-      setBranch({
-        y: b.bottom - s.top,
-        grips: [left + b.width * 0.07, left + b.width * 0.22, left + b.width * 0.38],
-      });
+      // Small steps in the left band — a real sloth only creeps a little.
+      const base = left + b.width * 0.1;
+      setBranch({ y: b.bottom - s.top, grips: [base, base + 52, base + 104] });
     };
     measure();
     window.addEventListener('resize', measure);
@@ -146,11 +145,10 @@ export function HeroSloth({
 
   const containerXForGrip = useCallback((gripX: number) => gripX - W / 2, []);
 
-  // A proper brachiation swing: release, the body swoops DOWN and across in a
-  // pendulum arc (pivoting from the hands at the top), reaches the next grip,
-  // and settles with a small wobble. The deep dip + lean is what reads as a
-  // swing instead of a slide.
-  const swingTo = useCallback(
+  // A slow sloth creep: reach a little, lean into it, then draw the body
+  // forward over a few seconds and settle. No big swoop — sloths are slow and
+  // barely move. Tiny weight-bob + lean gives it life without looking like a slide.
+  const creepTo = useCallback(
     (gripX: number) => {
       const toX = containerXForGrip(gripX);
       if (reduceMotion) {
@@ -158,22 +156,23 @@ export function HeroSloth({
         curX.current = toX;
         return;
       }
-      const fromX = curX.current;
-      const midX = (fromX + toX) / 2;
-      const dir = toX >= fromX ? 1 : -1;
-      const reach = Math.max(38, Math.min(64, Math.abs(toX - fromX) * 0.42)); // arc depth scales with hop
+      const dir = toX >= curX.current ? 1 : -1;
       void controls.start({
-        x: [fromX, fromX, midX, toX, toX],
-        y: [0, 6, reach, 6, 0],
-        rotate: [0, -13 * dir, 9 * dir, -5 * dir, 0],
-        transition: { duration: 1.0, ease: 'easeInOut', times: [0, 0.12, 0.5, 0.84, 1] },
+        x: toX,
+        y: [0, 3, 0],
+        rotate: [0, 3 * dir, 0.6 * dir, 0],
+        transition: {
+          x: { duration: 3.1, ease: [0.45, 0.05, 0.55, 0.95] },
+          y: { duration: 3.1, ease: 'easeInOut', times: [0, 0.5, 1] },
+          rotate: { duration: 3.1, ease: 'easeInOut', times: [0, 0.4, 0.75, 1] },
+        },
       });
       curX.current = toX;
     },
     [controls, reduceMotion, containerXForGrip]
   );
 
-  // Place at the first grip, then swing hand-over-hand back and forth.
+  // Place at the first grip, then creep back and forth a little, slowly.
   useEffect(() => {
     if (!branch) return;
     curX.current = containerXForGrip(branch.grips[0]);
@@ -190,10 +189,10 @@ export function HeroSloth({
         idx = 1;
         dir = 1;
       }
-      swingTo(branch.grips[idx]);
-    }, 3600);
+      creepTo(branch.grips[idx]);
+    }, 6200);
     return () => clearInterval(id);
-  }, [branch, reduceMotion, controls, swingTo, containerXForGrip]);
+  }, [branch, reduceMotion, controls, creepTo, containerXForGrip]);
 
   if (!branch) return <div className="hidden" />;
 
