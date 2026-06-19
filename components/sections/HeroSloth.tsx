@@ -61,7 +61,6 @@ export function HeroSloth({
   const [branch, setBranch] = useState<{ y: number; grips: number[] } | null>(null);
   const [lottie, setLottie] = useState<{ Comp: LottieMod['default']; data: unknown } | null>(null);
   const curX = useRef(0);
-  const gripIdx = useRef(0);
 
   // Measure the divider line + two hand-grip positions along it (left band,
   // clear of the top-right status pill).
@@ -75,7 +74,7 @@ export function HeroSloth({
       const left = b.left - s.left;
       setBranch({
         y: b.bottom - s.top,
-        grips: [left + Math.min(46, b.width * 0.06), left + b.width * 0.4],
+        grips: [left + b.width * 0.07, left + b.width * 0.22, left + b.width * 0.38],
       });
     };
     measure();
@@ -108,7 +107,10 @@ export function HeroSloth({
 
   const containerXForGrip = useCallback((gripX: number) => gripX - W / 2, []);
 
-  // Swing to a grip in a gentle pendulum arc (dip + lean).
+  // A proper brachiation swing: release, the body swoops DOWN and across in a
+  // pendulum arc (pivoting from the hands at the top), reaches the next grip,
+  // and settles with a small wobble. The deep dip + lean is what reads as a
+  // swing instead of a slide.
   const swingTo = useCallback(
     (gripX: number) => {
       const toX = containerXForGrip(gripX);
@@ -120,27 +122,37 @@ export function HeroSloth({
       const fromX = curX.current;
       const midX = (fromX + toX) / 2;
       const dir = toX >= fromX ? 1 : -1;
+      const reach = Math.max(38, Math.min(64, Math.abs(toX - fromX) * 0.42)); // arc depth scales with hop
       void controls.start({
-        x: [fromX, midX, toX],
-        y: [0, 16, 0],
-        rotate: [-4 * dir, 7 * dir, 3 * dir],
-        transition: { duration: 1.15, ease: [0.4, 0, 0.2, 1], times: [0, 0.5, 1] },
+        x: [fromX, fromX, midX, toX, toX],
+        y: [0, 6, reach, 6, 0],
+        rotate: [0, -13 * dir, 9 * dir, -5 * dir, 0],
+        transition: { duration: 1.0, ease: 'easeInOut', times: [0, 0.12, 0.5, 0.84, 1] },
       });
       curX.current = toX;
     },
     [controls, reduceMotion, containerXForGrip]
   );
 
-  // Place at the first grip, then alternate every few seconds.
+  // Place at the first grip, then swing hand-over-hand back and forth.
   useEffect(() => {
     if (!branch) return;
     curX.current = containerXForGrip(branch.grips[0]);
     controls.set({ x: curX.current, y: 0, rotate: 0 });
     if (reduceMotion) return;
+    let idx = 0;
+    let dir = 1;
     const id = setInterval(() => {
-      gripIdx.current = (gripIdx.current + 1) % branch.grips.length;
-      swingTo(branch.grips[gripIdx.current]);
-    }, 4800);
+      idx += dir;
+      if (idx >= branch.grips.length) {
+        idx = branch.grips.length - 2;
+        dir = -1;
+      } else if (idx < 0) {
+        idx = 1;
+        dir = 1;
+      }
+      swingTo(branch.grips[idx]);
+    }, 3600);
     return () => clearInterval(id);
   }, [branch, reduceMotion, controls, swingTo, containerXForGrip]);
 
