@@ -68,8 +68,10 @@ function PhoneShell({ children, className }: { children: React.ReactNode; classN
   // The screenshots already include the real iOS dynamic island / status chrome,
   // so the frame is just rounded corners + a hairline border. No fake notch.
   return (
-    <div className={`relative rounded-[2.2rem] border-[5px] border-text-primary/85 bg-text-primary/85 shadow-2xl ${className ?? ''}`}>
-      <div className="overflow-hidden rounded-[1.8rem]">{children}</div>
+    <div
+      className={`relative rounded-[2.2rem] p-[5px] bg-gradient-to-b from-[#3a3742] to-[#131119] shadow-2xl ring-1 ring-white/10 ${className ?? ''}`}
+    >
+      <div className="overflow-hidden rounded-[1.85rem] ring-1 ring-inset ring-black/40">{children}</div>
     </div>
   );
 }
