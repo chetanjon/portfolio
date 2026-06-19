@@ -11,7 +11,6 @@ import {
 } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { HeroSloth } from '@/components/sections/HeroSloth';
 
 // WebGL underlay — client-only, lazy. Skipped under reduced motion (below).
 const Aurora = dynamic(() => import('@/components/ui/Aurora'), { ssr: false });
@@ -57,7 +56,6 @@ const REVEAL_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 export function Hero() {
   const reduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
-  const branchRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
@@ -94,7 +92,6 @@ export function Hero() {
             The global header already carries the wordmark, so a second
             "Chetan Jonnalagadda" here was redundant. */}
         <motion.div
-          ref={branchRef}
           initial={reduceMotion ? false : { opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -221,9 +218,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* A little sloth hangs on the headline and swings between grips.
-          Lazy-loaded, hidden on mobile, static under reduced motion. */}
-      <HeroSloth sectionRef={sectionRef} branchRef={branchRef} />
     </section>
   );
 }
