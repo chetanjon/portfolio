@@ -31,7 +31,7 @@ const products: Product[] = [
     initials: 'AT',
     tagline: 'Consumer iOS app · Live on the App Store',
     blurb:
-      'Co-led product on a 3-person team. Led the V2 anti-interruption rewrite after 16 archetype interviews showed our own notifications were pulling avoidance-prone users out of focus. Owned the product spec, UI, brand voice, and 18-component design system. The momentum gauge, the live-presence crew rooms, the on-device pattern detectors. All shipped.',
+      'A focus app for people who dodge hard tasks. I co-led the build and owned the V2 rewrite, the spec, the UI, and the design system. It nudges you back to focus instead of pulling you out of it.',
     frame: 'phone',
     screenshots: ['/products/aatram-crew.jpg', '/products/aatram-home.jpg', '/products/aatram-insights.jpg'],
     liveUrl: 'https://apps.apple.com/us/app/aatram/id6760587556',
@@ -49,7 +49,7 @@ const products: Product[] = [
     initials: 'FL',
     tagline: 'AI review intelligence tool · Live at frictionlens.net',
     blurb:
-      'A full-stack AI review analyzer (Next.js, TypeScript, Supabase, Google Gemini) that ingests App Store, Play Store, Reddit, and CSV reviews into a single Vibe Report. Owned product and design across the marketing site, dashboard, and shareable report pages. Routes short reviews through keyword rules and only batches long ones to Gemini, plus BYOK with AES-256-GCM per-user key encryption.',
+      'I built this solo. It pulls reviews from the App Store, Play Store, Reddit, and CSVs into one clear Vibe Report, and only calls the AI when simple rules cannot decide, so it stays fast and cheap.',
     frame: 'browser',
     screenshots: ['/products/frictionlens-landing.png', '/products/frictionlens-report.png'],
     liveUrl: 'https://www.frictionlens.net/',
