@@ -52,7 +52,7 @@ export function Header() {
       const el = logoRef.current;
       if (!el) return;
       const b = el.getBoundingClientRect();
-      setSlothPos({ left: b.left - 5, top: b.top + 3 });
+      setSlothPos({ left: b.left - 13, top: b.top + 1 });
     };
     measure();
     window.addEventListener('resize', measure);
