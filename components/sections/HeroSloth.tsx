@@ -4,45 +4,84 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ComponentType } from 'react';
 import { motion, useAnimationControls, useReducedMotion } from 'framer-motion';
 
-const W = 72;
-const H = (104 / 88) * W; // ~85, preserves the SVG aspect
+const W = 76;
+const H = (120 / 96) * W; // ~95, preserves the SVG aspect
 
-// A cute, hand-drawn hanging sloth (license-clean, themeable). This is the
-// default; drop a premium LottieFiles sloth at /public/lottie/sloth.json and it
-// takes over automatically.
+// A hand-drawn three-toed sloth hanging by its claws (license-clean, themeable).
+// Shaggy greyish-brown fur, the signature dark eye-mask, small dark eyes, flat
+// nose, gentle smile, and long curved claws. This is the default; drop a premium
+// LottieFiles sloth at /public/lottie/sloth.json and it takes over automatically.
 function SlothSvg({ className }: { className?: string }) {
-  const BODY = '#9a8c79';
-  const CREAM = '#dad0be';
-  const DARK = '#463c32';
+  const FUR = '#8a7c67';
+  const FUR_DK = '#6f6353';
+  const FACE = '#c8b99d';
+  const MASK = '#564636';
+  const EYE = '#241c14';
+  const NOSE = '#2a2118';
+  const CLAW = '#3a3025';
   return (
-    <svg viewBox="0 0 88 104" width={W} height={H} className={className} role="img" aria-label="A sloth hanging from the line">
-      {/* arms reaching up to grip the branch */}
-      <path d="M34 50 C 26 36 30 18 41 10" fill="none" stroke={BODY} strokeWidth={8} strokeLinecap="round" />
-      <path d="M54 50 C 62 36 58 18 47 10" fill="none" stroke={BODY} strokeWidth={8} strokeLinecap="round" />
-      {/* little claws hooking over */}
-      <path d="M38 11 q 3 -4 6 -1 M44 11 q 3 -4 6 -1" fill="none" stroke={DARK} strokeWidth={2} strokeLinecap="round" />
+    <svg viewBox="0 0 96 120" width={W} height={H} className={className} role="img" aria-label="A three-toed sloth hanging from the line">
+      <defs>
+        <linearGradient id="sl-fur" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#a89a82" />
+          <stop offset="0.55" stopColor="#8a7c67" />
+          <stop offset="1" stopColor="#6c6051" />
+        </linearGradient>
+        <linearGradient id="sl-face" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#cdbea2" />
+          <stop offset="1" stopColor="#b09f84" />
+        </linearGradient>
+      </defs>
 
-      {/* body + belly */}
-      <ellipse cx="44" cy="70" rx="18" ry="22" fill={BODY} />
-      <ellipse cx="44" cy="72" rx="12" ry="16" fill={CREAM} />
-      {/* feet */}
-      <ellipse cx="37" cy="90" rx="5" ry="4" fill={BODY} />
-      <ellipse cx="51" cy="90" rx="5" ry="4" fill={BODY} />
-      <path d="M34 92 q 2 3 5 2 M48 92 q 2 3 5 2" fill="none" stroke={DARK} strokeWidth={1.6} strokeLinecap="round" />
+      {/* long arms reaching up to the branch */}
+      <path d="M37 60 C 29 44 33 24 46 15" fill="none" stroke={FUR} strokeWidth={9} strokeLinecap="round" />
+      <path d="M59 60 C 67 44 63 24 50 15" fill="none" stroke={FUR} strokeWidth={9} strokeLinecap="round" />
+      <path d="M37 60 C 30 45 33 27 45 18" fill="none" stroke={FUR_DK} strokeWidth={2} strokeLinecap="round" opacity={0.5} />
+
+      {/* shaggy body */}
+      <path
+        d="M33 66 C 30 53 40 48 48 48 C 56 48 66 53 63 66 C 68 84 63 104 48 110 C 33 104 28 84 33 66 Z"
+        fill="url(#sl-fur)"
+      />
+      {/* fur tufts along the edges */}
+      <path d="M31 70 l -3 4 l 4 -1 M34 92 l -3 5 l 4 -1 M48 110 l -2 5 l 4 -1 l 0 4 l 3 -4 M63 70 l 3 4 l -4 -1 M62 92 l 3 5 l -4 -1"
+        fill="url(#sl-fur)" />
+      {/* algae tint on the back + belly + fur strokes */}
+      <ellipse cx="40" cy="64" rx="11" ry="9" fill="#8a9a72" opacity={0.16} />
+      <ellipse cx="48" cy="82" rx="12" ry="17" fill="url(#sl-face)" opacity={0.55} />
+      <g stroke={FUR_DK} strokeWidth={1} strokeLinecap="round" opacity={0.4} fill="none">
+        <path d="M40 60 C 38 72 39 88 43 100" />
+        <path d="M48 58 C 47 74 47 90 48 104" />
+        <path d="M56 60 C 58 72 57 88 53 100" />
+      </g>
+
+      {/* tucked hind legs with claws */}
+      <path d="M36 96 C 30 94 27 90 28 86" fill="none" stroke={FUR} strokeWidth={7} strokeLinecap="round" />
+      <path d="M60 96 C 66 94 69 90 68 86" fill="none" stroke={FUR} strokeWidth={7} strokeLinecap="round" />
+      <path d="M27 88 c -2 -3 -1 -6 1 -6 M29 90 c -3 -2 -3 -5 -1 -6 M69 88 c 2 -3 1 -6 -1 -6 M67 90 c 3 -2 3 -5 1 -6"
+        fill="none" stroke={CLAW} strokeWidth={1.6} strokeLinecap="round" />
 
       {/* head */}
-      <circle cx="44" cy="46" r="17" fill={CREAM} />
-      {/* signature dark eye-stripes */}
-      <ellipse cx="38" cy="48" rx="4.6" ry="9" fill={DARK} transform="rotate(-18 38 48)" />
-      <ellipse cx="50" cy="48" rx="4.6" ry="9" fill={DARK} transform="rotate(18 50 48)" />
-      {/* sleepy eyes */}
-      <path d="M35 49 q 3 2.2 6 0 M47 49 q 3 2.2 6 0" fill="none" stroke={CREAM} strokeWidth={1.6} strokeLinecap="round" />
-      {/* nose + smile */}
-      <ellipse cx="44" cy="54.5" rx="2.6" ry="2" fill={DARK} />
-      <path d="M40 58 q 4 4 8 0" fill="none" stroke={DARK} strokeWidth={1.6} strokeLinecap="round" />
-      {/* cheek blush — a tiny brand-lavender touch */}
-      <circle cx="33" cy="55" r="2.2" fill="#B8A9D4" opacity={0.5} />
-      <circle cx="55" cy="55" r="2.2" fill="#B8A9D4" opacity={0.5} />
+      <ellipse cx="48" cy="46" rx="16" ry="14.5" fill="url(#sl-face)" />
+      {/* dark eye-mask stripes */}
+      <path d="M42 33 C 37 39 36 49 40 55 C 43 51 44 41 45 35 Z" fill={MASK} />
+      <path d="M54 33 C 59 39 60 49 56 55 C 53 51 52 41 51 35 Z" fill={MASK} />
+      {/* eyes */}
+      <circle cx="41" cy="46" r="2.6" fill={EYE} />
+      <circle cx="55" cy="46" r="2.6" fill={EYE} />
+      <circle cx="42" cy="45.2" r="0.8" fill="#fff" opacity={0.8} />
+      <circle cx="56" cy="45.2" r="0.8" fill="#fff" opacity={0.8} />
+      {/* flat nose */}
+      <path d="M44 51 Q48 49.5 52 51 Q50.5 55.5 48 55.5 Q45.5 55.5 44 51 Z" fill={NOSE} />
+      {/* gentle smile */}
+      <path d="M43 58 Q48 62.5 53 58" fill="none" stroke={NOSE} strokeWidth={1.5} strokeLinecap="round" />
+
+      {/* long front claws hooking over the branch */}
+      <g fill="none" stroke={CLAW} strokeWidth={2.4} strokeLinecap="round">
+        <path d="M44 17 C 41 9 43 4 47 5" />
+        <path d="M47 16 C 44 8 47 3 50 5" />
+        <path d="M50 16 C 48 8 51 4 53 6" />
+      </g>
     </svg>
   );
 }
